@@ -1,20 +1,34 @@
-# IESMVM-BOT
-Open Source bot, make it by people by people.
+# imvmbot.github.io
+IMVM BOT WEBPAGE PROYECTO
+![imvmbot-social](https://github.com/ivanmvm/imvmbot.github.io/assets/113584496/5fc99b93-ff4f-498d-a853-570a891bf33e)
 
-Open Source Collaboration:
-IESMVM-BOT is an open-source project, meaning its source code is openly accessible for viewing and modification by the community. This open-source approach fosters collaboration and innovation as developers and users can actively contribute to its development. It allows for flexibility and adaptation to specific educational needs.
+Descripción:
+El objetivo de este proyecto es desarrollar una página web oficial para un bot de Discord de grado superior 2n DAW, con la finalidad de proporcionar una plataforma centralizada para que los usuarios puedan interactuar con el bot y mantenerse informados sobre las últimas practicas, examenes y recordatorios personalizados. La página web también permitirá a los usuarios consultar los módulos y sus respectivas horas de trabajo.
 
-Classroom API Integration:
-The bot seamlessly integrates with the Classroom API, a robust application programming interface developed by platforms like Google for managing educational data. This integration empowers users to interact with and control educational data with ease. It streamlines tasks related to classrooms, assignments, students, and schedules by automating and simplifying processes.
+Comandos:
+El bot de Discord de 2n DAW cuenta con varios comandos útiles que pueden ayudarte a interactuar con tu servidor de Discord de manera más efectiva. Aquí te presentamos algunos de los comandos más útiles:
 
-Educational Reminders:
-One of its standout features is the ability to set educational reminders. Students and educators can schedule custom reminders for assignments, exams, and important deadlines. This ensures that no critical dates are overlooked, promoting timely and organized completion of academic tasks.
+&module: Este comando te permite listar los módulos que se están realizando en el curso de 2n DAW. Si quieres saber qué módulos están disponibles para ti, este es tu comando.
 
-Class Schedules Management:
-With IESMVM-BOT, users can conveniently manage their class schedules. It provides a straightforward system for creating, updating, and viewing class schedules. Real-time access to class schedules facilitates better time management and organization, helping students stay on top of their academic commitments.
+&remind: Este comando te permite crear un recordatorio personalizado con hora y fecha de recordatorio. Si quieres recordarte una practica o un examen importante, no dudes en utilizar este comando.
 
-Study Mode Enhancement:
-The "Study Mode" feature is a valuable asset for learners. It offers a toolkit for effective study. Users can set study timers and receive study-related reminders. This feature encourages productive study habits, time management, and concentration, supporting academic success.
+&classroom: Este comando te permite consultar los diferentes classrooms de cada módulo y ver las prácticas y examenes pendientes. Si quieres saber cuándo tienes la próxima práctica o examen, este comando es una excelente herramienta.
 
-In essence, IESMVM-BOT is a comprehensive educational tool for Discord users. Its open-source nature encourages community involvement and customization, enabling educational institutions, teachers, and students to tailor the bot to their specific needs. The integration of the Classroom API, reminder system, class schedule management, and study mode makes it a versatile and efficient companion for enhancing the learning experience.
+Invite:
+Dentro de la web podrás encontrar un apartado de "invite" para añadir el bot a tu servidor y utilizar todas sus funciones, estos son los pasos requeridos:
+1.Dírigete al apartado "invite" dentro de la página web.
 
+2.Inicia sesión en la aplicación de Discord en tu dispositivo.
+
+3.Abre la página web de 2n DAW y ve a la sección de "Invite" en la parte inferior de la página.
+
+4.Haz clic en el botón "Invite" y selecciona el servidor en que quieres añadir al bot.
+
+5.¡Listo¡ Ya tienes el bot disponible en tu servidor de Discord.
+
+Información:
+Este bot de Discord ha sido diseñado y creado como parte de un proyecto de 2n DAW en el Instituto Manuel Vázquez Montalbán. Nuestro objetivo ha sido crear una herramienta útil para la comunidad de estudiantes y profesores de la institución, y para ello hemos trabajado arduamente para dotar al bot de una amplia variedad de funciones y utilidades.
+
+Para lograr esto, hemos requerido de la API de Discord, que nos permite interactuar con el servidor de Discord y realizar diversas tareas, como crear roles, asignar roles a los miembros, crear canales, enviar mensajes, entre otras muchas funciones. Además, hemos utilizado la API de Classroom para obtener información de los módulos y practicas programadas en el curso de 2n DAW.
+
+Nuestro bot de Discord es completamente gratuito. Esperamos que sea de utilidad para todos los estudiantes y profesores que lo utilicen, y que pueda ayudar a mejorar su experiencia en el curso.
