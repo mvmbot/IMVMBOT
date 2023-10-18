@@ -18,6 +18,7 @@ client.on('ready', (c) => {
   console.log(`✅ ${c.user.tag} is online.`);
   welcome(client);
   remind(client);
+  study(client);
 });
 
 client.on('messageCreate', (message) => {

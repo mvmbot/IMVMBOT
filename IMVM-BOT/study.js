@@ -1,42 +1,40 @@
-// study.js
+// study.js 
 const schedule = require('node-schedule');
 
 let studyStep = {}; // Guarda el paso del estudio para cada usuario
 
 module.exports = function(client) {
-    client.on('message', message => {
-        if (message.author.bot) return; // Ignora los mensajes de otros bots
+  client.on('messageCreate', message => { 
+ if (message.author.bot) return; // Ignora los mensajes de otros bots
 
-        if (message.content.startsWith('&study')) {
-            studyStep[message.author.id] = 1; // Inicia el proceso de estudio
-            message.reply('Por favor, introduce un tiempo de estudio.');
-        } else if (studyStep[message.author.id] === 1) {
-            // Guarda el tiempo de estudio del usuario
-            let time = parseInt(message.content);
-            if (isNaN(time)) {
-                message.reply('Por favor, introduce un número válido de minutos.');
-                return;
-            }
-            studyStep[message.author.id] = {
-                time: time,
-                step: 2
-            };
-            message.reply(`Estudia durante ${time} minutos. Te echaré del canal de voz cuando el tiempo se acabe.`);
-        } else if (studyStep[message.author.id] && studyStep[message.author.id].step === 2) {
-            let voiceChannel = message.member.voice.channel;
-            if (!voiceChannel) {
-                message.reply('Debes estar en un canal de voz para usar este comando.');
-                return;
-            }
-            let date = new Date();
-            date.setMinutes(date.getMinutes() + studyStep[message.author.id].time);
+ if (message.content.startsWith('&study')) {
+    studyStep[message.author.id] = 1; // Inicia el proceso de estudio
+    message.reply('¿Cuánto tiempo quieres estudiar? (formato: HH:MM:SS)');
+} else if (studyStep[message.author.id] === 1) {
+    let timeParts = message.content.split(':');
+
+    // Verifica que todas las partes necesarias están presentes
+    if (timeParts.length === 3) {
+        let date = new Date();
+        date.setHours(date.getHours() + parseInt(timeParts[0]));
+        date.setMinutes(date.getMinutes() + parseInt(timeParts[1]));
+        date.setSeconds(date.getSeconds() + parseInt(timeParts[2]));
+
+        if (!isNaN(date)) {
             schedule.scheduleJob(date, function(){
-                voiceChannel.leave();
+                // Verifica que el usuario exista antes de intentar enviar el mensaje
                 if (client.users.cache.get(message.author.id)) {
-                    client.users.cache.get(message.author.id).send('¡Tiempo de estudio terminado!');
+                    client.users.cache.get(message.author.id).send(`¡Tiempo de estudio terminado!`);
                 }
             });
-            delete studyStep[message.author.id]; // Elimina el paso de estudio del usuario
+            message.reply('¡Temporizador de estudio establecido!');
+            delete studyStep[message.author.id]; // Elimina el paso de estudio para el usuario
+        } else {
+            message.reply('Por favor, ingresa un tiempo válido.');
         }
-    });
+    } else {
+        message.reply('Por favor, ingresa un tiempo válido.');
+    }
+}
+});
 };
