@@ -1,6 +1,6 @@
 # imvmbot.github.io
 IMVM BOT WEBPAGE PROYECTO
-![imvmbot-social](https://github.com/ivanmvm/imvmbot.github.io/assets/113584496/5fc99b93-ff4f-498d-a853-570a891bf33e)
+![imvmbot-social](https://repository-images.githubusercontent.com/706324964/7bafc352-f994-47e4-906d-898a6d2aea14)
 
 Descripción:
 El objetivo de este proyecto es desarrollar una página web oficial para un bot de Discord de grado superior 2n DAW, con la finalidad de proporcionar una plataforma centralizada para que los usuarios puedan interactuar con el bot y mantenerse informados sobre las últimas practicas, examenes y recordatorios personalizados. La página web también permitirá a los usuarios consultar los módulos y sus respectivas horas de trabajo.
