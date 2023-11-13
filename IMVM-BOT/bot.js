@@ -1,38 +1,13 @@
-const Discord = require('discord.js');
-const welcome = require('./welcome.js');
-const remind = require('./remind.js')
-const study = require('./study.js');
-const { Client, IntentsBitField } = require('discord.js');
 require('dotenv').config();
+const { Client, GatewayIntentBits, EmbedBuilder, PermissionsBitField, Permissions } = require('discord.js');
 
-const client = new Client({
-  intents: [
-    IntentsBitField.Flags.Guilds,
-    IntentsBitField.Flags.GuildMembers,
-    IntentsBitField.Flags.GuildMessages,
-    IntentsBitField.Flags.MessageContent,
-  ],
-});
+const client = new Client({intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent]});
 
-client.on('ready', (c) => {
-  console.log(`✅ ${c.user.tag} is online.`);
-  welcome(client);
-  remind(client);
-  study(client);
+client.once('ready', async () => {
+  console.log(`✅ ${client.user.tag} is online.`);
   client.user.setPresence({
-    activities: [{ name: `IMVMBOT`, type: Discord.ActivityType.Watching }],
+    activities: [{ name: `IMVMBOT`, type: 'WATCHING' }],
     status: 'online',
-    });
-});
+  })
 
-client.on('messageCreate', (message) => {
-  if (message.author.bot) {
-    return;
-  }
-
-  if (message.content === 'imvm') {
-    message.reply('stfu');
-  }
-});
-
-client.login(process.env.TOKEN);
+client.login(process.env.TOKEN);  
