@@ -1,8 +1,5 @@
-const Discord = require('discord.js');
-const welcome = require('./welcome.js');
-const remind = require('./remind.js')
-const study = require('./study.js');
-const { Client, IntentsBitField } = require('discord.js');
+const { Client, IntentsBitField, Collection } = require('discord.js');
+const fs = require('fs');
 require('dotenv').config();
 
 const client = new Client({
@@ -14,20 +11,30 @@ const client = new Client({
   ],
 });
 
-client.on('ready', (c) => {
-  console.log(`✅ ${c.user.tag} is online.`);
-  welcome(client);
-  remind(client);
-  study(client);
+client.commands = new Collection();
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+
+for (const file of commandFiles) {
+    const command = require(`./commands/${file}`);
+    client.commands.set(command.data.name, command);
+}
+
+client.once('ready', () => {
+  console.log(`✅ Bot is online.`);
 });
 
-client.on('messageCreate', (message) => {
-  if (message.author.bot) {
-    return;
-  }
+client.on('interactionCreate', async interaction => {
+  if (!interaction.isCommand()) return;
 
-  if (message.content === 'imvm') {
-    message.reply('stfu');
+  const command = client.commands.get(interaction.commandName);
+
+  if (!command) return;
+
+  try {
+    await command.execute(interaction);
+  } catch (error) {
+    console.error(error);
+    await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
   }
 });
 
