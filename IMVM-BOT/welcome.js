@@ -1,5 +1,5 @@
 module.exports = client => {
-    const channelId = '1031515330968830064';
+    const channelId = '1163886058258305065';
 
     client.on('guildMemberAdd', member => {
         const message = `¡Bienvenido <@${member.id}> al servidor!`;
