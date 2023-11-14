@@ -2,7 +2,8 @@ const rulesText = 'Normativa del Servidor de Soporte del Bot IMVM{"\n"}{"\n"}1.1
 
 module.exports = client => {
     const user = message.mentions.users.first() || message.author;
-    const rulesEmbed = new EmbedBuilder()
+    client.on('messageCreate', message => { 
+        const rulesEmbed = new EmbedBuilder()
         .setColor([176, 92, 255])
         .setTitle('Normativa')
         .setURL('https://discord.com')
@@ -18,5 +19,10 @@ module.exports = client => {
             text: 'IMVM',
             iconURL: 'logo'
         });
-    channel.send({embeds: [rulesEmbed]});
+        if (message.author.bot) return; // Ignora los mensajes de otros bots
+        
+        if (message.content.startsWith('&rules')) {
+            channel.send({embeds: [rulesEmbed]});
+        }
+    });
 }
