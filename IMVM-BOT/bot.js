@@ -28,7 +28,7 @@ client.once('ready', async () => {
   try {
     console.log('Started refreshing application (/) commands.');
     await rest.put(
-      Routes.applicationGuildCommands(client.user.id, 'YOUR_GUILD_ID'),
+      Routes.applicationGuildCommands(client.user.id, '1163886056832237718'),
       { body: commands },
     );
     console.log('Successfully reloaded application (/) commands.');
