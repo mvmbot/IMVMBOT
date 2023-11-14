@@ -1,83 +1,54 @@
-const Discord = require('discord.js');
-const welcome = require('./welcome.js');
-const remind = require('./remind.js')
-const study = require('./study.js');
-const { Client, IntentsBitField } = require('discord.js');
+const { REST } = require('@discordjs/rest');
+const { Routes } = require('discord-api-types/v9');
+const { Client, GatewayIntentBits, Collection } = require('discord.js');
+const fs = require('fs');
 require('dotenv').config();
 
-const client = new Client({
-  intents: [
-    IntentsBitField.Flags.Guilds,
-    IntentsBitField.Flags.GuildMembers,
-    IntentsBitField.Flags.GuildMessages,
-    IntentsBitField.Flags.MessageContent,
-  ],
-});
+const client = new Client({intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent]});
+client.commands = new Collection();
 
-const embed = {
-  title: 'IMVM BOT',
-  description: 'Open an Ticket For Support, Report Or Help, Use it Below of this message.',
-  color: 0x5865F2,
-  image: {url: 'https://cdn.discordapp.com/attachments/842748665843810334/1136409821764132964/American-Pekin-duck-760x507.jpg'}
-};
+// Carga los comandos
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+for (const file of commandFiles) {
+  const command = require(`./commands/${file}`);
+  client.commands.set(command.data.name, command);
+}
 
-const menu = new Discord.ActionRowBuilder().addComponents(
-  new Discord.StringSelectMenuBuilder()
-       .setPlaceholder('Open an Support Ticket')
-       .setMaxValues(1)
-       .setMinValues(1)
-       .setCustomId('ticket-create')
-       .setOptions([{
-      label: 'Support',
-      emoji: '👋',
-      description: 'Open an Suppport Ticket',
-      value: 'Soporte'
-  }, {
-      label: 'Reports',
-      emoji: '⚠️',
-      description: 'Open an report Ticket',
-      value: 'report'
-  }])
-);
-
-Client.on('ready', async (client) => {
-  const ticketPanelChannelId = "1164621212694085712"// id del canal
-  client.channels.fetch(ticketPanelChannelId)
-  .then(channel => channel.send({embeds: [embed], components: [menu]}))
-});
-
-
-client.on('ready', (c) => {
-  console.log(`✅ ${c.user.tag} is online.`);
-  welcome(client);
-  remind(client);
-  study(client);
+client.once('ready', async () => {
+  console.log(`✅ ${client.user.tag} is online.`);
   client.user.setPresence({
-    activities: [{ name: `IMVMBOT`, type: Discord.ActivityType.Watching }],
+    activities: [{ name: `IMVMBOT`, type: 'WATCHING' }],
     status: 'online',
-    });
-});
+  });
 
-/// Evento Interaction Create
+  // Registra los comandos slash
+  const rest = new REST({ version: '9' }).setToken(process.env.TOKEN);
+  const commands = client.commands.map(({ data }) => data.toJSON());
 
-Client.on("interactionCreate", async (interaction) => {
-    if(interaction.isChatInputCommand()) return;
-    
-    try {
-        const execute = require(`./interactions/${interaction.customId}`);
-        execute(interaction);
-    }  catch (error) {
-        console.log('error')
-    }
-});
-
-client.on('messageCreate', (message) => {
-  if (message.author.bot) {
-    return;
+  try {
+    console.log('Started refreshing application (/) commands.');
+    await rest.put(
+      Routes.applicationGuildCommands(client.user.id, 'YOUR_GUILD_ID'),
+      { body: commands },
+    );
+    console.log('Successfully reloaded application (/) commands.');
+  } catch (error) {
+    console.error(error);
   }
+});
 
-  if (message.content === 'imvm') {
-    message.reply('stfu');
+client.on('interactionCreate', async interaction => {
+  if (!interaction.isCommand()) return;
+
+  const command = client.commands.get(interaction.commandName);
+
+  if (!command) return;
+
+  try {
+    await command.execute(interaction);
+  } catch (error) {
+    console.error(error);
+    await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
   }
 });
 
