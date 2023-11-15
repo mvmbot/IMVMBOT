@@ -5,10 +5,10 @@ const schedule = require('node-schedule');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('study')
-        .setDescription('Set a study timer')
+        .setDescription('Establece un tiempo de estudio')
         .addStringOption(option => 
             option.setName('time')
-                .setDescription('The time for the study timer (format: HH:MM:SS)')
+                .setDescription('Establece un temporizador de estudio (formato: HH:MM:SS)')
                 .setRequired(true)),
     async execute(interaction) {
         const timeStr = interaction.options.getString('time');
@@ -22,14 +22,14 @@ module.exports = {
 
             if (!isNaN(date)) {
                 schedule.scheduleJob(date, function(){
-                    interaction.user.send(`Study time is over!`);
+                    interaction.user.send(`¡Tiempo de estudio terminado!`);
                 });
-                await interaction.reply('Study timer set!');
+                await interaction.reply('¡Temporizador de estudio establecido!');
             } else {
-                await interaction.reply('Please enter a valid time.');
+                await interaction.reply('Ingresa un tiempo de estudio valido.');
             }
         } else {
-            await interaction.reply('Please enter a valid time.');
+            await interaction.reply('Ingresa un tiempo de estudio valido.');
         }
     },
 };

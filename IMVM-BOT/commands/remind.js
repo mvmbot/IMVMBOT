@@ -5,14 +5,14 @@ const schedule = require('node-schedule');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('remind')
-        .setDescription('Set a reminder')
+        .setDescription('Establece un recordatorio')
         .addStringOption(option => 
             option.setName('reminder')
-                .setDescription('The reminder message')
+                .setDescription('Recordatorio')
                 .setRequired(true))
         .addStringOption(option => 
             option.setName('date')
-                .setDescription('The date for the reminder (format: DD-MM-YYYY HH:MM:SS)')
+                .setDescription('Fecha para el recordatorio (formato: DD-MM-YYYY HH:MM:SS)')
                 .setRequired(true)),
     async execute(interaction) {
         const reminder = interaction.options.getString('reminder');
@@ -25,14 +25,14 @@ module.exports = {
 
             if (!isNaN(date)) {
                 schedule.scheduleJob(date, function(){
-                    interaction.user.send(`Reminder: ${reminder}`);
+                    interaction.user.send(`Recordatorio: ${reminder}`);
                 });
-                await interaction.reply('Reminder set!');
+                await interaction.reply('¡Recordatorio establecido!');
             } else {
-                await interaction.reply('Please enter a valid date.');
+                await interaction.reply('Ingresa una fecha valida.');
             }
         } else {
-            await interaction.reply('Please enter a valid date.');
+            await interaction.reply('Ingresa una fecha valida.');
         }
     },
 };
