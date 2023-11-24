@@ -7,10 +7,10 @@ let studyStep = {}; // Guarda el paso del estudio para cada usuario
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('study')
-    .setDescription('Establece un temporizador de estudio!')
+    .setDescription('Set a study timer!')
     .addStringOption(option =>
       option.setName('time')
-        .setDescription('Tiempo que quieres estudiar (formato: HH:MM:SS)')
+        .setDescription('How long do you want to study? (formato: HH:MM:SS)')
         .setRequired(true)),
   async execute(interaction) {
     const time = interaction.options.getString('time');
@@ -24,14 +24,14 @@ module.exports = {
 
       if (!isNaN(date)) {
         schedule.scheduleJob(date, function(){
-          interaction.user.send(`¡Tiempo de estudio terminado!`);
+          interaction.user.send(`You already studied a lot, take a break!`);
         });
-        await interaction.reply('¡Temporizador de estudio establecido!');
+        await interaction.reply('Timer set!');
       } else {
-        await interaction.reply('Por favor, ingresa un tiempo válido.');
+        await interaction.reply('Please, choose a valid time!');
       }
     } else {
-      await interaction.reply('Por favor, ingresa un tiempo válido.');
+      await interaction.reply('Please, choose a valid time!');
     }
   },
 };

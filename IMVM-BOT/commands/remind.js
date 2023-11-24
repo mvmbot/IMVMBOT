@@ -5,14 +5,14 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('remind')
-    .setDescription('Establece un recordatorio!')
+    .setDescription('Set a reminder!')
     .addStringOption(option =>
       option.setName('reminder')
-        .setDescription('Recordatorio que quieres establecer')
+        .setDescription('Reminder you need')
         .setRequired(true))
     .addStringOption(option =>
       option.setName('date')
-        .setDescription('La fecha en la que quieres que te lo recuerde (formato: DD-MM-AAAA HH:MM:SS)')
+        .setDescription('The date when you want it to remind you (formato: DD-MM-AAAA HH:MM:SS)')
         .setRequired(true)),
   async execute(interaction) {
     const reminder = interaction.options.getString('reminder');
@@ -24,14 +24,14 @@ module.exports = {
 
       if (!isNaN(date)) {
         schedule.scheduleJob(date, function(){
-          interaction.user.send(`Recordatorio: ${reminder}`);
+          interaction.user.send(`Reminder: ${reminder}`);
         });
-        await interaction.reply('Recordatorio establecido!');
+        await interaction.reply('Reminder set!');
       } else {
-        await interaction.reply('Por favor, ingresa una fecha válida.');
+        await interaction.reply('Please, choose a valid date!');
       }
     } else {
-      await interaction.reply('Por favor, ingresa una fecha válida.');
+      await interaction.reply('Please, choose a valid date!');
     }
   },
 };
