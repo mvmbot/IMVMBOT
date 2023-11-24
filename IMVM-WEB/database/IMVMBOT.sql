@@ -5,6 +5,7 @@ CREATE TABLE admin (
     id_admin INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     username_admin VARCHAR(50) NOT NULL UNIQUE,
     email_admin VARCHAR(100) NOT NULL UNIQUE,
+    password_admin VARCHAR(255) NOT NULL
 );
 
 -- Tabla para almacenar la información de los usuarios.
