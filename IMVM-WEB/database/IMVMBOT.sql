@@ -9,11 +9,11 @@ CREATE TABLE admin (
 );
 
 -- Tabla para almacenar la información de los usuarios.
-CREATE TABLE user (
-    id_user INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    username_user VARCHAR(50) NOT NULL UNIQUE,
-    email_user VARCHAR(100) NOT NULL UNIQUE,
-    password_user VARCHAR(255) NOT NULL
+CREATE TABLE users (
+    id_users INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    username_users VARCHAR(50) NOT NULL UNIQUE,
+    email_users VARCHAR(100) NOT NULL UNIQUE,
+    password_users VARCHAR(255) NOT NULL
 );
 
 -- Tabla para almacenar la información de los tickets.
@@ -23,8 +23,8 @@ CREATE TABLE ticket (
     description_ticket TEXT NOT NULL,
     state_ticket ENUM('Open', 'In progress', 'Closed') DEFAULT 'Open',
     createDate_ticket TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    id_user INT,
-    FOREIGN KEY (id_user) REFERENCES user(id_user)
+    id_users INT,
+    FOREIGN KEY (id_users) REFERENCES users(id_users)
 );
 
 -- Tabla para almacenar todo lo relacionado a los tickets.
@@ -33,11 +33,11 @@ CREATE TABLE trouble (
     description_trouble TEXT NOT NULL,
     sendDate_trouble TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     id_ticket INT,
-    user_id INT,
-    admin_id INT,
-    FOREIGN KEY (admin_id) REFERENCES admin(admin_id),
+    id_users INT,
+    id_admin INT,
+    FOREIGN KEY (id_admin) REFERENCES admin(id_admin),
     FOREIGN KEY (id_ticket) REFERENCES ticket(id_ticket),
-    FOREIGN KEY (id_user) REFERENCES user(id_user)
+    FOREIGN KEY (id_users) REFERENCES users(id_users)
 );
 
 -- Tabla para llevar un registro sobre los cambios en los tickets.
