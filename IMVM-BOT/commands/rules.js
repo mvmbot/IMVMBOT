@@ -1,41 +1,62 @@
 // rules.js
-const { SlashCommandBuilder, MessageEmbed } = require('@discordjs/builders');
-const { Client, GatewayIntentBits } = require('discord.js');
-const client = new Client({
-  intents: [
-    GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.MessageContent,
-  ],
-});
+const { SlashCommandBuilder } = require('@discordjs/builders');
+const { EmbedBuilder } = require('discord.js');
 
-client.on('interactionCreate', async (interaction) => {
-  if (!interaction.isCommand()) return;
+const rulesText = `
+**Respect:**
+- Treat everyone with respect and courtesy.
+- Avoid insults, offensive arguments, or any harmful behavior.
 
-  if (interaction.commandName === 'rules') {
-    // Crear el embed con las normas del bot
-    const rulesEmbed = {
-      color: '#0099ff',
-      title: 'Normas del Bot',
-      description: 'Aquí están las normas del bot:',
-      fields: [
-        {
-          name: 'Norma 1',
-          value: 'Texto de la norma 1...',
-        },
-        {
-          name: 'Norma 2',
-          value: 'Texto de la norma 2...',
-        },
-        // Añade más campos según sea necesario
-      ],
-      timestamp: new Date(),
-      footer: {
-        text: 'Bot Rules',
-      },
-    };
+**Appropriate Content:**
+- Post only content suitable for all ages.
+- Avoid offensive, discriminatory, or illegal material.
 
-    // Responder al comando con el embed
-    await interaction.reply({ embeds: [rulesEmbed] });
-  }
-});
+**Spam and Flood:**
+- Do not spam or flood channels with unnecessary messages.
+- Avoid excessive use of mentions to other users.
+
+**Advertising:**
+- Do not promote other Discord servers or products without permission.
+- Advertising school events is allowed but should be done in moderation.
+
+**Proper Channel Usage:**
+- Use the appropriate channels for each type of content (e.g., general, studies, events, etc.).
+
+**School Identification:**
+- Use a recognizable username related to your school identity.
+
+**Bot Usage:**
+- Do not use bots abusively or for harmful actions.
+- Consult with administrators before adding new bots to the server.
+
+**Collaboration:**
+- Collaborate and participate positively in server conversations and projects.
+
+**Privacy:**
+- Respect the privacy of others. Do not share personal information without consent.
+
+**Issues and Complaints:**
+- If you have problems, questions, or complaints, contact administrators via private messages.
+
+**Updates and Announcements:**
+- Stay informed about updates and announcements through designated channels.
+
+**Consequences:**
+- Violating these rules may result in warnings, temporary or permanent bans, depending on the severity.
+`;
+
+module.exports = {
+    data: new SlashCommandBuilder()
+        .setName('rules')
+        .setDescription('Show the IMVM BOT rules'),
+    async execute(interaction) {
+        // Create EmbedBuilder
+        const embed = new EmbedBuilder()
+            .setColor('#0099ff')
+            .setTitle('IMVMBOT Rules')
+            .setDescription(rulesText);
+
+        // Interaction with embed
+        await interaction.reply({ embeds: [embed] });
+    },
+};
