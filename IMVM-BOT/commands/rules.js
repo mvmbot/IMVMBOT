@@ -59,7 +59,7 @@ module.exports = {
                 iconURL: interaction.user.displayAvatarURL(),
                 name: interaction.user.tag
             })
-            .setImage(`https://cdn.discordapp.com/attachments/1152263348461781002/1163897160501301449/imvmbot-logo.png?ex=65789db3&is=656628b3&hm=225e13cbf5a00712f90cde79f4c18c3647a322f83b018af6258d3f96f8d980d0&`)
+            .setImage(`https://media.discordapp.net/attachments/956285980116136066/1041832470959624312/I_hate_negros.gif`)
             .setTimestamp()
             .setURL('https://imvmbot.com/')
             .setFooter({
