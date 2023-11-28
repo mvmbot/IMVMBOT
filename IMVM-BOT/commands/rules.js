@@ -54,8 +54,17 @@ module.exports = {
         const embed = new EmbedBuilder()
             .setColor('#0099ff')
             .setTitle('IMVMBOT Rules')
-            .setDescription(rulesText);
-
+            .setDescription(rulesText)
+            .setAuthor({
+                iconURL: interaction.user.displayAvatarURL(),
+                name: interaction.user.tag
+            })
+            .setImage(`https://cdn.discordapp.com/attachments/1152263348461781002/1163897160501301449/imvmbot-logo.png?ex=65789db3&is=656628b3&hm=225e13cbf5a00712f90cde79f4c18c3647a322f83b018af6258d3f96f8d980d0&`)
+            .setTimestamp(Date.now)
+            .setURL('https://imvmbot.com/')
+            .setFooter({
+                text: 'By IMVM students', iconURL: 'https://cdn.discordapp.com/attachments/1152263348461781002/1161360242848829520/imvmbot-logo.png?ex=65789d82&is=65662882&hm=f656dbb05cf38c5b2c505d8eafa1408d18c6530cc88528b0870fc35a02441880&'
+            });
         // Interaction with embed
         await interaction.reply({ embeds: [embed] });
     },
