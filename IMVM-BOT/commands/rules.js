@@ -51,21 +51,21 @@ module.exports = {
         .setDescription('Show the IMVM BOT rules'),
     async execute(interaction) {
         // Create EmbedBuilder
-        const embed = new EmbedBuilder()
-            .setColor('#0099ff')
+        const rulesEmbed = new EmbedBuilder()
+            .setColor([176, 92, 255])
             .setTitle('IMVMBOT Rules')
             .setDescription(rulesText)
             .setAuthor({
                 iconURL: interaction.user.displayAvatarURL(),
                 name: interaction.user.tag
             })
-            .setImage(`https://media.tenor.com/2_aKpeFSNBQAAAAd/486-duck.gif`)
+            .setImage(`https://media.tenor.com/tWbpabRvPG4AAAAC/idiot-lafuddyduddy.gif`)
             .setTimestamp()
             .setURL('https://imvmbot.com/')
             .setFooter({
                 text: 'By IMVM students', iconURL: 'https://cdn.discordapp.com/attachments/1152263348461781002/1161360242848829520/imvmbot-logo.png?ex=65789d82&is=65662882&hm=f656dbb05cf38c5b2c505d8eafa1408d18c6530cc88528b0870fc35a02441880&'
             });
         // Interaction with embed
-        await interaction.reply({ embeds: [embed] });
+        await interaction.reply({ embeds: [rulesEmbed] });
     },
 };
