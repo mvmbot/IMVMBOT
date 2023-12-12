@@ -145,7 +145,7 @@
     <p class="title">
       Sign in to IESMVMBOT
       </p>
-    <form class="form">
+    <form class="form" action="php/authentication.php" method="POST">
       <div class="input-group">
         <label for="username">Username</label>
         <input type="text" name="username" id="username" placeholder="">
@@ -160,7 +160,7 @@
         </div>
 
       </div>
-      <button class="sign">Sign In</button>
+      <input type="submit" value="Sign in" class="sign">
     </form>
     <div class="social-message">
       <div class="line"></div>
