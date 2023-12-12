@@ -1,6 +1,6 @@
 <?php
 define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '12');
-define('DB_NAME', 'IMVMBOT')
+define('DB_USERNAME', 'id21626905_imvmbot');
+define('DB_PASSWORD', 'BaconFrito33.');
+define('DB_NAME', 'id21626905_imvmbot')
 ?>
