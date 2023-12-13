@@ -12,6 +12,8 @@ CREATE TABLE admin (
 CREATE TABLE users (
     id_users INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     username_users VARCHAR(50) NOT NULL UNIQUE,
+    name_users VARCHAR(50) NOT NULL,
+    surname_users VARCHAR(50) NOT NULL,
     email_users VARCHAR(100) NOT NULL UNIQUE,
     password_users VARCHAR(255) NOT NULL
 );
