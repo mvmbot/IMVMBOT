@@ -328,7 +328,8 @@
         Already have an account?
         <a href="signin.html" class="">Sign In</a>
       </p>
-      <?php } else {
+      <?php 
+        } else {
       ?>
 
       <?php
