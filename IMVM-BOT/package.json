@@ -1,9 +1,6 @@
 {
   "dependencies": {
-<<<<<<< HEAD
     "commandkit": "^0.1.6",
-=======
->>>>>>> 0247610e55543d82356cb24ca1a98fe305fffea9
     "discord.js": "^14.14.1",
     "dotenv": "^16.3.1",
     "googleapis": "^126.0.1",
