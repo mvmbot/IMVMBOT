@@ -1,11 +1,12 @@
 <?php
 // Gets the data from every input form the form
-$username = $_POST['username'];
-$name = $_POST['name'];
-$surname = $_POST['surname'];
-$mail = $_POST['mail'];
-$password = $_POST['password'];
-$confirmPassword = $_POST['cPassword'];
+$nombre = isset($_POST["nombre"]) ? $_POST["nombre"] : 'nulo';
+$username = isset($_POST['username']) ? $_POST['username'] : 'nulo';
+$name = isset($_POST['name']) ? $_POST['name'] : 'nulo';
+$surname = isset($_POST['surname']) ? $_POST['surname'] : 'nulo';
+$mail = isset($_POST['mail']) ? $_POST['mail'] : 'nulo';
+$password = isset($_POST['password']) ? $_POST['password'] : 'nulo';
+$confirmPassword = isset($_POST['confirmPassword']) ? $_POST['confirmPassword'] : 'nulo';
 //$agreePrivacyPolicy = isset($_POST['privacy_policy']) ? 'Yes' : 'No';
 // We're printing those to check if it works
 echo 'Username: ' . $username . '<br>';
