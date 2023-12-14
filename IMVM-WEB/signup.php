@@ -237,47 +237,49 @@
     </nav>
 
     <!-- Navbar End -->
-
     <div class="form-container">
-      <p class="title">Sign up to IESMVMBOT</p>
-      <form class="form" method="POST" action="./php/singup.php">
-        <div class="input-group">
-          <label for="username">Username</label>
-          <input type="text" name="username" id="username" placeholder="" />
-        </div>
-        <div class="input-group">
-          <label for="username">Name</label>
-          <input type="text" name="name" id="name" placeholder="" />
-        </div>
-        <div class="input-group">
-          <label for="username">Surname</label>
-          <input type="text" name="surname" id="surname" placeholder="" />
-        </div>
-        <div class="input-group">
-          <label for="username">Mail</label>
-          <input type="text" name="mail" id="mail" placeholder="" />
-        </div>
-
-        <div class="input-group">
-          <label for="password">Password</label>
-          <input type="password" name="password" id="password" placeholder="" />
-        </div>
-        <div class="input-group">
-          <label for="password">Confirm Password</label>
-          <input type="password" name="confirmPassword" id="confirmPassword" placeholder="" />
-          <div class="forgot">
-            <a rel="noopener noreferrer" href="privacy-policy.html">
-              Show privacy policy</a
-            >
+    <?php
+      if(($_POST['signup']==NULL)) {
+    ?>
+        <p class="title">Sign up to IESMVMBOT</p>
+        <form class="form" method="POST" action="./php/singup-confirm.php">
+          <div class="input-group">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" placeholder="" />
           </div>
-          <p>
-            Please confirm that you agree with our privacy policy<input
-              type="checkbox"
-            />
-          </p>
-        </div>
-
-        <button class="sign">Sign Up</button>
+          <div class="input-group">
+            <label for="username">Name</label>
+            <input type="text" name="name" id="name" placeholder="" />
+          </div>
+          <div class="input-group">
+            <label for="username">Surname</label>
+            <input type="text" name="surname" id="surname" placeholder="" />
+          </div>
+          <div class="input-group">
+            <label for="username">Mail</label>
+            <input type="text" name="mail" id="mail" placeholder="" />
+          </div>
+          
+          <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="" />
+          </div>
+          <div class="input-group">
+            <label for="password">Confirm Password</label>
+            <input type="password" name="confirmPassword" id="confirmPassword" placeholder="" />
+            <div class="forgot">
+              <a rel="noopener noreferrer" href="privacy-policy.html">
+                Show privacy policy</a
+                >
+              </div>
+              <p>
+                Please confirm that you agree with our privacy policy<input
+                type="checkbox"
+                />
+              </p>
+            </div>
+            
+        <button class="sign" name="signup">Sign Up</button>
       </form>
       <div class="social-message">
         <div class="line"></div>
@@ -326,6 +328,57 @@
         Already have an account?
         <a href="signin.html" class="">Sign In</a>
       </p>
+      <?php } else {
+      ?>
+
+      <?php
+      // Gets the data from every input form the form
+if (empty($_POST['username'])) {
+  echo "That's empty";
+} else {
+  $username = isset($_POST['username']);
+}
+if (empty($_POST['name'])) {
+  echo "That's empty";
+} else {
+  $name = isset($_POST['name']);
+}
+if (empty($_POST['surname'])) {
+  echo "That's empty";
+} else {
+  $surname = isset($_POST['surname']);
+}
+if (empty($_POST['mail'])) {
+  echo "That's empty";
+} else {
+  $mail = isset($_POST['mail']);
+}
+if (empty($_POST['password'])) {
+  echo "That's empty";
+} else {
+  $password = isset($_POST['password']);
+}
+if (empty($_POST['confirmPassword'])) {
+  echo "That's empty";
+} else {
+  $confirmPassword = isset($_POST['confirmPassword']);
+}
+
+
+
+
+//$agreePrivacyPolicy = isset($_POST['privacy_policy']) ? 'Yes' : 'No';
+// We're printing those to check if it works
+echo 'Username: ' . $username . '<br>';
+echo 'Name: ' . $name . '<br>';
+echo 'Surname: ' . $surname . '<br>';
+echo 'Mail: ' . $mail . '<br>';
+echo 'Password: ' . $password . '<br>';
+echo 'Confirmed Password: ' . $confirmPassword . '<br>';
+//echo 'Agreed to Privacy Policy: ' . $agreePrivacyPolicy . '<br>';
+      }
+      ?>
+      
     </div>
 
     <!-- Footer Start -->
