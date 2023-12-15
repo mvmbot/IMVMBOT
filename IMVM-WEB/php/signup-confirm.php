@@ -67,7 +67,7 @@ if ($stmtCheck->num_rows > 0) {
     if ($stmt->affected_rows > 0) {
         //If it worked, we tell the user everything's allright
         echo "User created correctly";
-        header('./signup.php');
+        header('signup.php');
         exit();
     } else {
         //Otherwise, we tell him that something went wrong
