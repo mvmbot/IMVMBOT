@@ -20,7 +20,7 @@ client.once('ready', async () => {
 
   // Registra los comandos slash
   const rest = new REST({ version: '9' }).setToken(process.env.TOKEN);
-  const commands = client.commands.map(({ data }) => data.toJSON());
+  const commands = client.commands.map(({ data }) => data);
 
   try {
     console.log('Started refreshing application (/) commands.');
@@ -39,15 +39,21 @@ client.once('ready', async () => {
   });
 });
 
-/// Evento Interaction Create
+// Evento InteractionCreate
 client.on("interactionCreate", async (interaction) => {
-  if (interaction.isChatInputCommand()) return;
+  if (!interaction.isCommand()) return;
 
   try {
-    const execute = require(`./interactions/${interaction.customId}`);
-    execute(interaction);
+    const command = client.commands.get(interaction.commandName);
+    if (!command) return;
+
+    await command.execute(interaction);
   } catch (error) {
     console.error(error);
+    await interaction.reply({
+      content: "Error initializing the command!",
+      ephemeral: true,
+    });
   }
 });
 

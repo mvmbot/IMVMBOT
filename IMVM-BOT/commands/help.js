@@ -31,7 +31,7 @@ module.exports = {
         const author = interaction.member;
         const embeds = chunks.map((chunk, index) => ({
             color: randomColor,
-            title: index === 0 ? 'Comandos disponible' : '',
+            title: index === 0 ? 'Comandos disponibles' : '',
             description: chunk,
             author: {
                 name: author.user.tag,
