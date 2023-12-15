@@ -139,7 +139,7 @@
     if (!isset($_POST['signup'])) {
     ?>
       <p class="title">Sign up to IESMVMBOT</p>
-      <form class="form" method="POST" action="signup.php">
+      <form class="form" method="POST" action="./php/signup-confirm.php">
         <div class="input-group">
           <label for="username">Username</label>
           <input type="text" name="username" id="username" placeholder="" />
