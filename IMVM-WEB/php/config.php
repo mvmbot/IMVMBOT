@@ -7,3 +7,7 @@ define('DB_NAME', 'id21626905_imvmbotdb');
 
 //Las cosas del Jara
 ?>
+// CONFIGURACION DE GOOGLE
+$clientID = 'TU-ID-DE-CLIENTE';
+$clientSecret = 'TU-SECRETO-DE-CLIENTE';
+$redirectUri = 'URIs de redirección autorizados';
