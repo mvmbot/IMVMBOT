@@ -32,7 +32,38 @@ client.once('ready', async () => {
   } catch (error) {
     console.error(error);
   }
+  
+  const embed = {
+    title: 'IMVMBOT Ticket System',
+    description: 'Open a Ticket For Support, Report Or Help, Use it Below of this message.',
+    color: 0x5865F2,
+    image: {url: 'https://cdn.discordapp.com/attachments/1146546149067587726/1185153292926459996/support-imvmbot.png'}
+};
 
+  const menu = new Discord.ActionRowBuilder().addComponents(
+    new Discord.StringSelectMenuBuilder()
+         .setPlaceholder('Open a Support Ticket')
+         .setMaxValues(1)
+         .setMinValues(1)
+         .setCustomId('ticket-create')
+         .setOptions([{
+        label: 'Support',
+        emoji: '👋',
+        description: 'Open an Suppport Ticket',
+        value: 'Soporte'
+    }, {
+        label: 'Reports',
+        emoji: '⚠️',
+        description: 'Open an report Ticket',
+        value: 'report'
+    }])
+);
+
+  client.on('ready', async (client) => {
+    const ticketPanelChannelId = "1164621212694085712"
+    client.channels.fetch(ticketPanelChannelId)
+    .then(channel => channel.send({embeds: [embed], components: [menu]}))
+});
 
   client.user.setPresence({
     activities: [{ name: `/help • IMVMBOT`, type: Discord.ActivityType.Custom }],
