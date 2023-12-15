@@ -17,9 +17,6 @@ for (const file of commandFiles) {
 
 client.once('ready', async () => {
   console.log(`✅ ${client.user.tag} is online.`);
-  const ticketPanelChannelId = "1164621212694085712";
-  const channel = await client.channels.fetch(ticketPanelChannelId);
-  channel.send({ embeds: [embed], components: [menu] });
 
   // Registra los comandos slash
   const rest = new REST({ version: '9' }).setToken(process.env.TOKEN);
@@ -61,6 +58,12 @@ const menu = new Discord.ActionRowBuilder().addComponents(
         value: 'report'
     }])
 );
+
+  client.on('ready', async (client) => {
+  const ticketPanelChannelId = "1163886058258305065"
+  client.channels.fetch(ticketPanelChannelId)
+  .then(channel => channel.send({embeds: [embed], components: [menu]}))
+});
 
   client.user.setPresence({
     activities: [{ name: `/help • IMVMBOT`, type: Discord.ActivityType.Custom }],
