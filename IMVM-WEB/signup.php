@@ -136,7 +136,7 @@
   <!-- Navbar End -->
   <div class="form-container">
     <?php
-    if (($_POST['signup'] == NULL)) {
+    if (!isset($_POST['signup'])) {
     ?>
       <p class="title">Sign up to IESMVMBOT</p>
       <form class="form" method="POST" action="signup.php">
@@ -210,38 +210,34 @@
       if (empty($_POST['username'])) {
         echo "That's empty";
       } else {
-        $username = isset($_POST['username']);
+        $username = isset($_POST['username']) ? $_POST['username'] : 'nulo';
       }
       if (empty($_POST['name'])) {
         echo "That's empty";
       } else {
-        $name = isset($_POST['name']);
+        $name = isset($_POST['name']) ? $_POST['name'] : 'nulo';
       }
       if (empty($_POST['surname'])) {
         echo "That's empty";
       } else {
-        $surname = isset($_POST['surname']);
+        $surname = isset($_POST['surname']) ? $_POST['surname'] : 'nulo';
       }
       if (empty($_POST['mail'])) {
         echo "That's empty";
       } else {
-        $mail = isset($_POST['mail']);
+        $mail = isset($_POST['mail']) ? $_POST['mail'] : 'nulo';
       }
       if (empty($_POST['password'])) {
         echo "That's empty";
       } else {
-        $password = isset($_POST['password']);
+        $password = isset($_POST['password']) ? $_POST['password'] : 'nulo';
       }
       if (empty($_POST['confirmPassword'])) {
         echo "That's empty";
       } else {
-        $confirmPassword = isset($_POST['confirmPassword']);
+        $confirmPassword = isset($_POST['confirmPassword']) ? $_POST['confirmPassword'] : 'nulo';
       }
 
-      // Checking if password and confirmation are equal, otherwise it returns to sign up page
-      if ($password != $confirmPassword) {
-        echo "Passwords doesn't match!";
-      }
 
       //$agreePrivacyPolicy = isset($_POST['privacy_policy']) ? 'Yes' : 'No';
       // We're printing those to check if it works
@@ -251,6 +247,10 @@
       echo 'Mail: ' . $mail . '<br>';
       echo 'Password: ' . $password . '<br>';
       echo 'Confirmed Password: ' . $confirmPassword . '<br>';
+      // Checking if password and confirmation are equal, otherwise it returns to sign up page
+      if ($password != $confirmPassword) {
+        echo "Passwords doesn't match!";
+      }
       //echo 'Agreed to Privacy Policy: ' . $agreePrivacyPolicy . '<br>';
     }
     ?>
