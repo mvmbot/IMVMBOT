@@ -25,7 +25,7 @@ client.once('ready', async () => {
   try {
     console.log('Started refreshing application (/) commands.');
     await rest.put(
-      Routes.applicationGuildCommands(client.user.id, '255720380864397312'),
+      Routes.applicationGuildCommands(client.user.id, '1163886056832237718'),
       { body: commands },
     );
     console.log('Successfully reloaded application (/) commands.');
@@ -33,37 +33,34 @@ client.once('ready', async () => {
     console.error(error);
   }
   
-  const embed = {
-    title: 'IMVMBOT Ticket System',
-    description: 'Open a Ticket For Support, Report Or Help, Use it Below of this message.',
-    color: 0x5865F2,
-    image: {url: 'https://cdn.discordapp.com/attachments/1146546149067587726/1185153292926459996/support-imvmbot.png'}
-};
+const channel = client.channels.cache.get('1164621212694085712');
 
-  const menu = new Discord.ActionRowBuilder().addComponents(
-    new Discord.StringSelectMenuBuilder()
-         .setPlaceholder('Open a Support Ticket')
-         .setMaxValues(1)
-         .setMinValues(1)
-         .setCustomId('ticket-create')
-         .setOptions([{
+// Crea el embed.
+const embedMessage = new Discord.MessageEmbed(embed);
+
+// Crea el menú de selección.
+const menu = new Discord.MessageActionRow().addComponents(
+  new Discord.MessageSelectMenu()
+    .setCustomId('ticket-create')
+    .setPlaceholder('Open a Support Ticket')
+    .addOptions([
+      {
         label: 'Support',
         emoji: '👋',
-        description: 'Open an Suppport Ticket',
+        description: 'Open an Support Ticket',
         value: 'Soporte'
-    }, {
+      },
+      {
         label: 'Reports',
         emoji: '⚠️',
-        description: 'Open an report Ticket',
-        value: 'report'
-    }])
+        description: 'Open a Report Ticket',
+        value: 'Reportes'
+      }
+    ])
 );
 
-  client.on('ready', async (client) => {
-    const ticketPanelChannelId = "1164621212694085712"
-    client.channels.fetch(ticketPanelChannelId)
-    .then(channel => channel.send({embeds: [embed], components: [menu]}))
-});
+// Envía el embed y el menú de selección.
+channel.send({ embeds: [embedMessage], components: [menu] });
 
   client.user.setPresence({
     activities: [{ name: `/help • IMVMBOT`, type: Discord.ActivityType.Custom }],
