@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "@discordjs/rest": "^2.2.0",
+    "commandkit": "^0.1.6",
     "discord.js": "^14.14.1",
     "dotenv": "^16.3.1",
     "googleapis": "^126.0.1",

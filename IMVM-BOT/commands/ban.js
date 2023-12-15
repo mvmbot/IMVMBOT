@@ -3,28 +3,28 @@ const { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits } = require("disc
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("ban")
-        .setDescription("Ban an user.")
+        .setDescription("Banea a un usuario.")
         .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers)
         .addUserOption(option =>
             option.setName("user")
-                .setDescription("User who's getting banned.")
+                .setDescription("Usuario a ser baneado.")
                 .setRequired(true)
         )
         .addStringOption(option =>
             option.setName("reason")
-                .setDescription("Reason to ban.")
+                .setDescription("Razon del ban.")
         ),
 
     async execute(interaction) {
         const { channel, options } = interaction;
 
         const user = options.getUser("user");
-        const reason = options.getString("reason") || "no reason";
+        const reason = options.getString("razon") || "sin razon";
 
         const member = await interaction.guild.members.fetch(user.id);
 
         const errEmbed = new EmbedBuilder()
-            .setDescription(`You can't ban ${user.username}! He has a higher rol.`)
+            .setDescription(`No puedes banear a ${user.username} el tiene un rol superior.`)
             .setColor(0xc72c3b);
 
         if (member.roles.highest.position >= interaction.member.roles.highest.position)
@@ -33,8 +33,8 @@ module.exports = {
         await member.ban({ reason });
 
         const embed = new EmbedBuilder()
-            .setTitle(":hammer: User banned")
-            .setDescription(`${user} got banned by: ${reason}`)
+            .setTitle(":hammer: Usuario baneado")
+            .setDescription(`${user} ha sido baneado por: ${reason}`)
             .setColor(0x5fb041)
             .setTimestamp()
 
