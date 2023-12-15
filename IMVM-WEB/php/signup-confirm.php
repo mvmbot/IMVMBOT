@@ -1,5 +1,4 @@
 <?php
-echo "a";
 include("config.php");
 
 // Check connection
@@ -8,7 +7,7 @@ $conn = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-echo "Connected successfully <br>";
+/*echo "Connected successfully <br>";*/
 
 
 // Gets the data from every input form the form
@@ -29,12 +28,15 @@ if ($password !== $confirmPassword) {
 }
 
 // We're printing those to check if it works
+
+/*
 echo 'Username: ' . $username . '<br>';
 echo 'Name: ' . $name . '<br>';
 echo 'Surname: ' . $surname . '<br>';
 echo 'Mail: ' . $mail . '<br>';
 echo 'Password: ' . $password . '<br>';
 echo 'Confirmed Password: ' . $confirmPassword . '<br>';
+*/
 
 //First of all, we gotta check our database to see if the user is trying to create an account with an already used email or username
 //We do a lil query to check it
@@ -53,7 +55,6 @@ if ($stmtCheck->num_rows > 0) {
     echo "Username or email already on use!";
 } else {
     //If everything is fine, we go ahead and insert the data into our database
-    echo "Password match!";
     $insertSQL = "INSERT INTO users (username_users, name_users, surname_users, email_users, password_users) VALUES (?, ?, ?, ?, ?)";
     //We prepare the query again...
     $stmt = $conn->prepare($insertSQL);
