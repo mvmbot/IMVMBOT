@@ -1,3 +1,4 @@
+// mute.js
 const {
     ChatInputCommandInteraction,
     SlashCommandBuilder,
