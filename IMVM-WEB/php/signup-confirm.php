@@ -1,5 +1,5 @@
 <?php
-
+echo "a";
 include("config.php");
 
 // Check connection
