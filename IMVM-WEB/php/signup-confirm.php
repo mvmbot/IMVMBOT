@@ -66,7 +66,7 @@ if ($stmtCheck->num_rows > 0) {
     //We check if the query worked
     if ($stmt->affected_rows > 0) {
         //If it worked, we tell the user everything's allright
-        echo "User created correctly";
+        //echo "User created correctly";
         header('Location: ./signup.php');
         exit();
     } else {
