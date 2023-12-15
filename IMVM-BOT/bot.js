@@ -71,17 +71,5 @@ const menu = new Discord.ActionRowBuilder().addComponents(
   });
 });
 
-/// Evento Interaction Create
-client.on("interactionCreate", async (interaction) => {
-  if (interaction.isChatInputCommand()) return;
-
-  try {
-    const execute = require(`./interactions/${interaction.customId}`);
-    execute(interaction);
-  } catch (error) {
-    console.error(error);
-  }
-});
-
 // Registro
 client.login(process.env.TOKEN);
