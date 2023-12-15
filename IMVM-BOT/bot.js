@@ -59,11 +59,10 @@ const menu = new Discord.ActionRowBuilder().addComponents(
     }])
 );
 
-client.on('ready', async (client) => {
-  const ticketPanelChannelId = "1164621212694085712"
+  // Envía el mensaje al canal directamente
+  const ticketPanelChannelId = "1164621212694085712";
   client.channels.fetch(ticketPanelChannelId)
-  .then(channel => channel.send({embeds: [embed], components: [menu]}))
-});
+  .then(channel => channel.send({ embeds: [embed], components: [menu] }));
 
   client.user.setPresence({
     activities: [{ name: `/help • IMVMBOT`, type: Discord.ActivityType.Custom }],
