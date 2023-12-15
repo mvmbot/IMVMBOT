@@ -17,6 +17,9 @@ for (const file of commandFiles) {
 
 client.once('ready', async () => {
   console.log(`✅ ${client.user.tag} is online.`);
+  const ticketPanelChannelId = "1164621212694085712";
+  const channel = await client.channels.fetch(ticketPanelChannelId);
+  channel.send({ embeds: [embed], components: [menu] });
 
   // Registra los comandos slash
   const rest = new REST({ version: '9' }).setToken(process.env.TOKEN);
@@ -33,34 +36,31 @@ client.once('ready', async () => {
     console.error(error);
   }
   
-const channel = client.channels.cache.get('1164621212694085712');
+  const embed = {
+    title: 'IMVMBOT Ticket System',
+    description: 'Open an Ticket For Support, Report Or Help, Use it Below of this message.',
+    color: 0x5865F2,
+    image: {url: 'https://cdn.discordapp.com/attachments/1146546149067587726/1185153292926459996/support-imvmbot.png'}
+};
 
-// Crea el embed.
-const embedMessage = new Discord.MessageEmbed(embed);
-
-// Crea el menú de selección.
-const menu = new Discord.MessageActionRow().addComponents(
-  new Discord.MessageSelectMenu()
-    .setCustomId('ticket-create')
-    .setPlaceholder('Open a Support Ticket')
-    .addOptions([
-      {
+const menu = new Discord.ActionRowBuilder().addComponents(
+    new Discord.StringSelectMenuBuilder()
+         .setPlaceholder('Open a Support Ticket')
+         .setMaxValues(1)
+         .setMinValues(1)
+         .setCustomId('ticket-create')
+         .setOptions([{
         label: 'Support',
         emoji: '👋',
-        description: 'Open an Support Ticket',
+        description: 'Open an Suppport Ticket',
         value: 'Soporte'
-      },
-      {
+    }, {
         label: 'Reports',
         emoji: '⚠️',
-        description: 'Open a Report Ticket',
-        value: 'Reportes'
-      }
-    ])
+        description: 'Open an report Ticket',
+        value: 'report'
+    }])
 );
-
-// Envía el embed y el menú de selección.
-channel.send({ embeds: [embedMessage], components: [menu] });
 
   client.user.setPresence({
     activities: [{ name: `/help • IMVMBOT`, type: Discord.ActivityType.Custom }],
