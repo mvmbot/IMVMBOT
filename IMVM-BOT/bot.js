@@ -33,6 +33,12 @@ client.once('ready', async () => {
     console.error(error);
   }
   
+  client.on('ready', async (client) => {
+    const ticketPanelChannelId = "1164621212694085712"
+    client.channels.fetch(ticketPanelChannelId)
+    .then(channel => channel.send({embeds: [embed], components: [menu]}))
+  });
+  
   const embed = {
     title: 'IMVMBOT Ticket System',
     description: 'Open an Ticket For Support, Report Or Help, Use it Below of this message.',
@@ -59,16 +65,22 @@ const menu = new Discord.ActionRowBuilder().addComponents(
     }])
 );
 
-  client.on('ready', async (client) => {
-  const ticketPanelChannelId = "1164621212694085712"
-  client.channels.fetch(ticketPanelChannelId)
-  .then(channel => channel.send({embeds: [embed], components: [menu]}))
-});
-
   client.user.setPresence({
     activities: [{ name: `/help • IMVMBOT`, type: Discord.ActivityType.Custom }],
     status: 'online',
   });
+});
+
+/// Evento Interaction Create
+client.on("interactionCreate", async (interaction) => {
+  if (interaction.isChatInputCommand()) return;
+
+  try {
+    const execute = require(`./interactions/${interaction.customId}`);
+    execute(interaction);
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 // Registro
