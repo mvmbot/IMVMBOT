@@ -70,7 +70,7 @@ if ($stmtCheck->num_rows > 0) {
 } else {
     //If everything is fine, we go ahead and insert the data into our database
     if ($password == $confirmPassword) {
-
+        echo "Password match!";
         $insertSQL = "INSERT INTO users (id_users, username_users, name_users, surname_users, email_users, password_users) VALUES (NULL, ?, ?, ?, ?, ?)";
         //We prepare the query again...
         $stmt = $conn->prepare($insertSQL);
