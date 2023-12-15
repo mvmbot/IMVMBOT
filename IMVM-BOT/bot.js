@@ -60,7 +60,7 @@ const menu = new Discord.ActionRowBuilder().addComponents(
 );
 
 client.on('ready', async (client) => {
-  const ticketPanelChannelId = "1164621212694085712"
+  const ticketPanelChannelId = "1163886058258305068"
   client.channels.fetch(ticketPanelChannelId)
   .then(channel => channel.send({embeds: [embed], components: [menu]}))
 });
