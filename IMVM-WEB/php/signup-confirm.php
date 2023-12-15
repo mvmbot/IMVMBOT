@@ -11,39 +11,22 @@ echo "Connected successfully <br>";
 
 
 // Gets the data from every input form the form
-if (empty($_POST['username'])) {
-    echo "That's empty";
-} else {
-    $username = isset($_POST['username']) ? $_POST['username'] : 'nulo';
+$username = isset($_POST['username']) ? $_POST['username'] : '';
+$name = isset($_POST['name']) ? $_POST['name'] : '';
+$surname = isset($_POST['surname']) ? $_POST['surname'] : '';
+$mail = isset($_POST['mail']) ? $_POST['mail'] : '';
+$password = isset($_POST['password']) ? $_POST['password'] : '';
+$confirmPassword = isset($_POST['confirmPassword']) ? $_POST['confirmPassword'] : '';
+
+// If something's empty, it ends.
+if (empty($username) || empty($name) || empty($surname) || empty($mail) || empty($password) || empty($confirmPassword)) {
+    die("Something's wrong! check it out again pls");
 }
-if (empty($_POST['name'])) {
-    echo "That's empty";
-} else {
-    $name = isset($_POST['name']) ? $_POST['name'] : 'nulo';
-}
-if (empty($_POST['surname'])) {
-    echo "That's empty";
-} else {
-    $surname = isset($_POST['surname']) ? $_POST['surname'] : 'nulo';
-}
-if (empty($_POST['mail'])) {
-    echo "That's empty";
-} else {
-    $mail = isset($_POST['mail']) ? $_POST['mail'] : 'nulo';
-}
-if (empty($_POST['password'])) {
-    echo "That's empty";
-} else {
-    $password = isset($_POST['password']) ? $_POST['password'] : 'nulo';
-}
-if (empty($_POST['confirmPassword'])) {
-    echo "That's empty";
-} else {
-    $confirmPassword = isset($_POST['confirmPassword']) ? $_POST['confirmPassword'] : 'nulo';
+// If passwords doesn't match, it ends.
+if ($password !== $confirmPassword) {
+    die("Passwords doesn't match");
 }
 
-
-//$agreePrivacyPolicy = isset($_POST['privacy_policy']) ? 'Yes' : 'No';
 // We're printing those to check if it works
 echo 'Username: ' . $username . '<br>';
 echo 'Name: ' . $name . '<br>';
@@ -69,30 +52,28 @@ if ($stmtCheck->num_rows > 0) {
     echo "Username or email already on use!";
 } else {
     //If everything is fine, we go ahead and insert the data into our database
-    if ($password == $confirmPassword) {
-        echo "Password match!";
-        $insertSQL = "INSERT INTO users (id_users, username_users, name_users, surname_users, email_users, password_users) VALUES (NULL, ?, ?, ?, ?, ?)";
-        //We prepare the query again...
-        $stmt = $conn->prepare($insertSQL);
-        //Bind the parameters
-        $stmt->bind_param("sssss", $username, $name, $surname, $mail, $password);
-        //And execute it!
-        $stmt->execute();
+    echo "Password match!";
+    $insertSQL = "INSERT INTO users (id_users, username_users, name_users, surname_users, email_users, password_users) VALUES (NULL, ?, ?, ?, ?, ?)";
+    //We prepare the query again...
+    $stmt = $conn->prepare($insertSQL);
+    //Bind the parameters
+    $stmt->bind_param("sssss", $username, $name, $surname, $mail, $password);
+    //And execute it!
+    $stmt->execute();
 
-        //We check if the query worked
-        if ($stmt->affected_rows > 0) {
-            //If it worked, we tell the user everything's allright
-            echo "User created correctly";
-        } else {
-            //Otherwise, we tell him that something went wrong
-            echo "Couldn't create the user!";
-        }
+    //We check if the query worked
+    if ($stmt->affected_rows > 0) {
+        //If it worked, we tell the user everything's allright
+        echo "User created correctly";
+        header('./signup.php');
+        exit();
     } else {
-        //In case passwords doesnt match, we tell 'em
-        echo "Passwords doesn't match!";
+        //Otherwise, we tell him that something went wrong
+        echo "Couldn't create the user!";
     }
 }
-//We close the statement since we're not using it anymore
+//We close the conn and statements since we're not using them anymore
 $stmtCheck->close();
-
-//echo 'Agreed to Privacy Policy: ' . $agreePrivacyPolicy . '<br>';
+$stmt->close();
+$conn->close();
+?>
