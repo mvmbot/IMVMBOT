@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 
-const guildTicketCategoryId = '1163886058258305067';
+const guildTicketCategoryId = '1164951931089854555';
 const moderationRole = '1164622765052145704';
 
 const ticketCloseButton = new Discord.ActionRowBuilder().addComponents(
