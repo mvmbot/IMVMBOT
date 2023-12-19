@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: #101311; /* Change the background color of the page here */
+  background-color: var(--dark); /* Change the background color of the page here */
 }
 
 .navbar {
@@ -24,6 +24,10 @@ body {
 
 .navbar .navbar-nav .nav-link:hover {
   color: #9900ff !important; /* Change the text color of links when hovering here */
+}
+
+.dropdown-menu{ 
+  background-color: #0a0a0a !important; 
 }
 
 .fw-medium {
@@ -43,7 +47,6 @@ body {
   bottom: 45px;
   z-index: 99;
 }
-
 
 /*** Spinner ***/
 #spinner {
@@ -511,7 +514,7 @@ video {
 }
 
 .goog-te-combo {
-  background-color: black !important;
+  background-color: var(--dark) !important;
 }
 
 /* Styles for the news image */
