@@ -41,8 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: ../index.html");
     } else {
         // If the user doesnt exists, we'll redirect it to an error page
-        echo "ERROR";
-        //header("Location: ruta_de_redireccionamiento_error.php");
+        die("Something's wrong! check it out again pls");
     }
 
     $conn->close();
