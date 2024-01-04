@@ -53,7 +53,7 @@ __**Answer:**__ You can seek help in the Discord developer community on servers 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('faq')
-        .setDescription('Show some FAQ about us or this bot!'),
+        .setDescription('Muestra las reglas FAQ del servidor'),
     async execute(interaction) {
         // Creamos un EmbedBuilder
         const faqEmbed = new EmbedBuilder()
