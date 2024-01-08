@@ -1,0 +1,17 @@
+.navbar-custom, footer {
+    background-color: #fc7d1c !important;
+}
+header.masthead {
+    background-image: url('./../assets/img/bg.jpg');
+    background-position: center center;
+    background-size: cover;
+}
+.btn-primary {
+    background-color: #fc7d1c;
+    border-color: #fc7d1c;
+}
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus, .btn-primary:focus-within {
+    background-color: #2c7777 !important;
+    border-color: #2c7777 !important;
+}
+
