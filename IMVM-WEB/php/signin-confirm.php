@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->fetch_assoc() != null) {
         // If it's ok, it creates a session!
         $_SESSION['user'] = $username;
-        header("Location: ../index.html");
+        header("Location: ../index.php");
         exit();
     } else {
         // If the user doesnt exists, we'll redirect it to an error page
