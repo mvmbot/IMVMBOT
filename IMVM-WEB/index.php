@@ -211,7 +211,7 @@ session_start();
         <h2>Cookies Consent</h2>
       </header>
       <div class="data">
-        <p>This website use cookies to help you have a superior and more relevant browsing experience on the website. <a href="#"> Read more...</a></p>
+        <p>This website use cookies to help you have a superior and more relevant browsing experience on the website. <a href="./cookies-policy.php"> Read more...</a></p>
       </div>
       <div class="buttons">
         <button class="button" id="acceptBtn">Accept</button>
