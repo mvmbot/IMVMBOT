@@ -545,3 +545,11 @@ video {
   background: #7206b9;
 
 }
+
+.close-icon{
+  width:25px;
+  height: 25px;
+  position: absolute;
+  top:25px;
+  right:25px;
+}
