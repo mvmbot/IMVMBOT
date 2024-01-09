@@ -322,7 +322,7 @@ session_start();
           <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
             <p>
               &copy; 2023 IESMVMBOT - All rights reserved -
-              <a href="./privacy-policy.php">Política de privacidad</a>
+              <a href="./privacy-policy.php">Privacy Policy</a>
             </p>
           </div>
           <div class="col-md-6 text-center text-md-end">
