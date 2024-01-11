@@ -1,5 +1,4 @@
 function validateForm() {
-    console.log('asd');
     // We get the values of everything
     var username = document.getElementById('username').value;
     var name = document.getElementById('name').value;
@@ -8,9 +7,7 @@ function validateForm() {
     var password = document.getElementById('password').value;
     var confirmPassword = document.getElementById('confirmPassword').value;
     var privacyCheckbox = document.getElementById('privacyCheckbox');   
-
-    console.log(username);
-
+ 
     var send = true;
 
     // Now we check if the values are empty, in case they are, we send an error
@@ -34,6 +31,12 @@ function validateForm() {
         send = false;
         return false;
     }
+
+    if (!send) {
+        // Detener el envío del formulario si send es falso
+        event.preventDefault();
+    }
+    document.getElementById('signupform').addEventListener('submit', validateForm);
 
     if (send == true) {
         return true;
