@@ -20,11 +20,11 @@ $confirmPassword = isset($_POST['confirmPassword']) ? $_POST['confirmPassword'] 
 
 // If something's empty, it ends.
 if (empty($username) || empty($name) || empty($surname) || empty($mail) || empty($password) || empty($confirmPassword)) {
-    die("Something's wrong! check it out again pls");
+    header('Location: ../signup.php');
 }
 // If passwords doesn't match, it ends.
 if ($password !== $confirmPassword) {
-    die("Passwords doesn't match");
+    header('Location: ../signup.php');
 }
 
 // We're printing those to check if it works
