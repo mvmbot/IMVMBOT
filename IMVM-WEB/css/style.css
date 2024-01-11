@@ -6,6 +6,12 @@
   --dark: #131010;
 }
 
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body {
   background-color: #101311; /* Change the background color of the page here */
 }
@@ -507,49 +513,24 @@ video {
 
 /*Cookies wrapper*/
 
-#modalbox{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  width: 80%;
-  max-width: 450px;
+.cookies-wrap{
+  display: block;
+  background: white;
+  padding: 20px;
+  width: calc(100% - 40px);
+  max-width: 300px;
+  line-height: 150%;
+  border-radius: 10px;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 100;
+  padding-top: 60px;
+  box-shadow: 0px 2px 20px 10px grey;
   text-align: center;
-  padding: 80px 60px;
-  font-size: 18px;
-  font-weight: 500;
-  background-color: #ffffff;
 }
 
-.cookies{
-  width: 100px;
+.cookies-wrap .title,
+.cookies-wrap .paragraph{
   margin-bottom: 15px;
-}
-
-#modalbox button{
-  background: #9900ff;
-  color:#fff;
-  padding: 15px 0;
-  border-radius: 4px;
-  font-size: 20px;
-  font-weight: 500;
-  width:100%;
-  border: 0;
-  outline:0;
-  margin-top: 50px;
-  cursor: pointer;
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
-}
-
-#modalbox button:hover{
-  background: #7206b9;
-
-}
-
-.close-icon{
-  width:25px;
-  height: 25px;
-  position: absolute;
-  top:25px;
-  right:25px;
 }
