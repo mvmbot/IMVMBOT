@@ -207,11 +207,11 @@ session_start();
             Show privacy policy</a>
         </div>
         <p>
-          Please confirm that you agree with our privacy policy<input type="checkbox" id="privacyCheckbox" />
+          Please confirm that you agree with our privacy policy<input type="checkbox" name="privacyCheckbox" value="on" />
         </p>
       </div>
 
-      <input type="submit" class="sign" name="signup">Sign Up</button>
+      <input type="submit" class="sign" name="signup">
     </form>
     <div class="social-message">
       <div class="line"></div>
