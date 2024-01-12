@@ -518,7 +518,7 @@ video {
   background: white;
   padding: 20px;
   width: calc(100% - 40px);
-  max-width: 300px;
+  max-width: 320px;
   line-height: 150%;
   border-radius: 10px;
   position: fixed;
@@ -533,4 +533,48 @@ video {
 .cookies-wrap .title,
 .cookies-wrap .paragraph{
   margin-bottom: 15px;
+}
+
+.cookies-wrap .btn{
+  width: 100%;
+  background: #9900ff;
+  border: none;
+  color: white;
+  text-align: center;
+  padding: 15px 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: .3 ease all;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.cookies-wrap .btn:hover{
+  background: #6602a8;
+}
+
+.cookies-wrap .link-cookies{
+  color: #9900ff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.cookies-wrap .link-cookies:hover{
+  color: #6602a8;
+  text-decoration: underline;
+}
+
+.background-cookies-wrap{
+  display: none;
+  background: var(--dark);
+  position: fixed;
+  z-index: 99;
+  width: 100vw;
+  top:0;
+  left:0;
+}
+
+.background-cookies-wrap:active{
+  display:block
 }
