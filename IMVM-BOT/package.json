@@ -9,7 +9,8 @@
     "dotenv": "^16.3.1",
     "googleapis": "^126.0.1",
     "moment": "^2.29.4",
-    "node-schedule": "^2.1.1"
+    "node-schedule": "^2.1.1",
+    "openai": "^4.24.3"
   },
   "name": "imvm-bot",
   "version": "1.0.0",

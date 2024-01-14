@@ -1,6 +1,9 @@
 <?php
 include("config.php");
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // Check connection
 $conn = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
@@ -18,14 +21,27 @@ $mail = isset($_POST['mail']) ? $_POST['mail'] : '';
 $password = isset($_POST['password']) ? $_POST['password'] : '';
 $confirmPassword = isset($_POST['confirmPassword']) ? $_POST['confirmPassword'] : '';
 
+if (!isset($_POST['privacyCheckbox'])) {
+    header('Location: ../signup.php');
+    exit;
+}
 // If something's empty, it ends.
 if (empty($username) || empty($name) || empty($surname) || empty($mail) || empty($password) || empty($confirmPassword)) {
     header('Location: ../signup.php');
+    exit;
 }
 // If passwords doesn't match, it ends.
 if ($password !== $confirmPassword) {
     header('Location: ../signup.php');
+    exit;
 }
+
+if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+    header('Location: ../signup.php');
+    exit;
+}
+
+
 
 // We're printing those to check if it works
 
@@ -58,16 +74,19 @@ if ($stmtCheck->num_rows > 0) {
     $insertSQL = "INSERT INTO users (username_users, name_users, surname_users, email_users, password_users) VALUES (?, ?, ?, ?, ?)";
     //We prepare the query again...
     $stmt = $conn->prepare($insertSQL);
+    
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    
     //Bind the parameters
-    $stmt->bind_param("sssss", $username, $name, $surname, $mail, $password);
+    $stmt->bind_param("sssss", $username, $name, $surname, $mail, $hashedPassword);
     //And execute it!
     $stmt->execute();
 
     //We check if the query worked
     if ($stmt->affected_rows > 0) {
         //If it worked, we tell the user everything's allright
-        //echo "User created correctly";
-        header('Location: ../index.php');
+        echo "User created correctly";
+        //header('Location: ../index.php');
         exit();
     } else {
         //Otherwise, we tell him that something went wrong
