@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@discordjs/rest": "^2.2.0",
+    "@iamtraction/google-translate": "github:iamtraction/google-translate",
     "axios": "^1.6.2",
     "commandkit": "^0.1.6",
     "discord-api-types": "^0.37.66",
