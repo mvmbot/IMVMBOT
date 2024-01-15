@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // First of all we gotta check if the form is sent
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -21,7 +24,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // If something's empty, it ends.
     if (empty($username) || empty($password)) {
-        die("Something's wrong! check it out again pls");
+        header('Location: ../signup.php');
+        exit;
     }
 
     //First of all, we gotta check our database to see if the user exists
@@ -44,10 +48,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     } else {
         // If the user doesnt exists, we'll redirect it to an error page
-        die("Something's wrong! check it out again pls");
+        echo '<script>alert("User doesnt exist, check your username and password!")</script>';
+        header('Location: ../signup.php');
+        exit;
     }
 } else {
     // If someone goes into the page without sending the form, we redirect them
     header("Location: ./signin.html");
+    exit;
 }
 ?>
