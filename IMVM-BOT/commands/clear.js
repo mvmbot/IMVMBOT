@@ -4,7 +4,7 @@ const { EmbedBuilder, PermissionsBitField } = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('clear')
-        .setDescription('Clear messages.')
+        .setDescription('Elimina los mensajes del servidor')
         .addIntegerOption(option =>
             option.setName('cantidad')
                 .setDescription('Cantidad de mensajes a borrar.')
