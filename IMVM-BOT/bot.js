@@ -19,7 +19,7 @@ client.once('ready', async () => {
   console.log(`✅ ${client.user.tag} is online.`);
 
   // Registra los comandos slash
-  const rest = new REST({ version: '9' }).setToken(process.env.TOKEN);
+  const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
   const commands = client.commands.map(({ data }) => data);
 
   try {
