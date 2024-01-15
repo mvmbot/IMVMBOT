@@ -207,7 +207,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- Navbar End -->
   <div class="form-container">
     <p class="title">Sign up to IESMVMBOT</p>
-    <form class="form" method="POST" action="./php/signup-confirm.php" id="signupform" name="signupform" onsubmit="validateForm()">
+    <form class="form" method="POST" action="./php/signup-confirm.php" id="signupform" name="signupform" onsubmit="validateFormSignUp()">
       <div class="input-group">
         <label for="username">Username</label>
         <input type="text" name="username" id="username" placeholder="" />
