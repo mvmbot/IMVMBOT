@@ -175,7 +175,7 @@ session_start();
         <p class="title">
             Sign in to IESMVMBOT
         </p>
-        <form class="form" action="./php/signin-confirm.php" method="POST" onsubmit="validateFormSignIn()>
+        <form class="form" action="./php/signin-confirm.php" method="POST" onsubmit="validateFormSignIn()">
             <div class="input-group">
                 <label for="username">Username</label>
                 <input type="text" name="username" id="username" placeholder="">
@@ -222,7 +222,7 @@ session_start();
             </button>
         </div>
         <p class="signup">New to IESMVMBOT?
-            <a href="#" class="">Create an account</a>
+            <a href="signup.php" class="">Create an account</a>
         </p>
     </div>
 
