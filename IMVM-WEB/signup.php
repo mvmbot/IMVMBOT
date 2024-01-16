@@ -236,20 +236,21 @@ session_start();
         <label for="password">Confirm Password</label>
         <input type="password" name="confirmPassword" id="confirmPassword" placeholder="" />
         <div class="forgot">
-          <a rel="noopener noreferrer" href="privacy-policy.php">
-            Show privacy policy</a>
+          <a rel="noopener noreferrer" href="privacy-policy.php" target="_blank">
+            Show privacy policy
+          </a>
         </div>
+
       </div>
-      
+
       <div style="text-align: center;">
-    <p style="display: inline-block; margin: 0;">Please confirm that you agree with our privacy policy</p>
-    <input type="checkbox" name="privacyCheckbox" value="on" style="vertical-align: middle;" />
-</div>
-
-
-
-
+        <p style="display: inline-block; margin: 0; padding: 0;">Please confirm that you agree with our privacy policy
+        </p>
+        <input type="checkbox" name="privacyCheckbox" value="on"
+          style="vertical-align: middle; margin: 0; padding: 0;" />
       </div>
+
+
       <input type="submit" class="sign" name="signup">
     </form>
     <div class="social-message">
