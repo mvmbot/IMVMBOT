@@ -51,6 +51,7 @@ session_start();
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet" />
+    <link href="css/cssRegister.css" rel="stylesheet" />
 
 
 <!-- Google tag (gtag.js) -->
