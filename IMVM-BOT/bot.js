@@ -4,10 +4,17 @@ const { Routes } = require('discord-api-types/v9');
 const { Client, Events, GatewayIntentBits, Collection } = require('discord.js');
 const fs = require('fs');
 const { OpenAIApi, Configuration } = require("openai")
+const config = new Configuration({
+  apiKey: process.env.OPENAI_KEY
+})
 require('dotenv').config();
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 client.commands = new Collection();
+
+client.once(Events.ClientReady, (clientUser) => {
+  console.log(`Logged in as ${clientUser.user.tag}`)
+})
 
 // Carga los comandos
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
