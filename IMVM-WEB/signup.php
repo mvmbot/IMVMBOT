@@ -253,11 +253,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <a rel="noopener noreferrer" href="privacy-policy.php">
             Show privacy policy</a>
         </div>
-        <p>
-          Please confirm that you agree with our privacy policy<input type="checkbox" name="privacyCheckbox" value="on" />
-        </p>
-      </div>
+        <p class="inline-checkbox">
+    Please confirm that you agree with our privacy policy
+</p>
+<input type="checkbox" name="privacyCheckbox" value="on" class="inline-checkbox" />
 
+      </div>
       <input type="submit" class="sign" name="signup">
     </form>
     <div class="social-message">
