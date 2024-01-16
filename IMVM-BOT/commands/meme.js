@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const fetch = require('node-fetch');
-const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -36,14 +36,6 @@ module.exports = {
             .setColor('RANDOM')
             .setFooter(`👍 ${memeUpvotes} | 💬 ${memeNumComments}`);
 
-        const row = new MessageActionRow()
-            .addComponents(
-                new MessageButton()
-                    .setCustomId('regenMemeBtn')
-                    .setLabel('Generate New Meme')
-                    .setStyle('SECONDARY'),
-            );
-
-        await interaction.reply({ embeds: [embed], components: [row] });
+        await interaction.reply({ embeds: [embed] });
     },
 };
