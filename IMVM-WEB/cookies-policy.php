@@ -245,7 +245,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         website.<br>
 
 
-                        <h3>2. Consent</h3><br>
+                        <br><h3>2. Consent</h3><br>
                         The cookies we use do not store personal data or any kind of information that can identify you
                         unless you voluntarily register to use the services we provide or to receive information about
                         promotions and content of your interest. When you browse for the first time, an explanatory
