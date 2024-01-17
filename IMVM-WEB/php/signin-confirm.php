@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // If something's empty, it ends.
     if (empty($username) || empty($password)) {
-        header('Location: ../signup.php');
+        header('Location: ../signin.php');
         exit;
     }
 
@@ -49,7 +49,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         // If the user doesnt exists, we'll redirect it to an error page
         echo '<script>alert("User doesnt exist, check your username and password!")</script>';
-        header('Location: ../signup.php');
+        //header('Location: ../signin.php');
+        echo '<script>window.location.href = "https://imvmbot.000webhostapp.com/signin.php";</script>';
         exit;
     }
 } else {

@@ -127,3 +127,8 @@
     color: rgb(255, 255, 255);
   }
   
+  .inline-checkbox {
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: middle;
+}
