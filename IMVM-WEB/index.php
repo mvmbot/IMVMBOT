@@ -250,21 +250,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
      <!-- Navbar End -->
 
-     <!-- Cookies Start -->
-    <div class="cookies-wrap" id="cookies-wrap">
-      <h4 class="title">Cookies</h4>
-      <p class="paragraph">
-        This website use cookies to help you have a superior and more relevant
-        browsing experience on the website.
-      </p>
-      <button class="btn" id="btn-accept-cookies">Accept</button>
-      <a class="link-cookies" href="./cookies-policy.php" target="_blank">Cookies policy</a>
-    </div>
-    <div class="background-cookies-wrap" id="background-cookies-wrap"></div>
+    <!-- Cookies Start -->
+<div class="cookies-wrap" id="cookies-wrap">
+  <h4 class="title">Cookies</h4>
+  <p class="paragraph">
+    This website uses cookies to help you have a superior and more relevant
+    browsing experience on the website.
+  </p>
+  <button class="btn" id="btn-accept-cookies">Accept</button>
+  <a class="link-cookies" href="./cookies-policy.php" target="_blank">Cookies policy</a>
+</div>
+<div class="background-cookies-wrap" id="background-cookies-wrap"></div>
 
-    <script src="./js/cookies-wrap.js"></script>
+<script src="./js/cookies-wrap.js"></script>
 
-    <!-- Cookies End -->
+<!-- Cookies End -->
+
 
     <!-- Discord invite bottom Start -->
 
