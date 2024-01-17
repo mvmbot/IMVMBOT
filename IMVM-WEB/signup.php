@@ -12,6 +12,9 @@ session_start();
   <meta name="keywords" content="IESMVMBOT, classroom discord bot, mvmbot, insmvmbot, mvm, discord bot" />
   <meta name="description" content="The best Discord bot for School alumns. " />
 
+  <!-- Javascript -->
+  <script type="text/javascript" src="js/validation.js"></script>
+
   <!-- Favicon -->
   <link rel="icon" href="IMVM-WEB/img/faviimvm.ico" type="image/x-icon" />
 

@@ -16,6 +16,9 @@ session_start();
       name="description"
       content="The best Discord bot for School alumns. "
     />
+    
+    <!-- Javascript -->
+    <script type="text/javascript" src="js/validation.js"></script>
 
     <!-- Favicon -->
     <link rel="icon" href="IMVM-WEB/img/faviimvm.ico" type="image/x-icon" />
