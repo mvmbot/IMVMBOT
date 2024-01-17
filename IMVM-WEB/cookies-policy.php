@@ -229,7 +229,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <h1 class="bs-primary text-center">COOKIES POLICY IESMVMBOT</h1><br>
 
                     <div class="mb-4 text-white">
-                        <h3>1. Use of cookies</h3>
+                        <h3>1. Use of cookies</h3><br>
                         The website is owned by Iesmvmbot and located at Av. d'Eduard Maristany, 59, 08930 Sant Adrià de
                         Besòs, Barcelona, with CIF number: ESQ5856078J, uses a system of cookies, which are files that
                         are downloaded to your computer when accessing certain web pages. Cookies allow a website, among
@@ -245,7 +245,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         website.
 
 
-                        <h3>2. Consent</h3>
+                        <h3>2. Consent</h3><br>
                         The cookies we use do not store personal data or any kind of information that can identify you
                         unless you voluntarily register to use the services we provide or to receive information about
                         promotions and content of your interest. When you browse for the first time, an explanatory
@@ -257,7 +257,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         you do not agree, you can send an email to iesmvmbot@gmail.com.
 
 
-                        <h3>3. Types and Purpose of Cookies</h3>
+                        <h3>3. Types and Purpose of Cookies</h3><br>
                         Cookies, based on their permanence, can be classified as: Session cookies: expire when the user
                         closes the browser.<br>
 
@@ -315,7 +315,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         their own privacy policies.
 
 
-                        <h3> 4. How to block or delete installed cookies</h3>
+                        <h3> 4. How to block or delete installed cookies</h3><br>
                         The user can allow, block, or delete cookies installed on their device through their browser's
                         settings. You can find information on how to do this for the most common browsers in the links
                         provided below:<br>
@@ -327,7 +327,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         provision of services offered on the website.
 
 
-                        <h3> 5. Modifications</h3>
+                        <h3> 5. Modifications</h3><br>
                         The website is owned by Iesmvmbot, located at Av. d'Eduard Maristany, 59, 08930 Sant Adrià de
                         Besòs,
                         Barcelona, Spain, with CIF number: ESQ5856078J, may modify this cookie policy based on legal
