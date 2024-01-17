@@ -258,7 +258,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         browsing experience on the website.
       </p>
       <button class="btn" id="btn-accept-cookies">Accept</button>
-      <a class="link-cookies" href="./cookies-policy.php">Cookies policy</a>
+      <a class="link-cookies" href="./cookies-policy.php" target="_blank">Cookies policy</a>
     </div>
     <div class="background-cookies-wrap" id="background-cookies-wrap"></div>
 
