@@ -242,7 +242,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         receive
                         cookies, please configure your internet browser to block them or receive notifications when they
                         are installed. To continue without making changes to your cookie settings, simply proceed on the
-                        website.
+                        website.<br>
 
 
                         <h3>2. Consent</h3><br>
@@ -254,7 +254,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         essential or technical cookies, which are necessary for the proper functioning of the website
                         (excluding analytical and advertising cookies). This consent is valid for a period of 13 months.
                         If
-                        you do not agree, you can send an email to iesmvmbot@gmail.com.
+                        you do not agree, you can send an email to iesmvmbot@gmail.com.<br>
 
 
                         <h3>3. Types and Purpose of Cookies</h3><br>
@@ -312,7 +312,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         these third parties can store cookies sent from the website's content originating from users'
                         browsers, as well as access the data stored in them. The companies that generate these cookies
                         have
-                        their own privacy policies.
+                        their own privacy policies.<br>
 
 
                         <h3> 4. How to block or delete installed cookies</h3><br>
@@ -324,7 +324,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         Firefox: https://support.mozilla.org/es/kb/Borrar%20cookies <br>
                         Safari: http://support.apple.com/kb/ph5042 <br>
                         We inform you, however, that disabling some cookies may prevent or hinder the navigation or the
-                        provision of services offered on the website.
+                        provision of services offered on the website.<br>
 
 
                         <h3> 5. Modifications</h3><br>
