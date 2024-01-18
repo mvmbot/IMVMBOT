@@ -51,6 +51,18 @@ session_start();
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet" />
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PXHDMQQ0XY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PXHDMQQ0XY');
+</script>
+
     
     <!-- Google Tag Manager Start -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

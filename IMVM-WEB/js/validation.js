@@ -1,4 +1,4 @@
-function validateForm() {
+function validateFormSignUp() {
     // We get the values of everything
     var username = document.getElementById('username').value;
     var name = document.getElementById('name').value;
@@ -32,13 +32,18 @@ function validateForm() {
         return false;
     }
 
-    if (!send) {
-        // Detener el envío del formulario si send es falso
-        event.preventDefault();
-    }
-    document.getElementById('signupform').addEventListener('submit', validateForm);
-
     if (send == true) {
         return true;
+    }
+}
+
+function validateFormSignIn() {
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+
+    if (username.trim() === '' || password.trim() === '') {
+        alert('Fill the form properly!');
+        send = false;
+        return false;
     }
 }

@@ -51,6 +51,18 @@ session_start();
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet" />
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PXHDMQQ0XY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PXHDMQQ0XY');
+</script>
+
     
     <!-- Google Tag Manager Start -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -370,7 +382,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="copyright">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        <p>&copy; 2023 IESMVMBOT - All rights reserved - <a href="./privacy-policy.php">Privacy Policy</a></p>
+                        <p>&copy; 2023 IESMVMBOT - All rights reserved - <a href="./privacy-policy.php">Privacy
+                                Policy</a></p>
 
                     </div>
                     <div class="col-md-6 text-center text-md-end">

@@ -4,96 +4,98 @@ session_start();
 
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>IESMVMBOT - OFFICIAL PROJECT</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta
-      name="keywords"
-      content="IESMVMBOT, classroom discord bot, mvmbot, insmvmbot, mvm, discord bot"
-    />
-    <meta
-      name="description"
-      content="The best Discord bot for School alumns. "
-    />
 
-    <!-- Favicon -->
-    <link rel="icon" href="IMVM-WEB/img/faviimvm.ico" type="image/x-icon" />
+<head>
+  <meta charset="utf-8" />
+  <title>IESMVMBOT - OFFICIAL PROJECT</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta name="keywords" content="IESMVMBOT, classroom discord bot, mvmbot, insmvmbot, mvm, discord bot" />
+  <meta name="description" content="The best Discord bot for School alumns. " />
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700&family=Ubuntu:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
+  <!-- Javascript -->
+  <script type="text/javascript" src="js/validation.js"></script>
 
-    <!-- Icon Font Stylesheet -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
-      rel="stylesheet"
-    />
+  <!-- Favicon -->
+  <link rel="icon" href="IMVM-WEB/img/faviimvm.ico" type="image/x-icon" />
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet" />
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
-    <link
-      href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
-      rel="stylesheet"
-    />
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700&family=Ubuntu:wght@400;500&display=swap"
+    rel="stylesheet" />
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Icon Font Stylesheet -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
 
-    <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet" />
-    
-    <!-- Google Tag Manager Start -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-PWQDVHW8');</script>
-<!-- Google Tag Manager End -->
+  <!-- Libraries Stylesheet -->
+  <link href="lib/animate/animate.min.css" rel="stylesheet" />
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+  <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
-    <!-- Google Translator Start -->
-    <script
-      type="text/javascript"
-      src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
-    ></script>
-    <script type="text/javascript">
-      function googleTranslateElementInit() {
-        new google.translate.TranslateElement(
-          {
-            pageLanguage: "en",
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-            showLogo: false,
-          },
-          "google_translate_element"
-        );
-      }
-    </script>
-    <!-- Google Translator End -->
-  </head>
+  <!-- Customized Bootstrap Stylesheet -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Template Stylesheet -->
+  <link href="css/style.css" rel="stylesheet" />
+  <link href="css/cssRegister.css" rel="stylesheet" />
+
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PXHDMQQ0XY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-PXHDMQQ0XY');
+  </script>
+
+
+  <!-- Google Tag Manager Start -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-PWQDVHW8');</script>
+  <!-- Google Tag Manager End -->
+
+  <!-- Google Translator Start -->
+  <script type="text/javascript"
+    src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement(
+        {
+          pageLanguage: "en",
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          showLogo: false,
+        },
+        "google_translate_element"
+      );
+    }
+  </script>
+  <!-- Google Translator End -->
+</head>
 
 <body>
-    <!-- Google Tag Manager Start (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWQDVHW8"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- Google Tag Manager End (noscript) -->
+  <!-- Google Tag Manager Start (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWQDVHW8" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- Google Tag Manager End (noscript) -->
 
   <!-- Spinner Start -->
   <div id="spinner"
     class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-    <div class="spinner-border text-primary" style="width: 3rem; height: 3rem" role="status">
+    <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
       <span class="sr-only">Loading...</span>
     </div>
   </div>
   <!-- Spinner End -->
+
 
   <!-- Topbar Start -->
 
@@ -142,19 +144,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 
+
   <!-- Topbar End -->
 
-  <!-- Navbar Start -->
 
+  <!-- Navbar Start -->
   <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
     <a href="index.php" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-      <img src="img/logo.png" alt="IESMVMBOT" height="100" />
+      <img src="img/logo.png" alt="IESMVMBOT" height="100">
     </a>
     <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
       <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
         <style>
           svg {
-            fill: #9900ff;
+            fill: #9900ff
           }
         </style>
         <path
@@ -170,44 +173,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="./Changelog.php" class="nav-item nav-link">CHANGELOG</a>
       </div>
       <?php
-            if ($_SESSION["user"] == null) {
-                ?>
-                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">ACCOUNT<i><svg
-                            xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" class="svg-icon">
-                            <style>
-                                .svg-icon {
-                                    fill: #ffffff;
-                                    margin-left: 5px;
-                                }
-                            </style>
-                            <path
-                                d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
-                        </svg></i></a>
-                <?php
-            } else {
-                ?>
-                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
-                    <?php echo $_SESSION['user'] ?><i><svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                            viewBox="0 0 448 512" class="svg-icon">
-                            <style>
-                                .svg-icon {
-                                    fill: #ffffff;
-                                    margin-left: 5px;
-                                }
-                            </style>
-                            <path
-                                d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
-                        </svg></i>
-                </a>
-                <?php
-            }
-            ?>    </div>
+      if ($_SESSION["user"] == null) {
+        ?>
+        <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">ACCOUNT<i><svg
+              xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" class="svg-icon">
+              <style>
+                .svg-icon {
+                  fill: #ffffff;
+                  margin-left: 5px;
+                }
+              </style>
+              <path
+                d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+            </svg></i></a>
+        <?php
+      } else {
+        ?>
+        <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+          <?php echo $_SESSION['user'] ?><i><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"
+              class="svg-icon">
+              <style>
+                .svg-icon {
+                  fill: #ffffff;
+                  margin-left: 5px;
+                }
+              </style>
+              <path
+                d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+            </svg></i>
+        </a>
+        <?php
+      }
+      ?>
+    </div>
   </nav>
 
   <!-- Navbar End -->
+
   <div class="form-container">
     <p class="title">Sign up to IESMVMBOT</p>
-    <form class="form" method="POST" action="./php/signup-confirm.php" id="signupform" name="signupform" onsubmit="validateForm()">
+    <form class="form" method="POST" action="./php/signup-confirm.php" id="signupform" name="signupform"
+      onsubmit="validateFormSignUp()">
       <div class="input-group">
         <label for="username">Username</label>
         <input type="text" name="username" id="username" placeholder="" />
@@ -233,13 +239,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <label for="password">Confirm Password</label>
         <input type="password" name="confirmPassword" id="confirmPassword" placeholder="" />
         <div class="forgot">
-          <a rel="noopener noreferrer" href="privacy-policy.php">
-            Show privacy policy</a>
+          <a rel="noopener noreferrer" href="privacy-policy.php" target="_blank">
+            Show privacy policy
+          </a>
         </div>
-        <p>
-          Please confirm that you agree with our privacy policy<input type="checkbox" name="privacyCheckbox" value="on" />
-        </p>
+
       </div>
+
+      <div style="text-align: center;">
+        <p style="display: inline-block; margin: 0; padding: 0;">Please confirm that you agree with our privacy policy
+        </p>
+        <input type="checkbox" name="privacyCheckbox" value="on"
+          style="vertical-align: middle; margin: 0; padding: 0;" />
+      </div>
+
 
       <input type="submit" class="sign" name="signup">
     </form>

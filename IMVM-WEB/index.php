@@ -51,6 +51,18 @@ session_start();
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet" />
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PXHDMQQ0XY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PXHDMQQ0XY');
+</script>
+
     
     <!-- Google Tag Manager Start -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -238,11 +250,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
      <!-- Navbar End -->
 
-     <!-- Cookies Start -->
+    <!-- Cookies Start -->
+<div class="cookies-wrap" id="cookies-wrap">
+  <h4 class="title">Cookies</h4>
+  <p class="paragraph">
+    This website uses cookies to help you have a superior and more relevant
+    browsing experience on the website.
+  </p>
+  <button class="btn" id="btn-accept-cookies">Accept</button>
+  <a class="link-cookies" href="./cookies-policy.php" target="_blank">Cookies policy</a>
+</div>
+<div class="background-cookies-wrap" id="background-cookies-wrap"></div>
 
-    
-     
-    <!-- Cookies End -->
+<script src="./js/cookies-wrap.js"></script>
+
+<!-- Cookies End -->
+
 
     <!-- Discord invite bottom Start -->
 
