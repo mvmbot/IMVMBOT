@@ -1,99 +1,125 @@
 <?php
-include("config.php");
 
+// Let's get the database stuff ready!
+require("config.php");
+require("databaseFunctions.php");
+
+// Grab some tools for our code!
+require("redirectFunctions.php");
+require("dataValidationFunctions.php");
+require("errorAlerts.php");
+
+// Turn on the lights to see any coding errors!
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Check connection
-$conn = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+// Now, let's connect to our incredible database!
+connectToDatabase();
 
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-/*echo "Connected successfully <br>";*/
+// Hey, give me the data from the user's form, okay? Thanks!
+$username = $_POST['username'] ?? '';
+$name = $_POST['name'] ?? '';
+$surname = $_POST['surname'] ?? '';
+$mail = $_POST['mail'] ?? '';
+$password = $_POST['password'] ?? '';
+$confirmPassword = $_POST['confirmPassword'] ?? '';
 
-
-// Gets the data from every input form the form
-$username = isset($_POST['username']) ? $_POST['username'] : '';
-$name = isset($_POST['name']) ? $_POST['name'] : '';
-$surname = isset($_POST['surname']) ? $_POST['surname'] : '';
-$mail = isset($_POST['mail']) ? $_POST['mail'] : '';
-$password = isset($_POST['password']) ? $_POST['password'] : '';
-$confirmPassword = isset($_POST['confirmPassword']) ? $_POST['confirmPassword'] : '';
-
+// Oops! Did they forget to check the privacy box?
 if (!isset($_POST['privacyCheckbox'])) {
-    header('Location: ../signup.php');
-    exit;
-}
-// If something's empty, it ends.
-if (empty($username) || empty($name) || empty($surname) || empty($mail) || empty($password) || empty($confirmPassword)) {
-    header('Location: ../signup.php');
-    exit;
-}
-// If passwords doesn't match, it ends.
-if ($password !== $confirmPassword) {
-    header('Location: ../signup.php');
-    exit;
+
+    // Let's gently guide them back to where they should be so they can try again!
+    showAlert("You must accept the privacy policy to continue");
+    redirectToSignup();
 }
 
+// We need to make sure they filled out all the important fields!
+$fieldsToCheck = ['username', 'name', 'surname', 'mail', 'password', 'confirmPassword'];
+
+// If any of these is empty, we kindly ask them to try again!
+if (areFieldsEmpty($fieldsToCheck)) {
+    showAlert(`Fill the form please!`);
+    redirectToSignup();
+}
+
+// Uh-oh! The passwords don't match. Let's guide them back!
+if ($password != $confirmPassword) {
+    showAlert(`The passwords doesn't match!`);
+    redirectToSignup();
+}
+
+// Checking if the email is a valid one! We really need them to exist!
 if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-    header('Location: ../signup.php');
-    exit;
+    showAlert(`That's not a valid email`);
+    redirectToSignup();
 }
 
+// Now, let's peek into the database and see if the chosen username or email is already taken!
+try {
 
+    // Preparing a tiny query to check that!
+    $checkExisting = "SELECT id_users FROM users WHERE username_users = ? OR email_users = ?";
+    $stmtCheck = $conn->prepare($checkExisting);
 
-// We're printing those to check if it works
+    // Oops, did we mess up in preparing the query? It happens to the best of us!
+    if ($stmtCheck === false) {
+        throw new Exception("Oh no! Something went wrong: " . $conn->error);
+    }
 
-/*
-echo 'Username: ' . $username . '<br>';
-echo 'Name: ' . $name . '<br>';
-echo 'Surname: ' . $surname . '<br>';
-echo 'Mail: ' . $mail . '<br>';
-echo 'Password: ' . $password . '<br>';
-echo 'Confirmed Password: ' . $confirmPassword . '<br>';
-*/
+    // No mistakes so far! Let's move on and check the results.
 
-//First of all, we gotta check our database to see if the user is trying to create an account with an already used email or username
-//We do a lil query to check it
-$checkExisting = "SELECT id_users FROM users WHERE username_users = ? OR email_users = ?";
-//We prepare the statement
-$stmtCheck = $conn->prepare($checkExisting);
-//Then we bind the parameters (thx manu for the tip, it's actually quite easy to do it this way)
-$stmtCheck->bind_param("ss", $username, $mail);
-//And then we execute the query
-$stmtCheck->execute();
-//Finaly, we store the result so we can use it
-$stmtCheck->store_result();
+    // Thumbs up for binding parameters and executing the query!
+    $stmtCheck->bind_param("ss", $username, $mail);
+    $stmtCheck->execute();
+    $stmtCheck->store_result();
 
-//If there are no results in the database with that user or mail, we go on. If not, we show an error message and stop everything
+} catch (Exception $e) {
+
+    // Oh boy! We inted there to be honest. Let's be honest about it.
+    showError("Error: " . $e->getMessage());
+}
+
+// If we found any matches in the database, let them know the chosen username or email is taken!
 if ($stmtCheck->num_rows > 0) {
-    echo "Username or email already on use!";
+    showAlert("An account with that data exists");
+    redirectToSignin();
 } else {
-    //If everything is fine, we go ahead and insert the data into our database
-    $insertSQL = "INSERT INTO users (username_users, name_users, surname_users, email_users, password_users) VALUES (?, ?, ?, ?, ?)";
-    //We prepare the query again...
-    $stmt = $conn->prepare($insertSQL);
-    
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-    
-    //Bind the parameters
-    $stmt->bind_param("sssss", $username, $name, $surname, $mail, $hashedPassword);
-    //And execute it!
-    $stmt->execute();
 
-    //We check if the query worked
-    if ($stmt->affected_rows > 0) {
-        //If it worked, we tell the user everything's allright
-        //echo "User created correctly";
-        header('Location: ../index.php');
-        exit();
-    } else {
-        //Otherwise, we tell him that something went wrong
-        echo "Couldn't create the user!";
+    // Looks like they're in the clear! Let's add them to our cool users' club!
+    try {
+
+        // Preparing the magic query to insert the user into the database!
+        $insertSQL = "INSERT INTO users (username_users, name_users, surname_users, email_users, password_users) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($insertSQL);
+
+        // Uh-oh, did we mess up preparing the query? We're not perfect, you know!
+        if ($stmt === false) {
+            throw new Exception("Error preparing INSERT statement: " . $conn->error);
+        }
+
+        // Now, let's make their password secure with a pretty cool hash!
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+        // Bind parameters, cast the query, and add them to our user list!
+        $stmt->bind_param("sssss", $username, $name, $surname, $mail, $hashedPassword);
+        $stmt->execute();
+
+        // If everything worked like it should, send them to the home of the brave (index page)!
+        if ($stmt->affected_rows > 0) {
+            redirectToIndex();
+        } else {
+
+            // Something went wrong, but we ain't liying bout it!
+            showAlert(`Couldn't create the user, try again!`);
+            redirectToSignup();
+        }
+    } catch (Exception $e) {
+
+        // Oops, another bump in the road! Let's tell them gently.
+        echo "Error: " . $e->getMessage();
     }
 }
-//We close the conn and statements since we're not using them anymore
+
+// Okay, we're done with the database and our tools. Time to close up!
 $stmtCheck->close();
 $stmt->close();
-$conn->close();
+closeDatabaseConnection();
