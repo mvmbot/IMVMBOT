@@ -7,7 +7,7 @@ module.exports = {
     .addStringOption(option =>
       option.setName('mensaje')
         .setDescription('Mensaje para convertir en emojis')
-        .setRequired(true)), // Cambia a false si quieres que sea opcional
+        .setRequired(true)), 
 
   async execute(interaction) {
     await interaction.deferReply();
