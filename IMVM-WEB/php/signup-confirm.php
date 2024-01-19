@@ -36,19 +36,19 @@ $fieldsToCheck = ['username', 'name', 'surname', 'mail', 'password', 'confirmPas
 
 // If any of these is empty, we kindly ask them to try again!
 if (areFieldsEmpty($fieldsToCheck)) {
-    signupError(`emptyValues`);
+    showAlert(`Fill the form please!`);
     redirectToSignup();
 }
 
 // Uh-oh! The passwords don't match. Let's guide them back!
 if ($password != $confirmPassword) {
-    signupError(`passwordWontMatch`);
+    showAlert(`The passwords doesn't match!`);
     redirectToSignup();
 }
 
 // Checking if the email is a valid one! We really need them to exist!
 if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-    signupError(`wrongMail`);
+    showAlert(`That's not a valid email`);
     redirectToSignup();
 }
 
@@ -74,12 +74,12 @@ try {
 } catch (Exception $e) {
 
     // Oh boy! We inted there to be honest. Let's be honest about it.
-    echo "Error: " . $e->getMessage();
+    showError("Error: " . $e->getMessage());
 }
 
 // If we found any matches in the database, let them know the chosen username or email is taken!
 if ($stmtCheck->num_rows > 0) {
-    signupError(`accountAlreadyExists`);
+    showAlert("An account with that data exists");
     redirectToSignin();
 } else {
 
@@ -108,7 +108,7 @@ if ($stmtCheck->num_rows > 0) {
         } else {
 
             // Something went wrong, but we ain't liying bout it!
-            signupError(`noUser`);
+            showAlert(`Couldn't create the user, try again!`);
             redirectToSignup();
         }
     } catch (Exception $e) {
