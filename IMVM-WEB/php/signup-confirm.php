@@ -28,6 +28,7 @@ $confirmPassword = $_POST['confirmPassword'] ?? '';
 if (!isset($_POST['privacyCheckbox'])) {
 
     // Let's gently guide them back to where they should be so they can try again!
+    showAlert("You must accept the privacy policy to continue");
     redirectToSignup();
 }
 
