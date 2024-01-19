@@ -1,4 +1,5 @@
 <?php
+
 // Let's get the database stuff ready!
 require("config.php");
 require("databaseFunctions.php");
@@ -25,6 +26,7 @@ $confirmPassword = $_POST['confirmPassword'] ?? '';
 
 // Oops! Did they forget to check the privacy box?
 if (!isset($_POST['privacyCheckbox'])) {
+
     // Let's gently guide them back to where they should be so they can try again!
     redirectToSignup();
 }
@@ -52,6 +54,7 @@ if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
 
 // Now, let's peek into the database and see if the chosen username or email is already taken!
 try {
+
     // Preparing a tiny query to check that!
     $checkExisting = "SELECT id_users FROM users WHERE username_users = ? OR email_users = ?";
     $stmtCheck = $conn->prepare($checkExisting);
@@ -69,7 +72,8 @@ try {
     $stmtCheck->store_result();
 
 } catch (Exception $e) {
-    // Oh boy! We intended to be honest. Let's be honest about it.
+
+    // Oh boy! We inted there to be honest. Let's be honest about it.
     echo "Error: " . $e->getMessage();
 }
 
@@ -81,6 +85,7 @@ if ($stmtCheck->num_rows > 0) {
 
     // Looks like they're in the clear! Let's add them to our cool users' club!
     try {
+
         // Preparing the magic query to insert the user into the database!
         $insertSQL = "INSERT INTO users (username_users, name_users, surname_users, email_users, password_users) VALUES (?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($insertSQL);
@@ -101,15 +106,18 @@ if ($stmtCheck->num_rows > 0) {
         if ($stmt->affected_rows > 0) {
             redirectToIndex();
         } else {
+
             // Something went wrong, but we ain't liying bout it!
             signupError(`noUser`);
             redirectToSignup();
         }
     } catch (Exception $e) {
+
         // Oops, another bump in the road! Let's tell them gently.
         echo "Error: " . $e->getMessage();
     }
 }
+
 // Okay, we're done with the database and our tools. Time to close up!
 $stmtCheck->close();
 $stmt->close();
