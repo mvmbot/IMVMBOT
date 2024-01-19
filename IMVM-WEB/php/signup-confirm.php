@@ -39,7 +39,7 @@ if (areFieldsEmpty($fieldsToCheck)) {
 }
 
 // Uh-oh! The passwords don't match. Let's guide them back!
-if ($password !== $confirmPassword) {
+if ($password != $confirmPassword) {
     signupError(`passwordWontMatch`);
     redirectToSignup();
 }
