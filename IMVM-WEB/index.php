@@ -4,18 +4,13 @@ session_start();
 
 <!DOCTYPE html>
 <html lang="es">
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <title>IESMVMBOT - OFFICIAL PROJECT</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta
-      name="keywords"
-      content="IESMVMBOT, classroom discord bot, mvmbot, insmvmbot, mvm, discord bot"
-    />
-    <meta
-      name="description"
-      content="The best Discord bot for School alumns. "
-    />
+    <meta name="keywords" content="IESMVMBOT, classroom discord bot, mvmbot, insmvmbot, mvm, discord bot" />
+    <meta name="description" content="The best Discord bot for School alumns. " />
 
     <!-- Favicon -->
     <link rel="icon" href="IMVM-WEB/img/faviimvm.ico" type="image/x-icon" />
@@ -23,28 +18,17 @@ session_start();
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700&family=Ubuntu:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700&family=Ubuntu:wght@400;500&display=swap"
+        rel="stylesheet" />
 
     <!-- Icon Font Stylesheet -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
-      rel="stylesheet"
-    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
 
     <!-- Libraries Stylesheet -->
     <link href="lib/animate/animate.min.css" rel="stylesheet" />
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
-    <link
-      href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
-      rel="stylesheet"
-    />
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet" />
@@ -53,50 +37,51 @@ session_start();
     <link href="css/style.css" rel="stylesheet" />
 
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PXHDMQQ0XY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PXHDMQQ0XY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-  gtag('config', 'G-PXHDMQQ0XY');
-</script>
+        gtag('config', 'G-PXHDMQQ0XY');
+    </script>
 
-    
+
     <!-- Google Tag Manager Start -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-PWQDVHW8');</script>
-<!-- Google Tag Manager End -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PWQDVHW8');</script>
+    <!-- Google Tag Manager End -->
 
     <!-- Google Translator Start -->
-    <script
-      type="text/javascript"
-      src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
-    ></script>
+    <script type="text/javascript"
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script type="text/javascript">
-      function googleTranslateElementInit() {
-        new google.translate.TranslateElement(
-          {
-            pageLanguage: "en",
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-            showLogo: false,
-          },
-          "google_translate_element"
-        );
-      }
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                {
+                    pageLanguage: "en",
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                    showLogo: false,
+                },
+                "google_translate_element"
+            );
+        }
     </script>
     <!-- Google Translator End -->
-  </head>
+</head>
 
 <body>
     <!-- Google Tag Manager Start (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWQDVHW8"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- Google Tag Manager End (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWQDVHW8" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- Google Tag Manager End (noscript) -->
 
     <!-- Spinner Start -->
     <div id="spinner"
@@ -182,16 +167,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <a href="./FAQ.php" class="nav-item nav-link">FAQ</a>
                 <a href="./Changelog.php" class="nav-item nav-link">CHANGELOG</a>
                 <div class="dropdown">
-                    <button class="nav-item nav-link dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                        style="background-color: #0a0a0a">
-                        BECOME A MEMBER
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a href="./signup.php" class="nav-item nav-link">SIGN UP</a>
-                        <a href="./signin.php" class="nav-item nav-link">SIGN IN</a>
-                        <a href="./php/logout.php" class="nav-item nav-link"> LOG OUT</a>
+
+                    <div class="dropdown">
+                        <button class="nav-item nav-link dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                            style="background-color: #0a0a0a; color: white; border: none;">
+                            USER
+                        </button>
+                        <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton" style="background-color: #000;">
+                    
+                            <!-- Enlace para SIGN UP -->
+                            <a href="./signup.php" class="nav-item nav-link" style="color: white;">SIGN UP</a>
+                    
+                            <!-- Enlace para SIGN IN -->
+                            <a href="./signin.php" class="nav-item nav-link" style="color: white;">SIGN IN</a>
+                    
+                            <!-- Enlace para LOG OUT -->
+                            <a href="./php/logout.php" class="nav-item nav-link" style="color: white;">LOG OUT</a>
+                        </div>
                     </div>
+                    
+                    
                 </div>
                 <?php
                     if ($_SESSION["user"] != null) {
@@ -199,14 +195,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="dropdown">
                     <button class="nav-item nav-link dropdown-toggle" type="button" id="dropdownMenuButton"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                        style="background-color: #0a0a0a">
+                        style="background-color: #0a0a0a; color: white; border: none;">
                         TICKETS
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a href="create-ticket.php" class="nav-item nav-link">CREATE TICKET</a>
-                        <a href="view-ticket.php" class="nav-item nav-link">VIEW TICKETS</a>
+                    <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton" style="background-color: #000;">
+                
+                        <!-- Enlace para CREATE TICKET -->
+                        <a href="create-ticket.php" class="nav-item nav-link" style="color: white;">CREATE TICKET</a>
+                
+                        <!-- Enlace para VIEW TICKETS -->
+                        <a href="view-ticket.php" class="nav-item nav-link" style="color: white;">VIEW TICKETS</a>
                     </div>
                 </div>
+                
+                
                 <?php
                     }
                 ?>
@@ -214,57 +216,57 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <?php
             if ($_SESSION["user"] == null) {
                 ?>
-                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">ACCOUNT<i><svg
-                            xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" class="svg-icon">
-                            <style>
-                                .svg-icon {
-                                    fill: #ffffff;
-                                    margin-left: 5px;
-                                }
-                            </style>
-                            <path
-                                d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
-                        </svg></i></a>
-                <?php
+            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">ACCOUNT<i><svg
+                        xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" class="svg-icon">
+                        <style>
+                            .svg-icon {
+                                fill: #ffffff;
+                                margin-left: 5px;
+                            }
+                        </style>
+                        <path
+                            d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+                    </svg></i></a>
+            <?php
             } else {
                 ?>
-                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
-                    <?php echo $_SESSION['user'] ?><i><svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                            viewBox="0 0 448 512" class="svg-icon">
-                            <style>
-                                .svg-icon {
-                                    fill: #ffffff;
-                                    margin-left: 5px;
-                                }
-                            </style>
-                            <path
-                                d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
-                        </svg></i>
-                </a>
-                <?php
+            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+                <?php echo $_SESSION['user'] ?><i><svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512" class="svg-icon">
+                        <style>
+                            .svg-icon {
+                                fill: #ffffff;
+                                margin-left: 5px;
+                            }
+                        </style>
+                        <path
+                            d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+                    </svg></i>
+            </a>
+            <?php
             }
             ?>
         </div>
     </nav>
 
 
-     <!-- Navbar End -->
+    <!-- Navbar End -->
 
     <!-- Cookies Start -->
-<div class="cookies-wrap" id="cookies-wrap">
-  <h4 class="title">Cookies</h4>
-  <p class="paragraph">
-    This website uses cookies to help you have a superior and more relevant
-    browsing experience on the website.
-  </p>
-  <button class="btn" id="btn-accept-cookies">Accept</button>
-  <a class="link-cookies" href="./cookies-policy.php" target="_blank">Cookies policy</a>
-</div>
-<div class="background-cookies-wrap" id="background-cookies-wrap"></div>
+    <div class="cookies-wrap" id="cookies-wrap">
+        <h4 class="title">Cookies</h4>
+        <p class="paragraph">
+            This website uses cookies to help you have a superior and more relevant
+            browsing experience on the website.
+        </p>
+        <button class="btn" id="btn-accept-cookies">Accept</button>
+        <a class="link-cookies" href="./cookies-policy.php" target="_blank">Cookies policy</a>
+    </div>
+    <div class="background-cookies-wrap" id="background-cookies-wrap"></div>
 
-<script src="./js/cookies-wrap.js"></script>
+    <script src="./js/cookies-wrap.js"></script>
 
-<!-- Cookies End -->
+    <!-- Cookies End -->
 
 
     <!-- Discord invite bottom Start -->
@@ -493,7 +495,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="copyright">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        <p>&copy; 2023 IESMVMBOT - All rights reserved - <a href="./privacy-policy.php">Privacy Policy</a></p>
+                        <p>&copy; 2023 IESMVMBOT - All rights reserved - <a href="./privacy-policy.php">Privacy
+                                Policy</a></p>
 
                     </div>
                     <div class="col-md-6 text-center text-md-end">

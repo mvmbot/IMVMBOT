@@ -1,4 +1,5 @@
 <?php
+
 // Let's get the database stuff ready!
 require("config.php");
 require("databaseFunctions.php");
@@ -25,7 +26,9 @@ $confirmPassword = $_POST['confirmPassword'] ?? '';
 
 // Oops! Did they forget to check the privacy box?
 if (!isset($_POST['privacyCheckbox'])) {
+
     // Let's gently guide them back to where they should be so they can try again!
+    showAlert("You must accept the privacy policy to continue");
     redirectToSignup();
 }
 
@@ -34,21 +37,25 @@ $fieldsToCheck = ['username', 'name', 'surname', 'mail', 'password', 'confirmPas
 
 // If any of these is empty, we kindly ask them to try again!
 if (areFieldsEmpty($fieldsToCheck)) {
+    showAlert(`Fill the form please!`);
     redirectToSignup();
 }
 
 // Uh-oh! The passwords don't match. Let's guide them back!
-if ($password !== $confirmPassword) {
+if ($password != $confirmPassword) {
+    showAlert(`The passwords doesn't match!`);
     redirectToSignup();
 }
 
 // Checking if the email is a valid one! We really need them to exist!
 if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+    showAlert(`That's not a valid email`);
     redirectToSignup();
 }
 
 // Now, let's peek into the database and see if the chosen username or email is already taken!
 try {
+
     // Preparing a tiny query to check that!
     $checkExisting = "SELECT id_users FROM users WHERE username_users = ? OR email_users = ?";
     $stmtCheck = $conn->prepare($checkExisting);
@@ -66,18 +73,20 @@ try {
     $stmtCheck->store_result();
 
 } catch (Exception $e) {
-    // Oh boy! We intended to be honest. Let's be honest about it.
-    echo "Error: " . $e->getMessage();
+
+    // Oh boy! We inted there to be honest. Let's be honest about it.
+    showError("Error: " . $e->getMessage());
 }
 
 // If we found any matches in the database, let them know the chosen username or email is taken!
 if ($stmtCheck->num_rows > 0) {
-    signupError(`accountAlreadyExists`);
+    showAlert("An account with that data exists");
     redirectToSignin();
 } else {
 
     // Looks like they're in the clear! Let's add them to our cool users' club!
     try {
+
         // Preparing the magic query to insert the user into the database!
         $insertSQL = "INSERT INTO users (username_users, name_users, surname_users, email_users, password_users) VALUES (?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($insertSQL);
@@ -98,15 +107,18 @@ if ($stmtCheck->num_rows > 0) {
         if ($stmt->affected_rows > 0) {
             redirectToIndex();
         } else {
+
             // Something went wrong, but we ain't liying bout it!
-            signupError(`noUser`);
+            showAlert(`Couldn't create the user, try again!`);
             redirectToSignup();
         }
     } catch (Exception $e) {
+
         // Oops, another bump in the road! Let's tell them gently.
         echo "Error: " . $e->getMessage();
     }
 }
+
 // Okay, we're done with the database and our tools. Time to close up!
 $stmtCheck->close();
 $stmt->close();
