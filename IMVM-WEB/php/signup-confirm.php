@@ -34,16 +34,19 @@ $fieldsToCheck = ['username', 'name', 'surname', 'mail', 'password', 'confirmPas
 
 // If any of these is empty, we kindly ask them to try again!
 if (areFieldsEmpty($fieldsToCheck)) {
+    signupError(`emptyValues`);
     redirectToSignup();
 }
 
 // Uh-oh! The passwords don't match. Let's guide them back!
 if ($password !== $confirmPassword) {
+    signupError(`passwordWontMatch`);
     redirectToSignup();
 }
 
 // Checking if the email is a valid one! We really need them to exist!
 if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+    signupError(`wrongMail`);
     redirectToSignup();
 }
 
