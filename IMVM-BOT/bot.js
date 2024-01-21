@@ -1,12 +1,34 @@
-const Discord = require('discord.js');
-const { REST } = require('@discordjs/rest');
-const { Routes } = require('discord-api-types/v9');
-const { Client, GatewayIntentBits, Collection } = require('discord.js');
-const fs = require('fs');
 require('dotenv').config();
+const Discord = require('discord.js');
+const OpenAI = require('openai');
+const openai = new OpenAI(process.env.OPENAI_API_KEY);
+const { Client, GatewayIntentBits, Collection, REST, Routes } = require('discord.js');
+const fs = require('node:fs');
+const path = require('node:path');
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
-client.commands = new Collection();
+const client = new Client({ intents: 2048 })
+client.commands = new Collection()
+
+async function generateImage(prompt) {
+  const response = await openai.createImage({
+  prompt: prompt,
+  n: 1,
+  size: "1024x1024",
+});
+  const image_url = response.data.data[0].url
+  return image_url
+}
+async function generate(prompt, model="gpt-3.5-turbo") {
+  const completion = await openai.createChatCompletion({
+    model: model,
+    messages: [{role: "user", content: prompt}],
+    max_tokens: 2500
+  });
+  const text = completion.data.choices[0].message.content
+  console.log(completion.data.choices[0].message.content);
+
+  return text;
+}
 
 // Carga los comandos
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -40,20 +62,16 @@ client.once('ready', async () => {
 });
 
 // Evento InteractionCreate
-client.on("interactionCreate", async (interaction) => {
-  if (!interaction.isCommand()) return;
-
-  try {
-    const command = client.commands.get(interaction.commandName);
-    if (!command) return;
-
-    await command.execute(interaction);
-  } catch (error) {
-    console.error(error);
-    await interaction.reply({
-      content: "Error initializing the command!",
-      ephemeral: true,
-    });
+client.on('interactionCreate', async interaction => {
+  if (interaction.commandName === 'generate-answer') {
+    await interaction.deferReply();
+    const res = await generate(interaction.options.getString('prompt'))
+    await interaction.editReply({ content: res });
+  }
+  if (interaction.commandName === 'generate-image') {
+    await interaction.deferReply();
+    const res = await generateImage(interaction.options.getString('prompt'))
+    await interaction.editReply({ content: res });
   }
 });
 
