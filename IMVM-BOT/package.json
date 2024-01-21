@@ -9,6 +9,7 @@
     "discord.js": "^14.14.1",
     "dotenv": "^16.3.1",
     "googleapis": "^126.0.1",
+    "mathjs": "^12.3.0",
     "moment": "^2.29.4",
     "node-fetch": "^2.6.1",
     "node-schedule": "^2.1.1",
