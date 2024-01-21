@@ -12,7 +12,7 @@ module.exports = {
                 .setRequired(true)
         ),
     async execute(interaction) {
-        await interaction.deferReply();
+        await interaction.deferReply({ content: 'Processing your request...', ephemeral: false });
 
         const question = interaction.options.getString('question');
 
