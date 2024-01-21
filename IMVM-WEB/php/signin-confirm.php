@@ -30,14 +30,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // If any of these is empty, let's kindly ask them to try again!
     if (areFieldsEmpty($fieldsToCheck)) {
-        showAlert("Please fill out the form!");
         redirectToSignin();
     }
+
     // Step 1: Let's check if the user exists in our awesome database!
+
     // We start with a quick query to find out
     $checkExisting = "SELECT id_users, password_users FROM users WHERE username_users = ?";
+
     // Preparing the statement for the big moment
     $stmtCheck = $conn->prepare($checkExisting);
+
     // Now, we're getting ready to bind the parameters
     $stmtCheck->bind_param("s", $username);
 
@@ -48,26 +51,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Did we find anything in the query?
         if ($result->num_rows > 0) {
+
             // Yup, we got something! Grabbing the first row (the password)
             $resultRow = $result->fetch_assoc();
+
             // Saving the hashed password for future comparison
             $hashedPassword = $resultRow['password_users'];
+
             // Now, let's check if the passwords match
             if (password_verify($password, $hashedPassword)) {
+
                 // Bingo! Passwords match, time to create a VIP session for this user
                 $_SESSION['user'] = $username;
                 redirectToIndex();
             } else {
+
                 // Uh-oh! Password didn't match, sending a friendly alert and back to the form
-                showAlert("Oops! Wrong password. Give it another shot!");
                 redirectToSignin();
             }
         } else {
+
             // No luck in the query, informing the user and inviting them to try again
-            showAlert("Oops! Username not found. Double-check and try again!");
             redirectToSignin();
         }
     } else {
+
         // Something went wrong with the query execution, showing a helpful error message
         showError("Oops! Something went wrong: " . $stmtCheck->error);
     }
@@ -75,6 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Finally, let's close the database connection
     closeDatabaseConnection();
 } else {
+
     // No POST method detected, gently guiding the user to the signin page
     redirectToSignin();
 }
