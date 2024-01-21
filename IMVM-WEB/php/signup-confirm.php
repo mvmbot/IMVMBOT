@@ -29,7 +29,6 @@ if (!isset($_POST['privacyCheckbox'])) {
 
     // Let's gently guide them back to where they should be so they can try again!
     redirectToSignup();
-    showAlert("You must accept the privacy policy to continue");
 }
 
 // We need to make sure they filled out all the important fields!
@@ -38,19 +37,16 @@ $fieldsToCheck = ['username', 'name', 'surname', 'mail', 'password', 'confirmPas
 // If any of these is empty, we kindly ask them to try again!
 if (areFieldsEmpty($fieldsToCheck)) {
     redirectToSignup();
-    //showAlert(`Fill the form please!`);
 }
 
 // Uh-oh! The passwords don't match. Let's guide them back!
 if ($password != $confirmPassword) {
     redirectToSignup();
-    //showAlert(`The passwords doesn't match!`);
 }
 
 // Checking if the email is a valid one! We really need them to exist!
 if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
     redirectToSignup();
-    //showAlert(`That's not a valid email`);
 }
 
 // Now, let's peek into the database and see if the chosen username or email is already taken!
@@ -81,7 +77,6 @@ try {
 // If we found any matches in the database, let them know the chosen username or email is taken!
 if ($stmtCheck->num_rows > 0) {
     redirectToSignin();
-    //showAlert("An account with that data exists");
 } else {
 
     // Looks like they're in the clear! Let's add them to our cool users' club!
@@ -110,7 +105,6 @@ if ($stmtCheck->num_rows > 0) {
 
             // Something went wrong, but we ain't liying bout it!
             redirectToSignup();
-            //showAlert(`Couldn't create the user, try again!`);
         }
     } catch (Exception $e) {
 
