@@ -33,7 +33,7 @@ module.exports = {
             temperature: 0.7,
         });
 
-        const advice = completion.data.choices[0].message.content;
+        const advice = completion.data.choices[0].messages[1].content;
 
         await interaction.editReply(advice);
     },
