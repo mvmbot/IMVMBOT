@@ -514,7 +514,7 @@ video {
 /*Cookies wrapper*/
 
 .cookies-wrap{
-  display: block;
+  display: none;
   background: white;
   padding: 20px;
   width: calc(100% - 40px);
@@ -528,6 +528,10 @@ video {
   padding-top: 60px;
   box-shadow: 0px 2px 20px 10px grey;
   text-align: center;
+}
+
+.cookies-wrap.active{
+  display: block;
 }
 
 .cookies-wrap .title,
@@ -575,6 +579,6 @@ video {
   left:0;
 }
 
-.background-cookies-wrap:active{
+.background-cookies-wrap.active{
   display:block
 }
