@@ -1,33 +1,36 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
-const { OpenAI } = require('openai');
-const openai = new OpenAI(process.env.OPENAI_API_KEY);
+const { SlashCommandBuilder, EmbedBuilder } = require ('discord.js');
+const axios = require('axios');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('gpt')
-        .setDescription('GPT integrated into Discord')
-        .addStringOption(option =>
-            option.setName('chat')
-                .setDescription('Write a question')
-                .setRequired(true)
-        ),
-    async execute(interaction) {
-        await interaction.deferReply();
+    .setName('gpt')
+    .setDescription('Ask AI a question')
+    .addStringOption(option.setName('question').setDescription('The question to ask the AI').setRequired(true)),
+    async execute (interaction) {
 
-        const chat = interaction.options.getString('chat');
+        await interaction.deferReply({ ephemeral: true});
 
-        const messages = [
-            { role: 'system', content: 'You are a helpful chatbot. Respond in 3 sentences or less.' },
-            { role: 'user', content: chat },
-        ];
+        const { options } = interaction;
+        const question = options.getString('question');
 
-        const response = await openai.createChatCompletion({ 
-            model: 'gpt-3.5-turbo',
-            messages: messages,
-        });
-
-        const botResponse = response.choices[0].message.content.trim();
-
-        await interaction.editReply(botResponse);
-    },
-};
+        const input = {
+            method: 'GET',
+            url: 'https://google-bard1.p.rapidapi.com/v1/gemini/gemini-pro-vision',
+            headers: {
+              api_key: '<REQUIRED>',
+              text: '<REQUIRED>',
+              userid: '<REQUIRED>',
+              image: '<REQUIRED>',
+              'X-RapidAPI-Key': '5e8a3a5b23msh60564ec86885905p109cb1jsn5e09bd0b4504',
+              'X-RapidAPI-Host': 'google-bard1.p.rapidapi.com'
+            }
+          };
+          
+          try {
+              const response = await axios.request(options);
+              console.log(response.data);
+          } catch (error) {
+              console.error(error);
+          }
+    }
+}

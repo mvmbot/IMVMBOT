@@ -3,7 +3,7 @@
     "@discordjs/builders": "^1.7.0",
     "@discordjs/rest": "^2.2.0",
     "@iamtraction/google-translate": "github:iamtraction/google-translate",
-    "axios": "^1.6.2",
+    "axios": "^1.6.5",
     "commandkit": "^0.1.6",
     "discord-api-types": "^0.37.66",
     "discord.js": "^14.14.1",
