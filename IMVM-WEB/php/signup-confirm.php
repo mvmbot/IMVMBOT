@@ -26,8 +26,6 @@ $confirmPassword = $_POST['confirmPassword'] ?? '';
 
 // Oops! Did they forget to check the privacy box?
 if (!isset($_POST['privacyCheckbox'])) {
-
-    // Let's gently guide them back to where they should be so they can try again!
     redirectToSignup();
 }
 
@@ -109,7 +107,7 @@ if ($stmtCheck->num_rows > 0) {
     } catch (Exception $e) {
 
         // Oops, another bump in the road! Let's tell them gently.
-        echo "Error: " . $e->getMessage();
+        showError("Error: " . $e->getMessage());
     }
 }
 
