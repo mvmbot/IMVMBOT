@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@discordjs/builders": "^1.7.0",
     "@discordjs/rest": "^2.2.0",
     "@iamtraction/google-translate": "github:iamtraction/google-translate",
     "axios": "^1.6.2",
@@ -9,6 +10,7 @@
     "dotenv": "^16.3.1",
     "googleapis": "^126.0.1",
     "moment": "^2.29.4",
+    "node-fetch": "^3.3.2",
     "node-schedule": "^2.1.1",
     "openai": "^4.24.7"
   },
