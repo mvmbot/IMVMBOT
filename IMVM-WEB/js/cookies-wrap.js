@@ -8,7 +8,7 @@ if(!localStorage.getItem('accepted-cookies')){
 	CookiesWrap.classList.add('active');
 	backgroundCookiesWrap.classList.add('active');
 } else {
-	dataLayer.push({'event': 'cookies'});
+	dataLayer.push({'event': 'accepted-cookies'});
 }
 
 btnAcceptCoookies.addEventListener('click', () => {

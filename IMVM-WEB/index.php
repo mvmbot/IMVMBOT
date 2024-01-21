@@ -253,6 +253,7 @@ session_start();
     <!-- Navbar End -->
 
     <!-- Cookies Start -->
+    
     <div class="cookies-wrap" id="cookies-wrap">
         <h4 class="title">Cookies</h4>
         <p class="paragraph">
