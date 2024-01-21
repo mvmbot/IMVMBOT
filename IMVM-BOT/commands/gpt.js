@@ -1,36 +1,41 @@
-const { SlashCommandBuilder, EmbedBuilder } = require ('discord.js');
-const axios = require('axios');
+const { SlashCommandBuilder } = require('@discordjs/builders');
+const { Configuration, OpenAI } = require('openai');
+const config = new Configuration({ apiKey: process.env.OPENAI_API_KEY });
+const openai = new OpenAI(config);
 
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName('gpt')
-    .setDescription('Ask AI a question')
-    .addStringOption(option.setName('question').setDescription('The question to ask the AI').setRequired(true)),
-    async execute (interaction) {
+        .setName('gpt')
+        .setDescription('Get advice from GPT')
+        .addStringOption(option => 
+            option.setName('question')
+                .setDescription('Enter your question')
+                .setRequired(true)
+        ),
+    async execute(interaction) {
+        await interaction.deferReply();
 
-        await interaction.deferReply({ ephemeral: true});
+        const question = interaction.options.getString('question');
 
-        const { options } = interaction;
-        const question = options.getString('question');
+        const messages = [
+            {
+                role: 'system',
+                content: 'You are a chatbot that gives helpful advice. Add advice in three sentences or less.',
+            },
+            {
+                role: 'user',
+                content: question,
+            },
+        ];
 
-        const input = {
-            method: 'GET',
-            url: 'https://google-bard1.p.rapidapi.com/v1/gemini/gemini-pro-vision',
-            headers: {
-              api_key: '<REQUIRED>',
-              text: '<REQUIRED>',
-              userid: '<REQUIRED>',
-              image: '<REQUIRED>',
-              'X-RapidAPI-Key': '5e8a3a5b23msh60564ec86885905p109cb1jsn5e09bd0b4504',
-              'X-RapidAPI-Host': 'google-bard1.p.rapidapi.com'
-            }
-          };
-          
-          try {
-              const response = await axios.request(options);
-              console.log(response.data);
-          } catch (error) {
-              console.error(error);
-          }
-    }
-}
+        const completion = await openai.createChatCompletion({
+            model: 'gpt-3.5-turbo',
+            messages,
+            temperature: 0.7,
+        });
+
+        const advice = completion.data.choices[0].message.content;
+
+        await interaction.editReply(advice);
+    },
+};
