@@ -37,6 +37,8 @@ session_start();
     <link href="css/style.css" rel="stylesheet" />
     <link rel="stylesheet" href="./css/cssRegister.css">
 
+  <!-- Javascript validation -->
+  <script src="./js/validation.js"></script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PXHDMQQ0XY"></script>
