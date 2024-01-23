@@ -10,8 +10,6 @@ function validateFormSignUp() {
 
     var send = true;
 
-    console.log("entra")
-
     // Now we check if the values are empty, in case they are, we send an error
     if (username.trim() === '' || name.trim() === '' || surname.trim() === '' || mail.trim() === '' || password.trim() === '' || confirmPassword.trim() === '') {
         alert('Fill the form properly!');
