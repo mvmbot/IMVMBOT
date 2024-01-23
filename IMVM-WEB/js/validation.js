@@ -12,17 +12,20 @@ function validateFormSignUp() {
     // Oops! Did you forget something? Checking for empty fields
     if (username.trim() === '' || name.trim() === '' || surname.trim() === '' || mail.trim() === '' || password.trim() === '' || confirmPassword.trim() === '') {
         alert('Uh-oh! It looks like you forgot to fill in some fields. Please make sure to complete all sections.');
+        return;
     }
 
     // Let's see if that email shape is right
     var mailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!mailRegex.test(mail)) {
         alert(`Oh no! That email doesn't seem quite right. Double-check and try again, please.`);
+        return;
     }
 
     // Did you agree to the privacy policy?
     if (!privacyCheckbox.checked) {
         alert('Hold on! Before we proceed, could you confirm that you agree with our privacy policy?');
+        return;
     }
 
 }
