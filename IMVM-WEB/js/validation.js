@@ -6,9 +6,11 @@ function validateFormSignUp() {
     var mail = document.getElementById('mail').value;
     var password = document.getElementById('password').value;
     var confirmPassword = document.getElementById('confirmPassword').value;
-    var privacyCheckbox = document.getElementByName('privacyCheckbox');
+    var privacyCheckbox = document.getElementById("privacyCheckbox");
 
     var send = true;
+
+    console.log("entra")
 
     // Now we check if the values are empty, in case they are, we send an error
     if (username.trim() === '' || name.trim() === '' || surname.trim() === '' || mail.trim() === '' || password.trim() === '' || confirmPassword.trim() === '') {

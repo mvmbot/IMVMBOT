@@ -293,7 +293,7 @@ session_start();
       <div style="text-align: center;">
         <p style="display: inline-block; margin: 0; padding: 0;">Please confirm that you agree with our privacy policy
         </p>
-        <input type="checkbox" name="privacyCheckbox" value="on"
+        <input type="checkbox" name="privacyCheckbox" id="privacyCheckbox" value="on"
           style="vertical-align: middle; margin: 0; padding: 0;" />
       </div>
 
