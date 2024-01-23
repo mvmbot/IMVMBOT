@@ -37,8 +37,8 @@ session_start();
     <link href="css/style.css" rel="stylesheet" />
     <link rel="stylesheet" href="./css/cssRegister.css">
 
-  <!-- Javascript validation -->
-  <script src="./js/validation.js"></script>
+    <!-- Javascript validation -->
+    <script src="./js/validation.js"></script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PXHDMQQ0XY"></script>
@@ -257,8 +257,7 @@ session_start();
 
   <div class="form-container">
     <p class="title">Sign up to IESMVMBOT</p>
-    <form class="form" method="POST" action="./php/signup-confirm.php" id="signupform" name="signupform"
-      onsubmit="validateFormSignUp()">
+    <form class="form" method="POST" action="./php/signup-confirm.php" id="signupform" name="signupform" onsubmit="validateFormSignUp()">
       <div class="input-group">
         <label for="username">Username</label>
         <input type="text" name="username" id="username" placeholder="" />
