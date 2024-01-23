@@ -419,6 +419,17 @@ session_start();
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.30s">
+                    <div class="team-item">
+                        <div class="position-relative overflow-hidden">
+                            <img class="img-fluid" src="./img/gtranslate.png" alt="">
+
+                        </div>
+                        <div class="bg-light text-center p-4">
+                            <h5 class="fw-bold mb-0">/gtranslate</h5>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
