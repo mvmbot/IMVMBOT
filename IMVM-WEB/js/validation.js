@@ -6,7 +6,7 @@ function validateFormSignUp() {
     var mail = document.getElementById('mail').value;
     var password = document.getElementById('password').value;
     var confirmPassword = document.getElementById('confirmPassword').value;
-    var privacyCheckbox = document.getElementByName('privacyCheckbox');
+    var privacyCheckbox = document.getElementById("privacyCheckbox");
 
     var send = true;
 
