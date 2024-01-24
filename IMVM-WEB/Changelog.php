@@ -414,16 +414,14 @@ session_start();
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-light mb-4">Company</h4>
                     <a class="btn btn-link" href="./about-us.php">About Us</a>
-                    <a class="btn btn-link" href="./our-services.php">Our Services</a>
-                    <a class="btn btn-link" href="./privacy-policy.php">Privacy Policy</a>
-                    <a class="btn btn-link" href="./cookies-policy.php">Cookies</a>
+                    <a class="btn btn-link" href="./FAQ.php">FAQ</a>
+                    <a class="btn btn-link" href="./Changelog.php">Changelog</a>
+                    
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-light mb-4">Direct Link</h4>
-                    <a class="btn btn-link" href="./FAQ.php">FAQ</a>
-                    <a class="btn btn-link" href="">Forum</a>
-                    <a class="btn btn-link" href="">Functions</a>
-                    <a class="btn btn-link" href="">Live Chat</a>
+                    <a class="btn btn-link" href="./privacy-policy.php">Privacy Policy</a>
+                    <a class="btn btn-link" href="./cookies-policy.php">Cookies</a>
 
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -441,14 +439,14 @@ session_start();
             <div class="copyright">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        <p>&copy; 2023 IESMVMBOT - All rights reserved - <a href="./privacy-policy.php">Privacy Policy</a></p>
-
+                        <p>&copy; 2024 IESMVMBOT - All rights reserved - <a href="./privacy-policy.php">Privacy
+                                Policy</a></p>
                     </div>
                     <div class="col-md-6 text-center text-md-end">
                         <div class="footer-menu">
                             <a href="./index.php">Home</a>
                             <a href="./cookies-policy.php">Cookies</a>
-                            <a href="">Help</a>
+                            <a href="mailto:admin@iesmvmbot.com">Help</a>
                             <a href="./FAQ.php">FQAs</a>
                         </div>
                     </div>
