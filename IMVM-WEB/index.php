@@ -81,7 +81,7 @@ session_start();
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWQDVHW8" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- Google Tag Manager End (noscript) -->
-
+    
     <!-- Spinner Start -->
     <div id="spinner"
         class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -166,55 +166,43 @@ session_start();
                 <a href="./FAQ.php" class="nav-item nav-link">FAQ</a>
                 <a href="./Changelog.php" class="nav-item nav-link">CHANGELOG</a>
                 <div class="dropdown">
-
-                    <div class="dropdown">
-                        <button class="nav-item nav-link dropdown-toggle" type="button" id="dropdownMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                            style="background-color: #0a0a0a; color: white; border: none;">
-                            USER
-                        </button>
-                        <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton" style="background-color: #000;">
-                    
-                            <!-- Enlace para SIGN UP -->
-                            <a href="./signup.php" class="nav-item nav-link" style="color: white;">SIGN UP</a>
-                    
-                            <!-- Enlace para SIGN IN -->
-                            <a href="./signin.php" class="nav-item nav-link" style="color: white;">SIGN IN</a>
-                    
-                            <!-- Enlace para LOG OUT -->
-                            <a href="./php/logout.php" class="nav-item nav-link" style="color: white;">LOG OUT</a>
-                        </div>
+                    <button class="nav-item nav-link dropdown-toggle" type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        style="background-color: #0a0a0a; color: white; border: none;">
+                        USER
+                    </button>
+                    <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton1" style="background-color: #000;">
+                        <!-- Enlace para SIGN UP -->
+                        <a href="./signup.php" class="nav-item nav-link" style="color: white;">SIGN UP</a>
+                        <!-- Enlace para SIGN IN -->
+                        <a href="./signin.php" class="nav-item nav-link" style="color: white;">SIGN IN</a>
+                        <!-- Enlace para LOG OUT -->
+                        <a href="./php/logout.php" class="nav-item nav-link" style="color: white;">LOG OUT</a>
                     </div>
-                    
-                    
                 </div>
                 <?php
-                    if ($_SESSION["user"] != null) {
+                if ($_SESSION["user"] != null) {
                 ?>
                 <div class="dropdown">
-                    <button class="nav-item nav-link dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                    <button class="nav-item nav-link dropdown-toggle" type="button" id="dropdownMenuButton2"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                         style="background-color: #0a0a0a; color: white; border: none;">
                         TICKETS
                     </button>
-                    <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton" style="background-color: #000;">
-                
+                    <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton2" style="background-color: #000;">
                         <!-- Enlace para CREATE TICKET -->
                         <a href="create-ticket.php" class="nav-item nav-link" style="color: white;">CREATE TICKET</a>
-                
                         <!-- Enlace para VIEW TICKETS -->
                         <a href="view-ticket.php" class="nav-item nav-link" style="color: white;">VIEW TICKETS</a>
                     </div>
                 </div>
-                
-                
                 <?php
-                    }
+                }
                 ?>
             </div>
             <?php
             if ($_SESSION["user"] == null) {
-                ?>
+            ?>
             <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">ACCOUNT<i><svg
                         xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" class="svg-icon">
                         <style>
@@ -228,7 +216,7 @@ session_start();
                     </svg></i></a>
             <?php
             } else {
-                ?>
+            ?>
             <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
                 <?php echo $_SESSION['user'] ?><i><svg xmlns="http://www.w3.org/2000/svg" height="1em"
                         viewBox="0 0 448 512" class="svg-icon">
@@ -247,8 +235,7 @@ session_start();
             ?>
         </div>
     </nav>
-
-
+    
     <!-- Navbar End -->
 
     <!-- Cookies Start -->
