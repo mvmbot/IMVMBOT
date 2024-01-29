@@ -67,12 +67,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
 
                 // Uh-oh! Password didn't match, sending a friendly alert and back to the form
-                redirectToSignin();
+                showErrorPasswordJS();
             }
         } else {
 
             // No luck in the query, informing the user and inviting them to try again
-            redirectToSignin();
+            showErrorUser();
         }
     } else {
 
