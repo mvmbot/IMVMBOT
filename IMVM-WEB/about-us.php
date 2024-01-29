@@ -182,6 +182,7 @@ session_start();
                     </div>
                 </div>
                 <?php
+                // En caso de que haya una sesión abierta
                 if ($_SESSION["user"] != null) {
                 ?>
                 <div class="dropdown">
@@ -202,6 +203,7 @@ session_start();
                 ?>
             </div>
             <?php
+            // En caso de que NO haya una sesión abierta
             if ($_SESSION["user"] == null) {
             ?>
             <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">ACCOUNT<i><svg
