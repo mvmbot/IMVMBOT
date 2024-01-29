@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
 
             // No luck in the query, informing the user and inviting them to try again
-            showErrorUser();
+            showErrorUserJS();
         }
     } else {
 
