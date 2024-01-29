@@ -16,6 +16,7 @@ function redirectToSignin() {
     exit;
 }
 
+// Function to redirect to the main page
 function redirectToIndex() {
     header('Location: ' . INDEX_PAGE);
     exit;

@@ -9,22 +9,22 @@ function validateFormSignUp() {
     var confirmPassword = document.getElementById('confirmPassword').value;
     var privacyCheckbox = document.getElementById("privacyCheckbox");
 
-    // Oops! Did you forget something? Checking for empty fields
+    // Did you forget something? Checking for empty fields
     if (username.trim() === '' || name.trim() === '' || surname.trim() === '' || mail.trim() === '' || password.trim() === '' || confirmPassword.trim() === '') {
-        alert('Uh-oh! It looks like you forgot to fill in some fields. Please make sure to complete all sections.');
+        alert('Please complete the form properly!.');
         return;
     }
 
     // Let's see if that email shape is right
     var mailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!mailRegex.test(mail)) {
-        alert(`Oh no! That email doesn't seem quite right. Double-check and try again, please.`);
+        alert(`That email doesn't seem quite right. Check and try again.`);
         return;
     }
 
     // Did you agree to the privacy policy?
     if (!privacyCheckbox.checked) {
-        alert('Hold on! Before we proceed, could you confirm that you agree with our privacy policy?');
+        alert('You must confirm that you agree with our privacy policy');
         return;
     }
 

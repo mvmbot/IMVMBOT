@@ -1,17 +1,17 @@
 <?php
-// Hey there, let's make sure we're keeping track of the user's info!
+// Let's make sure we're keeping track of the user's info
 session_start();
 
-// Now, time to set up the connection to our awesome database!
+// Now, time to set up the connection to our awesome database
 require("config.php");
 require("databaseFunctions.php");
 
-// Grab some handy tools for our code!
+// Grab some handy tools for our code
 require("redirectFunctions.php");
 require("dataValidationFunctions.php");
 require("errorAlerts.php");
 
-// Turn on the lights to catch any potential coding errors!
+// Turn on the lights to catch any potential coding errors
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -25,15 +25,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'] ?? '';
     $password = $_POST['password'] ?? '';
 
-    // Let's make sure they filled out all the important fields!
+    // Let's make sure they filled out all the important fields
     $fieldsToCheck = ['username', 'password'];
 
-    // If any of these is empty, let's kindly ask them to try again!
+    // If any of these is empty, let's kindly ask them to try again
     if (areFieldsEmpty($fieldsToCheck)) {
         redirectToSignin();
     }
 
-    // Step 1: Let's check if the user exists in our awesome database!
+    // Step 1: Let's check if the user exists in our awesome database
 
     // We start with a quick query to find out
     $checkExisting = "SELECT id_users, password_users FROM users WHERE username_users = ?";
@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Did we find anything in the query?
         if ($result->num_rows > 0) {
 
-            // Yup, we got something! Grabbing the first row (the password)
+            // Yes, we got something. Grabbing the first row (the password)
             $resultRow = $result->fetch_assoc();
 
             // Saving the hashed password for future comparison
