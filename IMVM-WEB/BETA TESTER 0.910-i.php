@@ -307,10 +307,15 @@ session_start();
         Thank you for being part of our journey towards creating a more robust and user-friendly software environment.
         Stay tuned for more exciting updates in future releases!
     </p>
-                </div>
+    <a href="./Changelog.php"
+                        class="btn btn-primary py-3 px-5">Go back<i class="fa fa-arrow-right ms-3"></i></a>
+                   
+</div>
             </div>
         </div>
-    </div>
+         </div>
+
+    
     
     <!-- News End -->
 
