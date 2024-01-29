@@ -14,9 +14,9 @@ function showErrorPasswordJS() {
     </script>';
 }
 
-function showErrorUser() {
-    echo`<script type="text/javascript">
-    alert("Error: User doesn't exists");
+function showErrorUserJS() {
+    echo'<script type="text/javascript">
+    alert("Error: User does not exists");
     window.location.href="../signin.php";
-    </script>`;
+    </script>';
 }
