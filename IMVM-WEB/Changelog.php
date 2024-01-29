@@ -388,7 +388,7 @@ session_start();
                     <!-- Titulo noticia -->
                     <p class="mb-4">In this changelog, we are excited to present the comprehensive list of updates and
                         errors that have been addressed in the latest iteration of our BETA TESTER version, numbered
-                        0.911-0. Our commitment to enhancing the user experience and ensuring the stability of our
+                        0.910-0. Our commitment to enhancing the user experience and ensuring the stability of our
                         software remains at the forefront of our efforts. Below, you will find a detailed account of the
                         changes and improvements we have implemented:</p>
                     <a href="./BETA TESTER 0.910-i.php"
