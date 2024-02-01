@@ -43,39 +43,49 @@ session_start();
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PXHDMQQ0XY"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
 
-        gtag('config', 'G-PXHDMQQ0XY');
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-PXHDMQQ0XY');
     </script>
 
 
     <!-- Google Tag Manager Start -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-PWQDVHW8');</script>
+    <script>
+    (function(w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start': new Date().getTime(),
+            event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-PWQDVHW8');
+    </script>
     <!-- Google Tag Manager End -->
 
     <!-- Google Translator Start -->
     <script type="text/javascript"
         src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement(
-                {
-                    pageLanguage: "en",
-                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                    showLogo: false,
-                },
-                "google_translate_element"
-            );
-        }
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+                pageLanguage: "en",
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                showLogo: false,
+            },
+            "google_translate_element"
+        );
+    }
     </script>
     <!-- Google Translator End -->
 </head>
@@ -155,9 +165,9 @@ session_start();
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
                 <style>
-                    svg {
-                        fill: #9900ff
-                    }
+                svg {
+                    fill: #9900ff
+                }
                 </style>
                 <path
                     d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
@@ -175,7 +185,8 @@ session_start();
                         style="background-color: #0a0a0a; color: white; border: none;">
                         USER
                     </button>
-                    <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton1" style="background-color: #000;">
+                    <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton1"
+                        style="background-color: #000;">
                         <!-- Enlace para SIGN UP -->
                         <a href="./signup.php" class="nav-item nav-link" style="color: white;">SIGN UP</a>
                         <!-- Enlace para SIGN IN -->
@@ -193,7 +204,8 @@ session_start();
                         style="background-color: #0a0a0a; color: white; border: none;">
                         TICKETS
                     </button>
-                    <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton2" style="background-color: #000;">
+                    <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton2"
+                        style="background-color: #000;">
                         <!-- Enlace para CREATE TICKET -->
                         <a href="create-ticket.php" class="nav-item nav-link" style="color: white;">CREATE TICKET</a>
                         <!-- Enlace para VIEW TICKETS -->
@@ -210,10 +222,10 @@ session_start();
             <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">ACCOUNT<i><svg
                         xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" class="svg-icon">
                         <style>
-                            .svg-icon {
-                                fill: #ffffff;
-                                margin-left: 5px;
-                            }
+                        .svg-icon {
+                            fill: #ffffff;
+                            margin-left: 5px;
+                        }
                         </style>
                         <path
                             d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
@@ -225,10 +237,10 @@ session_start();
                 <?php echo $_SESSION['user'] ?><i><svg xmlns="http://www.w3.org/2000/svg" height="1em"
                         viewBox="0 0 448 512" class="svg-icon">
                         <style>
-                            .svg-icon {
-                                fill: #ffffff;
-                                margin-left: 5px;
-                            }
+                        .svg-icon {
+                            fill: #ffffff;
+                            margin-left: 5px;
+                        }
                         </style>
                         <path
                             d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
@@ -239,7 +251,7 @@ session_start();
             ?>
         </div>
     </nav>
-    
+
     <!-- Navbar End -->
 
     <div class="form-container">
@@ -270,13 +282,23 @@ session_start();
             <div class="line"></div>
         </div>
         <div class="social-icons">
-            <button aria-label="Log in with Google" class="icon">
+            <button aria-label="Log in with Google" class="icon" id="google-login-button">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-5 h-5 fill-current">
                     <path
                         d="M16.318 13.714v5.484h9.078c-0.37 2.354-2.745 6.901-9.078 6.901-5.458 0-9.917-4.521-9.917-10.099s4.458-10.099 9.917-10.099c3.109 0 5.193 1.318 6.38 2.464l4.339-4.182c-2.786-2.599-6.396-4.182-10.719-4.182-8.844 0-16 7.151-16 16s7.156 16 16 16c9.234 0 15.365-6.49 15.365-15.635 0-1.052-0.115-1.854-0.255-2.651z">
                     </path>
                 </svg>
             </button>
+
+            <script>
+            // Assigns the Google authentication link to the button when the page loads
+            document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('google-login-button').addEventListener('click', function() {
+                    // Redirect the user to the Google authentication link
+                    window.location.href = '<?php echo $client->createAuthUrl(); ?>';
+                });
+            });
+            </script>
             <button aria-label="Log in with Discord" class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-discord"
                     viewBox="0 0 16 16">
@@ -342,7 +364,7 @@ session_start();
                     <a class="btn btn-link" href="./about-us.php">About Us</a>
                     <a class="btn btn-link" href="./FAQ.php">FAQ</a>
                     <a class="btn btn-link" href="./Changelog.php">Changelog</a>
-                    
+
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-light mb-4">Direct Link</h4>
