@@ -282,7 +282,7 @@ session_start();
             <div class="line"></div>
         </div>
         <div class="social-icons">
-        <?php
+            <?php
 require_once 'vendor/autoload.php';
 require_once 'configLogin.php';
  
@@ -318,7 +318,7 @@ echo '<div class="google">
                     </path>
                 </svg>
             </button>
-        
+
         </div>
         <p class="signup">New to IESMVMBOT?
             <a href="signup.php" class="">Create an account</a>
