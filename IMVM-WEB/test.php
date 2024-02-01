@@ -12,3 +12,5 @@ $client->addScope("profile");
 
 
 echo "<a href='".$client->createAuthUrl()."'>Google Login</a>";
+
+?>
