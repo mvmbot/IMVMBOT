@@ -249,6 +249,11 @@ session_start();
                 <h6 class="text-primary text-uppercase">// IESMVMBOT TEAM //</h6>
                 <h1 class="mb-5">OUR TEAM</h1>
             </div>
+            <div class="mb-4 text-white">
+                        <center><p>Introducing our dynamic team of four individuals, united by a shared passion for programming and a common background in advanced programming studies. 
+                            We first crossed paths during our time in a higher education program, and since 2023, we have been dedicated to revolutionizing the landscape of computer science education. <br>Our collective vision 
+                            is to streamline the learning experience by leveraging the widespread popularity of Discord.</p></center><br>
+                    </div>
             <div class="row g-4">
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="team-item">
@@ -307,7 +312,7 @@ session_start();
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.10s">
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.9s">
                     <div class="team-item">
                         <div class="position-relative overflow-hidden">
                             <img class="img-fluid" src="./img/ivan.png" alt="">
