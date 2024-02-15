@@ -266,14 +266,17 @@ session_start();
 
             </div>
 
-            <div style="text-align: center;">
-                <p style="display: inline-block; margin: 0; padding: 0;">Please confirm that you agree with our privacy policy
-                </p>
-                <input type="checkbox" name="privacyCheckbox" id="privacyCheckbox" value="on" style="vertical-align: middle; margin: 0; padding: 0;" />
+            <div>
+            <input type="checkbox" name="privacyCheckbox" id="privacyCheckbox" value="on" style="vertical-align: middle; margin: 0; padding: 0;" />
+            <p style="display: inline-block; padding: 0;">Confirm that you agree with our privacy policy
+                </p>     
             </div>
-
-
-            <input type="submit" class="sign" name="signup">
+            <div>
+                <input type="checkbox" name="newsletterCheckBox" id="newsletterCheckBox" value="on" style="vertical-align: middle; margin: 0; padding: 0;" />
+                <p style="display: inline-block; padding: 0;">Confirm that you agree to receive commercial information
+                    </p>     
+                </div>
+            <button type="submit" class="sign" name="signup">Sign Up</button>
         </form>
         <div class="social-message">
             <div class="line"></div>

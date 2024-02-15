@@ -251,7 +251,7 @@ session_start();
 
             </div>
 
-            <button class="sign">Sign In</button>
+            <button type="submit" class="sign" name="signup">Sign In</button>
         </form>
         <div class="social-message">
             <div class="line"></div>
