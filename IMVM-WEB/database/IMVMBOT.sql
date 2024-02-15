@@ -17,13 +17,14 @@ CREATE TABLE users (
     nameUsers VARCHAR(50) NOT NULL,
     surnameUsers VARCHAR(50) NOT NULL,
     emailUsers VARCHAR(100) NOT NULL UNIQUE,
-    passwordUsers VARCHAR(255) NOT NULL
+    passwordUsers VARCHAR(255) NOT NULL,
+    acceptNewsletter BIT NOT NULL
 );
 
 -- Tabla para almacenar la información de los tickets.
 CREATE TABLE ticket (
     idTicket INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    typeTicket ENUM('Help & Support', 'Bug Reporting', 'Feature Request','General Inquiry','', 'Other') NOT NULL, 
+    typeTicket ENUM('Help & Support', 'Bug Reporting', 'Feature Request', 'Abuse Report', 'General Inquiry', 'Improvement Suggestions', 'Grammar/Translation Issues', 'Collaboration/Development', 'Information Update', 'Other') NOT NULL
     affairTicket VARCHAR(100) NOT NULL,
     descriptionTicket TEXT NOT NULL,
     stateTicket ENUM('Open', 'In progress', 'Closed') DEFAULT 'Open',
