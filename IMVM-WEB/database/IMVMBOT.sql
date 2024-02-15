@@ -2,54 +2,55 @@ CREATE DATABASE IMVMBOT;
 
 -- Tabla para almacenar administradores
 CREATE TABLE admin (
-    id_admin INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    username_admin VARCHAR(50) NOT NULL UNIQUE,
-    name_admin VARCHAR(50) NOT NULL,
-    surname_admin VARCHAR(50) NOT NULL UNIQUE,
-    email_admin VARCHAR(100) NOT NULL UNIQUE,
-    password_admin VARCHAR(255) NOT NULL
+    idAdmin INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    usernameAdmin VARCHAR(50) NOT NULL UNIQUE,
+    nameAdmin VARCHAR(50) NOT NULL,
+    surnameAdmin VARCHAR(50) NOT NULL UNIQUE,
+    emailAdmin VARCHAR(100) NOT NULL UNIQUE,
+    passwordAdmin VARCHAR(255) NOT NULL
 );
 
 -- Tabla para almacenar la información de los usuarios.
 CREATE TABLE users (
-    id_users INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    username_users VARCHAR(50) NOT NULL UNIQUE,
-    name_users VARCHAR(50) NOT NULL,
-    surname_users VARCHAR(50) NOT NULL,
-    email_users VARCHAR(100) NOT NULL UNIQUE,
-    password_users VARCHAR(255) NOT NULL
+    idUsers INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    usernameUsers VARCHAR(50) NOT NULL UNIQUE,
+    nameUsers VARCHAR(50) NOT NULL,
+    surnameUsers VARCHAR(50) NOT NULL,
+    emailUsers VARCHAR(100) NOT NULL UNIQUE,
+    passwordUsers VARCHAR(255) NOT NULL
 );
 
 -- Tabla para almacenar la información de los tickets.
 CREATE TABLE ticket (
-    id_ticket INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    affair_ticket VARCHAR(100) NOT NULL,
-    description_ticket TEXT NOT NULL,
-    state_ticket ENUM('Open', 'In progress', 'Closed') DEFAULT 'Open',
-    createDate_ticket TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    id_users INT,
-    FOREIGN KEY (id_users) REFERENCES users(id_users)
+    idTicket INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    typeTicket ENUM('Help & Support', 'Bug Reporting', 'Feature Request','General Inquiry','', 'Other') NOT NULL, 
+    affairTicket VARCHAR(100) NOT NULL,
+    descriptionTicket TEXT NOT NULL,
+    stateTicket ENUM('Open', 'In progress', 'Closed') DEFAULT 'Open',
+    createDateTicket TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    idUsers INT,
+    FOREIGN KEY (idUsers) REFERENCES users(idUsers)
 );
 
 -- Tabla para almacenar todo lo relacionado a los tickets.
 CREATE TABLE trouble (
-    id_trouble INT AUTO_INCREMENT PRIMARY KEY,
-    description_trouble TEXT NOT NULL,
-    sendDate_trouble TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    id_ticket INT,
-    id_users INT,
-    id_admin INT,
-    FOREIGN KEY (id_admin) REFERENCES admin(id_admin),
-    FOREIGN KEY (id_ticket) REFERENCES ticket(id_ticket),
-    FOREIGN KEY (id_users) REFERENCES users(id_users)
+    idTrouble INT AUTO_INCREMENT PRIMARY KEY,
+    descriptionTrouble TEXT NOT NULL,
+    sendDateTrouble TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    idTicket INT,
+    idUsers INT,
+    idAdmin INT,
+    FOREIGN KEY (idAdmin) REFERENCES admin(idAdmin),
+    FOREIGN KEY (idTicket) REFERENCES ticket(idTicket),
+    FOREIGN KEY (idUsers) REFERENCES users(idUsers)
 );
 
 -- Tabla para llevar un registro sobre los cambios en los tickets.
 CREATE TABLE log (
-    id_log INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    id_ticket INT,
-    stateBefore_log ENUM('Open', 'In progress', 'Closed'),
-    stateAfter_log ENUM('Open', 'In progress', 'Closed'),
-    logDate_log TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (id_ticket) REFERENCES ticket (id_ticket)
+    idLog INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    idTicket INT,
+    stateBeforeLog ENUM('Open', 'In progress', 'Closed'),
+    stateAfterLog ENUM('Open', 'In progress', 'Closed'),
+    logDateLog TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (idTicket) REFERENCES ticket (idTicket)
 );

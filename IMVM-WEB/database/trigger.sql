@@ -1,12 +1,12 @@
 DELIMITER //
 
-CREATE TRIGGER after_ticket_insert
+CREATE TRIGGER afterTicketInsert
 AFTER INSERT
 ON ticket
 
 BEGIN
-    INSERT INTO log (id_ticket, stateBefore_log, stateAfter_log)
-    VALUES (NEW.id_ticket, NULL, 'Open');
+    INSERT INTO log (idTicket, stateBeforeLog, stateAfterLog)
+    VALUES (NEW.idTicket, NULL, 'Open');
 END //
 
 DELIMITER ;
