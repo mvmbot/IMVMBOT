@@ -2,7 +2,7 @@
 session_start();
 ?>
 
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -11,25 +11,6 @@ session_start();
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta name="keywords" content="IESMVMBOT, classroom discord bot, mvmbot, insmvmbot, mvm, discord bot" />
     <meta name="description" content="The best Discord bot for School alumns. " />
-
-    <!-- Google Tag Manager Start -->
-    <script>
-        (function(w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({
-                'gtm.start': new Date().getTime(),
-                event: 'gtm.js'
-            });
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s),
-                dl = l != 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-PWQDVHW8');
-    </script>
-    <!-- Google Tag Manager End -->
 
     <!-- Favicon -->
     <link rel="icon" href="IMVM-WEB/img/faviimvm.ico" type="image/x-icon" />
@@ -53,7 +34,10 @@ session_start();
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/cssRegister.css">
 
+    <!-- Javascript validation -->
+    <script src="./js/validation.js"></script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PXHDMQQ0XY"></script>
@@ -67,6 +51,26 @@ session_start();
 
         gtag('config', 'G-PXHDMQQ0XY');
     </script>
+
+
+    <!-- Google Tag Manager Start -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PWQDVHW8');
+    </script>
+    <!-- Google Tag Manager End -->
 
     <!-- Google Translator Start -->
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
@@ -301,6 +305,7 @@ session_start();
         </div>
     </div>
     <!-- Footer End -->
+
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
