@@ -185,9 +185,9 @@ session_start();
                         </button>
                         <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton2" style="background-color: #000;">
                             <!-- Enlace para CREATE TICKET -->
-                            <a href="create-ticket.php" class="nav-item nav-link" style="color: white;">CREATE TICKET</a>
+                            <a href="./create-ticket.php" class="nav-item nav-link" style="color: white;">CREATE TICKET</a>
                             <!-- Enlace para VIEW TICKETS -->
-                            <a href="view-ticket.php" class="nav-item nav-link" style="color: white;">VIEW TICKETS</a>
+                            <a href="./view-ticket.php" class="nav-item nav-link" style="color: white;">VIEW TICKETS</a>
                         </div>
                     </div>
                 <?php
