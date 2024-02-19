@@ -25,25 +25,30 @@ CREATE TABLE users (
 CREATE TABLE ticket (
     idTicket INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     typeTicket ENUM('Help & Support', 'Bug Reporting', 'Feature Request', 'Abuse Report', 'General Inquiry', 'Improvement Suggestions', 'Grammar/Translation Issues', 'Collaboration/Development', 'Information Update', 'Other') NOT NULL
+    attachmentTicket VARCHAR(225);
     affairTicket VARCHAR(100) NOT NULL,
     descriptionTicket TEXT NOT NULL,
-    stateTicket ENUM('Open', 'In progress', 'Closed') DEFAULT 'Open',
+    bugTicket1 TEXT NOT NULL,
+    bugTicket2 TEXT NOT NULL,
+    bugTicket3 TEXT NOT NULL,
+    stateTicket ENUM('Open', 'In progress', 'Closed') DEFAULT 'In progress',
     createDateTicket TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     idUsers INT,
     FOREIGN KEY (idUsers) REFERENCES users(idUsers)
 );
 
--- Tabla para almacenar todo lo relacionado a los tickets.
-CREATE TABLE trouble (
-    idTrouble INT AUTO_INCREMENT PRIMARY KEY,
-    descriptionTrouble TEXT NOT NULL,
-    sendDateTrouble TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    idTicket INT,
-    idUsers INT,
+-- Tabla para las respuestas de los admins y usuarios
+CREATE TABLE response (
+    idResponse INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    idTicket INT NOT NULL,
+    idUser INT NOT NULL,
     idAdmin INT,
-    FOREIGN KEY (idAdmin) REFERENCES admin(idAdmin),
+    textResponse TEXT NOT NULL,
+    createDateResponse TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    attachmentResponse VARCHAR(255),
     FOREIGN KEY (idTicket) REFERENCES ticket(idTicket),
-    FOREIGN KEY (idUsers) REFERENCES users(idUsers)
+    FOREIGN KEY (idUser) REFERENCES users(idUsers),
+    FOREIGN KEY (idAdmin) REFERENCES admin(idAdmin)
 );
 
 -- Tabla para llevar un registro sobre los cambios en los tickets.
