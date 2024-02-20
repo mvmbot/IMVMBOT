@@ -24,8 +24,8 @@ CREATE TABLE users (
 -- Tabla para almacenar la información de los tickets.
 CREATE TABLE ticket (
     idTicket INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    typeTicket ENUM('Help & Support', 'Bug Reporting', 'Feature Request', 'Abuse Report', 'General Inquiry', 'Improvement Suggestions', 'Grammar/Translation Issues', 'Collaboration/Development', 'Information Update', 'Other') NOT NULL
-    attachmentTicket VARCHAR(225);
+    typeTicket ENUM('Help & Support', 'Bug Reporting', 'Feature Request', 'Abuse Report', 'General Inquiry', 'Improvement Suggestions', 'Grammar/Translation Issues', 'Collaboration/Development', 'Information Update', 'Other') NOT NULL,
+    attachmentTicket VARCHAR(225),
     affairTicket VARCHAR(100) NOT NULL,
     descriptionTicket TEXT NOT NULL,
     bugTicket1 TEXT NOT NULL,
