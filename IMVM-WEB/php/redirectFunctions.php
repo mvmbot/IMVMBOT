@@ -1,9 +1,11 @@
 <?php
-
+#region Define --- Locations for our redirects
 define('SIGNUP_PAGE', '../signup.php');
 define('SIGNIN_PAGE', '../signin.php');
 define('INDEX_PAGE', '../index.php');
+#endregion
 
+#region functions --- Redirects to our pages
 // Function to redirect to the signup form
 function redirectToSignup() {
     header('Location: ' . SIGNUP_PAGE);
@@ -21,3 +23,4 @@ function redirectToIndex() {
     header('Location: ' . INDEX_PAGE);
     exit;
 }
+#endregion

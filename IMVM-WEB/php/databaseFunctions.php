@@ -1,4 +1,5 @@
 <?php
+#region Function --- Simple function to connect to the database
 function connectToDatabase() {
     // We create a global for the conn
     global $conn;
@@ -9,8 +10,11 @@ function connectToDatabase() {
         die("Connection failed: " . mysqli_connect_error());
     }
 }
+#endregion
 
+#region Function --- Close the database connection
 function closeDatabaseConnection() {
     global $conn;
     $conn->close();
 }
+#endregion

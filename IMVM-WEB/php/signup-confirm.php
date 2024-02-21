@@ -1,5 +1,5 @@
 <?php
-
+#region Required files
 // Let's get the database stuff ready!
 require("config.php");
 require("databaseFunctions.php");
@@ -8,14 +8,18 @@ require("databaseFunctions.php");
 require("redirectFunctions.php");
 require("dataValidationFunctions.php");
 require("errorAlerts.php");
+#endregion
 
+#region errors
 // Turn on the lights to see any coding errors!
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+#endregion
 
 // Now, let's connect to our incredible database!
 connectToDatabase();
 
+#region Variable declaration
 // Hey, give me the data from the user's form, okay? Thanks!
 $username = $_POST['username'] ?? '';
 $name = $_POST['name'] ?? '';
@@ -23,6 +27,7 @@ $surname = $_POST['surname'] ?? '';
 $mail = $_POST['mail'] ?? '';
 $password = $_POST['password'] ?? '';
 $confirmPassword = $_POST['confirmPassword'] ?? '';
+#endregion
 
 // Oops! Did they forget to check the privacy box?
 if (!isset($_POST['privacyCheckbox'])) {
