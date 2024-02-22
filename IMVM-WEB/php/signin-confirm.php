@@ -2,6 +2,7 @@
 // Let's make sure we're keeping track of the user's info
 session_start();
 
+#region Required files
 // Now, time to set up the connection to our awesome database
 require("config.php");
 require("databaseFunctions.php");
@@ -10,24 +11,28 @@ require("databaseFunctions.php");
 require("redirectFunctions.php");
 require("dataValidationFunctions.php");
 require("errorAlerts.php");
+#endregion
 
-// Turn on the lights to catch any potential coding errors
+#region errors --- Turn on the lights to catch any potential coding errors
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+#endregion
 
-// First things first, let's check if the form was submitted
+#region 'IF-ELSE' --- First things first, let's check if the form was submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Checking our connection to the database!
     connectToDatabase();
 
+    #region Variable Declaration
     // Getting the username and password entered in the form
     $username = $_POST['username'] ?? '';
     $password = $_POST['password'] ?? '';
 
     // Let's make sure they filled out all the important fields
     $fieldsToCheck = ['username', 'password'];
-
+    #endregion
+    
     // If any of these is empty, let's kindly ask them to try again
     if (areFieldsEmpty($fieldsToCheck)) {
         redirectToSignin();
@@ -87,3 +92,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // No POST method detected, gently guiding the user to the signin page
     redirectToSignin();
 }
+#endregion

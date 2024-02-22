@@ -1,7 +1,6 @@
 <?php
 require_once 'vendor/autoload.php';
 require_once 'configLogin.php';
-
 $client = new Google_Client();
 $client->setClientId($clientID);
 $client->setClientSecret($clientSecret);
