@@ -5,7 +5,7 @@ openai.apiKey = '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';
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('chatgpt')
+        .setName('gpt')
         .setDescription('Ask GPT prompt')
         .addStringOption(option => option.setName('question').setDescription('This is going to be the prompt for GPT').setRequired(true))
         .setDMPermission(false),
