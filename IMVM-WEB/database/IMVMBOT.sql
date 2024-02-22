@@ -24,6 +24,7 @@ CREATE TABLE users (
 -- Tabla para almacenar la información de los tickets.
 CREATE TABLE ticket (
     idTicket INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    idUsers INT,
     typeTicket ENUM('Help & Support', 'Bug Reporting', 'Feature Request', 'Abuse Report', 'General Inquiry', 'Improvement Suggestions', 'Grammar/Translation Issues', 'Information Update', 'Other') NOT NULL,
     creationDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     modificationDate DATE NULL,
@@ -35,7 +36,6 @@ CREATE TABLE ticket (
     bugTicket1 TEXT NOT NULL,
     bugTicket2 TEXT NOT NULL,
     bugTicket3 TEXT NOT NULL,
-    idUsers INT,
     FOREIGN KEY (idUsers) REFERENCES users(idUsers)
 );
 
@@ -54,7 +54,7 @@ CREATE TABLE `Bug Reporting` (
     userID INT,
     subject VARCHAR(255),
     description TEXT,
-    image BLOB
+    image VARCHAR(100)
 );
 
 
@@ -71,8 +71,8 @@ CREATE TABLE `Abuse Report` (
     abuseReportID INT PRIMARY KEY AUTO_INCREMENT,
     userID INT,
     subject VARCHAR(255),
-    description TEXT.
-    image BLOB
+    description TEXT,
+    image VARCHAR(100)
 );
 
 -- General Inquiry
@@ -97,7 +97,7 @@ CREATE TABLE `Grammar/Translation Issues` (
     userID INT,
     subject VARCHAR(255),
     description TEXT,
-    image BLOB
+    image VARCHAR(100)
 );
 
 -- Information Update
