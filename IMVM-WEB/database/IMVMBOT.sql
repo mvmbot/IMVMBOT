@@ -24,7 +24,7 @@ CREATE TABLE users (
 -- Tabla para almacenar la información de los tickets.
 CREATE TABLE ticket (
     idTicket INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    typeTicket ENUM('Help & Support', 'Bug Reporting', 'Feature Request', 'Abuse Report', 'General Inquiry', 'Improvement Suggestions', 'Grammar/Translation Issues', 'Information Update', 'Other') NOT NULL,
+    typeTicket ENUM('Help & Support', 'Bug Reporting', 'Feature Request', 'Abuse Report', 'General Inquiry', 'Improvement Suggestions', 'Grammar', 'Information Update', 'Other') NOT NULL,
     creationDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     modificationDate DATE NULL,
     resolvedDate TIMESTAMP,
@@ -36,17 +36,24 @@ CREATE TABLE ticket (
 -- Help & Support
 CREATE TABLE `Help & Support` (
     ticketID INT NOT NULL,
-    typeTicket VARCHAR(50),
-    subject VARCHAR(255),
-    description TEXT,
+    typeTicket VARCHAR(50) NOT NULL,
+    subject VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    file VARCHAR(255)
     FOREIGN KEY (ticketID) REFERENCES ticket(idTicket)
 );
 
 -- Bug Reporting
 CREATE TABLE `Bug Reporting` (
     ticketID INT NOT NULL,
+    impactedPart ENUM('HOME', 'ABOUT', 'FAQ', 'CHANGELOG', 'SIGN-IN', 'SIGN-UP', 'LOG-OUT', 'CREATE-TICKET', 'VIEW-TICKET', 'COOKIES'),
+    operativeSystem ENUM('Android','iOS','Windows','MACos','Linux', 'Browser'),
     subject VARCHAR(255),
     description TEXT,
+    stepsToReproduce VARCHAR(255),
+    expectedResult VARCHAR(255),
+    receivedResult VARCHAR(255),
+    discordClient VARCHAR(255),
     image VARCHAR(255),
     FOREIGN KEY (ticketID) REFERENCES ticket(idTicket)
 );
@@ -56,36 +63,12 @@ CREATE TABLE `Feature Request` (
     ticketID INT NOT NULL,
     subject VARCHAR(255),
     description TEXT,
+    section ENUM('HOME', 'ABOUT', 'FAQ', 'CHANGELOG', 'SIGN-IN', 'SIGN-UP', 'LOG-OUT', 'CREATE-TICKET', 'VIEW-TICKET', 'COOKIES'),
     FOREIGN KEY (ticketID) REFERENCES ticket(idTicket)
 );
 
--- Abuse Report
-CREATE TABLE `Abuse Report` (
-    ticketID INT NOT NULL,
-    subject VARCHAR(255),
-    description TEXT.
-    image VARCHAR(255),
-    FOREIGN KEY (ticketID) REFERENCES ticket(idTicket)
-);
-
--- General Inquiry
-CREATE TABLE `General Inquiry` (
-    ticketID INT NOT NULL,
-    subject VARCHAR(255),
-    description TEXT,
-    FOREIGN KEY (ticketID) REFERENCES ticket(idTicket)
-);
-
--- Improvement Suggestions
-CREATE TABLE `Improvement Suggestions` (
-    ticketID INT NOT NULL,
-    subject VARCHAR(255),
-    description TEXT,
-    FOREIGN KEY (ticketID) REFERENCES ticket(idTicket)
-);
-
--- Grammar/Translation Issues
-CREATE TABLE `Grammar/Translation Issues` (
+-- Grammar Issues
+CREATE TABLE `Grammar Issues` (
     ticketID INT NOT NULL,
     subject VARCHAR(255),
     description TEXT,
@@ -106,6 +89,7 @@ CREATE TABLE `Other` (
     ticketID INT NOT NULL,
     subject VARCHAR(255),
     description TEXT,
+    extraText VARCHAR(255),
     FOREIGN KEY (ticketID) REFERENCES ticket(idTicket)
 );
 
