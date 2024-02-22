@@ -1,4 +1,4 @@
-CREATE DATABASE IMVMBOT;
+CREATE DATABASE IF NOT EXISTS IMVMBOT;
 
 -- Tabla para almacenar administradores
 CREATE TABLE admin (
