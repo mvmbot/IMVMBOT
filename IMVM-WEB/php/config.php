@@ -1,9 +1,9 @@
 <?php
 #region Define --- Database data
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'id21626905_adminmvm');
-define('DB_PASSWORD', 'BaconFrito33.');
-define('DB_NAME', 'id21626905_imvmdatabase');
+define('DB_SERVER', `sql207.infinityfree.com`);
+define('DB_USERNAME', 'if0_36018425');
+define('DB_PASSWORD', 'bACONfRITO33.');
+define('DB_NAME', 'if0_36018425_imvmdb');
 #endregion
 
 // CONFIGURACION DE GOOGLE
