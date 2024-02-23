@@ -34,7 +34,7 @@ CREATE TABLE ticket (
 );
 
 -- Help & Support
-CREATE TABLE `Help & Support` (
+CREATE TABLE helpSupport (
     ticketID INT NOT NULL,
     typeTicket VARCHAR(50) NOT NULL,
     subject VARCHAR(255) NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE `Help & Support` (
 );
 
 -- Bug Reporting
-CREATE TABLE `Bug Reporting` (
+CREATE TABLE bugReport (
     ticketID INT NOT NULL,
     impactedPart ENUM('HOME', 'ABOUT', 'FAQ', 'CHANGELOG', 'SIGN-IN', 'SIGN-UP', 'LOG-OUT', 'CREATE-TICKET', 'VIEW-TICKET', 'COOKIES'),
     operativeSystem ENUM('Android','iOS','Windows','MACos','Linux', 'Browser'),
@@ -59,7 +59,7 @@ CREATE TABLE `Bug Reporting` (
 );
 
 -- Feature Request
-CREATE TABLE `Feature Request` (
+CREATE TABLE featureRequest (
     ticketID INT NOT NULL,
     subject VARCHAR(255),
     description TEXT,
@@ -68,7 +68,7 @@ CREATE TABLE `Feature Request` (
 );
 
 -- Grammar Issues
-CREATE TABLE `Grammar Issues` (
+CREATE TABLE grammarIssues (
     ticketID INT NOT NULL,
     subject VARCHAR(255),
     description TEXT,
@@ -77,7 +77,7 @@ CREATE TABLE `Grammar Issues` (
 );
 
 -- Information Update
-CREATE TABLE `Information Update` (
+CREATE TABLE informationUpdate (
     ticketID INT NOT NULL,
     subject VARCHAR(255),
     description TEXT,
@@ -85,7 +85,7 @@ CREATE TABLE `Information Update` (
 );
 
 -- Other
-CREATE TABLE `Other` (
+CREATE TABLE other (
     ticketID INT NOT NULL,
     subject VARCHAR(255),
     description TEXT,
@@ -108,7 +108,7 @@ CREATE TABLE response (
 );
 
 -- Jobs Page
-CREATE TABLE `Collaboration/Development` (
+CREATE TABLE collaborationDevelopment (
     collaborationID INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(30),
     surname VARCHAR(30),
