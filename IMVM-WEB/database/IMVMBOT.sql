@@ -39,7 +39,7 @@ CREATE TABLE helpSupport (
     typeTicket VARCHAR(50) NOT NULL,
     subject VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
-    file VARCHAR(255)
+    file VARCHAR(255),
     FOREIGN KEY (ticketID) REFERENCES ticket(idTicket)
 );
 
@@ -119,5 +119,5 @@ CREATE TABLE collaborationDevelopment (
     experience TEXT, 
     skills TEXT, 
     coverLetter TEXT, 
-    cvFile VARCHAR(255) 
+    cvFile VARCHAR(255)
 );
