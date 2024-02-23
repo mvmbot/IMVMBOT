@@ -27,11 +27,19 @@ $surname = $_POST['surname'] ?? '';
 $mail = $_POST['mail'] ?? '';
 $password = $_POST['password'] ?? '';
 $confirmPassword = $_POST['confirmPassword'] ?? '';
+$newsletterCheckBox = $_POST['newsletterCheckBox'] ?? '';
 #endregion
 
 // Oops! Did they forget to check the privacy box?
 if (!isset($_POST['privacyCheckbox'])) {
     redirectToSignup();
+}
+
+if(isset($_POST['newsletterCheckBox']) && $_POST['newsletterCheckBox'] == "Value") { //where "Value" is the
+    //same string given in the HTML form, as value attribute the the checkbox input
+    $newsletterCheckBox = true;
+} else {
+    $newsletterCheckBox = false;
 }
 
 // We need to make sure they filled out all the important fields!
@@ -56,7 +64,7 @@ if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
 try {
 
     // Preparing a tiny query to check that
-    $checkExisting = "SELECT id_users FROM users WHERE username_users = ? OR email_users = ?";
+    $checkExisting = "SELECT idUsers FROM users WHERE usernameUsers = ? OR emailUsers = ?";
     $stmtCheck = $conn->prepare($checkExisting);
 
     // In case we did mess up in preparing the query. It happens to the best of us
@@ -86,7 +94,7 @@ if ($stmtCheck->num_rows > 0) {
     try {
 
         // Preparing the query to insert the user into the database
-        $insertSQL = "INSERT INTO users (username_users, name_users, surname_users, email_users, password_users) VALUES (?, ?, ?, ?, ?)";
+        $insertSQL = "INSERT INTO users (usernameUsers, nameUsers, surnameUsers, emailUsers, passwordUsers, acceptNewsletter) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($insertSQL);
 
         // In case we did mess up preparing the query.
@@ -98,7 +106,7 @@ if ($stmtCheck->num_rows > 0) {
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         // Bind parameters, cast the query, and add them to our user list
-        $stmt->bind_param("sssss", $username, $name, $surname, $mail, $hashedPassword);
+        $stmt->bind_param("ssssss", $username, $name, $surname, $mail, $hashedPassword, $newsletterCheckBox);
         $stmt->execute();
 
         // If everything worked like it should, send them to our main page

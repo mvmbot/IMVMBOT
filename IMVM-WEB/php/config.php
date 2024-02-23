@@ -1,6 +1,6 @@
 <?php
 #region Define --- Database data
-define('DB_SERVER', ' sql207.infinityfree.com');
+define('DB_SERVER', `sql207.infinityfree.com`);
 define('DB_USERNAME', 'if0_36018425');
 define('DB_PASSWORD', 'bACONfRITO33.');
 define('DB_NAME', 'if0_36018425_imvmdb');

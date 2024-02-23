@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Step 1: Let's check if the user exists in our awesome database
 
     // We start with a quick query to find out
-    $checkExisting = "SELECT id_users, password_users FROM users WHERE username_users = ?";
+    $checkExisting = "SELECT idUsers, passwordUsers FROM users WHERE usernameUsers = ?";
 
     // Preparing the statement for the big moment
     $stmtCheck = $conn->prepare($checkExisting);
@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $resultRow = $result->fetch_assoc();
 
             // Saving the hashed password for future comparison
-            $hashedPassword = $resultRow['password_users'];
+            $hashedPassword = $resultRow['passwordUsers'];
 
             // Now, let's check if the passwords match
             if (password_verify($password, $hashedPassword)) {
