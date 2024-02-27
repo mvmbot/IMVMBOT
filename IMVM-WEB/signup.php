@@ -188,9 +188,9 @@ session_start();
                         </button>
                         <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton2" style="background-color: #000;">
                             <!-- Enlace para CREATE TICKET -->
-                            <a href="./create-ticket.php" class="nav-item nav-link" style="color: white;">CREATE TICKET</a>
+                            <a href="./createTicket.php" class="nav-item nav-link" style="color: white;">CREATE TICKET</a>
                             <!-- Enlace para VIEW TICKETS -->
-                            <a href="./view-ticket.php" class="nav-item nav-link" style="color: white;">VIEW TICKETS</a>
+                            <a href="./viewTicket.php" class="nav-item nav-link" style="color: white;">VIEW TICKETS</a>
                         </div>
                     </div>
                 <?php
@@ -233,7 +233,7 @@ session_start();
 
     <div class="form-container">
         <p class="title">Sign up to IESMVMBOT</p>
-        <form class="form" method="POST" action="./php/signup-confirm.php" id="signupform" name="signupform" onsubmit="validateFormSignUp()">
+        <form class="form" method="POST" action="./php/signUpConfirm.php" id="signupform" name="signupform" onsubmit="validateFormSignUp()">
             <div class="input-group">
                 <label for="username">Username</label>
                 <input type="text" name="username" id="username" placeholder="" />
