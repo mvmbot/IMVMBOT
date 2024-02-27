@@ -1,7 +1,7 @@
 <?php
 #region Required files
 // Let's get the database stuff ready!
-require("config.php");
+//require("config.php");
 require("databaseFunctions.php");
 
 // Grab some tools for our code!
@@ -27,19 +27,12 @@ $surname = $_POST['surname'] ?? '';
 $mail = $_POST['mail'] ?? '';
 $password = $_POST['password'] ?? '';
 $confirmPassword = $_POST['confirmPassword'] ?? '';
-$newsletterCheckBox = $_POST['newsletterCheckBox'] ?? '';
+$newsletterCheckBox = isset($_POST['newsletterCheckBox']) ? 1 : 0;
 #endregion
 
 // Oops! Did they forget to check the privacy box?
 if (!isset($_POST['privacyCheckbox'])) {
     redirectToSignup();
-}
-
-if(isset($_POST['newsletterCheckBox']) && $_POST['newsletterCheckBox'] == "Value") { //where "Value" is the
-    //same string given in the HTML form, as value attribute the the checkbox input
-    $newsletterCheckBox = true;
-} else {
-    $newsletterCheckBox = false;
 }
 
 // We need to make sure they filled out all the important fields!
