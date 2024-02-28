@@ -1,7 +1,7 @@
 const { SlashCommandBuilder } = require('discord.js');
 const openai = require('openai');
 
-openai.apiKey = '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 ';
+openai.apiKey = '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';
 
 module.exports = {
     data: new SlashCommandBuilder()
