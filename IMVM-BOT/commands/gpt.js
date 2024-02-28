@@ -1,22 +1,19 @@
-const { SlashCommandBuilder } = require('discord.js');
+require('dotenv').config();
+const { SlashCommandBuilder, MessageEmbed } = require('discord.js');
 const openai = require('openai');
 
-openai.apiKey = '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';
+openai.apiKey = process.env.OPENAI_API_KEY;
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('gpt')
         .setDescription('Ask GPT prompt')
         .addStringOption(option => option.setName('question').setDescription('This is going to be the prompt for GPT').setRequired(true))
-        .setDMPermission(false),
+        .setDefaultPermission(false),
     async execute(interaction) {
         await interaction.deferReply();
 
         const question = interaction.options.getString('question');
-
-        const embed = new EmbedBuilder()
-            .setColor('Purple')
-            .setDescription(`\`\`\`${res.data.choices[0].text}\`\`\``)
 
         try {
             const res = await openai.Completion.create({
@@ -24,12 +21,19 @@ module.exports = {
                 max_tokens: 2048,
                 temperature: 0.5,
                 prompt: question
-            })
+            });
 
-            embed.setDescription(`\`\`\`${res.choices[0].text}\`\`\``);
-            await interaction.editReply({ embeds: [embed] });
+            if (res.choices && res.choices.length > 0) {
+                const embed = new MessageEmbed()
+                    .setColor('Purple')
+                    .setDescription(`\`\`\`${res.choices[0].text.content}\`\`\``);
+
+                await interaction.editReply({ embeds: [embed] });
+            } else {
+                await interaction.editReply({ content: 'GPT-3 did not return a response.', ephemeral: true });
+            }
         } catch (e) {
-            return await interaction.editReply({ content: `Request failed with status code **${e.response.status}**`, ephemeral: true })
+            return await interaction.editReply({ content: `Request failed with status code **${e.response.status}**`, ephemeral: true });
         }
     }
-}
+};
