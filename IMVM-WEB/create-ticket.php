@@ -231,7 +231,180 @@ session_start();
 
     <!-- Navbar End -->
 
+    <form class="formticket">
+        <h1 class="title">Create a ticket</h1>
     
+        <h3>What can we help you with?</h3>
+        <select name="type" id="lang" onchange="showFields()">
+            <option value="" disabled selected hidden>-</option>
+            <option value="helpSupport">Help & Support</option>
+            <option value="bugReport">Bug Reporting</option>
+            <option value="featureRequest">Feature Request</option>
+            <option value="grammarIssues">Grammar Issues</option>
+            <option value="informationUpdate">Information Update</option>
+            <option value="other">Other</option>
+        </select>
+    
+        <!-- Divs for specific additional fields -->
+        <div id="helpSupportFields" style="display: none;">
+            <div>
+                <label for="subject" style="display: block;">Subject:</label>
+                <input type="text" id="subject" name="subject">
+            </div>
+    
+            <div>
+                <label for="description" style="display: block;">Description:</label>
+                <textarea id="description" name="description"></textarea>
+            </div>
+    
+            <div>
+                <label for="fileAttachment" style="display: block;">Attach File:</label>
+                <input type="file" id="fileAttachment" name="fileAttachment">
+            </div>
+        </div>
+    
+        <div id="bugReportFields" style="display: none;">
+            <div>
+                <label for="bugDescription" style="display: block;">Bug Description:</label>
+                <textarea id="bugDescription" name="bugDescription"></textarea>
+            </div>
+    
+            <div>
+                <label for="stepsToReproduce" style="display: block;">Steps to Reproduce:</label>
+                <textarea id="stepsToReproduce" name="stepsToReproduce"></textarea>
+            </div>
+    
+            <div>
+                <label for="expectedResult" style="display: block;">Expected Result:</label>
+                <textarea id="expectedResult" name="expectedResult"></textarea>
+            </div>
+    
+            <div>
+                <label for="receivedResult" style="display: block;">Received Result:</label>
+                <textarea id="receivedResult" name="receivedResult"></textarea>
+            </div>
+    
+            <div>
+                <label for="discordClient" style="display: block;">Discord Client:</label>
+                <input type="text" id="discordClient" name="discordClient">
+            </div>
+    
+            <div>
+                <label for="bugImage" style="display: block;">Attach Image:</label>
+                <input type="file" id="bugImage" name="bugImage">
+            </div>
+        </div>
+    
+        <div id="featureRequestFields" style="display: none;">
+            <div>
+                <label for="requestType" style="display: block;">Request Type:</label>
+                <select id="requestType" name="requestType">
+                    <option value="" disabled selected hidden>-</option>
+                    <option value="commands">Commands</option>
+                    <option value="web">Web</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+    
+            <div>
+                <label for="subject" style="display: block;">Subject:</label>
+                <input type="text" id="subject" name="subject">
+            </div>
+    
+            <div>
+                <label for="description" style="display: block;">Description:</label>
+                <textarea id="description" name="description"></textarea>
+            </div>
+        </div>
+    
+        <div id="grammarIssuesFields" style="display: none;">
+            <div>
+                <label for="subject" style="display: block;">Subject:</label>
+                <input type="text" id="subject" name="subject">
+            </div>
+    
+            <div>
+                <label for="description" style="display: block;">Description:</label>
+                <textarea id="description" name="description"></textarea>
+            </div>
+    
+            <div>
+                <label for="fileAttachment" style="display: block;">Attach File:</label>
+                <input type="file" id="fileAttachment" name="fileAttachment">
+            </div>
+        </div>
+    
+        <div id="informationUpdateFields" style="display: none;">
+            <div>
+                <label for="updateInfo" style="display: block;">Update Information:</label>
+                <textarea id="updateInfo" name="updateInfo"></textarea>
+            </div>
+        </div>
+    
+        <div id="otherFields" style="display: none;">
+            <div>
+                <label for="subject" style="display: block;">Subject:</label>
+                <input type="text" id="subject" name="subject">
+            </div>
+    
+            <div>
+                <label for="description" style="display: block;">Description:</label>
+                <textarea id="description" name="description"></textarea>
+            </div>
+        </div>
+    
+        <!-- Div for the submit button -->
+        <div style="margin-top: 10px;">
+            <button type="button" onclick="submitForm()">SUBMIT</button>
+        </div>
+    </form>
+    
+    <script>
+        function showFields() {
+            var selectedValue = document.getElementById("lang").value;
+    
+            // Oculta todos los divs de campos adicionales
+            hideAllFields();
+    
+            // Muestra el div correspondiente al valor seleccionado
+            switch (selectedValue) {
+                case "helpSupport":
+                    document.getElementById("helpSupportFields").style.display = "block";
+                    break;
+                case "bugReport":
+                    document.getElementById("bugReportFields").style.display = "block";
+                    break;
+                case "featureRequest":
+                    document.getElementById("featureRequestFields").style.display = "block";
+                    break;
+                case "grammarIssues":
+                    document.getElementById("grammarIssuesFields").style.display = "block";
+                    break;
+                case "informationUpdate":
+                    document.getElementById("informationUpdateFields").style.display = "block";
+                    break;
+                case "other":
+                    document.getElementById("otherFields").style.display = "block";
+                    break;
+                default:
+                    break;
+            }
+        }
+    
+        function hideAllFields() {
+            var fieldDivs = document.querySelectorAll('[id$="Fields"]');
+            fieldDivs.forEach(function (div) {
+                div.style.display = "none";
+            });
+        }
+    
+        function submitForm() {
+            // Aquí puedes agregar la lógica para enviar los datos del formulario a la base de datos
+            alert("Formulario enviado. Lógica de envío a la base de datos por implementar.");
+        }
+    </script>
+    
+  
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
