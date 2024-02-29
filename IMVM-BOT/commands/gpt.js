@@ -1,39 +1,41 @@
-require('dotenv').config();
-const { SlashCommandBuilder, MessageEmbed } = require('discord.js');
-const openai = require('openai');
-
-openai.apiKey = process.env.OPENAI_API_KEY;
+const { SlashCommandBuilder } = require('discord.js');
+const openai = require("../utils/openAi");
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('gpt')
         .setDescription('Ask GPT prompt')
-        .addStringOption(option => option.setName('question').setDescription('This is going to be the prompt for GPT').setRequired(true))
-        .setDefaultPermission(false),
-    async execute(interaction) {
+        .addStringOption ((option)=>
+            option
+                .setName("prompt")
+                .setDescription("Write your question")
+                .setRequired (true)
+            ),
+        async execute(interaction) {
         await interaction.deferReply();
 
-        const question = interaction.options.getString('question');
+        const question = interaction.options.getString("question");
+        
+        const messages = [
+        {
+            role: "system",
+            content:
+                "You are a chatbot that gives helpful advice. Give your advice in 3 sentences or less.",
+        },
+        {
+            role: "user",
+            content: question,
+        },
+    ];
 
-        try {
-            const res = await openai.Completion.create({
-                engine: 'davinci-codex',
-                prompt: question,
-                max_tokens: 2048,
-                temperature: 0.5,
-            });
+    const completion = await openai.createChatCompletion({
+        model: "gpt-3.5-turbo",
+        messages: messages,
+        temperature: 0.7,
+    });
 
-            if (res.choices && res.choices.length > 0) {
-                const embed = new MessageEmbed()
-                    .setColor('Purple')
-                    .setDescription(`\`\`\`${res.choices[0].text.trim()}\`\`\``);
+    const advice = completion.data.choices[0].message.content;
 
-                await interaction.editReply({ embeds: [embed] });
-            } else {
-                await interaction.editReply({ content: 'GPT-3 did not return a response.', ephemeral: true });
-            }
-        } catch (e) {
-            return await interaction.editReply({ content: `Request failed with status code **${e.response.status}**`, ephemeral: true });
-        }
-    }
+    await interaction.editReply(advice);
+    },
 };
