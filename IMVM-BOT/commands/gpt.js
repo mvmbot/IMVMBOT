@@ -17,16 +17,16 @@ module.exports = {
 
         try {
             const res = await openai.Completion.create({
-                model: 'text-davinci-003',
+                engine: 'davinci-codex',
+                prompt: question,
                 max_tokens: 2048,
                 temperature: 0.5,
-                prompt: question
             });
 
             if (res.choices && res.choices.length > 0) {
                 const embed = new MessageEmbed()
                     .setColor('Purple')
-                    .setDescription(`\`\`\`${res.choices[0].text.content}\`\`\``);
+                    .setDescription(`\`\`\`${res.choices[0].text.trim()}\`\`\``);
 
                 await interaction.editReply({ embeds: [embed] });
             } else {
