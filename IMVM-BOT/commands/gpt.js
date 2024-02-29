@@ -14,7 +14,7 @@ module.exports = {
         async execute(interaction) {
         await interaction.deferReply();
 
-        const question = interaction.options.getString("question");
+        const question = interaction.options.getString("prompt");
         
         const messages = [
         {
