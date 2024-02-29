@@ -6,7 +6,7 @@
   --dark: #131010;
 }
 
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -36,7 +36,7 @@ body {
   font-weight: 600 !important;
 }
 
-.loginbutton{
+.loginbutton {
   position: 5;
   top: 100px;
   right: 500px;
@@ -261,7 +261,6 @@ video {
   color: var(--light);
 }
 
-
 /*** Team ***/
 .team-item .team-overlay {
   display: flex;
@@ -288,7 +287,7 @@ video {
 
 /*** Footer ***/
 .footer {
-  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9))
+  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9));
 }
 
 .footer .btn.btn-social {
@@ -513,7 +512,7 @@ video {
 
 /*Cookies wrapper*/
 
-.cookies-wrap{
+.cookies-wrap {
   display: none;
   background: white;
   padding: 20px;
@@ -530,16 +529,16 @@ video {
   text-align: center;
 }
 
-.cookies-wrap.active{
+.cookies-wrap.active {
   display: block;
 }
 
 .cookies-wrap .title,
-.cookies-wrap .paragraph{
+.cookies-wrap .paragraph {
   margin-bottom: 15px;
 }
 
-.cookies-wrap .btn{
+.cookies-wrap .btn {
   width: 100%;
   background: #9900ff;
   border: none;
@@ -548,37 +547,62 @@ video {
   padding: 15px 20px;
   font-weight: 700;
   cursor: pointer;
-  transition: .3 ease all;
+  transition: 0.3 ease all;
   border-radius: 5px;
   margin-bottom: 15px;
   font-size: 14px;
 }
 
-.cookies-wrap .btn:hover{
+.cookies-wrap .btn:hover {
   background: #6602a8;
 }
 
-.cookies-wrap .link-cookies{
+.cookies-wrap .link-cookies {
   color: #9900ff;
   text-decoration: none;
   font-size: 14px;
 }
 
-.cookies-wrap .link-cookies:hover{
+.cookies-wrap .link-cookies:hover {
   color: #6602a8;
   text-decoration: underline;
 }
 
-.background-cookies-wrap{
+.background-cookies-wrap {
   display: none;
   background: var(--dark);
   position: fixed;
   z-index: 99;
   width: 100vw;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
 }
 
-.background-cookies-wrap.active{
-  display:block
+.background-cookies-wrap.active {
+  display: block;
+}
+
+/*Additional Fields create ticket*/
+
+.formticket {
+  width: 100%;
+  max-width: 800px;
+  padding: 80px;
+  box-sizing: border-box;
+}
+
+.formticket label {
+  color: white;
+}
+
+
+.formticket input,
+.formticket textarea,
+.formticket select {
+  width: 60%;
+  height: auto;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+  border-radius: 8px; 
+  padding: 5px;  
 }
