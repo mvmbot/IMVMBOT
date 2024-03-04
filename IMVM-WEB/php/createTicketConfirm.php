@@ -33,6 +33,7 @@ switch ($type) {
         if (areFieldsEmpty($fieldsToCheck)) {
             redirectToSignup();
         }
+        createTicketHelpSupportFields($subject, $fileAttachment, $description);
         break;
     #endregion
 
