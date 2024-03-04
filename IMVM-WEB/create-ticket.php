@@ -388,7 +388,7 @@ session_start();
 
         <!-- Div for the submit button -->
         <div style="margin-top: 10px;">
-            <button type="button" class="btn btn-primary py-2 px-3" onclick="submitForm()">SUBMIT</button>
+            <button type="button" class="btn btn-primary py-2 px-3" action="submitForm()">SUBMIT</button>
         </div>
     </form>
 
@@ -429,11 +429,6 @@ session_start();
             fieldDivs.forEach(function (div) {
                 div.style.display = "none";
             });
-        }
-
-        function submitForm() {
-            // Aquí puedes agregar la lógica para enviar los datos del formulario a la base de datos
-            alert("Formulario enviado. Lógica de envío a la base de datos por implementar.");
         }
     </script>
 
