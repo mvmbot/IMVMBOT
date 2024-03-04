@@ -41,6 +41,18 @@ function createTicketHelpSupportFields($subject, $description, $fileAttachment) 
     } catch (Exception $e) {
         showError("Error: " . $e->getMessage());
     }
+
+    try {
+        $insertTypeSQL = "INSERT INTO helpSupport (typeTicket, subject, description, file) VALUES (?. ?, ?, ?)";
+        $stmt = $conn->prepare($insertTypeSQL);
+        if ($stmt === false) {
+            throw new Exception("Error preparing INSERT statement: " . $conn->error);
+        }
+        $stmt->bind_param("ssss", $type, $subject, $description, $fileAttachment);
+        $stmt->execute();
+    } catch (Exception $e) {
+        showError("Error: " . $e->getMessage());
+    }
     $stmt->close();
     closeDatabaseConnection();
 }
