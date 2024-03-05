@@ -19,20 +19,13 @@ function closeDatabaseConnection() {
 }
 #endregions
 
-function createTicketHelpSupportFields($subject, $description, $fileAttachment) {
+
+# CREATE TICKET FUNCTION WITHOUT TYPE!!
+function insertTicketIntoDatabase($type, $currentDate, $user, $modificationDate, $resolvedDate) {
     global $conn;
-    $conn = mysqli_connect("sql207.infinityfree.com", "if0_36018425", "bACONfRITO33", "if0_36018425_imvmdb");
-    $user = $_SESSION['user'];
-    $type = "helpSupport";
-    $currentDate = date('Y/m/d'); 
-    $modificationDate = null;
-    $resolvedDate = null;
-    # We prepare our variable with the SQL sentence
     try {
         $insertTicketSQL = "INSERT INTO ticket (typeTicket, creationDate, idUsers, modificationDate, resolvedDate) VALUES (?, ?, ?, ?, ?)";
-        # And the statement to prepare it
         $stmt = $conn->prepare($insertTicketSQL);
-        # In case we did mess up preparing the query.
         if ($stmt === false) {
             throw new Exception("Error preparing INSERT statement: " . $conn->error);
         }
@@ -41,9 +34,23 @@ function createTicketHelpSupportFields($subject, $description, $fileAttachment) 
     } catch (Exception $e) {
         showError("Error: " . $e->getMessage());
     }
+}
+
+
+
+function createTicketHelpSupportFields($subject, $description, $fileAttachment) {
+    global $conn;
+    $conn = mysqli_connect("sql207.infinityfree.com", "if0_36018425", "bACONfRITO33", "if0_36018425_imvmdb");
+    $user = $_SESSION['user'];
+    $type = "helpSupport";
+    $currentDate = date('Y/m/d'); 
+    $modificationDate = null;
+    $resolvedDate = null;
+
+    insertTicketIntoDatabase($type, $currentDate, $user, $modificationDate, $resolvedDate);
 
     try {
-        $insertTypeSQL = "INSERT INTO helpSupport (typeTicket, subject, description, file) VALUES (?. ?, ?, ?)";
+        $insertTypeSQL = "INSERT INTO helpSupport (typeTicket, subject, description, file) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($insertTypeSQL);
         if ($stmt === false) {
             throw new Exception("Error preparing INSERT statement: " . $conn->error);
@@ -53,6 +60,20 @@ function createTicketHelpSupportFields($subject, $description, $fileAttachment) 
     } catch (Exception $e) {
         showError("Error: " . $e->getMessage());
     }
+
     $stmt->close();
     closeDatabaseConnection();
+}
+
+function createTicketBugReportFields($bugDescription, $stepsToReproduce, $expectedResult, $receivedResult, $discordClient, $bugImage) {
+
+    global $conn;
+    $conn = mysqli_connect("sql207.infinityfree.com", "if0_36018425", "bACONfRITO33", "if0_36018425_imvmdb");
+    $user = $_SESSION['user'];
+    $type = "helpSupport";
+    $currentDate = date('Y/m/d'); 
+    $modificationDate = null;
+    $resolvedDate = null;
+
+    insertTicketIntoDatabase($type, $currentDate, $user, $modificationDate, $resolvedDate);
 }
