@@ -2,12 +2,11 @@
 #region Function --- Simple function to connect to the database
 
 function connectToDatabase() {
-    # Check connection
     $conn = mysqli_connect("sql207.infinityfree.com", "if0_36018425", "bACONfRITO33", "if0_36018425_imvmdb");
-    # We kill the script if the conn doesnt work
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
     }
+    return $conn;
 }
 #endregion
 
@@ -15,10 +14,9 @@ function connectToDatabase() {
 function closeDatabaseConnection($conn) {
     $conn->close();
 }
-#endregions
+#endregion
 
-
-# CREATE TICKET FUNCTION WITHOUT TYPE!!
+#region Function --- Insert ticket into database
 function insertTicketIntoDatabase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate) {
     try {
         $insertTicketSQL = "INSERT INTO ticket (typeTicket, creationDate, idUsers, modificationDate, resolvedDate) VALUES (?, ?, ?, ?, ?)";
@@ -28,15 +26,15 @@ function insertTicketIntoDatabase($conn, $type, $currentDate, $user, $modificati
         }
         $stmt->bind_param("sssss", $type, $currentDate, $user, $modificationDate, $resolvedDate);
         $stmt->execute();
+        $stmt->close();
     } catch (Exception $e) {
         showError("Error: " . $e->getMessage());
     }
 }
+#endregion
 
-
-
+#region Function --- Create ticket help support fields
 function createTicketHelpSupportFields($conn, $subject, $description, $fileAttachment) {
-    $conn = mysqli_connect("sql207.infinityfree.com", "if0_36018425", "bACONfRITO33", "if0_36018425_imvmdb");
     $user = $_SESSION['user'];
     $type = "helpSupport";
     $currentDate = date('Y/m/d'); 
@@ -46,24 +44,22 @@ function createTicketHelpSupportFields($conn, $subject, $description, $fileAttac
     insertTicketIntoDatabase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate);
 
     try {
-        $insertTypeSQL = "INSERT INTO helpSupport (subject, description, file) VALUES (?, ?, ?, ?)";
+        $insertTypeSQL = "INSERT INTO helpSupport (subject, description, file) VALUES (?, ?, ?)";
         $stmt = $conn->prepare($insertTypeSQL);
         if ($stmt === false) {
             throw new Exception("Error preparing INSERT statement: " . $conn->error);
         }
-        $stmt->bind_param("ssss", $type, $subject, $description, $fileAttachment);
+        $stmt->bind_param("sss", $subject, $description, $fileAttachment);
         $stmt->execute();
+        $stmt->close();
     } catch (Exception $e) {
         showError("Error: " . $e->getMessage());
     }
-
-    $stmt->close();
-    closeDatabaseConnection($conn);
 }
+#endregion
 
+#region Function --- Create ticket bug report fields
 function createTicketBugReportFields($conn, $subject, $impactedPart, $operativeSystem, $bugDescription, $stepsToReproduce, $expectedResult, $receivedResult, $discordClient, $bugImage) {
-    global $conn;
-    $conn = mysqli_connect("sql207.infinityfree.com", "if0_36018425", "bACONfRITO33", "if0_36018425_imvmdb");
     $user = $_SESSION['user'];
     $type = "bugReport";
     $currentDate = date('Y/m/d'); 
@@ -80,10 +76,9 @@ function createTicketBugReportFields($conn, $subject, $impactedPart, $operativeS
         }
         $stmt->bind_param("sssssssss", $subject, $impactedPart, $operativeSystem, $bugDescription, $stepsToReproduce, $expectedResult, $receivedResult, $discordClient, $bugImage);
         $stmt->execute();
+        $stmt->close();
     } catch (Exception $e) {
         showError("Error: " . $e->getMessage());
     }
-
-    $stmt->close();
-    closeDatabaseConnection($conn);
 }
+#endregion

@@ -17,7 +17,7 @@ ini_set('display_errors', 1);
 #endregion
 
 # Now, let's connect to our incredible database!
-connectToDatabase();
+$conn = connectToDatabase();
 
 #region Variable declaration
 # Hey, give me the data from the user's form, okay? Thanks!

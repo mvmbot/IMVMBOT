@@ -22,7 +22,7 @@ ini_set('display_errors', 1);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Checking our connection to the database!
-    connectToDatabase();
+    $conn = connectToDatabase();
 
     #region Variable Declaration
     // Getting the username and password entered in the form
