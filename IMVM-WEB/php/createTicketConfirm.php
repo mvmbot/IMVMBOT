@@ -56,7 +56,7 @@ switch ($type) {
     #endregion
 
     #region  Feature Request!
-    case 'featureRequest':
+    case 'featureRequestFields':
         $requestType = $_POST['requestType'] ?? '';
         $subject = $_POST['subject'] ?? '';
         $description = $_POST['description'] ?? '';
@@ -68,7 +68,7 @@ switch ($type) {
     #endregion
 
     #region Grammar Issues!
-    case 'grammarIssues':
+    case 'grammarIssuesFields':
         $subject = $_POST['subject'] ?? '';
         $description = $_POST['description'] ?? '';
         $fileAttachment = $_POST['fileAttachment'] ?? '';
@@ -80,7 +80,7 @@ switch ($type) {
     #endregion
 
     #region Information Update!
-    case 'informationUpdate':
+    case 'informationUpdateFields':
         $subject = $_POST['subject'] ?? '';
         $updateInfo = $_POST['updateInfo'] ?? '';
         $fieldsToCheck = ['subject', 'updateInfo'];
@@ -91,7 +91,7 @@ switch ($type) {
     #endregion
 
     #region Other Issues!
-    case 'other':
+    case 'otherFields':
         $subject = $_POST['subject'] ?? '';
         $description = $_POST['description'] ?? '';
         $fieldsToCheck = ['subject', 'description'];
