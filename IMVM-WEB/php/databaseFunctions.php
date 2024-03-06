@@ -82,3 +82,28 @@ function createTicketBugReportFields($conn, $subject, $impactedPart, $operativeS
     }
 }
 #endregion
+
+#region Function --- Create ticket feature request fields
+function createTicketFeatureRequestFields($conn, $requestType, $subject, $description) {
+    $user = $_SESSION['user'];
+    $type = "featureRequest";
+    $currentDate = date('Y/m/d'); 
+    $modificationDate = null;
+    $resolvedDate = null;
+
+    insertTicketIntoDatabase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate);
+
+    try {
+        $insertTypeSQL = "INSERT INTO featureRequest (requestType, subject, description) VALUES (?, ?, ?)";
+        $stmt = $conn->prepare($insertTypeSQL);
+        if ($stmt === false) {
+            throw new Exception("Error preparing INSERT statement: " . $conn->error);
+        }
+        $stmt->bind_param("ssss", $requestType, $subject, $description);
+        $stmt->execute();
+        $stmt->close();
+    } catch (Exception $e) {
+        showError("Error: " . $e->getMessage());
+    }
+}
+#endregion
