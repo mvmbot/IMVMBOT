@@ -45,7 +45,6 @@ CREATE TABLE helpSupport (
 -- Bug Reporting
 CREATE TABLE bugReport (
     ticketID INT NOT NULL,
-    impactedPart ENUM('HOME', 'ABOUT', 'FAQ', 'CHANGELOG', 'SIGN-IN', 'SIGN-UP', 'LOG-OUT', 'CREATE-TICKET', 'VIEW-TICKET', 'COOKIES'),
     operativeSystem ENUM('Android','iOS','Windows','MACos','Linux', 'Browser'),
     subject VARCHAR(255),
     description TEXT,
@@ -62,7 +61,7 @@ CREATE TABLE featureRequest (
     ticketID INT NOT NULL,
     subject VARCHAR(255),
     description TEXT,
-    section ENUM('HOME', 'ABOUT', 'FAQ', 'CHANGELOG', 'SIGN-IN', 'SIGN-UP', 'LOG-OUT', 'CREATE-TICKET', 'VIEW-TICKET', 'COOKIES'),
+    requestType ENUM('commands', 'web', 'other'),
     FOREIGN KEY (ticketID) REFERENCES ticket(idTicket)
 );
 
@@ -79,7 +78,7 @@ CREATE TABLE grammarIssues (
 CREATE TABLE informationUpdate (
     ticketID INT NOT NULL,
     subject VARCHAR(255),
-    description TEXT,
+    updateInfo TEXT,
     FOREIGN KEY (ticketID) REFERENCES ticket(idTicket)
 );
 
