@@ -33,19 +33,22 @@ switch ($type) {
         if (areFieldsEmpty($fieldsToCheck)) {
             redirectToSignup();
         }
-        createTicketHelpSupportFields($subject, $fileAttachment, $description);
+        createTicketHelpSupportFields($conn, $subject, $fileAttachment, $description);
         break;
     #endregion
 
     #region Bug Reporting!
     case 'bugReportFields':
+        $subject = $_POST['subject']?? '';
+        $impactedPart = $_POST['impactedPart'] ?? '';
+        $operativeSystem = $_POST['operativeSystem'] ?? '';
         $bugDescription = $_POST['bugDescription'] ?? '';
         $stepsToReproduce = $_POST['stepsToReproduce'] ?? '';
         $expectedResult = $_POST['expectedResult'] ?? '';
         $receivedResult = $_POST['receivedResult'] ?? '';
         $discordClient = $_POST['discordClient'] ?? '';
         $bugImage = $_POST['bugImage'] ?? '';
-        $fieldsToCheck = ['bugDescription', 'stepsToReproduce', 'expectedResult', 'receivedResult', 'discordClient'];
+        $fieldsToCheck = ['bugDescription', 'stepsToReproduce', 'expectedResult', 'receivedResult', 'discordClient', 'subject', 'impactedPart', 'operativeSystem'];
         if (areFieldsEmpty($fieldsToCheck)) {
             redirectToSignup();
         }

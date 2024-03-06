@@ -86,7 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Finally, let's close the database connection
-    closeDatabaseConnection();
+    closeDatabaseConnection($conn);
 } else {
 
     // No POST method detected, gently guiding the user to the signin page

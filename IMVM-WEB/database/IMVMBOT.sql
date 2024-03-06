@@ -36,7 +36,6 @@ CREATE TABLE ticket (
 -- Help & Support
 CREATE TABLE helpSupport (
     ticketID INT NOT NULL,
-    typeTicket VARCHAR(50) NOT NULL,
     subject VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
     file VARCHAR(255),

@@ -120,4 +120,4 @@ if ($stmtCheck->num_rows > 0) {
 # Okay, we're done with the database and our tools. Time to close up
 $stmtCheck->close();
 $stmt->close();
-closeDatabaseConnection();
+closeDatabaseConnection($conn);
