@@ -84,7 +84,7 @@ function createTicketBugReportFields($conn, $subject, $impactedPart, $operativeS
 #endregion
 
 #region Function --- Create ticket feature request fields
-function createTicketFeatureRequestFields($conn, $requestType, $subject, $description) {
+function createTicketFeatureRequestFields($conn, $subject, $description) {
     $user = $_SESSION['user'];
     $type = "featureRequest";
     $currentDate = date('Y/m/d'); 
@@ -94,12 +94,37 @@ function createTicketFeatureRequestFields($conn, $requestType, $subject, $descri
     insertTicketIntoDatabase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate);
 
     try {
-        $insertTypeSQL = "INSERT INTO featureRequest (requestType, subject, description) VALUES (?, ?, ?)";
+        $insertTypeSQL = "INSERT INTO featureRequest (subject, description) VALUES (?, ?)";
         $stmt = $conn->prepare($insertTypeSQL);
         if ($stmt === false) {
             throw new Exception("Error preparing INSERT statement: " . $conn->error);
         }
-        $stmt->bind_param("ssss", $requestType, $subject, $description);
+        $stmt->bind_param("sss", $subject, $description);
+        $stmt->execute();
+        $stmt->close();
+    } catch (Exception $e) {
+        showError("Error: " . $e->getMessage());
+    }
+}
+#endregion
+
+#region Function --- Create ticket information update fields
+function createTicketinformationUpdateFields($conn, $subject, $updateInfo) {
+    $user = $_SESSION['user'];
+    $type = "featureRequest";
+    $currentDate = date('Y/m/d'); 
+    $modificationDate = null;
+    $resolvedDate = null;
+
+    insertTicketIntoDatabase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate);
+
+    try {
+        $insertTypeSQL = "INSERT INTO informationUpdate (subject, updateInfo) VALUES (?, ?)";
+        $stmt = $conn->prepare($insertTypeSQL);
+        if ($stmt === false) {
+            throw new Exception("Error preparing INSERT statement: " . $conn->error);
+        }
+        $stmt->bind_param("ssss", $subject, $updateInfo);
         $stmt->execute();
         $stmt->close();
     } catch (Exception $e) {
