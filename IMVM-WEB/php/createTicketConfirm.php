@@ -94,7 +94,8 @@ switch ($type) {
     case 'otherFields':
         $subject = $_POST['subject'] ?? '';
         $description = $_POST['description'] ?? '';
-        $fieldsToCheck = ['subject', 'description'];
+        $extraText = $_POST['extraText'] ?? '';
+        $fieldsToCheck = ['subject', 'description', 'extraText'];
         if (areFieldsEmpty($fieldsToCheck)) {
             redirectToSignup();
         }
