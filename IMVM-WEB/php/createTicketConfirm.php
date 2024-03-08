@@ -33,18 +33,22 @@ switch ($type) {
         if (areFieldsEmpty($fieldsToCheck)) {
             redirectToSignup();
         }
+        createTicketHelpSupportFields($conn, $subject, $fileAttachment, $description);
         break;
     #endregion
 
     #region Bug Reporting!
     case 'bugReportFields':
+        $subject = $_POST['subject']?? '';
+        $impactedPart = $_POST['impactedPart'] ?? '';
+        $operativeSystem = $_POST['operativeSystem'] ?? '';
         $bugDescription = $_POST['bugDescription'] ?? '';
         $stepsToReproduce = $_POST['stepsToReproduce'] ?? '';
         $expectedResult = $_POST['expectedResult'] ?? '';
         $receivedResult = $_POST['receivedResult'] ?? '';
         $discordClient = $_POST['discordClient'] ?? '';
         $bugImage = $_POST['bugImage'] ?? '';
-        $fieldsToCheck = ['bugDescription', 'stepsToReproduce', 'expectedResult', 'receivedResult', 'discordClient'];
+        $fieldsToCheck = ['bugDescription', 'stepsToReproduce', 'expectedResult', 'receivedResult', 'discordClient', 'subject', 'impactedPart', 'operativeSystem'];
         if (areFieldsEmpty($fieldsToCheck)) {
             redirectToSignup();
         }
@@ -52,7 +56,7 @@ switch ($type) {
     #endregion
 
     #region  Feature Request!
-    case 'featureRequest':
+    case 'featureRequestFields':
         $requestType = $_POST['requestType'] ?? '';
         $subject = $_POST['subject'] ?? '';
         $description = $_POST['description'] ?? '';
@@ -64,7 +68,7 @@ switch ($type) {
     #endregion
 
     #region Grammar Issues!
-    case 'grammarIssues':
+    case 'grammarIssuesFields':
         $subject = $_POST['subject'] ?? '';
         $description = $_POST['description'] ?? '';
         $fileAttachment = $_POST['fileAttachment'] ?? '';
@@ -76,7 +80,7 @@ switch ($type) {
     #endregion
 
     #region Information Update!
-    case 'informationUpdate':
+    case 'informationUpdateFields':
         $subject = $_POST['subject'] ?? '';
         $updateInfo = $_POST['updateInfo'] ?? '';
         $fieldsToCheck = ['subject', 'updateInfo'];
@@ -87,7 +91,7 @@ switch ($type) {
     #endregion
 
     #region Other Issues!
-    case 'other':
+    case 'otherFields':
         $subject = $_POST['subject'] ?? '';
         $description = $_POST['description'] ?? '';
         $fieldsToCheck = ['subject', 'description'];

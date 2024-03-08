@@ -292,6 +292,24 @@ session_start();
 
         <div id="bugReportFields" style="display: none;">
             <div>
+                <label for="requestType" style="display: block;">Operative system:</label>
+                <select id="requestType" name="requestType">
+                    <option value="" disabled selected hidden>-</option>
+                    <option value="android">Android</option>
+                    <option value="iOS">iOS</option>
+                    <option value="windows">Windows</option>
+                    <option value="macOs">MACos</option>
+                    <option value="linux">Linux</option>
+                    <option value="browser">Browser</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="subject" style="display: block;">Subject:</label>
+                <textarea id="subject" name="bugDescription"></textarea>
+            </div>
+
+            <div>
                 <label for="bugDescription" style="display: block;">Bug Description:</label>
                 <textarea id="bugDescription" name="bugDescription"></textarea>
             </div>
@@ -383,12 +401,17 @@ session_start();
                 <label for="description" style="display: block;">Description:</label>
                 <textarea id="description" name="description"></textarea>
             </div>
+
+            <div>
+                <label for="extraText" style="display: block;">Extra text:</label>
+                <textarea id="extraText" name="extraText"></textarea>
+            </div>
         </div>
 
 
         <!-- Div for the submit button -->
         <div style="margin-top: 10px;">
-            <button type="button" class="btn btn-primary py-2 px-3" onclick="submitForm()">SUBMIT</button>
+            <button type="button" class="btn btn-primary py-2 px-3" action="submitForm()">SUBMIT</button>
         </div>
     </form>
 
@@ -430,13 +453,9 @@ session_start();
                 div.style.display = "none";
             });
         }
-
-        function submitForm() {
-            // Aquí puedes agregar la lógica para enviar los datos del formulario a la base de datos
-            alert("Formulario enviado. Lógica de envío a la base de datos por implementar.");
-        }
     </script>
 
+    
 
 
     <!-- Footer Start -->
