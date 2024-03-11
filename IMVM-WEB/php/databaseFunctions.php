@@ -16,26 +16,7 @@ function closeDatabaseConnection($conn) {
 }
 #endregion
 
-#region Function --- Insert ticket into database
-function createTicketBase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate) {
-    try {
-        $insertTicketSQL = "INSERT INTO ticket (typeTicket, creationDate, idUsers, modificationDate, resolvedDate) VALUES (?, ?, ?, ?, ?)";
-        $stmt = $conn->prepare($insertTicketSQL);
-        if ($stmt === false) {
-            throw new Exception("Error preparing INSERT statement: " . $conn->error);
-        }
-        $stmt->bind_param("sssss", $type, $currentDate, $user, $modificationDate, $resolvedDate);
-        $stmt->execute();
-
-        $ticketId = getTicketID($conn);
-
-        $stmt->close();
-    } catch (Exception $e) {
-        showError("Error: " . $e->getMessage());
-    }
-    return $ticketId;
-}
-
+#region Function --- Get the ticket ID
 function getTicketID($conn) {
     $ticketId = mysqli_insert_id($conn);
     if ($ticketId === false) {
@@ -45,16 +26,43 @@ function getTicketID($conn) {
 }
 #endregion
 
+#region Function --- Insert ticket into database
+function createTicketBase($conn, $type) {
+
+    #region Vars
+    $user = $_SESSION['user'];
+    $currentDate = date('Y-m-d H:i:s');
+    #endregion
+
+    #region Try-Catch --- Prepare and execute SQL query
+    try {
+        $insertTicketSQL = "INSERT INTO ticket (typeTicket, creationDate, idUsers) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($insertTicketSQL);
+        if ($stmt === false) {
+            throw new Exception("Error preparing INSERT statement: " . $conn->error);
+        }
+        $stmt->bind_param("sssss", $type, $currentDate, $user);
+        $stmt->execute();
+        $ticketId = getTicketID($conn);
+        $stmt->close();
+    } catch (Exception $e) {
+        showError("Error: " . $e->getMessage());
+    }
+    #endregion
+
+    return $ticketId;
+}
+#endregion
+
 #region Function --- Create ticket help support fields
 function createTicketHelpSupportFields($conn, $subject, $description, $fileAttachment) {
-    $user = $_SESSION['user'];
+    
+    #region Vars
     $type = "helpSupport";
-    $currentDate = date('Y-m-d H:i:s');
-    $modificationDate = null;
-    $resolvedDate = null;
+    $ticketId = createTicketBase($conn, $type);
+    #endregion
 
-    $ticketId = createTicketBase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate);
-
+    #region Try-Catch --- Prepare and execute SQL query
     try {
         $insertTypeSQL = "INSERT INTO helpSupport (subject, description, file, ticketId) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($insertTypeSQL);
@@ -67,6 +75,7 @@ function createTicketHelpSupportFields($conn, $subject, $description, $fileAttac
     } catch (Exception $e) {
         showError("Error: " . $e->getMessage());
     }
+    #endregion
 }
 #endregion
 
