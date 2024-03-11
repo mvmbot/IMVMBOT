@@ -17,7 +17,7 @@ function closeDatabaseConnection($conn) {
 #endregion
 
 #region Function --- Insert ticket into database
-function insertTicketIntoDatabase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate) {
+function createTicketBase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate) {
     try {
         $insertTicketSQL = "INSERT INTO ticket (typeTicket, creationDate, idUsers, modificationDate, resolvedDate) VALUES (?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($insertTicketSQL);
@@ -37,11 +37,11 @@ function insertTicketIntoDatabase($conn, $type, $currentDate, $user, $modificati
 function createTicketHelpSupportFields($conn, $subject, $description, $fileAttachment) {
     $user = $_SESSION['user'];
     $type = "helpSupport";
-    $currentDate = date('Y/m/d');
+    $currentDate = date('Y-m-d H:i:s');
     $modificationDate = null;
     $resolvedDate = null;
 
-    insertTicketIntoDatabase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate);
+    createTicketBase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate);
 
     $ticketId = mysqli_insert_id($conn);
 
@@ -64,11 +64,11 @@ function createTicketHelpSupportFields($conn, $subject, $description, $fileAttac
 function createTicketBugReportFields($conn, $subject, $impactedPart, $operativeSystem, $bugDescription, $stepsToReproduce, $expectedResult, $receivedResult, $discordClient, $bugImage) {
     $user = $_SESSION['user'];
     $type = "bugReport";
-    $currentDate = date('Y/m/d');
+    $currentDate = date('Y-m-d H:i:s');
     $modificationDate = null;
     $resolvedDate = null;
 
-    insertTicketIntoDatabase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate);
+    createTicketBase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate);
 
     try {
         $insertTypeSQL = "INSERT INTO bugReport (subject, impactedPart, operativeSystem, description, stepsToReproduce, expectedResult, receivedResult, discordClient, image) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -89,11 +89,11 @@ function createTicketBugReportFields($conn, $subject, $impactedPart, $operativeS
 function createTicketFeatureRequestFields($conn, $subject, $description) {
     $user = $_SESSION['user'];
     $type = "featureRequest";
-    $currentDate = date('Y/m/d');
+    $currentDate = date('Y-m-d H:i:s');
     $modificationDate = null;
     $resolvedDate = null;
 
-    insertTicketIntoDatabase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate);
+    createTicketBase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate);
 
     try {
         $insertTypeSQL = "INSERT INTO featureRequest (subject, description) VALUES (?, ?)";
@@ -114,11 +114,11 @@ function createTicketFeatureRequestFields($conn, $subject, $description) {
 function createTicketGrammarIssuesFields($conn, $subject, $description, $fileAttachment) {
     $user = $_SESSION['user'];
     $type = "featureRequest";
-    $currentDate = date('Y/m/d');
+    $currentDate = date('Y-m-d H:i:s');
     $modificationDate = null;
     $resolvedDate = null;
 
-    insertTicketIntoDatabase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate);
+    createTicketBase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate);
 
     try {
         $insertTypeSQL = "INSERT INTO grammarIssues (subject, description, fileAttachment) VALUES (?, ?, ?)";
@@ -139,11 +139,11 @@ function createTicketGrammarIssuesFields($conn, $subject, $description, $fileAtt
 function createTicketInformationUpdateFields($conn, $subject, $updateInfo) {
     $user = $_SESSION['user'];
     $type = "featureRequest";
-    $currentDate = date('Y/m/d');
+    $currentDate = date('Y-m-d H:i:s');
     $modificationDate = null;
     $resolvedDate = null;
 
-    insertTicketIntoDatabase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate);
+    createTicketBase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate);
 
     try {
         $insertTypeSQL = "INSERT INTO informationUpdate (subject, updateInfo) VALUES (?, ?)";
@@ -164,11 +164,11 @@ function createTicketInformationUpdateFields($conn, $subject, $updateInfo) {
 function createTicketOtherFields($conn, $subject, $description, $extraText) {
     $user = $_SESSION['user'];
     $type = "featureRequest";
-    $currentDate = date('Y/m/d');
+    $currentDate = date('Y-m-d H:i:s');
     $modificationDate = null;
     $resolvedDate = null;
 
-    insertTicketIntoDatabase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate);
+    createTicketBase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate);
 
     try {
         $insertTypeSQL = "INSERT INTO other (subject, description, extraText) VALUES (?, ?, ?)";
