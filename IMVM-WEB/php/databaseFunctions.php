@@ -26,10 +26,22 @@ function createTicketBase($conn, $type, $currentDate, $user, $modificationDate, 
         }
         $stmt->bind_param("sssss", $type, $currentDate, $user, $modificationDate, $resolvedDate);
         $stmt->execute();
+
+        $ticketId = getTicketID($conn);
+
         $stmt->close();
     } catch (Exception $e) {
         showError("Error: " . $e->getMessage());
     }
+    return $ticketId;
+}
+
+function getTicketID($conn) {
+    $ticketId = mysqli_insert_id($conn);
+    if ($ticketId === false) {
+        showError("Error getting last inserted ID: " . $conn->error);
+    }
+    return $ticketId;
 }
 #endregion
 
@@ -41,9 +53,7 @@ function createTicketHelpSupportFields($conn, $subject, $description, $fileAttac
     $modificationDate = null;
     $resolvedDate = null;
 
-    createTicketBase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate);
-
-    $ticketId = mysqli_insert_id($conn);
+    $ticketId = createTicketBase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate);
 
     try {
         $insertTypeSQL = "INSERT INTO helpSupport (subject, description, file, ticketId) VALUES (?, ?, ?, ?)";
@@ -101,7 +111,7 @@ function createTicketFeatureRequestFields($conn, $subject, $description) {
         if ($stmt === false) {
             throw new Exception("Error preparing INSERT statement: " . $conn->error);
         }
-        $stmt->bind_param("sss", $subject, $description);
+        $stmt->bind_param("ss", $subject, $description);
         $stmt->execute();
         $stmt->close();
     } catch (Exception $e) {
