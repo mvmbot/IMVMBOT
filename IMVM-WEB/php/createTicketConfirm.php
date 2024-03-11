@@ -28,8 +28,8 @@ switch ($type) {
     case 'helpSupportFields':
         $subject = $_POST['subject'] ?? '';
         $description = $_POST['description'] ?? '';
-        $fileAttachment = $_POST['attachment'] ?? '';
-        $fieldsToCheck = ['subject', 'description', 'attachment'];
+        $fileAttachment = $_POST['fileAttachment'] ?? '';
+        $fieldsToCheck = ['subject', 'description', 'fileAttachment'];
         if (areFieldsEmpty($fieldsToCheck)) {
             redirectToSignup();
         }
@@ -39,16 +39,15 @@ switch ($type) {
 
     #region Bug Reporting!
     case 'bugReportFields':
+        $requestType = $_POST['requestType']?? '';
         $subject = $_POST['subject']?? '';
-        $impactedPart = $_POST['impactedPart'] ?? '';
-        $operativeSystem = $_POST['operativeSystem'] ?? '';
         $bugDescription = $_POST['bugDescription'] ?? '';
         $stepsToReproduce = $_POST['stepsToReproduce'] ?? '';
         $expectedResult = $_POST['expectedResult'] ?? '';
         $receivedResult = $_POST['receivedResult'] ?? '';
         $discordClient = $_POST['discordClient'] ?? '';
         $bugImage = $_POST['bugImage'] ?? '';
-        $fieldsToCheck = ['bugDescription', 'stepsToReproduce', 'expectedResult', 'receivedResult', 'discordClient', 'subject', 'impactedPart', 'operativeSystem'];
+        $fieldsToCheck = ['requestType','bugDescription', 'stepsToReproduce', 'expectedResult', 'receivedResult', 'discordClient', 'subject','bugImage'];
         if (areFieldsEmpty($fieldsToCheck)) {
             redirectToSignup();
         }
