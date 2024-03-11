@@ -17,7 +17,7 @@ function closeDatabaseConnection($conn) {
 #endregion
 
 #region Function --- Insert ticket into database
-function insertTicketIntoDatabase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate) {
+function createTicketBase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate) {
     try {
         $insertTicketSQL = "INSERT INTO ticket (typeTicket, creationDate, idUsers, modificationDate, resolvedDate) VALUES (?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($insertTicketSQL);
@@ -26,10 +26,22 @@ function insertTicketIntoDatabase($conn, $type, $currentDate, $user, $modificati
         }
         $stmt->bind_param("sssss", $type, $currentDate, $user, $modificationDate, $resolvedDate);
         $stmt->execute();
+
+        $ticketId = getTicketID($conn);
+
         $stmt->close();
     } catch (Exception $e) {
         showError("Error: " . $e->getMessage());
     }
+    return $ticketId;
+}
+
+function getTicketID($conn) {
+    $ticketId = mysqli_insert_id($conn);
+    if ($ticketId === false) {
+        showError("Error getting last inserted ID: " . $conn->error);
+    }
+    return $ticketId;
 }
 #endregion
 
@@ -37,19 +49,19 @@ function insertTicketIntoDatabase($conn, $type, $currentDate, $user, $modificati
 function createTicketHelpSupportFields($conn, $subject, $description, $fileAttachment) {
     $user = $_SESSION['user'];
     $type = "helpSupport";
-    $currentDate = date('Y/m/d'); 
+    $currentDate = date('Y-m-d H:i:s');
     $modificationDate = null;
     $resolvedDate = null;
 
-    insertTicketIntoDatabase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate);
+    $ticketId = createTicketBase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate);
 
     try {
-        $insertTypeSQL = "INSERT INTO helpSupport (subject, description, file) VALUES (?, ?, ?)";
+        $insertTypeSQL = "INSERT INTO helpSupport (subject, description, file, ticketId) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($insertTypeSQL);
         if ($stmt === false) {
             throw new Exception("Error preparing INSERT statement: " . $conn->error);
         }
-        $stmt->bind_param("sss", $subject, $description, $fileAttachment);
+        $stmt->bind_param("sssi", $subject, $description, $fileAttachment, $ticketId);
         $stmt->execute();
         $stmt->close();
     } catch (Exception $e) {
@@ -62,11 +74,11 @@ function createTicketHelpSupportFields($conn, $subject, $description, $fileAttac
 function createTicketBugReportFields($conn, $subject, $impactedPart, $operativeSystem, $bugDescription, $stepsToReproduce, $expectedResult, $receivedResult, $discordClient, $bugImage) {
     $user = $_SESSION['user'];
     $type = "bugReport";
-    $currentDate = date('Y/m/d'); 
+    $currentDate = date('Y-m-d H:i:s');
     $modificationDate = null;
     $resolvedDate = null;
 
-    insertTicketIntoDatabase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate);
+    createTicketBase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate);
 
     try {
         $insertTypeSQL = "INSERT INTO bugReport (subject, impactedPart, operativeSystem, description, stepsToReproduce, expectedResult, receivedResult, discordClient, image) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -87,11 +99,11 @@ function createTicketBugReportFields($conn, $subject, $impactedPart, $operativeS
 function createTicketFeatureRequestFields($conn, $subject, $description) {
     $user = $_SESSION['user'];
     $type = "featureRequest";
-    $currentDate = date('Y/m/d'); 
+    $currentDate = date('Y-m-d H:i:s');
     $modificationDate = null;
     $resolvedDate = null;
 
-    insertTicketIntoDatabase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate);
+    createTicketBase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate);
 
     try {
         $insertTypeSQL = "INSERT INTO featureRequest (subject, description) VALUES (?, ?)";
@@ -99,7 +111,32 @@ function createTicketFeatureRequestFields($conn, $subject, $description) {
         if ($stmt === false) {
             throw new Exception("Error preparing INSERT statement: " . $conn->error);
         }
-        $stmt->bind_param("sss", $subject, $description);
+        $stmt->bind_param("ss", $subject, $description);
+        $stmt->execute();
+        $stmt->close();
+    } catch (Exception $e) {
+        showError("Error: " . $e->getMessage());
+    }
+}
+#endregion
+
+#region Function --- Create ticket grammar issues fields
+function createTicketGrammarIssuesFields($conn, $subject, $description, $fileAttachment) {
+    $user = $_SESSION['user'];
+    $type = "featureRequest";
+    $currentDate = date('Y-m-d H:i:s');
+    $modificationDate = null;
+    $resolvedDate = null;
+
+    createTicketBase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate);
+
+    try {
+        $insertTypeSQL = "INSERT INTO grammarIssues (subject, description, fileAttachment) VALUES (?, ?, ?)";
+        $stmt = $conn->prepare($insertTypeSQL);
+        if ($stmt === false) {
+            throw new Exception("Error preparing INSERT statement: " . $conn->error);
+        }
+        $stmt->bind_param("sss", $subject, $description, $fileAttachment);
         $stmt->execute();
         $stmt->close();
     } catch (Exception $e) {
@@ -109,14 +146,14 @@ function createTicketFeatureRequestFields($conn, $subject, $description) {
 #endregion
 
 #region Function --- Create ticket information update fields
-function createTicketinformationUpdateFields($conn, $subject, $updateInfo) {
+function createTicketInformationUpdateFields($conn, $subject, $updateInfo) {
     $user = $_SESSION['user'];
     $type = "featureRequest";
-    $currentDate = date('Y/m/d'); 
+    $currentDate = date('Y-m-d H:i:s');
     $modificationDate = null;
     $resolvedDate = null;
 
-    insertTicketIntoDatabase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate);
+    createTicketBase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate);
 
     try {
         $insertTypeSQL = "INSERT INTO informationUpdate (subject, updateInfo) VALUES (?, ?)";
@@ -124,7 +161,32 @@ function createTicketinformationUpdateFields($conn, $subject, $updateInfo) {
         if ($stmt === false) {
             throw new Exception("Error preparing INSERT statement: " . $conn->error);
         }
-        $stmt->bind_param("ssss", $subject, $updateInfo);
+        $stmt->bind_param("ss", $subject, $updateInfo);
+        $stmt->execute();
+        $stmt->close();
+    } catch (Exception $e) {
+        showError("Error: " . $e->getMessage());
+    }
+}
+#endregion
+
+#region Function --- Create ticket other fields
+function createTicketOtherFields($conn, $subject, $description, $extraText) {
+    $user = $_SESSION['user'];
+    $type = "featureRequest";
+    $currentDate = date('Y-m-d H:i:s');
+    $modificationDate = null;
+    $resolvedDate = null;
+
+    createTicketBase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate);
+
+    try {
+        $insertTypeSQL = "INSERT INTO other (subject, description, extraText) VALUES (?, ?, ?)";
+        $stmt = $conn->prepare($insertTypeSQL);
+        if ($stmt === false) {
+            throw new Exception("Error preparing INSERT statement: " . $conn->error);
+        }
+        $stmt->bind_param("sss", $subject, $description, $extraText);
         $stmt->execute();
         $stmt->close();
     } catch (Exception $e) {
