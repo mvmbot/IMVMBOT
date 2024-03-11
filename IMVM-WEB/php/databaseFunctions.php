@@ -43,13 +43,15 @@ function createTicketHelpSupportFields($conn, $subject, $description, $fileAttac
 
     insertTicketIntoDatabase($conn, $type, $currentDate, $user, $modificationDate, $resolvedDate);
 
+    $ticketId = mysqli_insert_id($conn);
+
     try {
-        $insertTypeSQL = "INSERT INTO helpSupport (subject, description, file) VALUES (?, ?, ?)";
+        $insertTypeSQL = "INSERT INTO helpSupport (subject, description, file, ticketId) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($insertTypeSQL);
         if ($stmt === false) {
             throw new Exception("Error preparing INSERT statement: " . $conn->error);
         }
-        $stmt->bind_param("sss", $subject, $description, $fileAttachment);
+        $stmt->bind_param("sssi", $subject, $description, $fileAttachment, $ticketId);
         $stmt->execute();
         $stmt->close();
     } catch (Exception $e) {
