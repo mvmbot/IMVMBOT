@@ -27,7 +27,7 @@ function getTicketID($conn) {
 #endregion
 
 #region Function --- Insert ticket into database
-function createTicketBase($conn, $type) {
+function createTicketBase($conn, $ticketType) {
 
     #region Vars
     $user = $_SESSION['user'];
@@ -41,7 +41,7 @@ function createTicketBase($conn, $type) {
         if ($stmt === false) {
             throw new Exception("Error preparing INSERT statement: " . $conn->error);
         }
-        $stmt->bind_param("sss", $type, $currentDate, $user);
+        $stmt->bind_param("sss", $ticketType, $currentDate, $user);
         $stmt->execute();
         $ticketId = getTicketID($conn);
         $stmt->close();
@@ -58,8 +58,8 @@ function createTicketBase($conn, $type) {
 function createTicketHelpSupportFields($conn, $subject, $description, $fileAttachment) {
     
     #region Vars
-    $type = "helpSupport";
-    $ticketId = createTicketBase($conn, $type);
+    $ticketType = "helpSupport";
+    $ticketId = createTicketBase($conn, $ticketType);
     #endregion
 
     #region Try-Catch --- Prepare and execute SQL query
@@ -82,10 +82,10 @@ function createTicketHelpSupportFields($conn, $subject, $description, $fileAttac
 #region Function --- Create ticket bug report fields
 function createTicketBugReportFields($conn, $subject, $impactedPart, $operativeSystem, $bugDescription, $stepsToReproduce, $expectedResult, $receivedResult, $discordClient, $bugImage) {
 
-    $type = "bugReport";
-    $ticketId = createTicketBase($conn, $type);
-
-    createTicketBase($conn, $type);
+    #region Vars
+    $ticketType = "bugReport";
+    $ticketId = createTicketBase($conn, $ticketType);
+    #endregion
 
     try {
         $insertTypeSQL = "INSERT INTO bugReport (subject, impactedPart, operativeSystem, description, stepsToReproduce, expectedResult, receivedResult, discordClient, image, ticketID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -104,11 +104,11 @@ function createTicketBugReportFields($conn, $subject, $impactedPart, $operativeS
 
 #region Function --- Create ticket feature request fields
 function createTicketFeatureRequestFields($conn, $subject, $description, $requestType) {
-    
-    $type = "featureRequest";
-    $ticketId = createTicketBase($conn, $type);
 
-    createTicketBase($conn, $type);
+    #region Vars
+    $ticketType = "featureRequest";
+    $ticketId = createTicketBase($conn, $ticketType);
+    #endregion
 
     try {
         $insertTypeSQL = "INSERT INTO featureRequest (subject, description, ticketID, requestType) VALUES (?, ?, ?, ?)";
@@ -127,11 +127,11 @@ function createTicketFeatureRequestFields($conn, $subject, $description, $reques
 
 #region Function --- Create ticket grammar issues fields
 function createTicketGrammarIssuesFields($conn, $subject, $description, $fileAttachment) {
-    
-    $type = "featureRequest";
-    $ticketId = createTicketBase($conn, $type);
 
-    createTicketBase($conn, $type);
+    #region Vars
+    $ticketType = "grammarIssues";
+    $ticketId = createTicketBase($conn, $ticketType);
+    #endregion
 
     try {
         $insertTypeSQL = "INSERT INTO grammarIssues (subject, description, image, ticketID) VALUES (?, ?, ?, ?)";
@@ -150,11 +150,11 @@ function createTicketGrammarIssuesFields($conn, $subject, $description, $fileAtt
 
 #region Function --- Create ticket information update fields
 function createTicketInformationUpdateFields($conn, $subject, $updateInfo) {
-    
-    $type = "featureRequest";
-    $ticketId = createTicketBase($conn, $type);
 
-    createTicketBase($conn, $type);
+    #region Vars
+    $ticketType = "informationUpdate";
+    $ticketId = createTicketBase($conn, $ticketType);
+    #endregion
 
     try {
         $insertTypeSQL = "INSERT INTO informationUpdate (subject, updateInfo, ticketID) VALUES (?, ?, ?)";
@@ -173,11 +173,11 @@ function createTicketInformationUpdateFields($conn, $subject, $updateInfo) {
 
 #region Function --- Create ticket other fields
 function createTicketOtherFields($conn, $subject, $description, $extraText) {
-    
-    $type = "featureRequest";
-    $ticketId = createTicketBase($conn, $type);
 
-    createTicketBase($conn, $type);
+    #region Vars
+    $ticketType = "other";
+    $ticketId = createTicketBase($conn, $ticketType);
+    #endregion
 
     try {
         $insertTypeSQL = "INSERT INTO other (subject, description, extraText, ticketID) VALUES (?, ?, ?, ?)";
