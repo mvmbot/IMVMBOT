@@ -38,6 +38,6 @@ function validateFormSignIn() {
 
     // Uh-oh! Did you miss something? Checking for empty fields
     if (username.trim() === '' || password.trim() === '') {
-        alert('Oopsie! It seems you forgot to fill in your username or password. Please make sure to provide both.');
+        alert('Fill the form properly.');
     }
 }

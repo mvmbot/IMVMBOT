@@ -235,7 +235,7 @@ session_start();
         <p class="title">
             Sign in to IESMVMBOT as a Admin
         </p>
-        <form class="form" action="./php/signInConfirm.php" method="POST" onsubmit="validateFormSignIn()">
+        <form class="form" action="./php/signInAdminConfirm.php" method="POST" onsubmit="validateFormSignIn()">
             <div class="input-group">
                 <label for="usernameAdmin">Username</label>
                 <input type="text" name="usernameAdmin" id="usernameAdmin" placeholder="">
