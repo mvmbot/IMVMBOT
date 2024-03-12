@@ -3,6 +3,7 @@
 define('SIGNUP_PAGE', '../signup.php');
 define('SIGNIN_PAGE', '../signin.php');
 define('INDEX_PAGE', '../index.php');
+define('TICKET_PAGE', '../createTicket.php');
 #endregion
 
 #region functions --- Redirects to our pages
@@ -21,6 +22,11 @@ function redirectToSignin() {
 // Function to redirect to the main page
 function redirectToIndex() {
     header('Location: ' . INDEX_PAGE);
+    exit;
+}
+
+function redirectToTicket() {
+    header('Location: ' . TICKET_PAGE);
     exit;
 }
 #endregion
