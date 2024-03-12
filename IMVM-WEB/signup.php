@@ -230,7 +230,7 @@ session_start();
     </nav>
 
     <!-- Navbar End -->
-
+            <br><br>
     <div class="form-container">
         <p class="title">Sign up to IESMVMBOT</p>
         <form class="form" method="POST" action="./php/signUpConfirm.php" id="signupform" name="signupform" onsubmit="validateFormSignUp()">
