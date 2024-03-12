@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($result->num_rows > 0) {
 
             // Bingo! Passwords match, time to create a VIP session for this user
-            $_SESSION['user'] = $username;
+            $_SESSION['admin'] = $username;
             redirectToIndex();
         } else {
             // No luck in the query, informing the user and inviting them to try again
