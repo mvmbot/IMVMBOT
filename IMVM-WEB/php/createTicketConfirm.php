@@ -16,7 +16,7 @@ ini_set('display_errors', 1);
 #endregion
 
 # Now, let's connect to our database!
-connectToDatabase();
+$conn = connectToDatabase();
 
 # We grab all the data from the form
 $type = $_POST['type'] ?? ''; # First of all, we get the type so we know what table to look in
@@ -25,20 +25,20 @@ $fieldsToCheck; # This will hold an array with fields that need validation
 switch ($type) {
 
     #region Help & Support!
-    case 'helpSupportFields':
+    case 'helpSupport':
         $subject = $_POST['subject'] ?? '';
         $description = $_POST['description'] ?? '';
         $fileAttachment = $_POST['fileAttachment'] ?? '';
         $fieldsToCheck = ['subject', 'description', 'fileAttachment'];
         if (areFieldsEmpty($fieldsToCheck)) {
-            redirectToSignup();
+            redirectToTicket();
         }
-        createTicketHelpSupportFields($conn, $subject, $fileAttachment, $description);
+        createTicketHelpSupport($conn, $subject, $fileAttachment, $description);
         break;
     #endregion
 
     #region Bug Reporting!
-    case 'bugReportFields':
+    case 'bugReport':
         $requestType = $_POST['requestType']?? '';
         $subject = $_POST['subject']?? '';
         $bugDescription = $_POST['bugDescription'] ?? '';
@@ -49,54 +49,55 @@ switch ($type) {
         $bugImage = $_POST['bugImage'] ?? '';
         $fieldsToCheck = ['requestType','bugDescription', 'stepsToReproduce', 'expectedResult', 'receivedResult', 'discordClient', 'subject','bugImage'];
         if (areFieldsEmpty($fieldsToCheck)) {
-            redirectToSignup();
+            redirectToTicket();
         }
+        createTicketBugReport($conn, $requestType, $subject, $bugDescription, $stepsToReproduce, $expectedResult, $receivedResult, $discordClient, $bugImage);
         break;
     #endregion
 
     #region  Feature Request!
-    case 'featureRequestFields':
+    case 'featureRequest':
         $requestType = $_POST['requestType'] ?? '';
         $subject = $_POST['subject'] ?? '';
         $description = $_POST['description'] ?? '';
         $fieldsToCheck = ['requestType', 'subject', 'description'];
         if (areFieldsEmpty($fieldsToCheck)) {
-            redirectToSignup();
+            redirectToTicket();
         }
         break;
     #endregion
 
     #region Grammar Issues!
-    case 'grammarIssuesFields':
+    case 'grammarIssues':
         $subject = $_POST['subject'] ?? '';
         $description = $_POST['description'] ?? '';
         $fileAttachment = $_POST['fileAttachment'] ?? '';
         $fieldsToCheck = ['subject', 'description', 'fileAttachment'];
         if (areFieldsEmpty($fieldsToCheck)) {
-            redirectToSignup();
+            redirectToTicket();
         }
         break;
     #endregion
 
     #region Information Update!
-    case 'informationUpdateFields':
+    case 'informationUpdate':
         $subject = $_POST['subject'] ?? '';
         $updateInfo = $_POST['updateInfo'] ?? '';
         $fieldsToCheck = ['subject', 'updateInfo'];
         if (areFieldsEmpty($fieldsToCheck)) {
-            redirectToSignup();
+            redirectToTicket();
         }
         break;
     #endregion
 
     #region Other Issues!
-    case 'otherFields':
+    case 'other':
         $subject = $_POST['subject'] ?? '';
         $description = $_POST['description'] ?? '';
         $extraText = $_POST['extraText'] ?? '';
         $fieldsToCheck = ['subject', 'description', 'extraText'];
         if (areFieldsEmpty($fieldsToCheck)) {
-            redirectToSignup();
+            redirectToTicket();
         }
         break;
     #endregion
