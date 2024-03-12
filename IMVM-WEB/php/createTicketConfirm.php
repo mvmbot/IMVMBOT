@@ -16,7 +16,7 @@ ini_set('display_errors', 1);
 #endregion
 
 # Now, let's connect to our database!
-connectToDatabase();
+$conn = connectToDatabase();
 
 # We grab all the data from the form
 $type = $_POST['type'] ?? ''; # First of all, we get the type so we know what table to look in
@@ -31,7 +31,7 @@ switch ($type) {
         $fileAttachment = $_POST['fileAttachment'] ?? '';
         $fieldsToCheck = ['subject', 'description', 'fileAttachment'];
         if (areFieldsEmpty($fieldsToCheck)) {
-            redirectToSignup();
+            redirectToTicket();
         }
         createTicketHelpSupportFields($conn, $subject, $fileAttachment, $description);
         break;
@@ -49,7 +49,7 @@ switch ($type) {
         $bugImage = $_POST['bugImage'] ?? '';
         $fieldsToCheck = ['requestType','bugDescription', 'stepsToReproduce', 'expectedResult', 'receivedResult', 'discordClient', 'subject','bugImage'];
         if (areFieldsEmpty($fieldsToCheck)) {
-            redirectToSignup();
+            redirectToTicket();
         }
         break;
     #endregion
@@ -61,7 +61,7 @@ switch ($type) {
         $description = $_POST['description'] ?? '';
         $fieldsToCheck = ['requestType', 'subject', 'description'];
         if (areFieldsEmpty($fieldsToCheck)) {
-            redirectToSignup();
+            redirectToTicket();
         }
         break;
     #endregion
@@ -73,7 +73,7 @@ switch ($type) {
         $fileAttachment = $_POST['fileAttachment'] ?? '';
         $fieldsToCheck = ['subject', 'description', 'fileAttachment'];
         if (areFieldsEmpty($fieldsToCheck)) {
-            redirectToSignup();
+            redirectToTicket();
         }
         break;
     #endregion
@@ -84,7 +84,7 @@ switch ($type) {
         $updateInfo = $_POST['updateInfo'] ?? '';
         $fieldsToCheck = ['subject', 'updateInfo'];
         if (areFieldsEmpty($fieldsToCheck)) {
-            redirectToSignup();
+            redirectToTicket();
         }
         break;
     #endregion
@@ -96,7 +96,7 @@ switch ($type) {
         $extraText = $_POST['extraText'] ?? '';
         $fieldsToCheck = ['subject', 'description', 'extraText'];
         if (areFieldsEmpty($fieldsToCheck)) {
-            redirectToSignup();
+            redirectToTicket();
         }
         break;
     #endregion
