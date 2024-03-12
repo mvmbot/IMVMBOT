@@ -30,26 +30,38 @@ function getTicketID($conn) {
 function createTicketBase($conn, $ticketType) {
 
     #region Vars
+    # Get current user and date
     $user = $_SESSION['user'];
     $currentDate = date('Y-m-d H:i:s');
     #endregion
 
     #region Try-Catch --- Prepare and execute SQL query
     try {
+        # Prepare INSERT query
         $insertTicketSQL = "INSERT INTO ticket (typeTicket, creationDate, idUsers) VALUES (?, ?, ?)";
         $stmt = $conn->prepare($insertTicketSQL);
+
+        # Check if query preparation was successful
         if ($stmt === false) {
             throw new Exception("Error preparing INSERT statement: " . $conn->error);
         }
+
+        # Bind parameters and execute query
         $stmt->bind_param("sss", $ticketType, $currentDate, $user);
         $stmt->execute();
+
+        # Get inserted ticket ID
         $ticketId = getTicketID($conn);
+
+        # Close prepared statement
         $stmt->close();
     } catch (Exception $e) {
+        # Display error message
         showError("Error: " . $e->getMessage());
     }
     #endregion
 
+    # Return ticket ID
     return $ticketId;
 }
 #endregion
