@@ -25,7 +25,7 @@ $fieldsToCheck; # This will hold an array with fields that need validation
 switch ($type) {
 
     #region Help & Support!
-    case 'helpSupportFields':
+    case 'helpSupport':
         $subject = $_POST['subject'] ?? '';
         $description = $_POST['description'] ?? '';
         $fileAttachment = $_POST['fileAttachment'] ?? '';
@@ -33,12 +33,12 @@ switch ($type) {
         if (areFieldsEmpty($fieldsToCheck)) {
             redirectToTicket();
         }
-        createTicketHelpSupportFields($conn, $subject, $fileAttachment, $description);
+        createTicketHelpSupport($conn, $subject, $fileAttachment, $description);
         break;
     #endregion
 
     #region Bug Reporting!
-    case 'bugReportFields':
+    case 'bugReport':
         $requestType = $_POST['requestType']?? '';
         $subject = $_POST['subject']?? '';
         $bugDescription = $_POST['bugDescription'] ?? '';
@@ -51,11 +51,12 @@ switch ($type) {
         if (areFieldsEmpty($fieldsToCheck)) {
             redirectToTicket();
         }
+        createTicketBugReport($conn, $requestType, $subject, $bugDescription, $stepsToReproduce, $expectedResult, $receivedResult, $discordClient, $bugImage);
         break;
     #endregion
 
     #region  Feature Request!
-    case 'featureRequestFields':
+    case 'featureRequest':
         $requestType = $_POST['requestType'] ?? '';
         $subject = $_POST['subject'] ?? '';
         $description = $_POST['description'] ?? '';
@@ -67,7 +68,7 @@ switch ($type) {
     #endregion
 
     #region Grammar Issues!
-    case 'grammarIssuesFields':
+    case 'grammarIssues':
         $subject = $_POST['subject'] ?? '';
         $description = $_POST['description'] ?? '';
         $fileAttachment = $_POST['fileAttachment'] ?? '';
@@ -79,7 +80,7 @@ switch ($type) {
     #endregion
 
     #region Information Update!
-    case 'informationUpdateFields':
+    case 'informationUpdate':
         $subject = $_POST['subject'] ?? '';
         $updateInfo = $_POST['updateInfo'] ?? '';
         $fieldsToCheck = ['subject', 'updateInfo'];
@@ -90,7 +91,7 @@ switch ($type) {
     #endregion
 
     #region Other Issues!
-    case 'otherFields':
+    case 'other':
         $subject = $_POST['subject'] ?? '';
         $description = $_POST['description'] ?? '';
         $extraText = $_POST['extraText'] ?? '';
