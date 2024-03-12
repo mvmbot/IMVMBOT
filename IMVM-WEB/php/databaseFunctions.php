@@ -36,12 +36,12 @@ function createTicketBase($conn, $type) {
 
     #region Try-Catch --- Prepare and execute SQL query
     try {
-        $insertTicketSQL = "INSERT INTO ticket (typeTicket, creationDate, idUsers) VALUES (?, ?, ?, ?, ?)";
+        $insertTicketSQL = "INSERT INTO ticket (typeTicket, creationDate, idUsers) VALUES (?, ?, ?)";
         $stmt = $conn->prepare($insertTicketSQL);
         if ($stmt === false) {
             throw new Exception("Error preparing INSERT statement: " . $conn->error);
         }
-        $stmt->bind_param("sssss", $type, $currentDate, $user);
+        $stmt->bind_param("sss", $type, $currentDate, $user);
         $stmt->execute();
         $ticketId = getTicketID($conn);
         $stmt->close();
@@ -64,7 +64,7 @@ function createTicketHelpSupportFields($conn, $subject, $description, $fileAttac
 
     #region Try-Catch --- Prepare and execute SQL query
     try {
-        $insertTypeSQL = "INSERT INTO helpSupport (subject, description, file, ticketId) VALUES (?, ?, ?, ?)";
+        $insertTypeSQL = "INSERT INTO helpSupport (subject, description, file, ticketID) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($insertTypeSQL);
         if ($stmt === false) {
             throw new Exception("Error preparing INSERT statement: " . $conn->error);
@@ -88,7 +88,7 @@ function createTicketBugReportFields($conn, $subject, $impactedPart, $operativeS
     createTicketBase($conn, $type);
 
     try {
-        $insertTypeSQL = "INSERT INTO bugReport (subject, impactedPart, operativeSystem, description, stepsToReproduce, expectedResult, receivedResult, discordClient, image, ticketId) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $insertTypeSQL = "INSERT INTO bugReport (subject, impactedPart, operativeSystem, description, stepsToReproduce, expectedResult, receivedResult, discordClient, image, ticketID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($insertTypeSQL);
         if ($stmt === false) {
             throw new Exception("Error preparing INSERT statement: " . $conn->error);
@@ -103,7 +103,7 @@ function createTicketBugReportFields($conn, $subject, $impactedPart, $operativeS
 #endregion
 
 #region Function --- Create ticket feature request fields
-function createTicketFeatureRequestFields($conn, $subject, $description) {
+function createTicketFeatureRequestFields($conn, $subject, $description, $requestType) {
     
     $type = "featureRequest";
     $ticketId = createTicketBase($conn, $type);
@@ -111,12 +111,12 @@ function createTicketFeatureRequestFields($conn, $subject, $description) {
     createTicketBase($conn, $type);
 
     try {
-        $insertTypeSQL = "INSERT INTO featureRequest (subject, description, ticketId) VALUES (?, ?, ?)";
+        $insertTypeSQL = "INSERT INTO featureRequest (subject, description, ticketID, requestType) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($insertTypeSQL);
         if ($stmt === false) {
             throw new Exception("Error preparing INSERT statement: " . $conn->error);
         }
-        $stmt->bind_param("ssi", $subject, $description, $ticketId);
+        $stmt->bind_param("ssis", $subject, $description, $ticketId, $requestType);
         $stmt->execute();
         $stmt->close();
     } catch (Exception $e) {
@@ -134,7 +134,7 @@ function createTicketGrammarIssuesFields($conn, $subject, $description, $fileAtt
     createTicketBase($conn, $type);
 
     try {
-        $insertTypeSQL = "INSERT INTO grammarIssues (subject, description, fileAttachment, ticketId) VALUES (?, ?, ?, ?)";
+        $insertTypeSQL = "INSERT INTO grammarIssues (subject, description, image, ticketID) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($insertTypeSQL);
         if ($stmt === false) {
             throw new Exception("Error preparing INSERT statement: " . $conn->error);
@@ -157,7 +157,7 @@ function createTicketInformationUpdateFields($conn, $subject, $updateInfo) {
     createTicketBase($conn, $type);
 
     try {
-        $insertTypeSQL = "INSERT INTO informationUpdate (subject, updateInfo, ticketId) VALUES (?, ?, ?)";
+        $insertTypeSQL = "INSERT INTO informationUpdate (subject, updateInfo, ticketID) VALUES (?, ?, ?)";
         $stmt = $conn->prepare($insertTypeSQL);
         if ($stmt === false) {
             throw new Exception("Error preparing INSERT statement: " . $conn->error);
@@ -180,7 +180,7 @@ function createTicketOtherFields($conn, $subject, $description, $extraText) {
     createTicketBase($conn, $type);
 
     try {
-        $insertTypeSQL = "INSERT INTO other (subject, description, extraText, ticketId) VALUES (?, ?, ?, ?)";
+        $insertTypeSQL = "INSERT INTO other (subject, description, extraText, ticketID) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($insertTypeSQL);
         if ($stmt === false) {
             throw new Exception("Error preparing INSERT statement: " . $conn->error);
