@@ -1,7 +1,7 @@
 <?php
 #region Function --- Simple function to connect to the database
 function connectToDatabase() {
-    $conn = mysqli_connect("sql207.infinityfree.com", "if0_36018425", "bACONfRITO33", "if0_36018425_imvmdb");
+    $conn = mysqli_connect("sql207.infinityfree.com", "if0_36018425", "bACONfRITO33", "if0_36018425_imvmbotdb");
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
     }
