@@ -1,6 +1,5 @@
 <?php
 #region Function --- Simple function to connect to the database
-
 function connectToDatabase() {
     $conn = mysqli_connect("sql207.infinityfree.com", "if0_36018425", "bACONfRITO33", "if0_36018425_imvmdb");
     if (!$conn) {
@@ -29,13 +28,10 @@ function getTicketID($conn) {
 #region Function --- Insert ticket into database
 function createTicketBase($conn, $ticketType) {
 
-    #region Vars
     # Get current user and date
     $user = $_SESSION['user'];
     $currentDate = date('Y-m-d H:i:s');
-    #endregion
 
-    #region Try-Catch --- Prepare and execute SQL query
     try {
         # Prepare INSERT query
         $insertTicketSQL = "INSERT INTO ticket (typeTicket, creationDate, idUsers) VALUES (?, ?, ?)";
@@ -59,7 +55,6 @@ function createTicketBase($conn, $ticketType) {
         # Display error message
         showError("Error: " . $e->getMessage());
     }
-    #endregion
 
     # Return ticket ID
     return $ticketId;
@@ -69,46 +64,62 @@ function createTicketBase($conn, $ticketType) {
 #region Function --- Create ticket help support fields
 function createTicketHelpSupportFields($conn, $subject, $description, $fileAttachment) {
     
-    #region Vars
+    # Get both the ticket type and the ticket ID
     $ticketType = "helpSupport";
     $ticketId = createTicketBase($conn, $ticketType);
-    #endregion
 
-    #region Try-Catch --- Prepare and execute SQL query
     try {
+
+        # Prepare INSERT query
         $insertTypeSQL = "INSERT INTO helpSupport (subject, description, file, ticketID) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($insertTypeSQL);
+
+        # Check if query preparation was successful
         if ($stmt === false) {
             throw new Exception("Error preparing INSERT statement: " . $conn->error);
         }
+
+        # Bind parameters and execute query
         $stmt->bind_param("sssi", $subject, $description, $fileAttachment, $ticketId);
         $stmt->execute();
+
+        # Close prepared statement
         $stmt->close();
     } catch (Exception $e) {
+        
+        # Display error message
         showError("Error: " . $e->getMessage());
     }
-    #endregion
 }
 #endregion
 
 #region Function --- Create ticket bug report fields
 function createTicketBugReportFields($conn, $subject, $impactedPart, $operativeSystem, $bugDescription, $stepsToReproduce, $expectedResult, $receivedResult, $discordClient, $bugImage) {
 
-    #region Vars
+    # Get both the ticket type and the ticket ID
     $ticketType = "bugReport";
     $ticketId = createTicketBase($conn, $ticketType);
-    #endregion
 
     try {
+
+        # Prepare INSERT query
         $insertTypeSQL = "INSERT INTO bugReport (subject, impactedPart, operativeSystem, description, stepsToReproduce, expectedResult, receivedResult, discordClient, image, ticketID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($insertTypeSQL);
+        
+        # Check if query preparation was successful
         if ($stmt === false) {
             throw new Exception("Error preparing INSERT statement: " . $conn->error);
         }
+        
+        # Bind parameters and execute query
         $stmt->bind_param("sssssssssi", $subject, $impactedPart, $operativeSystem, $bugDescription, $stepsToReproduce, $expectedResult, $receivedResult, $discordClient, $bugImage, $ticketId);
         $stmt->execute();
+
+        # Close prepared statement
         $stmt->close();
     } catch (Exception $e) {
+
+        # Display error message
         showError("Error: " . $e->getMessage());
     }
 }
@@ -117,21 +128,30 @@ function createTicketBugReportFields($conn, $subject, $impactedPart, $operativeS
 #region Function --- Create ticket feature request fields
 function createTicketFeatureRequestFields($conn, $subject, $description, $requestType) {
 
-    #region Vars
+    # Get both the ticket type and the ticket ID
     $ticketType = "featureRequest";
     $ticketId = createTicketBase($conn, $ticketType);
-    #endregion
 
     try {
+
+        # Prepare INSERT query
         $insertTypeSQL = "INSERT INTO featureRequest (subject, description, ticketID, requestType) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($insertTypeSQL);
+        
+        # Check if query preparation was successful
         if ($stmt === false) {
             throw new Exception("Error preparing INSERT statement: " . $conn->error);
         }
+        
+        # Bind parameters and execute query
         $stmt->bind_param("ssis", $subject, $description, $ticketId, $requestType);
         $stmt->execute();
+
+        # Close prepared statement
         $stmt->close();
     } catch (Exception $e) {
+
+        # Display error message
         showError("Error: " . $e->getMessage());
     }
 }
@@ -140,21 +160,30 @@ function createTicketFeatureRequestFields($conn, $subject, $description, $reques
 #region Function --- Create ticket grammar issues fields
 function createTicketGrammarIssuesFields($conn, $subject, $description, $fileAttachment) {
 
-    #region Vars
+    # Get both the ticket type and the ticket ID
     $ticketType = "grammarIssues";
     $ticketId = createTicketBase($conn, $ticketType);
-    #endregion
 
     try {
+
+        # Prepare INSERT query
         $insertTypeSQL = "INSERT INTO grammarIssues (subject, description, image, ticketID) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($insertTypeSQL);
+        
+        # Check if query preparation was successful
         if ($stmt === false) {
             throw new Exception("Error preparing INSERT statement: " . $conn->error);
         }
+        
+        # Bind parameters and execute query
         $stmt->bind_param("sssi", $subject, $description, $fileAttachment, $ticketId);
         $stmt->execute();
+
+        # Close prepared statement
         $stmt->close();
     } catch (Exception $e) {
+
+        # Display error message
         showError("Error: " . $e->getMessage());
     }
 }
@@ -163,21 +192,30 @@ function createTicketGrammarIssuesFields($conn, $subject, $description, $fileAtt
 #region Function --- Create ticket information update fields
 function createTicketInformationUpdateFields($conn, $subject, $updateInfo) {
 
-    #region Vars
+    # Get both the ticket type and the ticket ID
     $ticketType = "informationUpdate";
     $ticketId = createTicketBase($conn, $ticketType);
-    #endregion
 
     try {
+
+        # Prepare INSERT query
         $insertTypeSQL = "INSERT INTO informationUpdate (subject, updateInfo, ticketID) VALUES (?, ?, ?)";
         $stmt = $conn->prepare($insertTypeSQL);
+        
+        # Check if query preparation was successful
         if ($stmt === false) {
             throw new Exception("Error preparing INSERT statement: " . $conn->error);
         }
+        
+        # Bind parameters and execute query
         $stmt->bind_param("ssi", $subject, $updateInfo, $ticketId);
         $stmt->execute();
+
+        # Close prepared statement
         $stmt->close();
     } catch (Exception $e) {
+
+        # Display error message
         showError("Error: " . $e->getMessage());
     }
 }
@@ -186,21 +224,30 @@ function createTicketInformationUpdateFields($conn, $subject, $updateInfo) {
 #region Function --- Create ticket other fields
 function createTicketOtherFields($conn, $subject, $description, $extraText) {
 
-    #region Vars
+    # Get both the ticket type and the ticket ID
     $ticketType = "other";
     $ticketId = createTicketBase($conn, $ticketType);
-    #endregion
 
     try {
+
+        # Prepare INSERT query
         $insertTypeSQL = "INSERT INTO other (subject, description, extraText, ticketID) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($insertTypeSQL);
+        
+        # Check if query preparation was successful
         if ($stmt === false) {
             throw new Exception("Error preparing INSERT statement: " . $conn->error);
         }
+        
+        # Bind parameters and execute query
         $stmt->bind_param("sssi", $subject, $description, $extraText, $ticketId);
         $stmt->execute();
+
+        # Close prepared statement
         $stmt->close();
     } catch (Exception $e) {
+
+        # Display error message
         showError("Error: " . $e->getMessage());
     }
 }
