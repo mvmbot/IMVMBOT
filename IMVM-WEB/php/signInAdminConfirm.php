@@ -26,11 +26,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     #region Variable Declaration
     // Getting the username and password entered in the form
-    $username = $_POST['username'] ?? '';
-    $password = $_POST['password'] ?? '';
+    $username = $_POST['usernameAdmin'] ?? '';
+    $password = $_POST['passwordAdmin'] ?? '';
 
     // Let's make sure they filled out all the important fields
-    $fieldsToCheck = ['username', 'password'];
+    $fieldsToCheck = ['usernameAdmin', 'passwordAdmin'];
     #endregion
 
     // If any of these is empty, let's kindly ask them to try again
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Step 1: Let's check if the user exists in our awesome database
 
     // We start with a quick query to find out
-    $checkExisting = "SELECT idUsers, passwordUsers FROM users WHERE usernameUsers = ?";
+    $checkExisting = "SELECT idAdmin, passwordAdmin FROM admin WHERE usernameAdmin = ?";
 
     // Preparing the statement for the big moment
     $stmtCheck = $conn->prepare($checkExisting);
@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
 
         // Something went wrong with the query execution, showing a helpful error message
-        showError("Oops! Something went wrong: " . $stmtCheck->error);
+        showError("Something went wrong: " . $stmtCheck->error);
     }
 
     // Finally, let's close the database connection
