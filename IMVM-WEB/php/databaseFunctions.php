@@ -28,13 +28,10 @@ function getTicketID($conn) {
 #region Function --- Insert ticket into database
 function createTicketBase($conn, $ticketType) {
 
-    #region Vars
     # Get current user and date
     $user = $_SESSION['user'];
     $currentDate = date('Y-m-d H:i:s');
-    #endregion
 
-    #region Try-Catch --- Prepare and execute SQL query
     try {
         # Prepare INSERT query
         $insertTicketSQL = "INSERT INTO ticket (typeTicket, creationDate, idUsers) VALUES (?, ?, ?)";
@@ -58,7 +55,6 @@ function createTicketBase($conn, $ticketType) {
         # Display error message
         showError("Error: " . $e->getMessage());
     }
-    #endregion
 
     # Return ticket ID
     return $ticketId;
@@ -68,13 +64,10 @@ function createTicketBase($conn, $ticketType) {
 #region Function --- Create ticket help support fields
 function createTicketHelpSupportFields($conn, $subject, $description, $fileAttachment) {
     
-    #region Vars
     # Get both the ticket type and the ticket ID
     $ticketType = "helpSupport";
     $ticketId = createTicketBase($conn, $ticketType);
-    #endregion
 
-    #region Try-Catch --- Prepare and execute SQL query
     try {
 
         # Prepare INSERT query
@@ -97,18 +90,15 @@ function createTicketHelpSupportFields($conn, $subject, $description, $fileAttac
         # Display error message
         showError("Error: " . $e->getMessage());
     }
-    #endregion
 }
 #endregion
 
 #region Function --- Create ticket bug report fields
 function createTicketBugReportFields($conn, $subject, $impactedPart, $operativeSystem, $bugDescription, $stepsToReproduce, $expectedResult, $receivedResult, $discordClient, $bugImage) {
 
-    #region Vars
     # Get both the ticket type and the ticket ID
     $ticketType = "bugReport";
     $ticketId = createTicketBase($conn, $ticketType);
-    #endregion
 
     try {
 
@@ -138,11 +128,9 @@ function createTicketBugReportFields($conn, $subject, $impactedPart, $operativeS
 #region Function --- Create ticket feature request fields
 function createTicketFeatureRequestFields($conn, $subject, $description, $requestType) {
 
-    #region Vars
     # Get both the ticket type and the ticket ID
     $ticketType = "featureRequest";
     $ticketId = createTicketBase($conn, $ticketType);
-    #endregion
 
     try {
 
@@ -172,11 +160,9 @@ function createTicketFeatureRequestFields($conn, $subject, $description, $reques
 #region Function --- Create ticket grammar issues fields
 function createTicketGrammarIssuesFields($conn, $subject, $description, $fileAttachment) {
 
-    #region Vars
     # Get both the ticket type and the ticket ID
     $ticketType = "grammarIssues";
     $ticketId = createTicketBase($conn, $ticketType);
-    #endregion
 
     try {
 
@@ -206,11 +192,9 @@ function createTicketGrammarIssuesFields($conn, $subject, $description, $fileAtt
 #region Function --- Create ticket information update fields
 function createTicketInformationUpdateFields($conn, $subject, $updateInfo) {
 
-    #region Vars
     # Get both the ticket type and the ticket ID
     $ticketType = "informationUpdate";
     $ticketId = createTicketBase($conn, $ticketType);
-    #endregion
 
     try {
 
@@ -240,11 +224,9 @@ function createTicketInformationUpdateFields($conn, $subject, $updateInfo) {
 #region Function --- Create ticket other fields
 function createTicketOtherFields($conn, $subject, $description, $extraText) {
 
-    #region Vars
     # Get both the ticket type and the ticket ID
     $ticketType = "other";
     $ticketId = createTicketBase($conn, $ticketType);
-    #endregion
 
     try {
 
