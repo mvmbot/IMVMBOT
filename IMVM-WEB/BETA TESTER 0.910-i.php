@@ -186,8 +186,22 @@ session_start();
                         <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton2" style="background-color: #000;">
                             <!-- Enlace para CREATE TICKET -->
                             <a href="./createTicket.php" class="nav-item nav-link" style="color: white;">CREATE TICKET</a>
+                        </div>
+                        <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton2" style="background-color: #000;">
                             <!-- Enlace para VIEW TICKETS -->
                             <a href="./viewTicket.php" class="nav-item nav-link" style="color: white;">VIEW TICKETS</a>
+                        </div>
+                    </div>
+                <?php
+                } else if ($_SESSION["admin"] != null) {
+                ?>
+                    <div class="dropdown">
+                        <button class="nav-item nav-link dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #0a0a0a; color: white; border: none;">
+                            TICKETS
+                        </button>
+                        <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton2" style="background-color: #000;">
+                            <!-- Enlace para VIEW TICKETS -->
+                            <a href="./viewTicketAdmin.php" class="nav-item nav-link" style="color: white;">VIEW TICKETS</a>
                         </div>
                     </div>
                 <?php
@@ -195,7 +209,7 @@ session_start();
                 ?>
             </div>
             <?php
-            if ($_SESSION["user"] == null) {
+            if ($_SESSION["user"] == false && $_SESSION["admin"] == false) {
             ?>
                 <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">ACCOUNT<i><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" class="svg-icon">
                             <style>
@@ -207,10 +221,24 @@ session_start();
                             <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
                         </svg></i></a>
             <?php
-            } else {
+            } else if ($_SESSION["user"]) {
             ?>
                 <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
                     <?php echo $_SESSION['user'] ?><i><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" class="svg-icon">
+                            <style>
+                                .svg-icon {
+                                    fill: #ffffff;
+                                    margin-left: 5px;
+                                }
+                            </style>
+                            <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+                        </svg></i>
+                </a>
+            <?php
+            } else if ($_SESSION["admin"]) {
+            ?>
+                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+                    <?php echo $_SESSION['admin'] ?><i><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" class="svg-icon">
                             <style>
                                 .svg-icon {
                                     fill: #ffffff;
@@ -238,30 +266,37 @@ session_start();
 
                     <h1>BETA TESTER 0.911-0 Changelog: Command Additions and Bug Fixes</h1>
 
-                    <p>In our relentless pursuit of providing a seamless user experience, we are thrilled to announce the latest updates
-                        and bug fixes in the BETA TESTER version 0.911-0. Our commitment to improving functionality and addressing user
-                        feedback remains unwavering. Let's delve into the details of the changes introduced in this release.</p>
+                    <p>In our relentless pursuit of providing a seamless user experience, we are thrilled to announce
+                        the latest updates
+                        and bug fixes in the BETA TESTER version 0.911-0. Our commitment to improving functionality and
+                        addressing user
+                        feedback remains unwavering. Let's delve into the details of the changes introduced in this
+                        release.</p>
 
                     <h2>Command Additions:</h2>
 
                     <p>
                         <strong>/ban Command:</strong>
                         <br>
-                        A notable addition to our command arsenal is the introduction of the /ban command. This empowers administrators
-                        and moderators with enhanced control over user interactions, ensuring a safer and more enjoyable environment.
+                        A notable addition to our command arsenal is the introduction of the /ban command. This empowers
+                        administrators
+                        and moderators with enhanced control over user interactions, ensuring a safer and more enjoyable
+                        environment.
                     </p>
 
                     <p>
                         <strong>/clear Command:</strong>
                         <br>
-                        The /clear command has been implemented to streamline chat moderation. This command efficiently clears the chat,
+                        The /clear command has been implemented to streamline chat moderation. This command efficiently
+                        clears the chat,
                         offering a quick and effective way to maintain a clutter-free conversation space.
                     </p>
 
                     <p>
                         <strong>/faq Command:</strong>
                         <br>
-                        Introducing the /faq command to provide users with instant access to frequently asked questions. This feature is
+                        Introducing the /faq command to provide users with instant access to frequently asked questions.
+                        This feature is
                         designed to enhance user engagement and ensure a smoother onboarding process.
                     </p>
 
@@ -270,30 +305,38 @@ session_start();
                     <p>
                         <strong>German Text Input in /gtranslate:</strong>
                         <br>
-                        Resolved the issues that users were encountering when inputting text in German using the /gtranslate command. Our
-                        team has worked diligently to ensure accurate translations and eliminate any errors associated with the German
+                        Resolved the issues that users were encountering when inputting text in German using the
+                        /gtranslate command. Our
+                        team has worked diligently to ensure accurate translations and eliminate any errors associated
+                        with the German
                         language input.
                     </p>
 
                     <p>
                         <strong>General Error Fixes:</strong>
                         <br>
-                        In addition to the specific issues mentioned above, we have diligently addressed various general errors and
-                        glitches reported by our dedicated user community. Your feedback has been invaluable in identifying and
+                        In addition to the specific issues mentioned above, we have diligently addressed various general
+                        errors and
+                        glitches reported by our dedicated user community. Your feedback has been invaluable in
+                        identifying and
                         resolving these issues, contributing to an overall more stable application.
                     </p>
 
                     <h2>Conclusion:</h2>
 
                     <p>
-                        The BETA TESTER 0.911-0 version brings a suite of powerful new commands and crucial bug fixes, all aimed at
-                        enhancing your experience with our software. We appreciate the ongoing support and feedback from our user
-                        community, which continues to drive our commitment to excellence. As we move forward, we remain dedicated to
+                        The BETA TESTER 0.911-0 version brings a suite of powerful new commands and crucial bug fixes,
+                        all aimed at
+                        enhancing your experience with our software. We appreciate the ongoing support and feedback from
+                        our user
+                        community, which continues to drive our commitment to excellence. As we move forward, we remain
+                        dedicated to
                         refining and expanding our platform to meet the evolving needs of our users.
                     </p>
 
                     <p>
-                        Thank you for being part of our journey towards creating a more robust and user-friendly software environment.
+                        Thank you for being part of our journey towards creating a more robust and user-friendly
+                        software environment.
                         Stay tuned for more exciting updates in future releases!
                     </p>
                     <a href="./Changelog.php" class="btn btn-primary py-3 px-5">Go back<i class="fa fa-arrow-right ms-3"></i></a>

@@ -186,8 +186,22 @@ session_start();
                         <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton2" style="background-color: #000;">
                             <!-- Enlace para CREATE TICKET -->
                             <a href="./createTicket.php" class="nav-item nav-link" style="color: white;">CREATE TICKET</a>
+                        </div>
+                        <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton2" style="background-color: #000;">
                             <!-- Enlace para VIEW TICKETS -->
                             <a href="./viewTicket.php" class="nav-item nav-link" style="color: white;">VIEW TICKETS</a>
+                        </div>
+                    </div>
+                <?php
+                } else if ($_SESSION["admin"] != null) {
+                ?>
+                    <div class="dropdown">
+                        <button class="nav-item nav-link dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #0a0a0a; color: white; border: none;">
+                            TICKETS
+                        </button>
+                        <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton2" style="background-color: #000;">
+                            <!-- Enlace para VIEW TICKETS -->
+                            <a href="./viewTicketAdmin.php" class="nav-item nav-link" style="color: white;">VIEW TICKETS</a>
                         </div>
                     </div>
                 <?php
@@ -195,7 +209,7 @@ session_start();
                 ?>
             </div>
             <?php
-            if ($_SESSION["user"] == null) {
+            if ($_SESSION["user"] == false && $_SESSION["admin"] == false) {
             ?>
                 <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">ACCOUNT<i><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" class="svg-icon">
                             <style>
@@ -207,10 +221,24 @@ session_start();
                             <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
                         </svg></i></a>
             <?php
-            } else {
+            } else if ($_SESSION["user"]) {
             ?>
                 <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
                     <?php echo $_SESSION['user'] ?><i><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" class="svg-icon">
+                            <style>
+                                .svg-icon {
+                                    fill: #ffffff;
+                                    margin-left: 5px;
+                                }
+                            </style>
+                            <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+                        </svg></i>
+                </a>
+            <?php
+            } else if ($_SESSION["admin"]) {
+            ?>
+                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+                    <?php echo $_SESSION['admin'] ?><i><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" class="svg-icon">
                             <style>
                                 .svg-icon {
                                     fill: #ffffff;
@@ -307,9 +335,14 @@ session_start();
 
                 <div class="col-lg-6">
                     <h6 class="text-primary text-uppercase">VERSION 1</h6>
-                    <h1 class="mb-4"><span class="text-light">VERSION 1 IS <span style="color: #9900ff;">NOW LIVE!</span>, updates & errors fixeds.</span></h1>
+                    <h1 class="mb-4"><span class="text-light">VERSION 1 IS <span style="color: #9900ff;">NOW
+                                LIVE!</span>, updates & errors fixeds.</span></h1>
                     <!-- Titulo noticia -->
-                    <p class="mb-4">In this changelog, we are excited to present the comprehensive list of updates and errors that have been addressed in the latest iteration of our version 1, numbered v1. Our commitment to enhancing the user experience and ensuring the stability of our software remains at the forefront of our efforts. Below, you will find a detailed account of the changes and improvements we have implemented:</p>
+                    <p class="mb-4">In this changelog, we are excited to present the comprehensive list of updates and
+                        errors that have been addressed in the latest iteration of our version 1, numbered v1. Our
+                        commitment to enhancing the user experience and ensuring the stability of our software remains
+                        at the forefront of our efforts. Below, you will find a detailed account of the changes and
+                        improvements we have implemented:</p>
                     <a href="./VERSION 1.php" class="btn btn-primary py-3 px-5">Read more<i class="fa fa-arrow-right ms-3"></i></a>
                 </div>
             </div>
