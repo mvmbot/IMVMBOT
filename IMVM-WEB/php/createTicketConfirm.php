@@ -136,3 +136,4 @@ switch ($type) {
         break;
     #endregion
 }
+redirectToIndex();
