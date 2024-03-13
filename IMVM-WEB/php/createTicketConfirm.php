@@ -52,6 +52,7 @@ switch ($type) {
         $discordClient = $_POST['discordClient'] ?? '';
         $bugImage = $_POST['bugImage'] ?? '';
         $fieldsToCheck = ['requestType','bugDescription', 'stepsToReproduce', 'expectedResult', 'receivedResult', 'discordClient', 'subject','bugImage'];
+
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
         if (areFieldsEmpty($fieldsToCheck)) {
             redirectToTicket();
@@ -68,6 +69,7 @@ switch ($type) {
         $subject = $_POST['subject'] ?? '';
         $description = $_POST['description'] ?? '';
         $fieldsToCheck = ['requestType', 'subject', 'description'];
+
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
         if (areFieldsEmpty($fieldsToCheck)) {
             redirectToTicket();
@@ -84,6 +86,7 @@ switch ($type) {
         $description = $_POST['description'] ?? '';
         $fileAttachment = $_POST['fileAttachment'] ?? '';
         $fieldsToCheck = ['subject', 'description', 'fileAttachment'];
+
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
         if (areFieldsEmpty($fieldsToCheck)) {
             redirectToTicket();
@@ -99,6 +102,7 @@ switch ($type) {
         $subject = $_POST['subject'] ?? '';
         $updateInfo = $_POST['updateInfo'] ?? '';
         $fieldsToCheck = ['subject', 'updateInfo'];
+
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
         if (areFieldsEmpty($fieldsToCheck)) {
             redirectToTicket();
@@ -115,6 +119,7 @@ switch ($type) {
         $description = $_POST['description'] ?? '';
         $extraText = $_POST['extraText'] ?? '';
         $fieldsToCheck = ['subject', 'description', 'extraText'];
+
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
         if (areFieldsEmpty($fieldsToCheck)) {
             redirectToTicket();
