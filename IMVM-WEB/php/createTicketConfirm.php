@@ -64,6 +64,7 @@ switch ($type) {
         if (areFieldsEmpty($fieldsToCheck)) {
             redirectToTicket();
         }
+        createTicketFeatureRequest($conn, $requestType, $subject, $description);
         break;
     #endregion
 
@@ -76,6 +77,7 @@ switch ($type) {
         if (areFieldsEmpty($fieldsToCheck)) {
             redirectToTicket();
         }
+        createTicketGrammarIssues($conn, $subject, $description, $fileAttachment);
         break;
     #endregion
 
@@ -87,6 +89,7 @@ switch ($type) {
         if (areFieldsEmpty($fieldsToCheck)) {
             redirectToTicket();
         }
+        createTicketInformationUpdate($conn, $subject, $updateInfo);
         break;
     #endregion
 
@@ -99,6 +102,7 @@ switch ($type) {
         if (areFieldsEmpty($fieldsToCheck)) {
             redirectToTicket();
         }
+        createTicketOther($conn, $subject, $description, $extraText);
         break;
     #endregion
 
