@@ -281,24 +281,24 @@ session_start();
         <div id="helpSupportFields" style="display: none;">
             <div>
                 <label for="subject" style="display: block;">Subject:</label>
-                <input type="text" id="subject" name="subject">
+                <input type="text" id="subject" name="subjectHelpSupportFields">
             </div>
 
             <div>
                 <label for="description" style="display: block;">Description:</label>
-                <textarea id="description" name="description"></textarea>
+                <textarea id="description" name="descriptionHelpSupportFields"></textarea>
             </div>
 
             <div>
                 <label for="fileAttachment" style="display: block;">Attach File:</label>
-                <input type="file" id="fileAttachment" name="fileAttachment">
+                <input type="file" id="fileAttachment" name="fileAttachmentHelpSupportFields">
             </div>
         </div>
 
         <div id="bugReportFields" style="display: none;">
             <div>
                 <label for="requestType" style="display: block;">Operative system:</label>
-                <select id="requestType" name="requestType">
+                <select id="requestType" name="requestTypeBugReportFields">
                     <option value="" disabled selected hidden>-</option>
                     <option value="android">Android</option>
                     <option value="iOS">iOS</option>
@@ -311,44 +311,44 @@ session_start();
 
             <div>
                 <label for="subject" style="display: block;">Subject:</label>
-                <textarea id="subject" name="bugDescription"></textarea>
+                <textarea id="subject" name="bugDescriptionBugReportFields"></textarea>
             </div>
 
             <div>
                 <label for="bugDescription" style="display: block;">Bug Description:</label>
-                <textarea id="bugDescription" name="bugDescription"></textarea>
+                <textarea id="bugDescription" name="bugDescriptionBugReportFields"></textarea>
             </div>
 
             <div>
                 <label for="stepsToReproduce" style="display: block;">Steps to Reproduce:</label>
-                <textarea id="stepsToReproduce" name="stepsToReproduce"></textarea>
+                <textarea id="stepsToReproduce" name="stepsToReproduceBugReportFields"></textarea>
             </div>
 
             <div>
                 <label for="expectedResult" style="display: block;">Expected Result:</label>
-                <textarea id="expectedResult" name="expectedResult"></textarea>
+                <textarea id="expectedResult" name="expectedResultBugReportFields"></textarea>
             </div>
 
             <div>
                 <label for="receivedResult" style="display: block;">Received Result:</label>
-                <textarea id="receivedResult" name="receivedResult"></textarea>
+                <textarea id="receivedResult" name="receivedResultBugReportFields"></textarea>
             </div>
 
             <div>
                 <label for="discordClient" style="display: block;">Discord Client:</label>
-                <input type="text" id="discordClient" name="discordClient">
+                <input type="text" id="discordClient" name="discordClientBugReportFields">
             </div>
 
             <div>
                 <label for="bugImage" style="display: block;">Attach Image:</label>
-                <input type="file" id="bugImage" name="bugImage">
+                <input type="file" id="bugImage" name="bugImageBugReportFields">
             </div>
         </div>
 
         <div id="featureRequestFields" style="display: none;">
             <div>
                 <label for="requestType" style="display: block;">Request Type:</label>
-                <select id="requestType" name="requestType">
+                <select id="requestType" name="requestTypeFeatureRequestFields">
                     <option value="" disabled selected hidden>-</option>
                     <option value="commands">Commands</option>
                     <option value="web">Web</option>
@@ -358,58 +358,58 @@ session_start();
 
             <div>
                 <label for="subject" style="display: block;">Subject:</label>
-                <input type="text" id="subject" name="subject">
+                <input type="text" id="subject" name="subjectFeatureRequestFields">
             </div>
 
             <div>
                 <label for="description" style="display: block;">Description:</label>
-                <textarea id="description" name="description"></textarea>
+                <textarea id="description" name="descriptionFeatureRequestFields"></textarea>
             </div>
         </div>
 
         <div id="grammarIssuesFields" style="display: none;">
             <div>
                 <label for="subject" style="display: block;">Subject:</label>
-                <input type="text" id="subject" name="subject">
+                <input type="text" id="subject" name="subjectGrammarIssuesFields">
             </div>
 
             <div>
                 <label for="description" style="display: block;">Description:</label>
-                <textarea id="description" name="description"></textarea>
+                <textarea id="description" name="descriptionGrammarIssuesFields"></textarea>
             </div>
 
             <div>
                 <label for="fileAttachment" style="display: block;">Attach File:</label>
-                <input type="file" id="fileAttachment" name="fileAttachment">
+                <input type="file" id="fileAttachment" name="fileAttachmentGrammarIssuesFields">
             </div>
         </div>
 
         <div id="informationUpdateFields" style="display: none;">
             <div>
                 <label for="subject" style="display: block;">Subject:</label>
-                <input type="text" id="subject" name="subject">
+                <input type="text" id="subject" name="subjectInformationUpdateFields">
             </div>
 
             <div>
                 <label for="updateInfo" style="display: block;">Update Information:</label>
-                <textarea id="updateInfo" name="updateInfo"></textarea>
+                <textarea id="updateInfo" name="updateInfoInformationUpdateFields"></textarea>
             </div>
         </div>
 
         <div id="otherFields" style="display: none;">
             <div>
                 <label for="subject" style="display: block;">Subject:</label>
-                <input type="text" id="subject" name="subject">
+                <input type="text" id="subject" name="subjectOtherFields">
             </div>
 
             <div>
                 <label for="description" style="display: block;">Description:</label>
-                <textarea id="description" name="description"></textarea>
+                <textarea id="description" name="descriptionOtherFields"></textarea>
             </div>
 
             <div>
                 <label for="extraText" style="display: block;">Extra text:</label>
-                <textarea id="extraText" name="extraText"></textarea>
+                <textarea id="extraText" name="extraTextOtherFields"></textarea>
             </div>
         </div>
 

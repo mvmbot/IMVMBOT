@@ -27,9 +27,9 @@ switch ($type) {
 
     #region Help & Support
     case 'helpSupport':
-        $subject = $_POST['subject'] ?? '';
-        $description = $_POST['description'] ?? '';
-        $fileAttachment = $_POST['fileAttachment'] ?? '';
+        $subject = $_POST['subjectHelpSupportFields'] ?? '';
+        $description = $_POST['descriptionHelpSupportFields'] ?? '';
+        $fileAttachment = $_POST['fileAttachmentHelpSupportFields'] ?? '';
         $fieldsToCheck = [$subject, $description, $fileAttachment];
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
@@ -44,14 +44,14 @@ switch ($type) {
 
     #region Bug Reporting
     case 'bugReport':
-        $requestType = $_POST['requestType']?? '';
-        $subject = $_POST['subject']?? '';
-        $bugDescription = $_POST['bugDescription'] ?? '';
-        $stepsToReproduce = $_POST['stepsToReproduce'] ?? '';
-        $expectedResult = $_POST['expectedResult'] ?? '';
-        $receivedResult = $_POST['receivedResult'] ?? '';
-        $discordClient = $_POST['discordClient'] ?? '';
-        $bugImage = $_POST['bugImage'] ?? '';
+        $requestType = $_POST['requestTypeBugReportFields']?? '';
+        $subject = $_POST['subjectBugReportFields']?? '';
+        $bugDescription = $_POST['bugDescriptionBugReportFields'] ?? '';
+        $stepsToReproduce = $_POST['stepsToReproduceBugReportFields'] ?? '';
+        $expectedResult = $_POST['expectedResultBugReportFields'] ?? '';
+        $receivedResult = $_POST['receivedResultBugReportFields'] ?? '';
+        $discordClient = $_POST['discordClientBugReportFields'] ?? '';
+        $bugImage = $_POST['bugImageBugReportFields'] ?? '';
         $fieldsToCheck = [$requestType,$bugDescription, $stepsToReproduce, $expectedResult, $receivedResult, $discordClient, $subject, $bugImage];
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
@@ -66,9 +66,9 @@ switch ($type) {
 
     #region  Feature Request
     case 'featureRequest':
-        $requestType = $_POST['requestType'] ?? '';
-        $subject = $_POST['subject'] ?? '';
-        $description = $_POST['description'] ?? '';
+        $requestType = $_POST['requestTypeFeatureRequestFields'] ?? '';
+        $subject = $_POST['subjectFeatureRequestFields'] ?? '';
+        $description = $_POST['descriptionFeatureRequestFields'] ?? '';
         $fieldsToCheck = [$requestType, $subject, $description];
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
@@ -83,9 +83,9 @@ switch ($type) {
 
     #region Grammar Issues
     case 'grammarIssues':
-        $subject = $_POST['subject'] ?? '';
-        $description = $_POST['description'] ?? '';
-        $fileAttachment = $_POST['fileAttachment'] ?? '';
+        $subject = $_POST['subjectGrammarIssuesFields'] ?? '';
+        $description = $_POST['descriptionGrammarIssuesFields'] ?? '';
+        $fileAttachment = $_POST['fileAttachmentGrammarIssuesFields'] ?? '';
         $fieldsToCheck = [$subject, $description, $fileAttachment];
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
@@ -100,8 +100,8 @@ switch ($type) {
 
     #region Information Update
     case 'informationUpdate':
-        $subject = $_POST['subject'] ?? '';
-        $updateInfo = $_POST['updateInfo'] ?? '';
+        $subject = $_POST['subjectInformationUpdateFields'] ?? '';
+        $updateInfo = $_POST['updateInfoInformationUpdateFields'] ?? '';
         $fieldsToCheck = [$subject, $updateInfo];
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
@@ -116,9 +116,9 @@ switch ($type) {
 
     #region Other Issues
     case 'other':
-        $subject = $_POST['subject'] ?? '';
-        $description = $_POST['description'] ?? '';
-        $extraText = $_POST['extraText'] ?? '';
+        $subject = $_POST['subjectOtherFields'] ?? '';
+        $description = $_POST['descriptionOtherFields'] ?? '';
+        $extraText = $_POST['extraTextOtherFields'] ?? '';
         $fieldsToCheck = [$subject, $description, $extraText];
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
