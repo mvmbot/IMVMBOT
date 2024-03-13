@@ -218,8 +218,6 @@ function createTicketInformationUpdate($conn, $subject, $updateInfo) {
     # Get both the ticket type and the ticket ID
     $ticketType = "informationUpdate";
     $ticketId = createTicketBase($conn, $ticketType);
-    echo $subject;
-    echo $updateInfo;
 
     try {
 
