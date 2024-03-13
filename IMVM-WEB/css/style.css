@@ -595,7 +595,6 @@ video {
   color: white;
 }
 
-
 .formticket input,
 .formticket textarea,
 .formticket select {
@@ -606,3 +605,18 @@ video {
   border-radius: 8px; 
   padding: 5px;  
 }
+
+/* Icons for table tickets */
+
+.icon-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.icon-button svg {
+  width: 21px; 
+  height: auto;
+}
+
