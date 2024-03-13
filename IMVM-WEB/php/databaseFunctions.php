@@ -29,8 +29,31 @@ function getTicketID($conn) {
 function createTicketBase($conn, $ticketType) {
 
     # Get current user and date
+    session_start();
     $user = $_SESSION['user'];
     $currentDate = date('Y-m-d H:i:s');
+    $idUsers = '';
+
+    # Prepare the SQL query
+    $sql = "SELECT idUsers FROM users WHERE usernameUsers = ?";
+
+    # Prepare statement
+    $stmt = $conn->prepare($sql);
+
+    # Bind parameters
+    $stmt->bind_param("s", $user);
+
+    # Execute statement
+    $stmt->execute();
+
+    # Bind result variables
+    $stmt->bind_result($idUsers);
+
+    # Fetch the result
+    $stmt->fetch();
+
+    # Close statement
+    $stmt->close();
 
     try {
         # Prepare INSERT query
@@ -43,7 +66,7 @@ function createTicketBase($conn, $ticketType) {
         }
 
         # Bind parameters and execute query
-        $stmt->bind_param("sss", $ticketType, $currentDate, $user);
+        $stmt->bind_param("sss", $ticketType, $currentDate, $idUsers);
         $stmt->execute();
 
         # Get inserted ticket ID
