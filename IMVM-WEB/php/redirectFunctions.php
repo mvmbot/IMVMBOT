@@ -7,19 +7,19 @@ define('TICKET_PAGE', '../createTicket.php');
 #endregion
 
 #region functions --- Redirects to our pages
-// Function to redirect to the signup form
+# Function to redirect to the signup form
 function redirectToSignup() {
     header('Location: ' . SIGNUP_PAGE);
     exit;
 }
 
-// Function to redirect to the signin form
+# Function to redirect to the signin form
 function redirectToSignin() {
     header('Location: ' . SIGNIN_PAGE);
     exit;
 }
 
-// Function to redirect to the main page
+# Function to redirect to the main page
 function redirectToIndex() {
     header('Location: ' . INDEX_PAGE);
     exit;
