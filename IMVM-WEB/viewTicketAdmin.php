@@ -12,6 +12,9 @@ session_start();
     <meta name="keywords" content="IESMVMBOT, classroom discord bot, mvmbot, insmvmbot, mvm, discord bot" />
     <meta name="description" content="The best Discord bot for School alumns. " />
 
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+
     <!-- Favicon -->
     <link rel="icon" href="IMVM-WEB/img/faviimvm.ico" type="image/x-icon" />
 
@@ -256,153 +259,35 @@ session_start();
 
     <!-- Navbar End -->
 
-    <!-- Carousel Start -->
+    </head>
 
-    <div class="container-fluid p-0 mb-5">
-        <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="d-block w-100" src="./img/1.png" alt="Image">
-                    <div class="carousel-caption d-flex align-items-center">
-                        <div class="container">
-                            <div class="row align-items-center justify-content-center justify-content-lg-start">
-                                <div class="col-10 col-lg-7 text-center text-lg-start">
-                                    <h6 class="text-white text-uppercase mb-3 animated slideInDown">// UPDATES //</h6>
-                                    <h1 class="display-3 text-white mb-4 pb-3 animated slideInDown">VERSION 1</h1>
-                                    <a href="./VERSION 1.php" class="btn btn-primary py-3 px-5 animated slideInDown">READ MORE<i class="fa fa-arrow-right ms-3"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="./img/2.png" alt="Image">
-                    <div class="carousel-caption d-flex align-items-center">
-                        <div class="container">
-                            <div class="row align-items-center justify-content-center justify-content-lg-start">
-                                <div class="col-10 col-lg-7 text-center text-lg-start">
-                                    <h6 class="text-white text-uppercase mb-3 animated slideInDown">// UPDATES //</h6>
-                                    <h1 class="display-3 text-white mb-4 pb-3 animated slideInDown">VERSION BETA TESTER
-                                        0.911-i</h1>
-                                    <a href="./BETA TESTER 0.911-i.php" class="btn btn-primary py-3 px-5 animated slideInDown">READ MORE<i class="fa fa-arrow-right ms-3"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="./img/3.png" alt="Image">
-                    <div class="carousel-caption d-flex align-items-center">
-                        <div class="container">
-                            <div class="row align-items-center justify-content-center justify-content-lg-start">
-                                <div class="col-10 col-lg-7 text-center text-lg-start">
-                                    <h6 class="text-white text-uppercase mb-3 animated slideInDown">// UPDATES //</h6>
-                                    <h1 class="display-3 text-white mb-4 pb-3 animated slideInDown">VERSION BETA TESTER
-                                        0.910-i</h1>
-                                    <a href="./BETA TESTER 0.910-i.php" class="btn btn-primary py-3 px-5 animated slideInDown">READ MORE<i class="fa fa-arrow-right ms-3"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-    </div>
-
-
-
-
-    <!-- News Start -->
-
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-6 pt-4" style="min-height: 400px;">
-                    <div class="position-relative h-100 wow fadeIn" data-wow-delay="0.1s">
-                        <img class="position-absolute img-fluid w-100 h-100" src="./img/1.png" style="object-fit: cover;" alt="Disc beta">
-                        <div class="position-absolute top-0 end-0 mt-n4 me-n4 py-4 px-5" style="background: rgba(0, 0, 0, .08);">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6">
-                    <h6 class="text-primary text-uppercase">VERSION 1</h6>
-                    <h1 class="mb-4"><span class="text-light">VERSION 1 IS <span style="color: #9900ff;">NOW
-                                LIVE!</span>, updates & errors fixeds.</span></h1>
-                    <!-- Titulo noticia -->
-                    <p class="mb-4">In this changelog, we are excited to present the comprehensive list of updates and
-                        errors that have been addressed in the latest iteration of our version 1, numbered v1. Our
-                        commitment to enhancing the user experience and ensuring the stability of our software remains
-                        at the forefront of our efforts. Below, you will find a detailed account of the changes and
-                        improvements we have implemented:</p>
-                    <a href="./VERSION 1.php" class="btn btn-primary py-3 px-5">Read more<i class="fa fa-arrow-right ms-3"></i></a>
+    <body>
+        <br><br>
+        <div class="container col-sm-12">
+            <div class="row">
+                <div class="table-bordered table-hover table-responsive" style="width: 100%">
+                    <table class="table" id="ticketTable" style="background-color:rgb(255, 255, 255)">
+                        <thead>
+                            <tr>
+                                <th>Ticket No.</th>
+                                <th>Title</th>
+                                <th>Department</th>
+                                <th>Priority</th>
+                                <th>Reported By</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ticketTableBody">
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-6 pt-4 order-lg-last" style="min-height: 400px;">
-                    <div class="position-relative h-100 wow fadeIn" data-wow-delay="0.1s">
-                        <img class="position-absolute img-fluid w-100 h-100" src="./img/2.png" style="object-fit: cover;" alt="Discord">
-                        <div class="position-absolute top-0 end-0 mt-n4 me-n4 py-4 px-5" style="background: rgba(0, 0, 0, .08);"></div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <h6 class="text-primary text-uppercase">VERSION BETA TESTER 0.911-i</h6>
-                    <h1 class="mb-4"><span class="text-light">Changelog of the version <span style="color: #9900ff;">BETA TESTER 0.911-i</span>, updates & errors fixeds.</span></h1>
-                    <!-- Titulo noticia -->
-                    <p class="mb-4">In this changelog, we are excited to present the comprehensive list of updates and
-                        errors that have been addressed in the latest iteration of our BETA TESTER version, numbered
-                        0.911-i. Our commitment to enhancing the user experience and ensuring the stability of our
-                        software remains at the forefront of our efforts. Below, you will find a detailed account of the
-                        changes and improvements we have implemented:</p> <!-- Resumen noticia -->
-                    <a href="./BETA TESTER 0.911-i.php" class="btn btn-primary py-3 px-5">Read more<i class="fa fa-arrow-right ms-3"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-6 pt-4" style="min-height: 400px;">
-                    <div class="position-relative h-100 wow fadeIn" data-wow-delay="0.1s">
-                        <img class="position-absolute img-fluid w-100 h-100" src="./img/3.png" style="object-fit: cover;" alt="Disc beta">
-                        <div class="position-absolute top-0 end-0 mt-n4 me-n4 py-4 px-5" style="background: rgba(0, 0, 0, .08);">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6">
-                    <h6 class="text-primary text-uppercase">VERSION BETA TESTER 0.910-i</h6>
-                    <h1 class="mb-4"><span class="text-light">Changelog of the version <span style="color: #9900ff;">BETA TESTER 0.910-i</span>, updates & errors fixeds.</span></h1>
-                    <!-- Titulo noticia -->
-                    <p class="mb-4">In this changelog, we are excited to present the comprehensive list of updates and
-                        errors that have been addressed in the latest iteration of our BETA TESTER version, numbered
-                        0.910-0. Our commitment to enhancing the user experience and ensuring the stability of our
-                        software remains at the forefront of our efforts. Below, you will find a detailed account of the
-                        changes and improvements we have implemented:</p>
-                    <a href="./BETA TESTER 0.910-i.php" class="btn btn-primary py-3 px-5">Read more<i class="fa fa-arrow-right ms-3"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- News End -->
-
+    </body>
 
     <!-- Footer Start -->
+
     <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="row g-5">

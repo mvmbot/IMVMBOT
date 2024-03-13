@@ -186,8 +186,22 @@ session_start();
                         <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton2" style="background-color: #000;">
                             <!-- Enlace para CREATE TICKET -->
                             <a href="./createTicket.php" class="nav-item nav-link" style="color: white;">CREATE TICKET</a>
+                        </div>
+                        <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton2" style="background-color: #000;">
                             <!-- Enlace para VIEW TICKETS -->
                             <a href="./viewTicket.php" class="nav-item nav-link" style="color: white;">VIEW TICKETS</a>
+                        </div>
+                    </div>
+                <?php
+                } else if ($_SESSION["admin"] != null) {
+                ?>
+                    <div class="dropdown">
+                        <button class="nav-item nav-link dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #0a0a0a; color: white; border: none;">
+                            TICKETS
+                        </button>
+                        <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton2" style="background-color: #000;">
+                            <!-- Enlace para VIEW TICKETS -->
+                            <a href="./viewTicketAdmin.php" class="nav-item nav-link" style="color: white;">VIEW TICKETS</a>
                         </div>
                     </div>
                 <?php
@@ -195,7 +209,7 @@ session_start();
                 ?>
             </div>
             <?php
-            if ($_SESSION["user"] == null) {
+            if ($_SESSION["user"] == false && $_SESSION["admin"] == false) {
             ?>
                 <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">ACCOUNT<i><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" class="svg-icon">
                             <style>
@@ -207,10 +221,24 @@ session_start();
                             <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
                         </svg></i></a>
             <?php
-            } else {
+            } else if ($_SESSION["user"]) {
             ?>
                 <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
                     <?php echo $_SESSION['user'] ?><i><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" class="svg-icon">
+                            <style>
+                                .svg-icon {
+                                    fill: #ffffff;
+                                    margin-left: 5px;
+                                }
+                            </style>
+                            <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+                        </svg></i>
+                </a>
+            <?php
+            } else if ($_SESSION["admin"]) {
+            ?>
+                <a href="" class="btn btn-primary py-4 pFx-lg-5 d-none d-lg-block">
+                    <?php echo $_SESSION['admin'] ?><i><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" class="svg-icon">
                             <style>
                                 .svg-icon {
                                     fill: #ffffff;
@@ -236,9 +264,12 @@ session_start();
                 <div class="col-lg-7 text-start">
                     <h1>BETA TESTER 0.911-i Changelog: New Commands and Bug Fixes</h1>
 
-                    <p>In this changelog, we are thrilled to share the latest updates and bug fixes introduced in BETA TESTER version
-                        0.911-i. Our unwavering commitment to improving the user experience and ensuring software stability remains at
-                        the forefront of our efforts. Below, you'll find a detailed account of the changes and improvements we have
+                    <p>In this changelog, we are thrilled to share the latest updates and bug fixes introduced in BETA
+                        TESTER version
+                        0.911-i. Our unwavering commitment to improving the user experience and ensuring software
+                        stability remains at
+                        the forefront of our efforts. Below, you'll find a detailed account of the changes and
+                        improvements we have
                         implemented:</p>
 
                     <h2>New Commands:</h2>
@@ -246,28 +277,32 @@ session_start();
                     <p>
                         <strong>/wiki Command:</strong>
                         <br>
-                        Introducing the /wiki command, a powerful tool that allows users to quickly access information from Wikipedia
+                        Introducing the /wiki command, a powerful tool that allows users to quickly access information
+                        from Wikipedia
                         without leaving the chat environment. Enhance your knowledge with ease using this new addition.
                     </p>
 
                     <p>
                         <strong>/help Command:</strong>
                         <br>
-                        The /help command is here to provide assistance and guidance. Whether you're a new user or in need of a
+                        The /help command is here to provide assistance and guidance. Whether you're a new user or in
+                        need of a
                         refresher, this command offers quick access to valuable information to enhance your experience.
                     </p>
 
                     <p>
                         <strong>/mute Command:</strong>
                         <br>
-                        Administrators and moderators can now efficiently manage conversations with the /mute command. Maintain a
+                        Administrators and moderators can now efficiently manage conversations with the /mute command.
+                        Maintain a
                         harmonious chat environment by utilizing this valuable moderation tool.
                     </p>
 
                     <p>
                         <strong>/emojify Command:</strong>
                         <br>
-                        Express yourself in new and creative ways with the /emojify command. This feature transforms text into lively
+                        Express yourself in new and creative ways with the /emojify command. This feature transforms
+                        text into lively
                         emojis, adding a fun and dynamic element to your messages.
                     </p>
 
@@ -276,28 +311,34 @@ session_start();
                     <p>
                         <strong>Wikipedia Search Term with Space:</strong>
                         <br>
-                        Resolved the bug where a Wikipedia search term with a space would not execute the search correctly. Now, users
+                        Resolved the bug where a Wikipedia search term with a space would not execute the search
+                        correctly. Now, users
                         can seamlessly search for terms even when they include spaces.
                     </p>
 
                     <p>
                         <strong>/help Loading Time:</strong>
                         <br>
-                        Addressed the issue where the /help command was experiencing prolonged loading times. Users can now access help
+                        Addressed the issue where the /help command was experiencing prolonged loading times. Users can
+                        now access help
                         information swiftly, ensuring a more efficient and user-friendly experience.
                     </p>
 
                     <h2>Conclusion:</h2>
 
                     <p>
-                        The BETA TESTER 0.911-i version introduces exciting new commands and resolves critical bugs, further enhancing
-                        the functionality of our software. We appreciate the valuable feedback from our user community, driving our
-                        commitment to excellence. As we continue to evolve, stay tuned for more updates aimed at meeting the evolving
+                        The BETA TESTER 0.911-i version introduces exciting new commands and resolves critical bugs,
+                        further enhancing
+                        the functionality of our software. We appreciate the valuable feedback from our user community,
+                        driving our
+                        commitment to excellence. As we continue to evolve, stay tuned for more updates aimed at meeting
+                        the evolving
                         needs of our users.
                     </p>
 
                     <p>
-                        Thank you for your continued support as we work towards creating a more robust and user-friendly software
+                        Thank you for your continued support as we work towards creating a more robust and user-friendly
+                        software
                         environment.
                     </p>
                     <a href="./Changelog.php" class="btn btn-primary py-3 px-5">Go back<i class="fa fa-arrow-right ms-3"></i></a>

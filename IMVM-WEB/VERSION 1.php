@@ -186,8 +186,22 @@ session_start();
                         <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton2" style="background-color: #000;">
                             <!-- Enlace para CREATE TICKET -->
                             <a href="./createTicket.php" class="nav-item nav-link" style="color: white;">CREATE TICKET</a>
+                        </div>
+                        <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton2" style="background-color: #000;">
                             <!-- Enlace para VIEW TICKETS -->
                             <a href="./viewTicket.php" class="nav-item nav-link" style="color: white;">VIEW TICKETS</a>
+                        </div>
+                    </div>
+                <?php
+                } else if ($_SESSION["admin"] != null) {
+                ?>
+                    <div class="dropdown">
+                        <button class="nav-item nav-link dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #0a0a0a; color: white; border: none;">
+                            TICKETS
+                        </button>
+                        <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton2" style="background-color: #000;">
+                            <!-- Enlace para VIEW TICKETS -->
+                            <a href="./viewTicketAdmin.php" class="nav-item nav-link" style="color: white;">VIEW TICKETS</a>
                         </div>
                     </div>
                 <?php
@@ -195,7 +209,7 @@ session_start();
                 ?>
             </div>
             <?php
-            if ($_SESSION["user"] == null) {
+            if ($_SESSION["user"] == false && $_SESSION["admin"] == false) {
             ?>
                 <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">ACCOUNT<i><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" class="svg-icon">
                             <style>
@@ -207,10 +221,24 @@ session_start();
                             <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
                         </svg></i></a>
             <?php
-            } else {
+            } else if ($_SESSION["user"]) {
             ?>
                 <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
                     <?php echo $_SESSION['user'] ?><i><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" class="svg-icon">
+                            <style>
+                                .svg-icon {
+                                    fill: #ffffff;
+                                    margin-left: 5px;
+                                }
+                            </style>
+                            <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+                        </svg></i>
+                </a>
+            <?php
+            } else if ($_SESSION["admin"]) {
+            ?>
+                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+                    <?php echo $_SESSION['admin'] ?><i><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" class="svg-icon">
                             <style>
                                 .svg-icon {
                                     fill: #ffffff;
@@ -236,8 +264,10 @@ session_start();
                 <div class="col-lg-7 text-start">
                     <h1>Version 1 Changelog: New Commands and Bug Fixes</h1>
 
-                    <p>In this changelog, we are thrilled to share the latest updates and bug fixes introduced in Version 1 (v1). Our
-                        commitment to improving the user experience and ensuring software stability remains a top priority. Below, you'll
+                    <p>In this changelog, we are thrilled to share the latest updates and bug fixes introduced in
+                        Version 1 (v1). Our
+                        commitment to improving the user experience and ensuring software stability remains a top
+                        priority. Below, you'll
                         find a detailed account of the changes and improvements we have implemented:</p>
 
                     <h2>New Commands:</h2>
@@ -245,48 +275,55 @@ session_start();
                     <p>
                         <strong>/calculator Command:</strong>
                         <br>
-                        Introducing the /calculator command, a versatile tool for performing various calculations within the chat
+                        Introducing the /calculator command, a versatile tool for performing various calculations within
+                        the chat
                         environment. Enhance your productivity with this powerful addition.
                     </p>
 
                     <p>
                         <strong>/eval Command:</strong>
                         <br>
-                        The /eval command has been added, now supporting Python. Execute Python code directly in the chat for enhanced
+                        The /eval command has been added, now supporting Python. Execute Python code directly in the
+                        chat for enhanced
                         flexibility and functionality.
                     </p>
 
                     <p>
                         <strong>/ping Command:</strong>
                         <br>
-                        Check the responsiveness of the bot with the new /ping command. A handy tool to ensure smooth communication and
+                        Check the responsiveness of the bot with the new /ping command. A handy tool to ensure smooth
+                        communication and
                         interaction.
                     </p>
 
                     <p>
                         <strong>/rules Command:</strong>
                         <br>
-                        Define and communicate community guidelines efficiently using the /rules command. Keep your community informed
+                        Define and communicate community guidelines efficiently using the /rules command. Keep your
+                        community informed
                         and engaged.
                     </p>
 
                     <p>
                         <strong>/study Command:</strong>
                         <br>
-                        Introducing the /study command, designed to facilitate a focused study environment within the chat. Boost
+                        Introducing the /study command, designed to facilitate a focused study environment within the
+                        chat. Boost
                         productivity while collaborating with others.
                     </p>
 
                     <p>
                         <strong>/remind Command:</strong>
                         <br>
-                        Never miss an important task with the /remind command. Set reminders effortlessly and stay organized.
+                        Never miss an important task with the /remind command. Set reminders effortlessly and stay
+                        organized.
                     </p>
 
                     <p>
                         <strong>/faq Command:</strong>
                         <br>
-                        The /faq command has been added to provide quick access to frequently asked questions. Simplify user
+                        The /faq command has been added to provide quick access to frequently asked questions. Simplify
+                        user
                         onboarding and enhance overall user experience.
                     </p>
 
@@ -295,35 +332,42 @@ session_start();
                     <p>
                         <strong>Server Hosting:</strong>
                         <br>
-                        The bot is now hosted on a server, ensuring continuous functionality 24/7. Enjoy seamless interactions with the
+                        The bot is now hosted on a server, ensuring continuous functionality 24/7. Enjoy seamless
+                        interactions with the
                         bot at any time.
                     </p>
 
                     <p>
                         <strong>Loading Issues and /clear Command:</strong>
                         <br>
-                        Resolved bugs related to loading issues and messages not being cleared with the /clear command. Enjoy a smoother
+                        Resolved bugs related to loading issues and messages not being cleared with the /clear command.
+                        Enjoy a smoother
                         chat experience with these fixes in place.
                     </p>
 
                     <p>
                         <strong>/eval Python Compatibility:</strong>
                         <br>
-                        Fixed the issue where the /eval command was not accepting Python code. Now, execute Python code seamlessly for
+                        Fixed the issue where the /eval command was not accepting Python code. Now, execute Python code
+                        seamlessly for
                         enhanced bot functionality.
                     </p>
 
                     <h2>Conclusion:</h2>
 
                     <p>
-                        Version 1 brings a host of new commands and critical bug fixes, offering an improved and more functional
-                        software experience. We appreciate the valuable feedback from our user community, driving our commitment to
-                        excellence. As we continue to evolve, stay tuned for more updates aimed at meeting the evolving needs of our
+                        Version 1 brings a host of new commands and critical bug fixes, offering an improved and more
+                        functional
+                        software experience. We appreciate the valuable feedback from our user community, driving our
+                        commitment to
+                        excellence. As we continue to evolve, stay tuned for more updates aimed at meeting the evolving
+                        needs of our
                         users.
                     </p>
 
                     <p>
-                        Thank you for your continued support as we work towards creating a more robust and user-friendly software
+                        Thank you for your continued support as we work towards creating a more robust and user-friendly
+                        software
                         environment.
                     </p>
                     <a href="./Changelog.php" class="btn btn-primary py-3 px-5">Go back<i class="fa fa-arrow-right ms-3"></i></a>
