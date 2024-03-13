@@ -25,6 +25,7 @@ function redirectToIndex() {
     exit;
 }
 
+# Function to redirect to the create ticket page
 function redirectToTicket() {
     header('Location: ' . TICKET_PAGE);
     exit;

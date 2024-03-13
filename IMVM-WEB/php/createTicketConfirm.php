@@ -22,6 +22,7 @@ $conn = connectToDatabase();
 $type = $_POST['type'] ?? ''; # First of all, we get the type so we know what table to look in
 $fieldsToCheck; # This will hold an array with fields that need validation
 # Switch case to fill the values from every possible type
+
 switch ($type) {
 
     #region Help & Support
@@ -29,7 +30,7 @@ switch ($type) {
         $subject = $_POST['subject'] ?? '';
         $description = $_POST['description'] ?? '';
         $fileAttachment = $_POST['fileAttachment'] ?? '';
-        $fieldsToCheck = ['subject', 'description', 'fileAttachment'];
+        $fieldsToCheck = [$subject, $description, $fileAttachment];
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
         if (areFieldsEmpty($fieldsToCheck)) {
@@ -51,7 +52,7 @@ switch ($type) {
         $receivedResult = $_POST['receivedResult'] ?? '';
         $discordClient = $_POST['discordClient'] ?? '';
         $bugImage = $_POST['bugImage'] ?? '';
-        $fieldsToCheck = ['requestType','bugDescription', 'stepsToReproduce', 'expectedResult', 'receivedResult', 'discordClient', 'subject','bugImage'];
+        $fieldsToCheck = [$requestType,$bugDescription, $stepsToReproduce, $expectedResult, $receivedResult, $discordClient, $subject, $bugImage];
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
         if (areFieldsEmpty($fieldsToCheck)) {
@@ -68,7 +69,7 @@ switch ($type) {
         $requestType = $_POST['requestType'] ?? '';
         $subject = $_POST['subject'] ?? '';
         $description = $_POST['description'] ?? '';
-        $fieldsToCheck = ['requestType', 'subject', 'description'];
+        $fieldsToCheck = [$requestType, $subject, $description];
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
         if (areFieldsEmpty($fieldsToCheck)) {
@@ -85,7 +86,7 @@ switch ($type) {
         $subject = $_POST['subject'] ?? '';
         $description = $_POST['description'] ?? '';
         $fileAttachment = $_POST['fileAttachment'] ?? '';
-        $fieldsToCheck = ['subject', 'description', 'fileAttachment'];
+        $fieldsToCheck = [$subject, $description, $fileAttachment];
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
         if (areFieldsEmpty($fieldsToCheck)) {
@@ -101,7 +102,7 @@ switch ($type) {
     case 'informationUpdate':
         $subject = $_POST['subject'] ?? '';
         $updateInfo = $_POST['updateInfo'] ?? '';
-        $fieldsToCheck = ['subject', 'updateInfo'];
+        $fieldsToCheck = [$subject, $updateInfo];
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
         if (areFieldsEmpty($fieldsToCheck)) {
@@ -118,7 +119,7 @@ switch ($type) {
         $subject = $_POST['subject'] ?? '';
         $description = $_POST['description'] ?? '';
         $extraText = $_POST['extraText'] ?? '';
-        $fieldsToCheck = ['subject', 'description', 'extraText'];
+        $fieldsToCheck = [$subject, $description, $extraText];
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
         if (areFieldsEmpty($fieldsToCheck)) {
