@@ -30,7 +30,7 @@ switch ($type) {
         $subject = $_POST['subjectHelpSupportFields'] ?? '';
         $description = $_POST['descriptionHelpSupportFields'] ?? '';
         $fileAttachment = $_POST['fileAttachmentHelpSupportFields'] ?? '';
-        $fieldsToCheck = [$subject, $description, $fileAttachment];
+        $fieldsToCheck = ['subjectHelpSupportFields', 'descriptionHelpSupportFields', 'fileAttachmentHelpSupportFields'];
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
         if (areFieldsEmpty($fieldsToCheck)) {
@@ -52,7 +52,7 @@ switch ($type) {
         $receivedResult = $_POST['receivedResultBugReportFields'] ?? '';
         $discordClient = $_POST['discordClientBugReportFields'] ?? '';
         $bugImage = $_POST['bugImageBugReportFields'] ?? '';
-        $fieldsToCheck = [$requestType,$bugDescription, $stepsToReproduce, $expectedResult, $receivedResult, $discordClient, $subject, $bugImage];
+        $fieldsToCheck = ['requestTypeBugReportFields', 'subjectBugReportFields', 'stepsToReproduceBugReportFields', 'expectedResultBugReportFields', 'receivedResultBugReportFields', 'discordClientBugReportFields', 'subjectBugReportFields', 'bugImageBugReportFields'];
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
         if (areFieldsEmpty($fieldsToCheck)) {
@@ -69,7 +69,7 @@ switch ($type) {
         $requestType = $_POST['requestTypeFeatureRequestFields'] ?? '';
         $subject = $_POST['subjectFeatureRequestFields'] ?? '';
         $description = $_POST['descriptionFeatureRequestFields'] ?? '';
-        $fieldsToCheck = [$requestType, $subject, $description];
+    $fieldsToCheck = ['requestTypeFeatureRequestFields', 'subjectFeatureRequestFields', 'descriptionFeatureRequestFields'];
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
         if (areFieldsEmpty($fieldsToCheck)) {
@@ -86,7 +86,7 @@ switch ($type) {
         $subject = $_POST['subjectGrammarIssuesFields'] ?? '';
         $description = $_POST['descriptionGrammarIssuesFields'] ?? '';
         $fileAttachment = $_POST['fileAttachmentGrammarIssuesFields'] ?? '';
-        $fieldsToCheck = [$subject, $description, $fileAttachment];
+        $fieldsToCheck = ['subjectGrammarIssuesFields', 'descriptionGrammarIssuesFields', 'fileAttachmentGrammarIssuesFields'];
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
         if (areFieldsEmpty($fieldsToCheck)) {
@@ -102,7 +102,7 @@ switch ($type) {
     case 'informationUpdate':
         $subject = $_POST['subjectInformationUpdateFields'] ?? '';
         $updateInfo = $_POST['updateInfoInformationUpdateFields'] ?? '';
-        $fieldsToCheck = [$subject, $updateInfo];
+        $fieldsToCheck = ['subjectInformationUpdateFields', 'updateInfoInformationUpdateFields'];
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
         if (areFieldsEmpty($fieldsToCheck)) {
@@ -119,7 +119,7 @@ switch ($type) {
         $subject = $_POST['subjectOtherFields'] ?? '';
         $description = $_POST['descriptionOtherFields'] ?? '';
         $extraText = $_POST['extraTextOtherFields'] ?? '';
-        $fieldsToCheck = [$subject, $description, $extraText];
+        $fieldsToCheck = ['subjectOtherFields', 'descriptionOtherFields', 'extraTextOtherFields'];
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
         if (areFieldsEmpty($fieldsToCheck)) {
@@ -136,4 +136,3 @@ switch ($type) {
         break;
     #endregion
 }
-redirectToIndex();
