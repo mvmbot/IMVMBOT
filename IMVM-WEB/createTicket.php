@@ -259,7 +259,7 @@ session_start();
 
     <!-- Navbar End -->
 
-    <form class="formticket" action="./php/createTicketConfirm.php" method="POST">
+    <form class="formticket" action="./php/createTicketConfirm.php" method="POST" enctype="multipart/form-data">
 
         <br>
         <h3>Submit a request

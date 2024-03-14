@@ -21,16 +21,18 @@ $conn = connectToDatabase();
 # We grab all the data from the form
 $type = $_POST['type'] ?? ''; # First of all, we get the type so we know what table to look in
 $fieldsToCheck; # This will hold an array with fields that need validation
-# Switch case to fill the values from every possible type
 
+$targetDirectory =  './userUploads/'; # Directory where images should
+# Switch case to fill the values from every possible type
 switch ($type) {
 
     #region Help & Support
     case 'helpSupport':
         $subject = $_POST['subjectHelpSupportFields'] ?? '';
         $description = $_POST['descriptionHelpSupportFields'] ?? '';
-        $fileAttachment = $_POST['fileAttachmentHelpSupportFields'] ?? '';
-        $fieldsToCheck = ['subjectHelpSupportFields', 'descriptionHelpSupportFields', 'fileAttachmentHelpSupportFields'];
+        $fieldsToCheck = ['subjectHelpSupportFields', 'descriptionHelpSupportFields'];
+        
+        $fileAttachment = $targetDirectory . basename($_FILES["fileAttachmentHelpSupportFields"]);
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
         if (areFieldsEmpty($fieldsToCheck)) {
