@@ -21,16 +21,18 @@ $conn = connectToDatabase();
 # We grab all the data from the form
 $type = $_POST['type'] ?? ''; # First of all, we get the type so we know what table to look in
 $fieldsToCheck; # This will hold an array with fields that need validation
-# Switch case to fill the values from every possible type
 
+$targetDirectory =  './userUploads/'; # Directory where images should
+# Switch case to fill the values from every possible type
 switch ($type) {
 
     #region Help & Support
     case 'helpSupport':
-        $subject = $_POST['subject'] ?? '';
-        $description = $_POST['description'] ?? '';
-        $fileAttachment = $_POST['fileAttachment'] ?? '';
-        $fieldsToCheck = [$subject, $description, $fileAttachment];
+        $subject = $_POST['subjectHelpSupportFields'] ?? '';
+        $description = $_POST['descriptionHelpSupportFields'] ?? '';
+        $fieldsToCheck = ['subjectHelpSupportFields', 'descriptionHelpSupportFields'];
+        
+        $fileAttachment = $targetDirectory . basename($_FILES["fileAttachmentHelpSupportFields"]);
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
         if (areFieldsEmpty($fieldsToCheck)) {
@@ -44,15 +46,15 @@ switch ($type) {
 
     #region Bug Reporting
     case 'bugReport':
-        $requestType = $_POST['requestType']?? '';
-        $subject = $_POST['subject']?? '';
-        $bugDescription = $_POST['bugDescription'] ?? '';
-        $stepsToReproduce = $_POST['stepsToReproduce'] ?? '';
-        $expectedResult = $_POST['expectedResult'] ?? '';
-        $receivedResult = $_POST['receivedResult'] ?? '';
-        $discordClient = $_POST['discordClient'] ?? '';
-        $bugImage = $_POST['bugImage'] ?? '';
-        $fieldsToCheck = [$requestType,$bugDescription, $stepsToReproduce, $expectedResult, $receivedResult, $discordClient, $subject, $bugImage];
+        $requestType = $_POST['requestTypeBugReportFields']?? '';
+        $subject = $_POST['subjectBugReportFields']?? '';
+        $bugDescription = $_POST['bugDescriptionBugReportFields'] ?? '';
+        $stepsToReproduce = $_POST['stepsToReproduceBugReportFields'] ?? '';
+        $expectedResult = $_POST['expectedResultBugReportFields'] ?? '';
+        $receivedResult = $_POST['receivedResultBugReportFields'] ?? '';
+        $discordClient = $_POST['discordClientBugReportFields'] ?? '';
+        $bugImage = $_POST['bugImageBugReportFields'] ?? '';
+        $fieldsToCheck = ['requestTypeBugReportFields', 'subjectBugReportFields', 'stepsToReproduceBugReportFields', 'expectedResultBugReportFields', 'receivedResultBugReportFields', 'discordClientBugReportFields', 'subjectBugReportFields', 'bugImageBugReportFields'];
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
         if (areFieldsEmpty($fieldsToCheck)) {
@@ -66,10 +68,10 @@ switch ($type) {
 
     #region  Feature Request
     case 'featureRequest':
-        $requestType = $_POST['requestType'] ?? '';
-        $subject = $_POST['subject'] ?? '';
-        $description = $_POST['description'] ?? '';
-        $fieldsToCheck = [$requestType, $subject, $description];
+        $requestType = $_POST['requestTypeFeatureRequestFields'] ?? '';
+        $subject = $_POST['subjectFeatureRequestFields'] ?? '';
+        $description = $_POST['descriptionFeatureRequestFields'] ?? '';
+    $fieldsToCheck = ['requestTypeFeatureRequestFields', 'subjectFeatureRequestFields', 'descriptionFeatureRequestFields'];
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
         if (areFieldsEmpty($fieldsToCheck)) {
@@ -83,10 +85,10 @@ switch ($type) {
 
     #region Grammar Issues
     case 'grammarIssues':
-        $subject = $_POST['subject'] ?? '';
-        $description = $_POST['description'] ?? '';
-        $fileAttachment = $_POST['fileAttachment'] ?? '';
-        $fieldsToCheck = [$subject, $description, $fileAttachment];
+        $subject = $_POST['subjectGrammarIssuesFields'] ?? '';
+        $description = $_POST['descriptionGrammarIssuesFields'] ?? '';
+        $fileAttachment = $_POST['fileAttachmentGrammarIssuesFields'] ?? '';
+        $fieldsToCheck = ['subjectGrammarIssuesFields', 'descriptionGrammarIssuesFields', 'fileAttachmentGrammarIssuesFields'];
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
         if (areFieldsEmpty($fieldsToCheck)) {
@@ -100,9 +102,9 @@ switch ($type) {
 
     #region Information Update
     case 'informationUpdate':
-        $subject = $_POST['subject'] ?? '';
-        $updateInfo = $_POST['updateInfo'] ?? '';
-        $fieldsToCheck = [$subject, $updateInfo];
+        $subject = $_POST['subjectInformationUpdateFields'] ?? '';
+        $updateInfo = $_POST['updateInfoInformationUpdateFields'] ?? '';
+        $fieldsToCheck = ['subjectInformationUpdateFields', 'updateInfoInformationUpdateFields'];
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
         if (areFieldsEmpty($fieldsToCheck)) {
@@ -116,10 +118,10 @@ switch ($type) {
 
     #region Other Issues
     case 'other':
-        $subject = $_POST['subject'] ?? '';
-        $description = $_POST['description'] ?? '';
-        $extraText = $_POST['extraText'] ?? '';
-        $fieldsToCheck = [$subject, $description, $extraText];
+        $subject = $_POST['subjectOtherFields'] ?? '';
+        $description = $_POST['descriptionOtherFields'] ?? '';
+        $extraText = $_POST['extraTextOtherFields'] ?? '';
+        $fieldsToCheck = ['subjectOtherFields', 'descriptionOtherFields', 'extraTextOtherFields'];
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
         if (areFieldsEmpty($fieldsToCheck)) {

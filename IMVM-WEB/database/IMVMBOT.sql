@@ -1,6 +1,6 @@
 CREATE DATABASE IF NOT EXISTS IMVMBOT;
 
--- Tabla para almacenar administradores
+-- Table to store administrators
 CREATE TABLE admin (
     idAdmin INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     usernameAdmin VARCHAR(50) NOT NULL UNIQUE,
@@ -10,7 +10,7 @@ CREATE TABLE admin (
     passwordAdmin VARCHAR(255) NOT NULL
 );
 
--- Tabla para almacenar la información de los usuarios.
+-- Table to store user information.
 CREATE TABLE users (
     idUsers INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     usernameUsers VARCHAR(50) NOT NULL UNIQUE,
@@ -21,7 +21,7 @@ CREATE TABLE users (
     acceptNewsletter BIT NOT NULL
 );
 
--- Tabla para almacenar la información de los tickets.
+-- Table to store ticket information.
 CREATE TABLE ticket (
     idTicket INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     typeTicket ENUM('Help & Support', 'Bug Reporting', 'Feature Request', 'Abuse Report', 'General Inquiry', 'Improvement Suggestions', 'Grammar', 'Information Update', 'Other') NOT NULL,
@@ -91,7 +91,7 @@ CREATE TABLE other (
     FOREIGN KEY (ticketID) REFERENCES ticket(idTicket)
 );
 
--- Tabla para las respuestas de los admins y usuarios
+-- Table for responses from admins and users
 CREATE TABLE response (
     idResponse INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     idTicket INT NOT NULL,

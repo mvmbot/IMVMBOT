@@ -86,7 +86,7 @@ function createTicketBase($conn, $ticketType) {
 
 #region Function --- Create ticket help support fields
 function createTicketHelpSupport($conn, $subject, $description, $fileAttachment) {
-    
+
     # Get both the ticket type and the ticket ID
     $ticketType = "helpSupport";
     $ticketId = createTicketBase($conn, $ticketType);
@@ -109,7 +109,7 @@ function createTicketHelpSupport($conn, $subject, $description, $fileAttachment)
         # Close prepared statement
         $stmt->close();
     } catch (Exception $e) {
-        
+
         # Display error message
         showError("Error: " . $e->getMessage());
     }
@@ -128,12 +128,12 @@ function createTicketBugReport($conn, $subject, $operativeSystem, $bugDescriptio
         # Prepare INSERT query
         $insertTypeSQL = "INSERT INTO bugReport (subject, operativeSystem, description, stepsToReproduce, expectedResult, receivedResult, discordClient, image, ticketID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($insertTypeSQL);
-        
+
         # Check if query preparation was successful
         if ($stmt === false) {
             throw new Exception("Error preparing INSERT statement: " . $conn->error);
         }
-        
+
         # Bind parameters and execute query
         $stmt->bind_param("ssssssssi", $subject, $operativeSystem, $bugDescription, $stepsToReproduce, $expectedResult, $receivedResult, $discordClient, $bugImage, $ticketId);
         $stmt->execute();
@@ -160,12 +160,12 @@ function createTicketFeatureRequest($conn, $subject, $description, $requestType)
         # Prepare INSERT query
         $insertTypeSQL = "INSERT INTO featureRequest (subject, description, ticketID, requestType) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($insertTypeSQL);
-        
+
         # Check if query preparation was successful
         if ($stmt === false) {
             throw new Exception("Error preparing INSERT statement: " . $conn->error);
         }
-        
+
         # Bind parameters and execute query
         $stmt->bind_param("ssis", $subject, $description, $ticketId, $requestType);
         $stmt->execute();
@@ -192,12 +192,12 @@ function createTicketGrammarIssues($conn, $subject, $description, $fileAttachmen
         # Prepare INSERT query
         $insertTypeSQL = "INSERT INTO grammarIssues (subject, description, image, ticketID) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($insertTypeSQL);
-        
+
         # Check if query preparation was successful
         if ($stmt === false) {
             throw new Exception("Error preparing INSERT statement: " . $conn->error);
         }
-        
+
         # Bind parameters and execute query
         $stmt->bind_param("sssi", $subject, $description, $fileAttachment, $ticketId);
         $stmt->execute();
@@ -218,19 +218,18 @@ function createTicketInformationUpdate($conn, $subject, $updateInfo) {
     # Get both the ticket type and the ticket ID
     $ticketType = "informationUpdate";
     $ticketId = createTicketBase($conn, $ticketType);
-    echo $subject;
 
     try {
 
         # Prepare INSERT query
         $insertTypeSQL = "INSERT INTO informationUpdate (subject, updateInfo, ticketID) VALUES (?, ?, ?)";
         $stmt = $conn->prepare($insertTypeSQL);
-        
+
         # Check if query preparation was successful
         if ($stmt === false) {
             throw new Exception("Error preparing INSERT statement: " . $conn->error);
         }
-        
+
         # Bind parameters and execute query
         $stmt->bind_param("ssi", $subject, $updateInfo, $ticketId);
         $stmt->execute();
@@ -257,12 +256,12 @@ function createTicketOther($conn, $subject, $description, $extraText) {
         # Prepare INSERT query
         $insertTypeSQL = "INSERT INTO other (subject, description, extraText, ticketID) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($insertTypeSQL);
-        
+
         # Check if query preparation was successful
         if ($stmt === false) {
             throw new Exception("Error preparing INSERT statement: " . $conn->error);
         }
-        
+
         # Bind parameters and execute query
         $stmt->bind_param("sssi", $subject, $description, $extraText, $ticketId);
         $stmt->execute();
