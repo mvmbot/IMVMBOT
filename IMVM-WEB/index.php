@@ -176,7 +176,7 @@ session_start();
                     </div>
                 </div>
                 <?php
-                if ($_SESSION["user"] != null) {
+                if ($_SESSION["user"]) {
                 ?>
                     <div class="dropdown">
                         <button class="nav-item nav-link dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #0a0a0a; color: white; border: none;">
@@ -185,14 +185,12 @@ session_start();
                         <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton2" style="background-color: #000;">
                             <!-- Enlace para CREATE TICKET -->
                             <a href="./createTicket.php" class="nav-item nav-link" style="color: white;">CREATE TICKET</a>
-                        </div>
-                        <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton2" style="background-color: #000;">
                             <!-- Enlace para VIEW TICKETS -->
                             <a href="./viewTicket.php" class="nav-item nav-link" style="color: white;">VIEW TICKETS</a>
                         </div>
                     </div>
                 <?php
-                } else if ($_SESSION["admin"] != null) {
+                } else if ($_SESSION["admin"]) {
                 ?>
                     <div class="dropdown">
                         <button class="nav-item nav-link dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #0a0a0a; color: white; border: none;">
