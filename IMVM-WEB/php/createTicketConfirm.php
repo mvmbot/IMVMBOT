@@ -71,7 +71,7 @@ switch ($type) {
         $requestType = $_POST['requestTypeFeatureRequestFields'] ?? '';
         $subject = $_POST['subjectFeatureRequestFields'] ?? '';
         $description = $_POST['descriptionFeatureRequestFields'] ?? '';
-    $fieldsToCheck = ['requestTypeFeatureRequestFields', 'subjectFeatureRequestFields', 'descriptionFeatureRequestFields'];
+        $fieldsToCheck = ['requestTypeFeatureRequestFields', 'subjectFeatureRequestFields', 'descriptionFeatureRequestFields'];
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
         if (areFieldsEmpty($fieldsToCheck)) {

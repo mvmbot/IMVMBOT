@@ -264,8 +264,6 @@ session_start();
 
         <?php
         require 'printTicket.php';
-
-        printTicket();
         ?>
 
         <div class="container col-sm-12">
