@@ -48,7 +48,7 @@ const {
           content: `Dont timeout an supervisor`,
           ephemeral: true,
         });
-     
+
       if (tiempo > 10000)
         return interaction.reply({
           content: `max is 10.000 minutes`,
@@ -63,7 +63,7 @@ const {
             "https://cdn.discordapp.com/attachments/1053464482095050803/1053464952607875072/PRywUXcqg0v5DD6s7C3LyQ.png"
           }`,
         })
-        .setTitle(`${user.tag} get an timeout`)
+        .setTitle(`${user.tag} got a timeout`)
         .setColor(`#ff0000`)
         .setTimestamp()
         .setThumbnail(`${user.displayAvatarURL({ dynamic: true })}`)
