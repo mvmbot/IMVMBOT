@@ -275,3 +275,22 @@ function createTicketOther($conn, $subject, $description, $extraText) {
     }
 }
 #endregion
+
+#region Function --- Get the Ticket ID
+function updateTicketBase($ticketID, $stateTicket) {
+    
+    $conn = connectToDatabase();
+
+    try {
+        $updateSQL = "UPDATE ticket SET modificationDate = ?, stateTicket = ? WHERE ticketID = ?";
+        $currentDate = date('Y-m-d H:i:s');
+        $stmt = $conn->prepare($updateSQL);
+        $stmt->bind_param("ssi", $currentDate, $stateTicket, $ticketID);
+        $stmt->execute();
+        $stmt->close();
+    } catch (Exception $e) {
+        # Display error message
+        showError("Error: " . $e->getMessage());
+    }
+}
+#endregion
