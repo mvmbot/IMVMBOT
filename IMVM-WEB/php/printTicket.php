@@ -29,21 +29,29 @@ function printTicket($conn){
 
     try {
 
-        $numIds = '';
-        # Prepare the SELECT query
-        $ticketQuery = "SELECT COUNT FROM ticket WHERE idUsers=? ";
+        $sql = "SELECT idTicket, typeTicket, stateTicket FROM tickets WHERE idUsers = ?";
 
-        $stmt = $conn ->prepare($ticketQuery);
+        # Prepare statement
+        $stmt = $conn->prepare($sql);
 
-        $stmt ->bind_param("i",$idUsers);
+        # Bind parameters
+        $stmt->bind_param("s", $idUsers);
 
+        # Execute statement
         $stmt->execute();
 
-        $stmt->bind_result($numIds);
-
-        $stmt->fetch();
-
-        $stmt->close(); 
+        # We store the result
+        $result = $stmt->get_result();
+        
+        if ($result->num_rows > 0) {
+            echo "<ul>";
+            while ($row = $result->fetch_assoc()) {
+                echo "<li>".$row["idTicket"]." ".$row["typeTicket"]." ".$row["stateTicket"]." [ <a href='f_update_person.php?ID=".$row['ID']."'>Modificar</a> ]</li>";
+            }
+        }
+        # Close statement
+        $stmt->close();
+    } catch (Exception $e) {
 
     } catch (\Throwable $th) {
         //throw $th;
