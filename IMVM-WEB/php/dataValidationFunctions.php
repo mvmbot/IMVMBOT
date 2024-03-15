@@ -1,6 +1,7 @@
 <?php
 
-#region function --- Simple function to check if there are empty values
+#region function --- Simple function to check if there are empty valu
+es
 function areFieldsEmpty($fields) {
 
     # We gotta check if any value is empty
