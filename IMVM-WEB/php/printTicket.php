@@ -42,11 +42,11 @@ function printTicket($conn){
 
         # We store the result
         $result = $stmt->get_result();
-        
+
         if ($result->num_rows > 0) {
             echo "<ul>";
             while ($row = $result->fetch_assoc()) {
-                echo "<li>".$row["idTicket"]." ".$row["typeTicket"]." ".$row["stateTicket"]." [ <a href='f_update_person.php?ID=".$row['ID']."'>Modificar</a> ]</li>";
+                echo "<li>".$row["idTicket"]." ".$row["typeTicket"]." ".$row["stateTicket"]." [ <a href='viewTicket.php?ID=".$row['idTicket']."'>Edit</a> ]</li>";
             }
         }
         # Close statement
