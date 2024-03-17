@@ -258,14 +258,9 @@ session_start();
     <!-- Navbar End -->
 
     </head>
-    
+
     <body>
         <br><br>
-
-        <?php
-        require 'printTicket.php';
-        ?>
-
         <div class="container col-sm-12">
             <div class="row">
                 <div class="table-bordered table-hover table-responsive" style="width: 100%">
@@ -281,13 +276,12 @@ session_start();
                             </tr>
                         </thead>
                         <tbody id="ticketTableBody">
+                            <?php
+                            $conn = connectToDatabase();
+                            viewAllTickets($conn);
+                            ?>
                         </tbody>
-                        <table>
-                        <?php
-        printTicket($conn);
-        ?>
-                        
-                    </table>
+                        </table>
                 </div>
             </div>
         </div>
