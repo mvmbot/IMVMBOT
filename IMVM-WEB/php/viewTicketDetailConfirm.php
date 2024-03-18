@@ -1,5 +1,5 @@
 <?php
-function viewTicketDetail($conn, $id) {
+function viewTicketDetail($conn, $id, $type) {
 
     $sql = "SELECT idTicket, typeTicket, creationDate, modificationDate, resolvedDate, stateTicket FROM ticket WHERE idTicket = ?";
     # Prepare statement

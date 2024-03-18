@@ -1,5 +1,5 @@
 <?php
-function viewTicket($conn){
+function viewTicket($conn, $type){
 
     #region --- Get the user ID
     $user = $_SESSION['user'];
