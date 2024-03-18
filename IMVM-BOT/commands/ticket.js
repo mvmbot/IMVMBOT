@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, Permissions, ActionRowBuilder, StringSelectMenuBuilder, ChannelTypes, MessageEmbed } = require('discord.js');
-const ticket = require('../../Schemas/ticketSchema');
+const ticket = require('ticketSchema');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -78,8 +78,8 @@ module.exports = {
                         Guild: interaction.guild.id,
                         Category: category.id
                     });
+                    await interaction.reply({ content: `He configurado la categoria a **${category}**! Usa /ticket para utilizar un mensaje de creación de ticket`, ephemeral: true });
                 }
-                break;
         }
     }
 };

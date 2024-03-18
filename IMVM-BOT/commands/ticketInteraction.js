@@ -1,5 +1,5 @@
 const { ModalBuilder, TextInputBuilder, ActionRowBuilder, TextInputStyle, ChannelType, EmbedBuilder, ButtonBuilder, ButtonStyle, PermissionsBitField, TextChannel } = require("discord.js");
-const ticket = require('../Schemas/ticketShema');
+const ticket = require('ticketShema');
 const { createTranscript } = require('discord-html-transcripts');
 
 module.exports = {
@@ -93,7 +93,7 @@ module.exports = {
 
             closeModal.addComponents(one);
             await interaction.showModal(closeModal);
-            { else if (interaction.customId == 'closeTicketModal') {
+         } else if (interaction.customId == 'closeTicketModal') {
                 var channel = interaction.channel;
                 var name = channel.name;
                 name = name.replace('ticket-', '');
@@ -109,11 +109,14 @@ module.exports = {
             } else if (interaction.customId == 'ticketTranscript') {
                 const file = await createTranscript(interaction.channel, {
                     limit: -1,
-                    returnBuffer: false
-                }
-            }
+                    returnBuffer: false,
+                    filename: `${interaction.channel.name}.html`
+                });
 
+                var msg = await interaction.channel.send({ content: `Your transcript cache:`, files: [file] });
+                var message = `📜 **Here is your [ticket transcript](https://mahto.id/chat-exporter?url=${msg.attachments.first()?.url}) from${interaction.guild.name}!**`;
+                await msg.delete().catch(err => {});
+                await interaction.reply({ content: message, ephemeral: true });
             }
-        }
     },
 };
