@@ -46,8 +46,8 @@ function viewAllTickets($conn){
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>";
-                echo "<th>".$row["idTicket"]."</th><br><th>".$row["typeTicket"]."</th><br><th>".$row["stateTicket"]." [ <a href='viewTicket.php?ID=".$row['idTicket']."'>Edit</a> ]</th>";
-                echo "<tr>";
+                echo "<th>".$row["idTicket"]."</th><br><th>".$row["typeTicket"]."</th><br><th>".$row["stateTicket"]."</th>[ <a href='viewTicket.php?ID=".$row['idTicket']."'>Edit</a> ]</th>";
+                echo "</tr>";
             }
         }
         # Close statement
