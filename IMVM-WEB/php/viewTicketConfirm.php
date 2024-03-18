@@ -27,7 +27,8 @@ function viewTicket($conn, $type){
     $stmt->close();
     #endregion
 
-    try {
+    switch ($type) {
+        case 'helpSupport':
         # Get every ticket from X type from the user
         $sql = "SELECT idTicket, typeTicket, stateTicket FROM tickets WHERE idUsers = ?";
 
@@ -43,6 +44,33 @@ function viewTicket($conn, $type){
         # We store the result
         $result = $stmt->get_result();
 
+            break;
+        case 'bugReport':
+            # code...
+            break;
+        case 'featureRequest':
+            # code...
+            break;
+        case 'grammarIssues':
+            # code...
+            break;
+        case 'informationUpdate':
+            # code...
+            break;
+        case 'other':
+            # code...
+            break;
+        default:
+            # code...
+            break;
+    }
+}
+
+function printTicket($conn, $result, $id) {
+
+    
+    
+    try {
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>";
@@ -50,8 +78,6 @@ function viewTicket($conn, $type){
                 echo "</tr>";
             }
         }
-        # Close statement
-        $stmt->close();
     } catch (Exception $e) {
         showError("Error: " . $e->getMessage());
     }
