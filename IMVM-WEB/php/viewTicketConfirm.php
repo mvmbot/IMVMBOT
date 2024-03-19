@@ -1,5 +1,5 @@
 <?php
-function viewTicket($conn, $type){
+function viewTicket($conn, $type) {
 
     #region --- Get the user ID
     $user = $_SESSION['user'];
@@ -29,57 +29,236 @@ function viewTicket($conn, $type){
 
     switch ($type) {
         case 'helpSupport':
-        # Get every ticket from X type from the user
-        $sql = "SELECT idTicket, typeTicket, stateTicket FROM tickets WHERE idUsers = ?";
+            # Get every ticket from X type from the user
+            $sql = "SELECT t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, hs.subject  
+            FROM ticket t 
+            JOIN helpSupport hs ON t.idTicket = hs.ticketID 
+            JOIN users u ON t.idUsers = u.idUsers
+            WHERE t.typeTicket = 'Help & Support' AND u.idUsers = ?";
 
-        # Prepare statement
-        $stmt = $conn->prepare($sql);
+            # Prepare statement
+            $stmt = $conn->prepare($sql);
 
-        # Bind parameters
-        $stmt->bind_param("s", $idUsers);
+            # Bind parameters
+            $stmt->bind_param("i", $idUsers);
 
-        # Execute statement
-        $stmt->execute();
+            # Execute statement
+            $stmt->execute();
 
-        # We store the result
-        $result = $stmt->get_result();
+            # We store the result
+            $result = $stmt->get_result();
 
+            # Then just print the ticket
+            printTicket($conn, $type);
             break;
+
         case 'bugReport':
-            # code...
+            $sql = "SELECT t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, br.operativeSystem, br.subject 
+            FROM ticket t 
+            JOIN bugReport br ON t.idTicket = br.ticketID 
+            JOIN users u ON t.idUsers = u.idUsers
+            WHERE t.typeTicket = 'Bug Reporting' AND u.idUsers = ?";
+
+            # Prepare statement
+            $stmt = $conn->prepare($sql);
+
+            # Bind parameters
+            $stmt->bind_param("i", $idUsers);
+
+            # Execute statement
+            $stmt->execute();
+
+            # We store the result
+            $result = $stmt->get_result();
+
+            # Then just print the ticket
+            printTicket($conn, $type);
             break;
+
         case 'featureRequest':
-            # code...
+            $sql = "SELECT t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, fr.subject, fr.requestType 
+            FROM ticket t
+            JOIN featureRequest fr ON t.idTicket = fr.ticketID
+            JOIN users u ON t.idUsers = u.idUsers
+            WHERE t.typeTicket = 'Feature Request' AND u.idUsers = ?";
+
+            # Prepare statement
+            $stmt = $conn->prepare($sql);
+
+            # Bind parameters
+            $stmt->bind_param("i", $idUsers);
+
+            # Execute statement
+            $stmt->execute();
+
+            # We store the result
+            $result = $stmt->get_result();
+
+            # Then just print the ticket
+            printTicket($conn, $type);
             break;
+
         case 'grammarIssues':
-            # code...
+            $sql = "SELECT t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, gi.subject 
+            FROM ticket t 
+            JOIN grammarIssues gi ON t.idTicket = gi.ticketID 
+            JOIN users u ON t.idUsers = u.idUsers
+            WHERE t.typeTicket = 'Grammar Issues' AND u.idUsers =?";
+            
+            # Prepare statement
+            $stmt = $conn->prepare($sql);
+
+            # Bind parameters
+            $stmt->bind_param("i", $idUsers);
+
+            # Execute statement
+            $stmt->execute();
+
+            # We store the result
+            $result = $stmt->get_result();
+
+            # Then just print the ticket
+            printTicket($conn, $type);
             break;
+
         case 'informationUpdate':
-            # code...
+            $sql = "SELECT t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, iu.subject  
+            FROM ticket t
+            JOIN informationUpdate iu ON t.idTicket = iu.ticket
+            JOIN users u ON t.idUsers = u.idUsers
+            WHERE t.typeTicket = 'Information Update' AND u.idUsers = ?";
+
+            # Prepare statement
+            $stmt = $conn->prepare($sql);
+
+            # Bind parameters
+            $stmt->bind_param("i", $idUsers);
+
+            # Execute statement
+            $stmt->execute();
+
+            # We store the result
+            $result = $stmt->get_result();
+
+            # Then just print the ticket
+            printTicket($conn, $type);
             break;
+
         case 'other':
-            # code...
+            $sql = "SELECT t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, o.subject, o.description, o.extraText 
+            FROM ticket t
+            JOIN other o ON t.idTicket = o.ticketId
+            JOIN users u ON t.idUsers = u.idUsers
+            WHERE t.typeTicket = 'Other' AND u.idUsers = ?";
+
+            # Prepare statement
+            $stmt = $conn->prepare($sql);
+
+            # Bind parameters
+            $stmt->bind_param("i", $idUsers);
+
+            # Execute statement
+            $stmt->execute();
+
+            # We store the result
+            $result = $stmt->get_result();
+
+            # Then just print the ticket
+            printTicket($conn, $type);
+            break;
+        default:
+            break;
+    }
+}
+
+function printTicket($type, $result) {
+
+    switch ($type) {
+        case 'helpSupport':
+            try {
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th>[ <a href='viewTicket.php?ID=" . $row['idTicket'] . "'>View</a> ]</th>";
+                        echo "</tr>";
+                    }
+                }
+            } catch (Exception $e) {
+                showError("Error: " . $e->getMessage());
+            }
+            break;
+
+        case 'bugReport':
+            try {
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th>[ <a href='viewTicket.php?ID=" . $row['idTicket'] . "'>View</a> ]</th>";
+                        echo "</tr>";
+                    }
+                }
+            } catch (Exception $e) {
+                showError("Error: " . $e->getMessage());
+            }
+            break;
+
+        case 'featureRequest':
+            try {
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th>[ <a href='viewTicket.php?ID=" . $row['idTicket'] . "'>View</a> ]</th>";
+                        echo "</tr>";
+                    }
+                }
+            } catch (Exception $e) {
+                showError("Error: " . $e->getMessage());
+            }
+            break;
+
+        case 'grammarIssues':
+            try {
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th>[ <a href='viewTicket.php?ID=" . $row['idTicket'] . "'>View</a> ]</th>";
+                        echo "</tr>";
+                    }
+                }
+            } catch (Exception $e) {
+                showError("Error: " . $e->getMessage());
+            }
+            break;
+
+        case 'informationUpdate':
+            try {
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th>[ <a href='viewTicket.php?ID=" . $row['idTicket'] . "'>View</a> ]</th>";
+                        echo "</tr>";
+                    }
+                }
+            } catch (Exception $e) {
+                showError("Error: " . $e->getMessage());
+            }
+            break;
+
+        case 'other':
+            try {
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th>[ <a href='viewTicket.php?ID=" . $row['idTicket'] . "'>View</a> ]</th>";
+                        echo "</tr>";
+                    }
+                }
+            } catch (Exception $e) {
+                showError("Error: " . $e->getMessage());
+            }
             break;
         default:
             # code...
             break;
     }
 }
-
-function printTicket($conn, $result, $id) {
-
-    
-    
-    try {
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                echo "<tr>";
-                echo "<th>".$row["idTicket"]."</th><br><th>".$row["typeTicket"]."</th><br><th>".$row["stateTicket"]."</th>[ <a href='viewTicket.php?ID=".$row['idTicket']."'>View</a> ]</th>";
-                echo "</tr>";
-            }
-        }
-    } catch (Exception $e) {
-        showError("Error: " . $e->getMessage());
-    }
-}
-
