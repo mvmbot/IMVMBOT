@@ -15,7 +15,28 @@ module.exports = {
       redirect_uri: process.env.GOOGLE_REDIRECT_URI,
     });
 
-    await interaction.reply({ content: `Please log in to Google Classroom by visiting this URL: \n\`\`\`${authorizationUrl}\`\`\`` });
+    await interaction.reply({
+      ephemeral: true,
+      embeds: [
+        {
+          title: 'Google Classroom Login',
+          description: 'Please log in to Google Classroom by clicking the button below:',
+          fields: [
+            {
+              name: 'Authorization URL',
+              value: authorizationUrl,
+            }
+          ],
+          color: 0x008000,
+          footer: {
+            text: 'Authorization URL',
+          },
+          image: {
+            url: 'https://cdn.discordapp.com/attachments/1054482794392338502/1219741630895100054/imvmbot-classroom.jpg',
+          },
+        },
+      ],
+    });
 
     // Handle the redirect URI
     const code = interaction.options.getString('code');
@@ -26,7 +47,7 @@ module.exports = {
         await interaction.reply({ content: 'You have successfully logged in to Google Classroom!', ephemeral: true });
       } catch (error) {
         console.error(error);
-        await interaction.reply({ content: 'There was an error logging in to Google Classroom. Please try again.', ephemeral: true });
+        await interaction.reply({ content: 'There was an error logging in to Google Classroom. Pleasetry again.', ephemeral: true });
       }
     }
   },
