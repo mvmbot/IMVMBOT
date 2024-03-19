@@ -27,6 +27,7 @@ client.once('ready', async () => {
   } catch (error) {
     console.error(error);
   }
+
   client.user.setPresence({
     activities: [{ name: `/help • IMVMBOT`, type: Discord.ActivityType.Custom }],
     status: 'online',
