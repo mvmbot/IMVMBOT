@@ -1,14 +1,15 @@
-const { ContextMenuCommandBuilder, EmbedBuilder, ApplicationCommandType } = require('discord.js');
+const { SlashCommandBuilder } = require('@discordjs/builders');
+const { MessageEmbed } = require('discord.js');
 const puppeteer = require('puppeteer');
 
 module.exports = {
-    data: new ContextMenuCommandBuilder()
-    .setName("IMVMBOT AI")
-    .setType(ApplicationCommandType.Message),
+    data: new SlashCommandBuilder()
+        .setName('ai')
+        .setDescription('Utiliza la IA de IMVMBOT para obtener una respuesta a tu mensaje.'),
 
     async execute(interaction) {
         await interaction.deferReply({ ephemeral: true });
-        var message = await interaction.channel.messages.fetch(interaction.targetId);
+        const message = await interaction.channel.messages.fetch(interaction.targetId);
 
         if (message.content.length <= 0) return await interaction.editReply({ content: `⚠️ Debes tener un mensaje coherente para utilizar nuestra IA` });
 
@@ -38,10 +39,10 @@ module.exports = {
             return value.join('\n\n\n\n');
         }
 
-        const embed = new EmbedBuilder()
+        const embed = new MessageEmbed()
             .setColor("BLURPLE")
             .setDescription(`🤖 **La respuesta a tu mensaje: **\`${message.content}\`**\n\n\`\`\`${await getResponse()}\`\`\``);
 
         await interaction.editReply({ embeds: [embed] });
-    }
+    },
 };
