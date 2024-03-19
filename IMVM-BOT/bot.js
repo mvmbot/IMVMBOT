@@ -3,9 +3,8 @@ const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
 const { google } = require('googleapis');
-const { OAuth2Client } = google.auth;
 const fs = require('fs');
-const oauth2Client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID, process.env.GOOGLE_CLIENT_SECRET);
+const oauth2Client = new google.auth.OAuth2(process.env.GOOGLE_CLIENT_ID, process.env.GOOGLE_CLIENT_SECRET);
 require('dotenv').config();
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 client.commands = new Collection();
@@ -42,7 +41,7 @@ client.on("interactionCreate", async (interaction) => {
   try {
     const command = client.commands.get(interaction.commandName);
     if (!command) return;
-    await command.execute(interaction);
+    await command.execute(interaction, oauth2Client);
   } catch (error) {
     console.error(error);
     await interaction.reply({
