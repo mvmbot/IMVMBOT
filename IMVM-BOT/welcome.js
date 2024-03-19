@@ -1,15 +1,14 @@
-module.exports = client => {
-    const channelId = '1163886058258305065';
+const { Client } = require("discord.js");
+const client = new Client();
 
-    client.on('guildMemberAdd', member => {
-        const message = `Welcome <@${member.id}> to the server!`;
-        const channel = member.guild.channels.cache.get(channelId);
-        channel.send(message);
-    });
+client.on('guildMemberAdd', (member) => {
+const { EmbedBuilder } = require('discord.js');//definimos discord/EmbedBuilder
 
-    client.on('guildMemberRemove', member => {
-        const message = `See you later <@${member.id}>! Hope u come back!`;
-        const channel = member.guild.channels.cache.get(channelId);
-        channel.send(message);
-    });
-};
+const alda = new EmbedBuilder()//ponemos el nombre del embed
+.setColor("White")//ponemos que color sera el embed
+.setDescription(`!Bienvenido **__${member.user.username}__** a **${member.guild.name}**!`)//ponemos una descripcion para el embed
+.setTimestamp()//tiempo en el embed
+.setThumbnail(member.user.displayAvatarURL({ dynamic: true }))//avatar del user
+
+  client.channels.cache.get("1163886058258305065").send({ embeds: [alda] })
+});
