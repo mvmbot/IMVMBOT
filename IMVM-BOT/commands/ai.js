@@ -5,15 +5,33 @@ const puppeteer = require('puppeteer');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('ai')
-        .setDescription('Utiliza la IA de IMVMBOT para obtener una respuesta a tu mensaje.'),
+        .setDescription('Utiliza la IA de IMVMBOT para obtener una respuesta a tu mensaje.')
+        .addSubcommand(subcommand =>
+            subcommand
+                .setName('message')
+                .setDescription('Obtener una respuesta utilizando un mensaje específico.')
+                .addStringOption(option =>
+                    option.setName('mensaje')
+                        .setDescription('El mensaje del que deseas obtener respuesta.')
+                        .setRequired(true)
+                )
+        ),
 
     async execute(interaction) {
         await interaction.deferReply({ ephemeral: true });
-        const message = await interaction.channel.messages.fetch(interaction.targetId);
 
-        if (message.content.length <= 0) return await interaction.editReply({ content: `⚠️ Debes tener un mensaje coherente para utilizar nuestra IA` });
+        let messageContent;
 
-        async function getResponse() {
+        if (interaction.options.getSubcommand() === 'message') {
+            messageContent = interaction.options.getString('mensaje');
+        } else {
+            const message = await interaction.channel.messages.fetch(interaction.targetId);
+            messageContent = message.content;
+        }
+
+        if (messageContent.length <= 0) return await interaction.editReply({ content: `⚠️ Debes tener un mensaje coherente para utilizar nuestra IA` });
+
+        async function getResponse(content) {
             const browser = await puppeteer.launch({ headless: true });
             const page = await browser.newPage();
 
@@ -22,7 +40,7 @@ module.exports = {
             const textBoxSelector = 'textarea[aria-label="chatbot-user-prompt"]';
             await page.waitForSelector(textBoxSelector);
 
-            await page.type(textBoxSelector, message.content);
+            await page.type(textBoxSelector, content);
             await page.keyboard.press("Enter");
 
             await page.waitForSelector('[data-testid="final-bot-response"] p').catch(err => {
@@ -41,7 +59,7 @@ module.exports = {
 
         const embed = new MessageEmbed()
             .setColor("BLURPLE")
-            .setDescription(`🤖 **La respuesta a tu mensaje: **\`${message.content}\`**\n\n\`\`\`${await getResponse()}\`\`\``);
+            .setDescription(`🤖 **La respuesta a tu mensaje: **\`${messageContent}\`**\n\n\`\`\`${await getResponse(messageContent)}\`\`\``);
 
         await interaction.editReply({ embeds: [embed] });
     },
