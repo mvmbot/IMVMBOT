@@ -141,7 +141,6 @@ session_start();
         </div>
     </div>
 
-
     <!-- Topbar End -->
 
 
@@ -257,7 +256,30 @@ session_start();
 
     <!-- Navbar End -->
 
-    </head>
+    <body>
+        <br><br>
+        <div class="container col-sm-12">
+            <div class="row">
+                <div class="table-bordered table-hover table-responsive" style="width: 100%">
+                    <table class="table" id="ticketTable" style="background-color:rgb(255, 255, 255)">
+                        <thead>
+                            <tr>
+                                <th>Ticket No.</th>
+                                <th>Title</th>
+                                <th>Department</th>
+                                <th>Priority</th>
+                                <th>Reported By</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ticketTableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </body>
 
     <!-- Footer Start -->
 
