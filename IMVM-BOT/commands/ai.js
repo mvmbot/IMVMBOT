@@ -7,14 +7,9 @@ module.exports = {
         .setName('ai')
         .setDescription('Utiliza la IA de IMVMBOT para obtener una respuesta a tu mensaje.')
         .addSubcommand(subcommand =>
-            subcommand
-                .setName('message')
-                .setDescription('Obtener una respuesta utilizando un mensaje específico.')
-                .addStringOption(option =>
-                    option.setName('mensaje')
-                        .setDescription('El mensaje del que deseas obtener respuesta.')
-                        .setRequired(true)
-                )
+            subcommand.setName('message')
+                .setDescription('El mensaje del que deseas obtener respuesta.')
+                .setRequired(true)
         ),
 
     async execute(interaction) {
@@ -23,13 +18,13 @@ module.exports = {
         let messageContent;
 
         if (interaction.options.getSubcommand() === 'message') {
-            messageContent = interaction.options.getString('mensaje');
+            messageContent = interaction.options.getString('message');
         } else {
             const message = await interaction.channel.messages.fetch(interaction.targetId);
             messageContent = message.content;
         }
 
-        if (messageContent.length <= 0) return await interaction.editReply({ content: `⚠️ Debes tener un mensaje coherente para utilizar nuestra IA` });
+        if (!messageContent || messageContent.length <= 0) return await interaction.editReply({ content: `⚠️ Debes tener un mensaje coherente para utilizar nuestra IA` });
 
         async function getResponse(content) {
             const browser = await puppeteer.launch({ headless: true });
@@ -43,23 +38,20 @@ module.exports = {
             await page.type(textBoxSelector, content);
             await page.keyboard.press("Enter");
 
-            await page.waitForSelector('[data-testid="final-bot-response"] p').catch(err => {
-                return;
-            });
+            await page.waitForSelector('[data-testid="final-bot-response"] p');
 
-            const value = await page.$$eval('[data-testid="final-bot-response"]', async (elements) => {
+            const value = await page.$$eval('[data-testid="final-bot-response"] p', (elements) => {
                 return elements.map((element) => element.textContent);
             });
 
             await browser.close();
 
-            value.shift();
-            return value.join('\n\n\n\n');
+            return value.join('\n\n');
         }
 
         const embed = new MessageEmbed()
             .setColor("BLURPLE")
-            .setDescription(`🤖 **La respuesta a tu mensaje: **\`${messageContent}\`**\n\n\`\`\`${await getResponse(messageContent)}\`\`\``);
+            .setDescription(`🤖 **La respuesta a tu mensaje: **\`${messageContent}\`\n\n\`\`\`${await getResponse(messageContent)}\`\`\``);
 
         await interaction.editReply({ embeds: [embed] });
     },
