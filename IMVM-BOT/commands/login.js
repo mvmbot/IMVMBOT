@@ -2,6 +2,7 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 const { google } = require('googleapis');
 const fs = require('fs');
 const oauth2Client = new google.auth.OAuth2(process.env.GOOGLE_CLIENT_ID, process.env.GOOGLE_CLIENT_SECRET, process.env.GOOGLE_REDIRECT_URI);
+oauth2Client.setCredentials({ client_id: process.env.GOOGLE_CLIENT_ID });
 require('dotenv').config();
 
 module.exports = {
@@ -13,6 +14,7 @@ module.exports = {
       access_type: 'offline',
       scope: ['https://www.googleapis.com/auth/classroom.courses.readonly', 'https://www.googleapis.com/auth/classroom.rosters.readonly'],
       redirect_uri: process.env.GOOGLE_REDIRECT_URI,
+      client_id: process.env.GOOGLE_CLIENT_ID,
     });
 
     await interaction.reply({
@@ -24,7 +26,7 @@ module.exports = {
           fields: [
             {
               name: 'Authorization URL',
-              value: authorizationUrl,
+              value: `[Sign In](${authorizationUrl})`,
             }
           ],
           color: 0x008000,
@@ -38,7 +40,6 @@ module.exports = {
       ],
     });
 
-    // Handle the redirect URI
     const code = interaction.options.getString('code');
     if (code) {
       try {
