@@ -536,6 +536,7 @@ session_start();
                             <strong>TICKET #</strong>{{ticket.id}}
                             <hr style="height: 1px; color: #ccc;" />
                             <strong>Date:</strong> {{ticket.created_at | date_sw}}<br />
+                            <strong>Status:</strong> {{ticket.status}}<br />
                             <br />
 
                             
@@ -546,23 +547,11 @@ session_start();
                             <br />
                             <strong>Creator:</strong> <a style="color:#9900ff; text-decoration: none;"
                                 href="mailto:{{ticket.creator.email}}?subject={{ticket.ref}} {{ticket.summary}}">{{ticket.creator.full_name_or_email}}</a><br />
-                            <strong>Category:</strong> {{ticket.assignee.department}}<br>
-                            <strong>Subject:</strong> {{ticket.assignee.office_phone}}<br>
+                            <strong>Category:</strong> {{ticket.category}}<br>
+                            <strong>Subject:</strong> {{ticket.subject}}<br>
                             <strong>Cell Phone:</strong> {{ticket.assignee.cell_phone}}<br><br />
-                            <!--Begin CC name list loop-->
-                            <strong>CC:</strong>
-                            {% for user in ticket.users%}
-                            {% if user.full_name_or_email != ticket.assignee.full_name_or_email and
-                            user.full_name_or_email != ticket.creator.full_name_or_email %}
-                            {% if forloop.last %}
-                            <a style="color:#9900ff; text-decoration: none;"
-                                href="mailto:{{user.email}}?subject={{ticket.ref}} {{ticket.summary}}">{{user.full_name}}</a>
-                            {%else%}
-                            <a style="color:#9900ff; text-decoration: none;"
-                                href="mailto:{{user.email}}?subject={{ticket.ref}} {{ticket.summary}}">{{user.full_name}}</a>,
-                            {%endif%}{%endif%}{%endfor%}
-                            <br />
-                            <!--End CC name list loop--><br />
+                            
+                            
                             <strong>Ticket URL:</strong> <a style="color:#9900ff; text-decoration: none;" href="{% if recipient.role == 'admin' or recipient.role == 'helpdesk_admin' %}
 				{{ticket.url}}
 			{% else %}
@@ -571,10 +560,7 @@ session_start();
                                 Ticket #{{ticket.id}}</a><br /><br />
                             <strong>Priority:</strong> Low<br />
                             <br />
-                            {% if recipient.role == 'admin' or recipient.role == 'helpdesk_admin' %}
-                            <strong>Category:</strong> {{ticket.category}}<br /><br />
                             
-
                             <p style="margin-top:5px;">If you have any additional information regarding
                                 this ticket respond to this email. Please remember to keep
                                 <strong>{{ticket.ref}}</strong> in the email subject. You can also log into
