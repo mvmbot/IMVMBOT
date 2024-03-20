@@ -49,7 +49,7 @@ function viewTicket($conn, $type) {
             $result = $stmt->get_result();
 
             # Then just print the ticket
-            printTicket($conn, $type);
+            printTicket($type, $result);
             break;
 
         case 'bugReport':
@@ -72,7 +72,7 @@ function viewTicket($conn, $type) {
             $result = $stmt->get_result();
 
             # Then just print the ticket
-            printTicket($conn, $type);
+            printTicket($type, $result);
             break;
 
         case 'featureRequest':
@@ -95,7 +95,7 @@ function viewTicket($conn, $type) {
             $result = $stmt->get_result();
 
             # Then just print the ticket
-            printTicket($conn, $type);
+            printTicket($type, $result);
             break;
 
         case 'grammarIssues':
@@ -118,7 +118,7 @@ function viewTicket($conn, $type) {
             $result = $stmt->get_result();
 
             # Then just print the ticket
-            printTicket($conn, $type);
+            printTicket($type, $result);
             break;
 
         case 'informationUpdate':
@@ -141,7 +141,7 @@ function viewTicket($conn, $type) {
             $result = $stmt->get_result();
 
             # Then just print the ticket
-            printTicket($conn, $type);
+            printTicket($type, $result);
             break;
 
         case 'other':
@@ -164,7 +164,7 @@ function viewTicket($conn, $type) {
             $result = $stmt->get_result();
 
             # Then just print the ticket
-            printTicket($conn, $type);
+            printTicket($type, $result);
             break;
         default:
             break;
