@@ -30,9 +30,9 @@ function viewTicket($conn, $type) {
     switch ($type) {
         case 'helpSupport':
             # Get every ticket from X type from the user
-            $sql = "SELECT t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, hs.subject  
-            FROM ticket t 
-            JOIN helpSupport hs ON t.idTicket = hs.ticketID 
+            $sql = "SELECT t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, hs.subject
+            FROM ticket t
+            JOIN helpSupport hs ON t.idTicket = hs.ticketID
             JOIN users u ON t.idUsers = u.idUsers
             WHERE t.typeTicket = 'Help & Support' AND u.idUsers = ?";
 
@@ -53,9 +53,9 @@ function viewTicket($conn, $type) {
             break;
 
         case 'bugReport':
-            $sql = "SELECT t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, br.operativeSystem, br.subject 
-            FROM ticket t 
-            JOIN bugReport br ON t.idTicket = br.ticketID 
+            $sql = "SELECT t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, br.operativeSystem, br.subject
+            FROM ticket t
+            JOIN bugReport br ON t.idTicket = br.ticketID
             JOIN users u ON t.idUsers = u.idUsers
             WHERE t.typeTicket = 'Bug Reporting' AND u.idUsers = ?";
 
@@ -76,7 +76,7 @@ function viewTicket($conn, $type) {
             break;
 
         case 'featureRequest':
-            $sql = "SELECT t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, fr.subject, fr.requestType 
+            $sql = "SELECT t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, fr.subject, fr.requestType
             FROM ticket t
             JOIN featureRequest fr ON t.idTicket = fr.ticketID
             JOIN users u ON t.idUsers = u.idUsers
@@ -99,12 +99,12 @@ function viewTicket($conn, $type) {
             break;
 
         case 'grammarIssues':
-            $sql = "SELECT t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, gi.subject 
-            FROM ticket t 
-            JOIN grammarIssues gi ON t.idTicket = gi.ticketID 
+            $sql = "SELECT t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, gi.subject
+            FROM ticket t
+            JOIN grammarIssues gi ON t.idTicket = gi.ticketID
             JOIN users u ON t.idUsers = u.idUsers
             WHERE t.typeTicket = 'Grammar Issues' AND u.idUsers =?";
-            
+
             # Prepare statement
             $stmt = $conn->prepare($sql);
 
@@ -122,7 +122,7 @@ function viewTicket($conn, $type) {
             break;
 
         case 'informationUpdate':
-            $sql = "SELECT t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, iu.subject  
+            $sql = "SELECT t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, iu.subject
             FROM ticket t
             JOIN informationUpdate iu ON t.idTicket = iu.ticket
             JOIN users u ON t.idUsers = u.idUsers
@@ -145,7 +145,7 @@ function viewTicket($conn, $type) {
             break;
 
         case 'other':
-            $sql = "SELECT t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, o.subject, o.description, o.extraText 
+            $sql = "SELECT t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, o.subject, o.description, o.extraText
             FROM ticket t
             JOIN other o ON t.idTicket = o.ticketId
             JOIN users u ON t.idUsers = u.idUsers
@@ -172,14 +172,13 @@ function viewTicket($conn, $type) {
 }
 
 function printTicket($type, $result) {
-
     switch ($type) {
         case 'helpSupport':
             try {
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th>[ <a href='viewTicket.php?ID=" . $row['idTicket'] . "'>View</a> ]</th>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th> [ <a href='viewTicket.php?ID=" . $row['idTicket'] . "'>View</a> ]</th>";
                         echo "</tr>";
                     }
                 }
@@ -193,7 +192,7 @@ function printTicket($type, $result) {
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th>[ <a href='viewTicket.php?ID=" . $row['idTicket'] . "'>View</a> ]</th>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["operativeSystem"] . "</th><th>" . $row["subject"] . "</th><th> [ <a href='viewTicket.php?ID=" . $row['idTicket'] . "'>View</a> ]</th>";
                         echo "</tr>";
                     }
                 }
@@ -207,7 +206,7 @@ function printTicket($type, $result) {
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th>[ <a href='viewTicket.php?ID=" . $row['idTicket'] . "'>View</a> ]</th>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" .$row["requestedType"] . "</th><th> [ <a href='viewTicket.php?ID=" . $row['idTicket'] . "'>View</a> ]</th>";
                         echo "</tr>";
                     }
                 }
@@ -221,7 +220,7 @@ function printTicket($type, $result) {
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th>[ <a href='viewTicket.php?ID=" . $row['idTicket'] . "'>View</a> ]</th>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th> [ <a href='viewTicket.php?ID=" . $row['idTicket'] . "'>View</a> ]</th>";
                         echo "</tr>";
                     }
                 }
@@ -235,7 +234,7 @@ function printTicket($type, $result) {
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th>[ <a href='viewTicket.php?ID=" . $row['idTicket'] . "'>View</a> ]</th>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th> [ <a href='viewTicket.php?ID=" . $row['idTicket'] . "'>View</a> ]</th>";
                         echo "</tr>";
                     }
                 }
@@ -249,7 +248,7 @@ function printTicket($type, $result) {
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th>[ <a href='viewTicket.php?ID=" . $row['idTicket'] . "'>View</a> ]</th>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["extraText"] . "</th><th> [ <a href='viewTicket.php?ID=" . $row['idTicket'] . "'>View</a> ]</th>";
                         echo "</tr>";
                     }
                 }
@@ -258,7 +257,6 @@ function printTicket($type, $result) {
             }
             break;
         default:
-            # code...
             break;
     }
 }
