@@ -262,7 +262,7 @@ error_reporting(E_ALL);
     $conn = connectToDatabase();
     ?>
     <br><br>
-    <h1>Help & Support tickets:</h1>
+    <center><h1>Help & Support tickets:</h1></center>
     <div class="container col-sm-12">
         <div class="row">
             <div class="table-bordered table-hover table-responsive" style="width: 100%">
@@ -276,7 +276,7 @@ error_reporting(E_ALL);
         </div>
     </div>
     <br><br>
-    <h1>Bug report tickets:</h1>
+    <center><h1>Bug report tickets:</h1></center>
     <div class="container col-sm-12">
         <div class="row">
             <div class="table-bordered table-hover table-responsive" style="width: 100%">
@@ -290,7 +290,7 @@ error_reporting(E_ALL);
         </div>
     </div>
     <br><br>
-    <h1>Feature request tickets:</h1>
+    <center><h1>Feature request tickets:</h1></center>
     <div class="container col-sm-12">
         <div class="row">
             <div class="table-bordered table-hover table-responsive" style="width: 100%">
@@ -304,7 +304,7 @@ error_reporting(E_ALL);
         </div>
     </div>
     <br><br>
-    <h1>Grammar issues tickets:</h1>
+    <center><h1>Grammar issues tickets:</h1></center>
     <div class="container col-sm-12">
         <div class="row">
             <div class="table-bordered table-hover table-responsive" style="width: 100%">
@@ -318,7 +318,7 @@ error_reporting(E_ALL);
         </div>
     </div>
     <br><br>
-    <h1>Information update tickets:</h1>
+    <center><h1>Information update tickets:</h1></center>
     <div class="container col-sm-12">
         <div class="row">
             <div class="table-bordered table-hover table-responsive" style="width: 100%">
@@ -332,7 +332,7 @@ error_reporting(E_ALL);
         </div>
     </div>
     <br><br>
-    <h1>Other tickets:</h1>
+    <center><h1>Other tickets:</h1></center>
     <div class="container col-sm-12">
         <div class="row">
             <div class="table-bordered table-hover table-responsive" style="width: 100%">
