@@ -77,7 +77,22 @@ function viewTicketDetail($conn, $id, $type) {
             FROM ticket t 
             JOIN grammarIssues gi ON t.idTicket = gi.ticketID 
             JOIN users u ON t.idUsers = u.idUsers
-            WHERE t.typeTicket = 'Grammar Issues' AND t.idTicket =?";
+            WHERE t.typeTicket = 'Grammar' AND t.idTicket =?";
+
+            # Prepare statement
+            $stmt = $conn->prepare($sql);
+
+            # Bind parameters
+            $stmt->bind_param("i", $id);
+
+            # Execute statement
+            $stmt->execute();
+
+            # We store the result
+            $result = $stmt->get_result();
+
+            # Then just print the ticket
+            printTicket($conn, $type);
             break;
 
         case 'informationUpdate':
@@ -123,7 +138,187 @@ function viewTicketDetail($conn, $id, $type) {
             $result = $stmt->get_result();
 
             # Then just print the ticket
-            printTicket($conn, $type);
+            printTicketDetail($conn, $type);
+            break;
+        default:
+            break;
+    }
+}
+
+function printTicketDetail($type, $result) {
+    switch ($type) {
+        case 'helpSupport':
+            try {
+                if ($result->num_rows > 0) {
+                    echo "<table class='table' id='ticketTable1' style='background-color:rgb(255, 255, 255)'>
+                    <thead>
+                        <tr>
+                            <th>Ticket No.</th>
+                            <th>Type</th>
+                            <th>Creation Date</th>
+                            <th>Modification Date</th>
+                            <th>Resolved Date</th>
+                            <th>Status</th>
+                            <th>Subject</th>
+                            <th>Description</th>
+                            <th>File</th>
+                        </tr>
+                    </thead>";
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th>";
+                        echo "</tr>";
+                    }
+                    echo "</table>";
+                } else {
+                    echo "<p>Error, no ticket selected!</p>";
+                }
+            } catch (Exception $e) {
+                showError("Error: " . $e->getMessage());
+            }
+            break;
+
+        case 'bugReport':
+            try {
+                if ($result->num_rows > 0) {
+                    echo "<table class='table' id='ticketTable2' style='background-color:rgb(255, 255, 255)'>
+                        <thead>
+                            <tr>
+                                <th>Ticket No.</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Subject</th>
+                                <th>Description</th>
+                                <th>Extra Text</th>
+                                </tr>
+                        </thead>";
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["operativeSystem"] . "</th><th>" . $row["subject"] . "</th><th> [ <a href='ticketDetailsView.php?ID=" . $row['idTicket'] . "'>View Details</a> ]</th>";
+                        echo "</tr>";
+                    }
+                    echo "</table>";
+                } else {
+                    echo "<p>No tickets of this type!</p>";
+                }
+            } catch (Exception $e) {
+                showError("Error: " . $e->getMessage());
+            }
+            break;
+
+        case 'featureRequest':
+            try {
+                if ($result->num_rows > 0) {
+                    echo "<table class='table' id='ticketTable3' style='background-color:rgb(255, 255, 255)'>
+                        <thead>
+                            <tr>
+                                <th>Ticket No.</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Subject</th>
+                                <th>Description</th>
+                                <th>Extra Text</th>
+                                </tr>
+                        </thead>";
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["requestedType"] . "</th><th> [ <a href='ticketDetailsView.php?ID=" . $row['idTicket'] . "'>View Details</a> ]</th>";
+                        echo "</tr>";
+                    }
+                    echo "</table>";
+                } else {
+                    echo "<p>No tickets of this type!</p>";
+                }
+            } catch (Exception $e) {
+                showError("Error: " . $e->getMessage());
+            }
+            break;
+
+        case 'grammarIssues':
+            try {
+                if ($result->num_rows > 0) {
+                    echo "<table class='table' id='ticketTable4' style='background-color:rgb(255, 255, 255)'>
+                    <thead>
+                        <tr>
+                            <th>Ticket No.</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Subject</th>
+                            <th>Description</th>
+                            <th>Extra Text</th>
+                        </tr>
+                    </thead>";
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th> [ <a href='ticketDetailsView.php?ID=" . $row['idTicket'] . "'>View Details</a> ]</th>";
+                        echo "</tr>";
+                    }
+                    echo "</table>";
+                } else {
+                    echo "<p>No tickets of this type!</p>";
+                }
+            } catch (Exception $e) {
+                showError("Error: " . $e->getMessage());
+            }
+            break;
+
+        case 'informationUpdate':
+            try {
+                if ($result->num_rows > 0) {
+                    echo "<table class='table' id='ticketTable5' style='background-color:rgb(255, 255, 255)'>
+                    <thead>
+                        <tr>
+                            <th>Ticket No.</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Subject</th>
+                            <th>Description</th>
+                            <th>Extra Text</th>
+                        </tr>
+                    </thead>";
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th> [ <a href='ticketDetailsView.php?ID=" . $row['idTicket'] . "'>View Details</a> ]</th>";
+                        echo "</tr>";
+                    }
+                    echo "</table>";
+                } else {
+                    echo "<p>No tickets of this type!</p>";
+                }
+            } catch (Exception $e) {
+                showError("Error: " . $e->getMessage());
+            }
+            break;
+
+        case 'other':
+            try {
+                if ($result->num_rows > 0) {
+                    echo "<table class='table' id='ticketTable6' style='background-color:rgb(255, 255, 255)'>
+                    <thead>
+                        <tr>
+                            <th>Ticket No.</th>
+                            <th>Type</th>
+                            <th>Creation Date</th>
+                            <th>Modification Date</th>
+                            <th>Resolved Date</th>
+                            <th>Status</th>
+                            <th>Subject</th>
+                            <th>Description</th>
+                            <th>Extra Text</th>
+                        </tr>
+                    </thead>";
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["extraText"] . "</th>";
+                        echo "</tr>";
+                    }
+                    echo "</table>";
+                } else {
+                    echo "<p>No tickets of this type!</p>";
+                }
+            } catch (Exception $e) {
+                showError("Error: " . $e->getMessage());
+            }
             break;
         default:
             break;
