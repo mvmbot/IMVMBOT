@@ -132,7 +132,7 @@ function printTicketAdmin($type, $result) {
         case 'helpSupport':
             try {
                 if ($result->num_rows > 0) {
-                    echo "<table class='table' id='ticketTable1' style='background-color:rgb(255, 255, 255)'>
+                    echo "<table class='table' id='ticketTable1' style='background-color: #9900ff; color: white;'>
                     <thead>
                         <tr>
                             <th>ID user</th>
@@ -145,9 +145,9 @@ function printTicketAdmin($type, $result) {
                         </tr>
                     </thead>";
                     while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>  <a href='ticketDetailsEdit.php?ID=" . $row['idTicket'] . "'><svg fill='#9900ff' width='18' height='18' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'> <title>view</title> <path d='M12.406 13.844c1.188 0 2.156 0.969 2.156 2.156s-0.969 2.125-2.156 2.125-2.125-0.938-2.125-2.125 0.938-2.156 2.125-2.156zM12.406 8.531c7.063 0 12.156 6.625 12.156 6.625 0.344 0.438 0.344 1.219 0 1.656 0 0-5.094 6.625-12.156 6.625s-12.156-6.625-12.156-6.625c-0.344-0.438-0.344-1.219 0-1.656 0 0 5.094-6.625 12.156-6.625zM12.406 21.344c2.938 0 5.344-2.406 5.344-5.344s-2.406-5.344-5.344-5.344-5.344 2.406-5.344 5.344 2.406 5.344 5.344 5.344z'></path> </g></svg></a> </th>";
-                        echo "</tr>";
+                        echo "<tr style='background-color: white; color: #9900ff;'>";
+echo "<th>" . $row["idUsers"] . "</th><th>" . $row["idTicket"] . "</th><th>" . $row["usernameUsers"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>  <a href='ticketDetailsEdit.php?ID=" . $row['idTicket'] . "'><svg width='18' height='18' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' fill='#9900ff' stroke='#9900ff'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'> <path d='M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z' stroke='#9900ff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'></path> <path d='M11 4H6C4.93913 4 3.92178 4.42142 3.17163 5.17157C2.42149 5.92172 2 6.93913 2 8V18C2 19.0609 2.42149 20.0783 3.17163 20.8284C3.92178 21.5786 4.93913 22 6 22H17C19.21 22 20 20.2 20 18V13' stroke='#9900ff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'></path> </g></svg></a> </th>";
+echo "</tr>";
                     }
                     echo "</table>";
                 } else {
@@ -161,7 +161,7 @@ function printTicketAdmin($type, $result) {
         case 'bugReport':
             try {
                 if ($result->num_rows > 0) {
-                    echo "<table class='table' id='ticketTable2' style='background-color:rgb(255, 255, 255)'>
+                    echo "<table class='table' id='ticketTable2' style='background-color: #9900ff; color: white;'>
                         <thead>
                         <tr>
                         <th>Ticket No.</th>
@@ -173,9 +173,9 @@ function printTicketAdmin($type, $result) {
                             </tr>
                         </thead>";
                     while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>  <a href='ticketDetailsEdit.php?ID=" . $row['idTicket'] . "'><svg fill='#9900ff' width='18' height='18' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'> <title>view</title> <path d='M12.406 13.844c1.188 0 2.156 0.969 2.156 2.156s-0.969 2.125-2.156 2.125-2.125-0.938-2.125-2.125 0.938-2.156 2.125-2.156zM12.406 8.531c7.063 0 12.156 6.625 12.156 6.625 0.344 0.438 0.344 1.219 0 1.656 0 0-5.094 6.625-12.156 6.625s-12.156-6.625-12.156-6.625c-0.344-0.438-0.344-1.219 0-1.656 0 0 5.094-6.625 12.156-6.625zM12.406 21.344c2.938 0 5.344-2.406 5.344-5.344s-2.406-5.344-5.344-5.344-5.344 2.406-5.344 5.344 2.406 5.344 5.344 5.344z'></path> </g></svg></a> </th>";
-                        echo "</tr>";
+                        echo "<tr style='background-color: white; color: #9900ff;'>";
+echo "<th>" . $row["idUsers"] . "</th><th>" . $row["idTicket"] . "</th><th>" . $row["usernameUsers"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>  <a href='ticketDetailsEdit.php?ID=" . $row['idTicket'] . "'><svg width='18' height='18' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' fill='#9900ff' stroke='#9900ff'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'> <path d='M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z' stroke='#9900ff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'></path> <path d='M11 4H6C4.93913 4 3.92178 4.42142 3.17163 5.17157C2.42149 5.92172 2 6.93913 2 8V18C2 19.0609 2.42149 20.0783 3.17163 20.8284C3.92178 21.5786 4.93913 22 6 22H17C19.21 22 20 20.2 20 18V13' stroke='#9900ff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'></path> </g></svg></a> </th>";
+echo "</tr>";
                     }
                     echo "</table>";
                 } else {
@@ -189,7 +189,7 @@ function printTicketAdmin($type, $result) {
         case 'featureRequest':
             try {
                 if ($result->num_rows > 0) {
-                    echo "<table class='table' id='ticketTable3' style='background-color:rgb(255, 255, 255)'>
+                    echo "<table class='table' id='ticketTable3' style='background-color: #9900ff; color: white;'>
                         <thead>
                         <tr>
                         <th>Ticket No.</th>
@@ -200,9 +200,9 @@ function printTicketAdmin($type, $result) {
                     </tr>
                         </thead>";
                     while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>  <a href='ticketDetailsEdit.php?ID=" . $row['idTicket'] . "'><svg fill='#9900ff' width='18' height='18' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'> <title>view</title> <path d='M12.406 13.844c1.188 0 2.156 0.969 2.156 2.156s-0.969 2.125-2.156 2.125-2.125-0.938-2.125-2.125 0.938-2.156 2.125-2.156zM12.406 8.531c7.063 0 12.156 6.625 12.156 6.625 0.344 0.438 0.344 1.219 0 1.656 0 0-5.094 6.625-12.156 6.625s-12.156-6.625-12.156-6.625c-0.344-0.438-0.344-1.219 0-1.656 0 0 5.094-6.625 12.156-6.625zM12.406 21.344c2.938 0 5.344-2.406 5.344-5.344s-2.406-5.344-5.344-5.344-5.344 2.406-5.344 5.344 2.406 5.344 5.344 5.344z'></path> </g></svg></a> </th>";
-                        echo "</tr>";
+                        echo "<tr style='background-color: white; color: #9900ff;'>";
+echo "<th>" . $row["idUsers"] . "</th><th>" . $row["idTicket"] . "</th><th>" . $row["usernameUsers"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>  <a href='ticketDetailsEdit.php?ID=" . $row['idTicket'] . "'><svg width='18' height='18' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' fill='#9900ff' stroke='#9900ff'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'> <path d='M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z' stroke='#9900ff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'></path> <path d='M11 4H6C4.93913 4 3.92178 4.42142 3.17163 5.17157C2.42149 5.92172 2 6.93913 2 8V18C2 19.0609 2.42149 20.0783 3.17163 20.8284C3.92178 21.5786 4.93913 22 6 22H17C19.21 22 20 20.2 20 18V13' stroke='#9900ff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'></path> </g></svg></a> </th>";
+echo "</tr>";
                     }
                     echo "</table>";
                 } else {
@@ -216,7 +216,7 @@ function printTicketAdmin($type, $result) {
         case 'grammarIssues':
             try {
                 if ($result->num_rows > 0) {
-                    echo "<table class='table' id='ticketTable4' style='background-color:rgb(255, 255, 255)'>
+                    echo "<table class='table' id='ticketTable4' style='background-color: #9900ff; color: white;'>
                     <thead>
                     <tr>
                     <th>Ticket No.</th>
@@ -227,9 +227,9 @@ function printTicketAdmin($type, $result) {
                 </tr>
                     </thead>";
                     while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>  <a href='ticketDetailsEdit.php?ID=" . $row['idTicket'] . "'><svg fill='#9900ff' width='18' height='18' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'> <title>view</title> <path d='M12.406 13.844c1.188 0 2.156 0.969 2.156 2.156s-0.969 2.125-2.156 2.125-2.125-0.938-2.125-2.125 0.938-2.156 2.125-2.156zM12.406 8.531c7.063 0 12.156 6.625 12.156 6.625 0.344 0.438 0.344 1.219 0 1.656 0 0-5.094 6.625-12.156 6.625s-12.156-6.625-12.156-6.625c-0.344-0.438-0.344-1.219 0-1.656 0 0 5.094-6.625 12.156-6.625zM12.406 21.344c2.938 0 5.344-2.406 5.344-5.344s-2.406-5.344-5.344-5.344-5.344 2.406-5.344 5.344 2.406 5.344 5.344 5.344z'></path> </g></svg></a> </th>";
-                        echo "</tr>";
+                        echo "<tr style='background-color: white; color: #9900ff;'>";
+echo "<th>" . $row["idUsers"] . "</th><th>" . $row["idTicket"] . "</th><th>" . $row["usernameUsers"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>  <a href='ticketDetailsEdit.php?ID=" . $row['idTicket'] . "'><svg width='18' height='18' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' fill='#9900ff' stroke='#9900ff'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'> <path d='M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z' stroke='#9900ff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'></path> <path d='M11 4H6C4.93913 4 3.92178 4.42142 3.17163 5.17157C2.42149 5.92172 2 6.93913 2 8V18C2 19.0609 2.42149 20.0783 3.17163 20.8284C3.92178 21.5786 4.93913 22 6 22H17C19.21 22 20 20.2 20 18V13' stroke='#9900ff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'></path> </g></svg></a> </th>";
+echo "</tr>";
                     }
                     echo "</table>";
                 } else {
@@ -243,7 +243,7 @@ function printTicketAdmin($type, $result) {
         case 'informationUpdate':
             try {
                 if ($result->num_rows > 0) {
-                    echo "<table class='table' id='ticketTable5' style='background-color:rgb(255, 255, 255)'>
+                    echo "<table class='table' id='ticketTable5' style='background-color: #9900ff; color: white;'>
                     <thead>
                     <tr>
                     <th>Ticket No.</th>
@@ -254,9 +254,9 @@ function printTicketAdmin($type, $result) {
                 </tr>
                     </thead>";
                     while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>  <a href='ticketDetailsEdit.php?ID=" . $row['idTicket'] . "'><svg fill='#9900ff' width='18' height='18' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'> <title>view</title> <path d='M12.406 13.844c1.188 0 2.156 0.969 2.156 2.156s-0.969 2.125-2.156 2.125-2.125-0.938-2.125-2.125 0.938-2.156 2.125-2.156zM12.406 8.531c7.063 0 12.156 6.625 12.156 6.625 0.344 0.438 0.344 1.219 0 1.656 0 0-5.094 6.625-12.156 6.625s-12.156-6.625-12.156-6.625c-0.344-0.438-0.344-1.219 0-1.656 0 0 5.094-6.625 12.156-6.625zM12.406 21.344c2.938 0 5.344-2.406 5.344-5.344s-2.406-5.344-5.344-5.344-5.344 2.406-5.344 5.344 2.406 5.344 5.344 5.344z'></path> </g></svg></a> </th>";
-                        echo "</tr>";
+                        echo "<tr style='background-color: white; color: #9900ff;'>";
+echo "<th>" . $row["idUsers"] . "</th><th>" . $row["idTicket"] . "</th><th>" . $row["usernameUsers"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>  <a href='ticketDetailsEdit.php?ID=" . $row['idTicket'] . "'><svg width='18' height='18' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' fill='#9900ff' stroke='#9900ff'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'> <path d='M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z' stroke='#9900ff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'></path> <path d='M11 4H6C4.93913 4 3.92178 4.42142 3.17163 5.17157C2.42149 5.92172 2 6.93913 2 8V18C2 19.0609 2.42149 20.0783 3.17163 20.8284C3.92178 21.5786 4.93913 22 6 22H17C19.21 22 20 20.2 20 18V13' stroke='#9900ff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'></path> </g></svg></a> </th>";
+echo "</tr>";
                     }
                     echo "</table>";
                 } else {
@@ -270,7 +270,7 @@ function printTicketAdmin($type, $result) {
         case 'other':
             try {
                 if ($result->num_rows > 0) {
-                    echo "<table class='table' id='ticketTable6' style='background-color:rgb(255, 255, 255)'>
+                    echo "<table class='table' id='ticketTable6' style='background-color: #9900ff; color: white;'>
                     <thead>
                     <tr>
                     <th>ID User</th>
@@ -283,9 +283,9 @@ function printTicketAdmin($type, $result) {
                 </tr>
                     </thead>";
                     while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<th>" . $row["idUsers"] . "</th><th>" . $row["idTicket"] . "</th><th>" . $row["usernameUsers"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>  <a href='ticketDetailsEdit.php?ID=" . $row['idTicket'] . "'><svg fill='#9900ff' width='18' height='18' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'> <title>view</title> <path d='M12.406 13.844c1.188 0 2.156 0.969 2.156 2.156s-0.969 2.125-2.156 2.125-2.125-0.938-2.125-2.125 0.938-2.156 2.125-2.156zM12.406 8.531c7.063 0 12.156 6.625 12.156 6.625 0.344 0.438 0.344 1.219 0 1.656 0 0-5.094 6.625-12.156 6.625s-12.156-6.625-12.156-6.625c-0.344-0.438-0.344-1.219 0-1.656 0 0 5.094-6.625 12.156-6.625zM12.406 21.344c2.938 0 5.344-2.406 5.344-5.344s-2.406-5.344-5.344-5.344-5.344 2.406-5.344 5.344 2.406 5.344 5.344 5.344z'></path> </g></svg></a> </th>";
-                        echo "</tr>";
+                        echo "<tr style='background-color: white; color: #9900ff;'>";
+echo "<th>" . $row["idUsers"] . "</th><th>" . $row["idTicket"] . "</th><th>" . $row["usernameUsers"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>  <a href='ticketDetailsEdit.php?ID=" . $row['idTicket'] . "'><svg width='18' height='18' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' fill='#9900ff' stroke='#9900ff'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'> <path d='M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z' stroke='#9900ff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'></path> <path d='M11 4H6C4.93913 4 3.92178 4.42142 3.17163 5.17157C2.42149 5.92172 2 6.93913 2 8V18C2 19.0609 2.42149 20.0783 3.17163 20.8284C3.92178 21.5786 4.93913 22 6 22H17C19.21 22 20 20.2 20 18V13' stroke='#9900ff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'></path> </g></svg></a> </th>";
+echo "</tr>";
                     }
                     echo "</table>";
                 } else {
