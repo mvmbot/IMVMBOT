@@ -280,7 +280,7 @@ error_reporting(E_ALL);
                     <tbody id="ticketTableBody">
                         <?php
                         $type = "helpSupport";
-                        viewTicket($conn, $type);
+                        echo viewTicket($conn, $type);
                         ?>
                     </tbody>
                 </table>
@@ -306,7 +306,7 @@ error_reporting(E_ALL);
                     <tbody id="ticketTableBody">
                         <?php
                         $type = "bugReport";
-                        viewTicket($conn, $type);
+                        echo viewTicket($conn, $type);
                         ?>
                     </tbody>
                 </table>
@@ -332,7 +332,7 @@ error_reporting(E_ALL);
                     <tbody id="ticketTableBody">
                         <?php
                         $type = "featureRequest";
-                        viewTicket($conn, $type);
+                        echo viewTicket($conn, $type);
                         ?>
                     </tbody>
                 </table>
@@ -358,7 +358,7 @@ error_reporting(E_ALL);
                     <tbody id="ticketTableBody">
                         <?php
                         $type = "grammarIssues";
-                        viewTicket($conn, $type);
+                        echo viewTicket($conn, $type);
                         ?>
                     </tbody>
                 </table>
@@ -384,7 +384,7 @@ error_reporting(E_ALL);
                     <tbody id="ticketTableBody">
                         <?php
                         $type = "informationUpdate";
-                        viewTicket($conn, $type);
+                        echo viewTicket($conn, $type);
                         ?>
                     </tbody>
                 </table>
@@ -410,7 +410,7 @@ error_reporting(E_ALL);
                     <tbody id="ticketTableBody">
                         <?php
                         $type = "other";
-                        viewTicket($conn, $type);
+                        echo viewTicket($conn, $type);
                         ?>
                     </tbody>
                 </table>
