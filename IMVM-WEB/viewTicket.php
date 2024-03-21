@@ -2,6 +2,7 @@
 session_start();
 require("./php/viewTicketConfirm.php");
 require("./php/databaseFunctions.php");
+error_reporting(E_ALL);
 ?>
 
 <!DOCTYPE html>
