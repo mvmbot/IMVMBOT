@@ -124,7 +124,7 @@ function viewTicket($conn, $type) {
         case 'informationUpdate':
             $sql = "SELECT t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, iu.subject
             FROM ticket t
-            JOIN informationUpdate iu ON t.idTicket = iu.ticket
+            JOIN informationUpdate iu ON t.idTicket = iu.ticketID
             JOIN users u ON t.idUsers = u.idUsers
             WHERE t.typeTicket = 'Information Update' AND u.idUsers = ?";
 
@@ -181,6 +181,8 @@ function printTicket($type, $result) {
                         echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th> [ <a href='viewTicket.php?ID=" . $row['idTicket'] . "'>View</a> ]</th>";
                         echo "</tr>";
                     }
+                } else {
+                    echo "<p>No tickets of this type!</p>";
                 }
             } catch (Exception $e) {
                 showError("Error: " . $e->getMessage());
@@ -195,6 +197,8 @@ function printTicket($type, $result) {
                         echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["operativeSystem"] . "</th><th>" . $row["subject"] . "</th><th> [ <a href='viewTicket.php?ID=" . $row['idTicket'] . "'>View</a> ]</th>";
                         echo "</tr>";
                     }
+                } else {
+                    echo "<p>No tickets of this type!</p>";
                 }
             } catch (Exception $e) {
                 showError("Error: " . $e->getMessage());
@@ -209,6 +213,8 @@ function printTicket($type, $result) {
                         echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" .$row["requestedType"] . "</th><th> [ <a href='viewTicket.php?ID=" . $row['idTicket'] . "'>View</a> ]</th>";
                         echo "</tr>";
                     }
+                } else {
+                    echo "<p>No tickets of this type!</p>";
                 }
             } catch (Exception $e) {
                 showError("Error: " . $e->getMessage());
@@ -223,6 +229,8 @@ function printTicket($type, $result) {
                         echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th> [ <a href='viewTicket.php?ID=" . $row['idTicket'] . "'>View</a> ]</th>";
                         echo "</tr>";
                     }
+                } else {
+                    echo "<p>No tickets of this type!</p>";
                 }
             } catch (Exception $e) {
                 showError("Error: " . $e->getMessage());
@@ -237,6 +245,8 @@ function printTicket($type, $result) {
                         echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th> [ <a href='viewTicket.php?ID=" . $row['idTicket'] . "'>View</a> ]</th>";
                         echo "</tr>";
                     }
+                } else {
+                    echo "<p>No tickets of this type!</p>";
                 }
             } catch (Exception $e) {
                 showError("Error: " . $e->getMessage());
@@ -251,6 +261,8 @@ function printTicket($type, $result) {
                         echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["extraText"] . "</th><th> [ <a href='viewTicket.php?ID=" . $row['idTicket'] . "'>View</a> ]</th>";
                         echo "</tr>";
                     }
+                } else {
+                    echo "<p>No tickets of this type!</p>";
                 }
             } catch (Exception $e) {
                 showError("Error: " . $e->getMessage());
