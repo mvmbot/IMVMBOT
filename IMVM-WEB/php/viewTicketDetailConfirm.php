@@ -4,9 +4,9 @@ function viewTicketDetail($conn, $type) {
     switch ($type) {
         case 'helpSupport':
             # Get every ticket from X type from the user
-            $sql = "SELECT t.idTicket, t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, hs.subject, hs.description, hs.file 
-            FROM ticket t 
-            JOIN helpSupport hs ON t.idTicket = hs.ticketID 
+            $sql = "SELECT t.idTicket, t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, hs.subject, hs.description, hs.file
+            FROM ticket t
+            JOIN helpSupport hs ON t.idTicket = hs.ticketID
             JOIN users u ON t.idUsers = u.idUsers
             WHERE t.typeTicket = 'Help & Support' AND t.idTicket = ?";
 
@@ -23,13 +23,13 @@ function viewTicketDetail($conn, $type) {
             $result = $stmt->get_result();
 
             # Then just print the ticket
-            printTicket($conn, $type);
+            printTicket($type, $result);
             break;
 
         case 'bugReport':
-            $sql = "SELECT t.idTicket, t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, br.operativeSystem, br.subject, br.description, stepsToReproduce, br.expectedResult, br.receivedResult, br.discordClient, br.discordClient 
-            FROM ticket t 
-            JOIN bugReport br ON t.idTicket = br.ticketID 
+            $sql = "SELECT t.idTicket, t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, br.operativeSystem, br.subject, br.description, stepsToReproduce, br.expectedResult, br.receivedResult, br.discordClient, br.discordClient
+            FROM ticket t
+            JOIN bugReport br ON t.idTicket = br.ticketID
             JOIN users u ON t.idUsers = u.idUsers
             WHERE t.typeTicket = 'Bug Reporting' AND t.idTicket = ?";
 
@@ -46,11 +46,11 @@ function viewTicketDetail($conn, $type) {
             $result = $stmt->get_result();
 
             # Then just print the ticket
-            printTicket($conn, $type);
+            printTicket($type, $result);
             break;
 
         case 'featureRequest':
-            $sql = "SELECT t.idTicket, t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, fr.subject, fr.description, fr.requestType 
+            $sql = "SELECT t.idTicket, t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, fr.subject, fr.description, fr.requestType
             FROM ticket t
             JOIN featureRequest fr ON t.idTicket = fr.ticketID
             JOIN users u ON t.idUsers = u.idUsers
@@ -69,13 +69,13 @@ function viewTicketDetail($conn, $type) {
             $result = $stmt->get_result();
 
             # Then just print the ticket
-            printTicket($conn, $type);
+            printTicket($type, $result);
             break;
 
         case 'grammarIssues':
-            $sql = "SELECT t.idTicket, t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, gi.subject, gi.description, gi.image 
-            FROM ticket t 
-            JOIN grammarIssues gi ON t.idTicket = gi.ticketID 
+            $sql = "SELECT t.idTicket, t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, gi.subject, gi.description, gi.image
+            FROM ticket t
+            JOIN grammarIssues gi ON t.idTicket = gi.ticketID
             JOIN users u ON t.idUsers = u.idUsers
             WHERE t.typeTicket = 'Grammar' AND t.idTicket =?";
 
@@ -92,11 +92,11 @@ function viewTicketDetail($conn, $type) {
             $result = $stmt->get_result();
 
             # Then just print the ticket
-            printTicket($conn, $type);
+            printTicket($type, $result);
             break;
 
         case 'informationUpdate':
-            $sql = "SELECT t.idTicket, t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, iu.subject, ui.updateInfo 
+            $sql = "SELECT t.idTicket, t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, iu.subject, ui.updateInfo
             FROM ticket t
             JOIN informationUpdate iu ON t.idTicket = iu.ticket
             JOIN users u ON t.idUsers = u.idUsers
@@ -115,11 +115,11 @@ function viewTicketDetail($conn, $type) {
             $result = $stmt->get_result();
 
             # Then just print the ticket
-            printTicket($conn, $type);
+            printTicket($type, $result);
             break;
 
         case 'other':
-            $sql = "SELECT t.idTicket, t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, o.subject, o.description, o.extraText 
+            $sql = "SELECT t.idTicket, t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, o.subject, o.description, o.extraText
             FROM ticket t
             JOIN other o ON t.idTicket = o.ticketId
             JOIN users u ON t.idUsers = u.idUsers
@@ -166,7 +166,7 @@ function printTicketDetail($type, $result) {
                     </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["file"] . "</th>";
                         echo "</tr>";
                     }
                     echo "</table>";
@@ -186,15 +186,23 @@ function printTicketDetail($type, $result) {
                             <tr>
                                 <th>Ticket No.</th>
                                 <th>Type</th>
+                                <th>Creation Date</th>
+                                <th>Modification Date</th>
+                                <th>Resolved Date</th>
                                 <th>Status</th>
+                                <th>Operative System</th>
                                 <th>Subject</th>
                                 <th>Description</th>
-                                <th>Extra Text</th>
+                                <th>Steps to reproduce</th>
+                                <th>Expected result</th>
+                                <th>Received result</th>
+                                <th>Discord client</th>
+                                <th>Image</th>
                                 </tr>
                         </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["operativeSystem"] . "</th><th>" . $row["subject"] . "</th><th> [ <a href='ticketDetailsView.php?ID=" . $row['idTicket'] . "'>View Details</a> ]</th>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["operativeSystem"] . "</th><th>" . $row["description"] . "</th><th>" . $row["stepsToReproduce"] . "</th><th>" . $row["expectedResult"] . "</th><th>" . $row["receivedResult"] . "</th><th>" . $row["discordClient"] . "</th><th>" . $row["image"] . "</th>";
                         echo "</tr>";
                     }
                     echo "</table>";
@@ -214,15 +222,17 @@ function printTicketDetail($type, $result) {
                             <tr>
                                 <th>Ticket No.</th>
                                 <th>Type</th>
+                                <th>Creation Date</th>
+                                <th>Modification Date</th>
+                                <th>Resolved Date</th>
                                 <th>Status</th>
                                 <th>Subject</th>
-                                <th>Description</th>
-                                <th>Extra Text</th>
+                                <th>Requested Type</th>
                                 </tr>
                         </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["requestedType"] . "</th><th> [ <a href='ticketDetailsView.php?ID=" . $row['idTicket'] . "'>View Details</a> ]</th>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["requestedType"] . "</th>";
                         echo "</tr>";
                     }
                     echo "</table>";
@@ -242,15 +252,18 @@ function printTicketDetail($type, $result) {
                         <tr>
                             <th>Ticket No.</th>
                             <th>Type</th>
+                            <th>Creation Date</th>
+                            <th>Modification Date</th>
+                            <th>Resolved Date</th>
                             <th>Status</th>
                             <th>Subject</th>
                             <th>Description</th>
-                            <th>Extra Text</th>
+                            <th>Image</th>
                         </tr>
                     </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th> [ <a href='ticketDetailsView.php?ID=" . $row['idTicket'] . "'>View Details</a> ]</th>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["image"] . "</th>";
                         echo "</tr>";
                     }
                     echo "</table>";
@@ -270,15 +283,17 @@ function printTicketDetail($type, $result) {
                         <tr>
                             <th>Ticket No.</th>
                             <th>Type</th>
+                            <th>Creation Date</th>
+                            <th>Modification Date</th>
+                            <th>Resolved Date</th>
                             <th>Status</th>
                             <th>Subject</th>
-                            <th>Description</th>
-                            <th>Extra Text</th>
+                            <th>Update Info</th>
                         </tr>
                     </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th> [ <a href='ticketDetailsView.php?ID=" . $row['idTicket'] . "'>View Details</a> ]</th>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["updateInfo"] . "</th>";
                         echo "</tr>";
                     }
                     echo "</table>";
