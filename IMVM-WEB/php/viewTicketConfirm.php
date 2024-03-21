@@ -176,7 +176,7 @@ function printTicket($type, $result) {
         case 'helpSupport':
             try {
                 if ($result->num_rows > 0) {
-                    echo "<table class='table' id='ticketTable4' style='background-color: #9900ff; color: white;'>
+                    echo "<table class='table' id='ticketTable1' style='background-color: #9900ff; color: white;'>
         <thead>
             <tr>
                 <th>Ticket No.</th>
@@ -204,7 +204,7 @@ echo "</table>";
         case 'bugReport':
             try {
                 if ($result->num_rows > 0) {
-                    echo "<table class='table' id='ticketTable4' style='background-color: #9900ff; color: white;'>
+                    echo "<table class='table' id='ticketTable2' style='background-color: #9900ff; color: white;'>
         <thead>
             <tr>
                 <th>Ticket No.</th>
@@ -232,7 +232,7 @@ echo "</table>";
         case 'featureRequest':
             try {
                 if ($result->num_rows > 0) {
-                    echo "<table class='table' id='ticketTable4' style='background-color: #9900ff; color: white;'>
+                    echo "<table class='table' id='ticketTable3' style='background-color: #9900ff; color: white;'>
         <thead>
             <tr>
                 <th>Ticket No.</th>
@@ -288,7 +288,7 @@ echo "</table>";
         case 'informationUpdate':
             try {
                 if ($result->num_rows > 0) {
-                    echo "<table class='table' id='ticketTable4' style='background-color: #9900ff; color: white;'>
+                    echo "<table class='table' id='ticketTable5' style='background-color: #9900ff; color: white;'>
         <thead>
             <tr>
                 <th>Ticket No.</th>
@@ -316,7 +316,7 @@ echo "</table>";
         case 'other':
             try {
                 if ($result->num_rows > 0) {
-                    echo "<table class='table' id='ticketTable4' style='background-color: #9900ff; color: white;'>
+                    echo "<table class='table' id='ticketTable6' style='background-color: #9900ff; color: white;'>
         <thead>
             <tr>
                 <th>Ticket No.</th>
