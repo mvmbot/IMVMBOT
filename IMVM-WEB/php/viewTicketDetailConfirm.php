@@ -23,7 +23,7 @@ function viewTicketDetail($conn, $type) {
             $result = $stmt->get_result();
 
             # Then just print the ticket
-            printTicket($type, $result);
+            printTicketDetail($type, $result);
             break;
 
         case 'bugReport':
@@ -46,10 +46,10 @@ function viewTicketDetail($conn, $type) {
             $result = $stmt->get_result();
 
             # Then just print the ticket
-            printTicket($type, $result);
+            printTicketDetail($type, $result);
             break;
 
-        case 'featureRequest':
+        case 'Feature Request':
             $sql = "SELECT t.idTicket, t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, fr.subject, fr.description, fr.requestType
             FROM ticket t
             JOIN featureRequest fr ON t.idTicket = fr.ticketID
@@ -69,7 +69,7 @@ function viewTicketDetail($conn, $type) {
             $result = $stmt->get_result();
 
             # Then just print the ticket
-            printTicket($type, $result);
+            printTicketDetail($type, $result);
             break;
 
         case 'grammarIssues':
@@ -92,10 +92,10 @@ function viewTicketDetail($conn, $type) {
             $result = $stmt->get_result();
 
             # Then just print the ticket
-            printTicket($type, $result);
+            printTicketDetail($type, $result);
             break;
 
-        case 'informationUpdate':
+        case 'Information Update':
             $sql = "SELECT t.idTicket, t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, iu.subject, iu.updateInfo
             FROM ticket t
             JOIN informationUpdate iu ON t.idTicket = iu.ticketId
@@ -115,10 +115,10 @@ function viewTicketDetail($conn, $type) {
             $result = $stmt->get_result();
 
             # Then just print the ticket
-            printTicket($type, $result);
+            printTicketDetail($type, $result);
             break;
 
-        case 'other':
+        case 'Other':
             $sql = "SELECT t.idTicket, t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, o.subject, o.description, o.extraText
             FROM ticket t
             JOIN other o ON t.idTicket = o.ticketId
@@ -214,7 +214,7 @@ function printTicketDetail($type, $result) {
             }
             break;
 
-        case 'featureRequest':
+        case 'Feature Request':
             try {
                 if ($result->num_rows > 0) {
                     echo "<table class='table' id='ticketTable3' style='background-color:rgb(255, 255, 255)'>
@@ -232,7 +232,7 @@ function printTicketDetail($type, $result) {
                         </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["requestedType"] . "</th>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["requestType"] . "</th>";
                         echo "</tr>";
                     }
                     echo "</table>";
@@ -275,7 +275,7 @@ function printTicketDetail($type, $result) {
             }
             break;
 
-        case 'informationUpdate':
+        case 'Information Update':
             try {
                 if ($result->num_rows > 0) {
                     echo "<table class='table' id='ticketTable5' style='background-color:rgb(255, 255, 255)'>
@@ -305,7 +305,7 @@ function printTicketDetail($type, $result) {
             }
             break;
 
-        case 'other':
+        case 'Other':
             try {
                 if ($result->num_rows > 0) {
                     echo "<table class='table' id='ticketTable6' style='background-color:rgb(255, 255, 255)'>
