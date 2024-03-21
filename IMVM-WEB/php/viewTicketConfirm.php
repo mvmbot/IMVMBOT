@@ -182,9 +182,7 @@ function printTicket($type, $result) {
                             <th>Ticket No.</th>
                             <th>Type</th>
                             <th>Status</th>
-                            <th>Subject</th>
-                            <th>Description</th>
-                            <th>Extra Text</th>
+                            <th>Subject</th>                           
                             <th>Action</th>
                         </tr>
                     </thead>";
@@ -207,14 +205,13 @@ function printTicket($type, $result) {
                 if ($result->num_rows > 0) {
                     echo "<table class='table' id='ticketTable2' style='background-color:rgb(255, 255, 255)'>
                         <thead>
-                            <tr>
-                                <th>Ticket No.</th>
-                                <th>Type</th>
-                                <th>Status</th>
-                                <th>Subject</th>
-                                <th>Description</th>
-                                <th>Extra Text</th>
-                                <th>Action</th>
+                        <tr>
+                        <th>Ticket No.</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Subject</th>                           
+                        <th>Action</th>
+                    </tr>
                             </tr>
                         </thead>";
                     while ($row = $result->fetch_assoc()) {
@@ -236,15 +233,13 @@ function printTicket($type, $result) {
                 if ($result->num_rows > 0) {
                     echo "<table class='table' id='ticketTable3' style='background-color:rgb(255, 255, 255)'>
                         <thead>
-                            <tr>
-                                <th>Ticket No.</th>
-                                <th>Type</th>
-                                <th>Status</th>
-                                <th>Subject</th>
-                                <th>Description</th>
-                                <th>Extra Text</th>
-                                <th>Action</th>
-                            </tr>
+                        <tr>
+                        <th>Ticket No.</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Subject</th>                           
+                        <th>Action</th>
+                    </tr>
                         </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
@@ -265,15 +260,13 @@ function printTicket($type, $result) {
                 if ($result->num_rows > 0) {
                     echo "<table class='table' id='ticketTable4' style='background-color:rgb(255, 255, 255)'>
                     <thead>
-                        <tr>
-                            <th>Ticket No.</th>
-                            <th>Type</th>
-                            <th>Status</th>
-                            <th>Subject</th>
-                            <th>Description</th>
-                            <th>Extra Text</th>
-                            <th>Action</th>
-                        </tr>
+                    <tr>
+                    <th>Ticket No.</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                    <th>Subject</th>                           
+                    <th>Action</th>
+                </tr>
                     </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
@@ -294,15 +287,13 @@ function printTicket($type, $result) {
                 if ($result->num_rows > 0) {
                     echo "<table class='table' id='ticketTable5' style='background-color:rgb(255, 255, 255)'>
                     <thead>
-                        <tr>
-                            <th>Ticket No.</th>
-                            <th>Type</th>
-                            <th>Status</th>
-                            <th>Subject</th>
-                            <th>Description</th>
-                            <th>Extra Text</th>
-                            <th>Action</th>
-                        </tr>
+                    <tr>
+                    <th>Ticket No.</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                    <th>Subject</th>                           
+                    <th>Action</th>
+                </tr>
                     </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
@@ -323,15 +314,13 @@ function printTicket($type, $result) {
                 if ($result->num_rows > 0) {
                     echo "<table class='table' id='ticketTable6' style='background-color:rgb(255, 255, 255)'>
                     <thead>
-                        <tr>
-                            <th>Ticket No.</th>
-                            <th>Type</th>
-                            <th>Status</th>
-                            <th>Subject</th>
-                            <th>Description</th>
-                            <th>Extra Text</th>
-                            <th>Action</th>
-                        </tr>
+                    <tr>
+                    <th>Ticket No.</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                    <th>Subject</th>                           
+                    <th>Action</th>
+                </tr>
                     </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
