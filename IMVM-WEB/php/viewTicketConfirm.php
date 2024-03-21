@@ -178,11 +178,24 @@ function printTicket($type, $result)
         case 'helpSupport':
             try {
                 if ($result->num_rows > 0) {
+                    echo "<table class='table' id='ticketTable6' style='background-color:rgb(255, 255, 255)'>
+                    <thead>
+                        <tr>
+                            <th>Ticket No.</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Subject</th>
+                            <th>Description</th>
+                            <th>Extra Text</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
                         echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th> [ <a href='ticketDetailsView.php?ID=" . $row['idTicket'] . "'>View Details</a> ]</th>";
                         echo "</tr>";
                     }
+                    echo "</table>";
                 } else {
                     echo "<p>No tickets of this type!</p>";
                 }
@@ -193,12 +206,25 @@ function printTicket($type, $result)
 
         case 'bugReport':
             try {
+                echo "<table class='table' id='ticketTable6' style='background-color:rgb(255, 255, 255)'>
+                    <thead>
+                        <tr>
+                            <th>Ticket No.</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Subject</th>
+                            <th>Description</th>
+                            <th>Extra Text</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>";
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
                         echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["operativeSystem"] . "</th><th>" . $row["subject"] . "</th><th> [ <a href='ticketDetailsView.php?ID=" . $row['idTicket'] . "'>View Details</a> ]</th>";
                         echo "</tr>";
                     }
+                    echo "</table>";
                 } else {
                     echo "<p>No tickets of this type!</p>";
                 }
@@ -209,12 +235,25 @@ function printTicket($type, $result)
 
         case 'featureRequest':
             try {
+                echo "<table class='table' id='ticketTable6' style='background-color:rgb(255, 255, 255)'>
+                    <thead>
+                        <tr>
+                            <th>Ticket No.</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Subject</th>
+                            <th>Description</th>
+                            <th>Extra Text</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>";
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
                         echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["requestedType"] . "</th><th> [ <a href='ticketDetailsView.php?ID=" . $row['idTicket'] . "'>View Details</a> ]</th>";
                         echo "</tr>";
                     }
+                    echo "</table>";
                 } else {
                     echo "<p>No tickets of this type!</p>";
                 }
@@ -226,11 +265,24 @@ function printTicket($type, $result)
         case 'grammarIssues':
             try {
                 if ($result->num_rows > 0) {
+                    echo "<table class='table' id='ticketTable4' style='background-color:rgb(255, 255, 255)'>
+                    <thead>
+                        <tr>
+                            <th>Ticket No.</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Subject</th>
+                            <th>Description</th>
+                            <th>Extra Text</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
                         echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th> [ <a href='ticketDetailsView.php?ID=" . $row['idTicket'] . "'>View Details</a> ]</th>";
                         echo "</tr>";
                     }
+                    echo "</table>";
                 } else {
                     echo "<p>No tickets of this type!</p>";
                 }
@@ -242,11 +294,24 @@ function printTicket($type, $result)
         case 'informationUpdate':
             try {
                 if ($result->num_rows > 0) {
+                    echo "<table class='table' id='ticketTable5' style='background-color:rgb(255, 255, 255)'>
+                    <thead>
+                        <tr>
+                            <th>Ticket No.</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Subject</th>
+                            <th>Description</th>
+                            <th>Extra Text</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
                         echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th> [ <a href='ticketDetailsView.php?ID=" . $row['idTicket'] . "'>View Details</a> ]</th>";
                         echo "</tr>";
                     }
+                    echo "</table>";
                 } else {
                     echo "<p>No tickets of this type!</p>";
                 }
@@ -258,7 +323,7 @@ function printTicket($type, $result)
         case 'other':
             try {
                 if ($result->num_rows > 0) {
-                    echo `<table class="table" id="ticketTable6" style="background-color:rgb(255, 255, 255)">
+                    echo "<table class='table' id='ticketTable6' style='background-color:rgb(255, 255, 255)'>
                     <thead>
                         <tr>
                             <th>Ticket No.</th>
@@ -269,13 +334,13 @@ function printTicket($type, $result)
                             <th>Extra Text</th>
                             <th>Action</th>
                         </tr>
-                    </thead>
-                    </table>`;
+                    </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
                         echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["extraText"] . "</th><th> [ <a href='ticketDetailsView.php?ID=" . $row['idTicket'] . "'>View Details</a> ]</th>";
                         echo "</tr>";
                     }
+                    echo "</table>";
                 } else {
                     echo "<p>No tickets of this type!</p>";
                 }
