@@ -289,7 +289,7 @@ error_reporting(E_ALL);
     <!-- Navbar End -->
     <?php
     $conn = connectToDatabase();
-    $type = intval($_GET['type']);
+    $type = $_GET['type'];
     ?>
     <br><br>
     <center><h1>Ticket Detail</h1>
