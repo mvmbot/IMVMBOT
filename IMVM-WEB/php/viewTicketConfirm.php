@@ -178,7 +178,7 @@ function printTicket($type, $result) {
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th> [ <a href='viewTicket.php?ID=" . $row['idTicket'] . "'>View</a> ]</th>";
+                        echo "<th>" . $row["ticketID"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th> [ <a href='viewTicket.php?ID=" . $row['ticketID'] . "'>View Details</a> ]</th>";
                         echo "</tr>";
                     }
                 } else {
@@ -194,7 +194,7 @@ function printTicket($type, $result) {
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["operativeSystem"] . "</th><th>" . $row["subject"] . "</th><th> [ <a href='viewTicket.php?ID=" . $row['idTicket'] . "'>View</a> ]</th>";
+                        echo "<th>" . $row["ticketID"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["operativeSystem"] . "</th><th>" . $row["subject"] . "</th><th> [ <a href='viewTicket.php?ID=" . $row['ticketID'] . "'>View Details</a> ]</th>";
                         echo "</tr>";
                     }
                 } else {
@@ -210,7 +210,7 @@ function printTicket($type, $result) {
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" .$row["requestedType"] . "</th><th> [ <a href='viewTicket.php?ID=" . $row['idTicket'] . "'>View</a> ]</th>";
+                        echo "<th>" . $row["ticketID"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" .$row["requestedType"] . "</th><th> [ <a href='viewTicket.php?ID=" . $row['ticketID'] . "'>View Details</a> ]</th>";
                         echo "</tr>";
                     }
                 } else {
@@ -226,7 +226,7 @@ function printTicket($type, $result) {
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th> [ <a href='viewTicket.php?ID=" . $row['idTicket'] . "'>View</a> ]</th>";
+                        echo "<th>" . $row["ticketID"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th> [ <a href='viewTicket.php?ID=" . $row['ticketID'] . "'>View Details</a> ]</th>";
                         echo "</tr>";
                     }
                 } else {
@@ -242,7 +242,7 @@ function printTicket($type, $result) {
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th> [ <a href='viewTicket.php?ID=" . $row['idTicket'] . "'>View</a> ]</th>";
+                        echo "<th>" . $row["ticketID"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th> [ <a href='viewTicket.php?ID=" . $row['ticketID'] . "'>View Details</a> ]</th>";
                         echo "</tr>";
                     }
                 } else {
@@ -258,7 +258,7 @@ function printTicket($type, $result) {
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["extraText"] . "</th><th> [ <a href='viewTicket.php?ID=" . $row['idTicket'] . "'>View</a> ]</th>";
+                        echo "<th>" . $row["ticketID"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["extraText"] . "</th><th> [ <a href='viewTicketDetail.php?ID=" . $row['ticketID'] . "'>View Details</a> ]</th>";
                         echo "</tr>";
                     }
                 } else {
