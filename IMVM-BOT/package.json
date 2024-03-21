@@ -6,6 +6,7 @@
     "axios": "^1.6.5",
     "commandkit": "^0.1.6",
     "discord-api-types": "^0.37.66",
+    "discord-html-transcripts": "^3.2.0",
     "discord.js": "^14.14.1",
     "dotenv": "^16.3.1",
     "google-auth-library": "^9.7.0",
