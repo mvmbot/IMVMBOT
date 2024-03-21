@@ -1,6 +1,6 @@
 <?php
 session_start();
-require("./php/viewTicketAdminAdminConfirm.php");
+require("./php/viewTicketAdminConfirm.php");
 require("./php/databaseFunctions.php");
 error_reporting(E_ALL);
 
