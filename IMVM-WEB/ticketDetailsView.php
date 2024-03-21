@@ -284,10 +284,11 @@ session_start();
     </nav>
 
     <!-- Navbar End -->
+    <?php>
 
     <body>
         <table
-            style="width: 1000px; margin: 50px auto 50px auto; background: #fff; font-size: 11px; font-family: verdana, sans-serif;"
+            style="width: 800px; margin: 50px auto 50px auto; background: #fff; font-size: 11px; font-family: verdana, sans-serif;"
             align="center">
             <tbody>
                 <tr>
@@ -305,7 +306,6 @@ session_start();
                         <p style="margin-bottom: 10px;">{{ticket.description}},</p>
                         <p style="margin-bottom: 10px;">{{ticket.file}},</p>
                         
-
                         <br />
                         <br />
                     </td>
@@ -330,13 +330,6 @@ session_start();
                             <strong>Subject:</strong> {{ticket.subject}}<br>
                             <strong>Cell Phone:</strong> {{ticket.assignee.cell_phone}}<br><br />
                             
-                            
-                            <strong>Ticket URL:</strong> <a style="color:#9900ff; text-decoration: none;" href="{% if recipient.role == 'admin' or recipient.role == 'helpdesk_admin' %}
-				{{ticket.url}}
-			{% else %}
-				{{ticket.portal_url}}
-			{% endif %}">
-                                Ticket #{{ticket.id}}</a><br /><br />
                             <strong>Priority:</strong> Low<br />
                             <br />
                             
@@ -351,7 +344,10 @@ session_start();
                 </tr>
             </tbody>
         </table>
-    </body>
+
+        <center><a href="./viewTicket.php" class="btn btn-primary py-3 px-5">Go back<i class="fa fa-arrow-right ms-3"></i></a></center>
+     </body>
+     ?>
 
     <!-- Footer Start -->
 
