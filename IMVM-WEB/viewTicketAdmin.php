@@ -1,5 +1,9 @@
 <?php
 session_start();
+require("./php/viewTicketConfirm.php");
+require("./php/databaseFunctions.php");
+error_reporting(E_ALL);
+
 ?>
 
 <!DOCTYPE html>
@@ -89,6 +93,9 @@ session_start();
 </head>
 
 <body>
+    <?php
+        if ($_SESSION["admin"]) {
+    ?>
     <!-- Google Tag Manager Start (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWQDVHW8" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- Google Tag Manager End (noscript) -->
@@ -140,7 +147,6 @@ session_start();
             </div>
         </div>
     </div>
-
 
     <!-- Topbar End -->
 
@@ -256,31 +262,84 @@ session_start();
     </nav>
 
     <!-- Navbar End -->
-
-    <body>
-        <br><br>
-        <div class="container col-sm-12">
-            <div class="row">
-                <div class="table-bordered table-hover table-responsive" style="width: 100%">
-                    <table class="table" id="ticketTable" style="background-color:rgb(255, 255, 255)">
-                        <thead>
-                            <tr>
-                                <th>Ticket No.</th>
-                                <th>Title</th>
-                                <th>Department</th>
-                                <th>Priority</th>
-                                <th>Reported By</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="ticketTableBody">
-                        </tbody>
-                    </table>
-                </div>
+    <?php
+    $conn = connectToDatabase();
+    ?>
+    <br><br>
+    <center><h1>Help & Support tickets:</h1></center>
+    <div class="container col-sm-12">
+        <div class="row">
+            <div class="table-bordered table-hover table-responsive" style="width: 100%">
+                    <?php
+                    $type = "helpSupport";
+                    viewTicket($conn, $type);
+                    ?>
             </div>
         </div>
+    </div>
+    <br><br>
+    <center><h1>Bug report tickets:</h1></center>
+    <div class="container col-sm-12">
+        <div class="row">
+            <div class="table-bordered table-hover table-responsive" style="width: 100%">
+                    <?php
+                    $type = "bugReport";
+                    viewTicket($conn, $type);
+                    ?>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <center><h1>Feature request tickets:</h1></center>
+    <div class="container col-sm-12">
+        <div class="row">
+            <div class="table-bordered table-hover table-responsive" style="width: 100%">
+                    <?php
+                    $type = "featureRequest";
+                    viewTicket($conn, $type);
+                    ?>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <center><h1>Grammar issues tickets:</h1></center>
+    <div class="container col-sm-12">
+        <div class="row">
+            <div class="table-bordered table-hover table-responsive" style="width: 100%">
 
-    </body>
+                    <?php
+                    $type = "grammarIssues";
+                    viewTicket($conn, $type);
+                    ?>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <center><h1>Information update tickets:</h1></center>
+    <div class="container col-sm-12">
+        <div class="row">
+            <div class="table-bordered table-hover table-responsive" style="width: 100%">
+                <table class="table" id="ticketTable5" style="background-color:rgb(255, 255, 255)">
+                    <?php
+                    $type = "informationUpdate";
+                    viewTicket($conn, $type);
+                    ?>
+                </table>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <center><h1>Other tickets:</h1></center>
+    <div class="container col-sm-12">
+        <div class="row">
+            <div class="table-bordered table-hover table-responsive" style="width: 100%">
+                    <?php
+                    $type = "other";
+                    viewTicket($conn, $type);
+                    ?>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer Start -->
 
@@ -377,6 +436,11 @@ session_start();
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <?php
+        } else {
+            echo "You're not admin, get out!";
+        }
+        ?>
 </body>
 
 </html>
