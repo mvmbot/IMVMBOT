@@ -1,6 +1,5 @@
 <?php
-function viewTicket($conn, $type)
-{
+function viewTicket($conn, $type) {
 
     #region --- Get the user ID
     $user = $_SESSION['user'];
@@ -104,7 +103,7 @@ function viewTicket($conn, $type)
             FROM ticket t
             JOIN grammarIssues gi ON t.idTicket = gi.ticketID
             JOIN users u ON t.idUsers = u.idUsers
-            WHERE t.typeTicket = 'Grammar Issues' AND u.idUsers =?";
+            WHERE t.typeTicket = 'Grammar' AND u.idUsers =?";
 
             # Prepare statement
             $stmt = $conn->prepare($sql);
@@ -172,8 +171,7 @@ function viewTicket($conn, $type)
     }
 }
 
-function printTicket($type, $result)
-{
+function printTicket($type, $result) {
     switch ($type) {
         case 'helpSupport':
             try {

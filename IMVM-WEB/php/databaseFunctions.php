@@ -149,7 +149,7 @@ function createTicketBugReport($conn, $subject, $operativeSystem, $bugDescriptio
 #endregion
 
 #region Function --- Create ticket feature request fields
-function createTicketFeatureRequest($conn, $subject, $description, $requestType) {
+function createTicketFeatureRequest($conn, $requestType, $subject, $description) {
 
     # Get both the ticket type and the ticket ID
     $ticketType = "Feature Request";
