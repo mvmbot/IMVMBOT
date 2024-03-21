@@ -1,8 +1,6 @@
 <?php
 function viewTicketDetail($conn, $type) {
     $id = intval($_GET['ID']);
-    echo $id;
-    echo $type;
     switch ($type) {
         case 'helpSupport':
             # Get every ticket from X type from the user
