@@ -266,23 +266,11 @@ error_reporting(E_ALL);
     <div class="container col-sm-12">
         <div class="row">
             <div class="table-bordered table-hover table-responsive" style="width: 100%">
-                <table class="table" id="ticketTable" style="background-color:rgb(255, 255, 255)">
-                    <thead>
-                        <tr>
-                            <th>Ticket No.</th>
-                            <th>Title</th>
-                            <th>Department</th>
-                            <th>Priority</th>
-                            <th>Reported By</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="ticketTableBody">
-                        <?php
-                        $type = "helpSupport";
-                        viewTicket($conn, $type);
-                        ?>
-                    </tbody>
+                <table class="table" id="ticketTable1" style="background-color:rgb(255, 255, 255)">
+                    <?php
+                    $type = "helpSupport";
+                    echo viewTicket($conn, $type);
+                    ?>
                 </table>
             </div>
         </div>
@@ -292,23 +280,11 @@ error_reporting(E_ALL);
     <div class="container col-sm-12">
         <div class="row">
             <div class="table-bordered table-hover table-responsive" style="width: 100%">
-                <table class="table" id="ticketTable" style="background-color:rgb(255, 255, 255)">
-                    <thead>
-                        <tr>
-                            <th>Ticket No.</th>
-                            <th>Title</th>
-                            <th>Department</th>
-                            <th>Priority</th>
-                            <th>Reported By</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="ticketTableBody">
-                        <?php
-                        $type = "bugReport";
-                        viewTicket($conn, $type);
-                        ?>
-                    </tbody>
+                <table class="table" id="ticketTable2" style="background-color:rgb(255, 255, 255)">
+                    <?php
+                    $type = "bugReport";
+                    echo viewTicket($conn, $type);
+                    ?>
                 </table>
             </div>
         </div>
@@ -318,23 +294,11 @@ error_reporting(E_ALL);
     <div class="container col-sm-12">
         <div class="row">
             <div class="table-bordered table-hover table-responsive" style="width: 100%">
-                <table class="table" id="ticketTable" style="background-color:rgb(255, 255, 255)">
-                    <thead>
-                        <tr>
-                            <th>Ticket No.</th>
-                            <th>Title</th>
-                            <th>Department</th>
-                            <th>Priority</th>
-                            <th>Reported By</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="ticketTableBody">
-                        <?php
-                        $type = "featureRequest";
-                        viewTicket($conn, $type);
-                        ?>
-                    </tbody>
+                <table class="table" id="ticketTable3" style="background-color:rgb(255, 255, 255)">
+                    <?php
+                    $type = "featureRequest";
+                    echo viewTicket($conn, $type);
+                    ?>
                 </table>
             </div>
         </div>
@@ -344,23 +308,11 @@ error_reporting(E_ALL);
     <div class="container col-sm-12">
         <div class="row">
             <div class="table-bordered table-hover table-responsive" style="width: 100%">
-                <table class="table" id="ticketTable" style="background-color:rgb(255, 255, 255)">
-                    <thead>
-                        <tr>
-                            <th>Ticket No.</th>
-                            <th>Title</th>
-                            <th>Department</th>
-                            <th>Priority</th>
-                            <th>Reported By</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="ticketTableBody">
-                        <?php
-                        $type = "grammarIssues";
-                        viewTicket($conn, $type);
-                        ?>
-                    </tbody>
+                <table class="table" id="ticketTable4" style="background-color:rgb(255, 255, 255)">
+                    <?php
+                    $type = "grammarIssues";
+                    echo viewTicket($conn, $type);
+                    ?>
                 </table>
             </div>
         </div>
@@ -370,23 +322,11 @@ error_reporting(E_ALL);
     <div class="container col-sm-12">
         <div class="row">
             <div class="table-bordered table-hover table-responsive" style="width: 100%">
-                <table class="table" id="ticketTable" style="background-color:rgb(255, 255, 255)">
-                    <thead>
-                        <tr>
-                            <th>Ticket No.</th>
-                            <th>Title</th>
-                            <th>Department</th>
-                            <th>Priority</th>
-                            <th>Reported By</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="ticketTableBody">
-                        <?php
-                        $type = "informationUpdate";
-                        viewTicket($conn, $type);
-                        ?>
-                    </tbody>
+                <table class="table" id="ticketTable5" style="background-color:rgb(255, 255, 255)">
+                    <?php
+                    $type = "informationUpdate";
+                    echo viewTicket($conn, $type);
+                    ?>
                 </table>
             </div>
         </div>
@@ -396,23 +336,11 @@ error_reporting(E_ALL);
     <div class="container col-sm-12">
         <div class="row">
             <div class="table-bordered table-hover table-responsive" style="width: 100%">
-                <table class="table" id="ticketTable" style="background-color:rgb(255, 255, 255)">
-                    <thead>
-                        <tr>
-                            <th>Ticket No.</th>
-                            <th>Title</th>
-                            <th>Department</th>
-                            <th>Priority</th>
-                            <th>Reported By</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="ticketTableBody">
-                        <?php
-                        $type = "other";
-                        viewTicket($conn, $type);
-                        ?>
-                    </tbody>
+                <table class="table" id="ticketTable6" style="background-color:rgb(255, 255, 255)">
+                    <?php
+                    $type = "other";
+                    echo viewTicket($conn, $type);
+                    ?>
                 </table>
             </div>
         </div>
