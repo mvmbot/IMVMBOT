@@ -1,6 +1,6 @@
 <?php
 session_start();
-require("./php/viewTicketConfirm.php");
+require("./php/viewTicketAdminAdminConfirm.php");
 require("./php/databaseFunctions.php");
 error_reporting(E_ALL);
 
@@ -196,7 +196,7 @@ error_reporting(E_ALL);
                             <!-- Enlace para CREATE TICKET -->
                             <a href="./createTicket.php" class="nav-item nav-link" style="color: white;">CREATE TICKET</a>
                             <!-- Enlace para VIEW TICKETS -->
-                            <a href="./viewTicket.php" class="nav-item nav-link" style="color: white;">VIEW TICKETS</a>
+                            <a href="./viewTicketAdmin.php" class="nav-item nav-link" style="color: white;">VIEW TICKETS</a>
                         </div>
                     </div>
                 <?php
@@ -208,7 +208,7 @@ error_reporting(E_ALL);
                         </button>
                         <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton2" style="background-color: #000;">
                             <!-- Enlace para VIEW TICKETS -->
-                            <a href="./viewTicketAdmin.php" class="nav-item nav-link" style="color: white;">VIEW TICKETS</a>
+                            <a href="./viewTicketAdminAdmin.php" class="nav-item nav-link" style="color: white;">VIEW TICKETS</a>
                         </div>
                     </div>
                 <?php
@@ -272,7 +272,7 @@ error_reporting(E_ALL);
             <div class="table-bordered table-hover table-responsive" style="width: 100%">
                     <?php
                     $type = "helpSupport";
-                    viewTicket($conn, $type);
+                    viewTicketAdmin($conn, $type);
                     ?>
             </div>
         </div>
@@ -284,7 +284,7 @@ error_reporting(E_ALL);
             <div class="table-bordered table-hover table-responsive" style="width: 100%">
                     <?php
                     $type = "bugReport";
-                    viewTicket($conn, $type);
+                    viewTicketAdmin($conn, $type);
                     ?>
             </div>
         </div>
@@ -296,7 +296,7 @@ error_reporting(E_ALL);
             <div class="table-bordered table-hover table-responsive" style="width: 100%">
                     <?php
                     $type = "featureRequest";
-                    viewTicket($conn, $type);
+                    viewTicketAdmin($conn, $type);
                     ?>
             </div>
         </div>
@@ -309,7 +309,7 @@ error_reporting(E_ALL);
 
                     <?php
                     $type = "grammarIssues";
-                    viewTicket($conn, $type);
+                    viewTicketAdmin($conn, $type);
                     ?>
             </div>
         </div>
@@ -322,7 +322,7 @@ error_reporting(E_ALL);
                 <table class="table" id="ticketTable5" style="background-color:rgb(255, 255, 255)">
                     <?php
                     $type = "informationUpdate";
-                    viewTicket($conn, $type);
+                    viewTicketAdmin($conn, $type);
                     ?>
                 </table>
             </div>
@@ -335,7 +335,7 @@ error_reporting(E_ALL);
             <div class="table-bordered table-hover table-responsive" style="width: 100%">
                     <?php
                     $type = "other";
-                    viewTicket($conn, $type);
+                    viewTicketAdmin($conn, $type);
                     ?>
             </div>
         </div>
