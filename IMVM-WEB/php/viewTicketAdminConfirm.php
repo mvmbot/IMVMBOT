@@ -133,27 +133,17 @@ function printTicketAdmin($type, $result) {
             try {
                 if ($result->num_rows > 0) {
                     echo "<table class='table' id='ticketTable1' style='background-color: #9900ff; color: white;'>
-    <thead>
-        <tr>
-            <th>ID user</th>
-            <th>Ticket No.</th>
-            <th>Username</th>
-            <th>Type</th>
-            <th colspan='2' style='text-align: center;'>
-                <form action='' method='post' style='margin: 0;'>
-                    <select name='status' style='width: 100%;'> 
-                        <option value='Open'>Open</option>
-                        <option value='In progress'>In progress</option>
-                        <option value='Closed'>Closed</option>
-                    </select>
-                    <input type='submit' value='Submit' style='display: none;'>
-                </form>
-            </th>
-            <th>Subject</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-</table>";
+                    <thead>
+                        <tr>
+                            <th>ID user</th>
+                            <th>Ticket No.</th>
+                            <th>Username</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Subject</th>                           
+                            <th>Action</th>
+                        </tr>
+                    </thead>";
 
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr style='background-color: white; color: #9900ff;'>";
