@@ -173,7 +173,7 @@ function printTicketDetail($type, $result) {
                 </thead>
                 <tbody>";
             while ($row = $result->fetch_assoc()) {
-                echo "<tr>";
+                echo "<tr style='background-color: white; color: #9900ff;'>";
                 echo "<td>" . $row["idTicket"] . "</td><td>" . $row["typeTicket"] . "</td><td>" . $row["creationDate"] . "</td><td>" . $row["modificationDate"] . "</td><td>" . $row["resolvedDate"] . "</td><td>" . $row["stateTicket"] . "</td><td>" . $row["subject"] . "</td><td>" . $row["description"] . "</td><td>" . $row["file"] . "</td>";
                 echo "</tr>";
             }
@@ -197,7 +197,15 @@ function printTicketDetail($type, $result) {
                                 <th>Creation Date</th>
                                 <th>Modification Date</th>
                                 <th>Resolved Date</th>
-                                <th>Status</th>
+                                <th colspan='2' style='text-align: center;'> 
+                            <form action='' method='post' style='margin: 0;'>
+                                <select name='status' style='width: 100%;'> 
+                                    <option value='Open'>Open</option>
+                                    <option value='In progress'>In progress</option>
+                                    <option value='Closed'>Closed</option>
+                                </select>
+                                <input type='submit' value='Submit'>
+                            </form>
                                 <th>Operative System</th>
                                 <th>Subject</th>
                                 <th>Description</th>
@@ -209,7 +217,7 @@ function printTicketDetail($type, $result) {
                                 </tr>
                         </thead>";
                     while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
+                        echo "<tr style='background-color: white; color: #9900ff;'>";
                         echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["operativeSystem"] . "</th><th>" . $row["description"] . "</th><th>" . $row["stepsToReproduce"] . "</th><th>" . $row["expectedResult"] . "</th><th>" . $row["receivedResult"] . "</th><th>" . $row["discordClient"] . "</th><th>" . $row["image"] . "</th>";
                         echo "</tr>";
                     }
@@ -233,13 +241,21 @@ function printTicketDetail($type, $result) {
                                 <th>Creation Date</th>
                                 <th>Modification Date</th>
                                 <th>Resolved Date</th>
-                                <th>Status</th>
+                                <th colspan='2' style='text-align: center;'> 
+                            <form action='' method='post' style='margin: 0;'>
+                                <select name='status' style='width: 100%;'> 
+                                    <option value='Open'>Open</option>
+                                    <option value='In progress'>In progress</option>
+                                    <option value='Closed'>Closed</option>
+                                </select>
+                                <input type='submit' value='Submit'>
+                            </form>
                                 <th>Subject</th>
                                 <th>Requested Type</th>
                                 </tr>
                         </thead>";
                     while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
+                        echo "<tr style='background-color: white; color: #9900ff;'>";
                         echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["requestType"] . "</th>";
                         echo "</tr>";
                     }
@@ -263,14 +279,22 @@ function printTicketDetail($type, $result) {
                             <th>Creation Date</th>
                             <th>Modification Date</th>
                             <th>Resolved Date</th>
-                            <th>Status</th>
+                            <th colspan='2' style='text-align: center;'> 
+                            <form action='' method='post' style='margin: 0;'>
+                                <select name='status' style='width: 100%;'> 
+                                    <option value='Open'>Open</option>
+                                    <option value='In progress'>In progress</option>
+                                    <option value='Closed'>Closed</option>
+                                </select>
+                                <input type='submit' value='Submit'>
+                            </form>
                             <th>Subject</th>
                             <th>Description</th>
                             <th>Image</th>
                         </tr>
                     </thead>";
                     while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
+                        echo "<tr style='background-color: white; color: #9900ff;'>";
                         echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["image"] . "</th>";
                         echo "</tr>";
                     }
@@ -294,13 +318,21 @@ function printTicketDetail($type, $result) {
                             <th>Creation Date</th>
                             <th>Modification Date</th>
                             <th>Resolved Date</th>
-                            <th>Status</th>
+                            <th colspan='2' style='text-align: center;'> 
+                            <form action='' method='post' style='margin: 0;'>
+                                <select name='status' style='width: 100%;'> 
+                                    <option value='Open'>Open</option>
+                                    <option value='In progress'>In progress</option>
+                                    <option value='Closed'>Closed</option>
+                                </select>
+                                <input type='submit' value='Submit'>
+                            </form>
                             <th>Subject</th>
                             <th>Update Info</th>
                         </tr>
                     </thead>";
                     while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
+                        echo "<tr style='background-color: white; color: #9900ff;'>";
                         echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["updateInfo"] . "</th>";
                         echo "</tr>";
                     }
@@ -324,14 +356,23 @@ function printTicketDetail($type, $result) {
                             <th>Creation Date</th>
                             <th>Modification Date</th>
                             <th>Resolved Date</th>
-                            <th>Status</th>
+                            <th colspan='2' style='text-align: center;'> 
+                            <form action='' method='post' style='margin: 0;'>
+                                <select name='status' style='width: 100%;'> 
+                                    <option value='Open'>Open</option>
+                                    <option value='In progress'>In progress</option>
+                                    <option value='Closed'>Closed</option>
+                                </select>
+                                <input type='submit' value='Submit'>
+                            </form>
+                        </th>
                             <th>Subject</th>
                             <th>Description</th>
                             <th>Extra Text</th>
                         </tr>
                     </thead>";
                     while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
+                        echo "<tr style='background-color: white; color: #9900ff;'>";
                         echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["extraText"] . "</th>";
                         echo "</tr>";
                     }
