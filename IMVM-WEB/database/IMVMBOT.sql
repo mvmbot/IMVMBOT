@@ -24,7 +24,7 @@ CREATE TABLE users (
 -- Table to store ticket information.
 CREATE TABLE ticket (
     idTicket INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    typeTicket ENUM('Help & Support', 'Bug Reporting', 'Feature Request', 'Abuse Report', 'General Inquiry', 'Improvement Suggestions', 'Grammar', 'Information Update', 'Other') NOT NULL,
+    typeTicket ENUM('Help & Support', 'Bug Reporting', 'Feature Request', 'Grammar', 'Information Update', 'Other') NOT NULL,
     creationDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     modificationDate DATE NULL,
     resolvedDate TIMESTAMP,
