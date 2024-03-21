@@ -150,33 +150,41 @@ function printTicketDetail($type, $result) {
         case 'helpSupport':
             try {
                 if ($result->num_rows > 0) {
-                    echo "<table class='table' id='ticketTable1' style='background-color:rgb(255, 255, 255)'>
-                    <thead>
-                        <tr>
-                            <th>Ticket No.</th>
-                            <th>Type</th>
-                            <th>Creation Date</th>
-                            <th>Modification Date</th>
-                            <th>Resolved Date</th>
-                            <th>Status</th>
-                            <th>Subject</th>
-                            <th>Description</th>
-                            <th>File</th>
-                        </tr>
-                    </thead>";
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["file"] . "</th>";
-                        echo "</tr>";
-                    }
-                    echo "</table>";
-                } else {
-                    echo "<p>Error, no ticket selected!</p>";
-                }
-            } catch (Exception $e) {
-                showError("Error: " . $e->getMessage());
+                    echo "<table class='table' id='ticketTable1' style='background-color: #9900ff; color: white;'>
+                <thead>
+                    <tr>
+                        <th>ID user</th>
+                        <th>Ticket No.</th>
+                        <th>Username</th>
+                        <th>Type</th>
+                        <th colspan='2' style='text-align: center;'> 
+                            <form action='' method='post' style='margin: 0;'>
+                                <select name='status' style='width: 100%;'> 
+                                    <option value='Open'>Open</option>
+                                    <option value='In progress'>In progress</option>
+                                    <option value='Closed'>Closed</option>
+                                </select>
+                                <input type='submit' value='Submit'>
+                            </form>
+                        </th>
+                        <th>Subject</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>";
+            while ($row = $result->fetch_assoc()) {
+                echo "<tr>";
+                echo "<td>" . $row["idTicket"] . "</td><td>" . $row["typeTicket"] . "</td><td>" . $row["creationDate"] . "</td><td>" . $row["modificationDate"] . "</td><td>" . $row["resolvedDate"] . "</td><td>" . $row["stateTicket"] . "</td><td>" . $row["subject"] . "</td><td>" . $row["description"] . "</td><td>" . $row["file"] . "</td>";
+                echo "</tr>";
             }
-            break;
+            echo "</tbody></table>";
+        } else {
+            echo "<p>Error, no ticket selected!</p>";
+        }
+    } catch (Exception $e) {
+        showError("Error: " . $e->getMessage());
+    }
+    break;
 
         case 'bugReport':
             try {
