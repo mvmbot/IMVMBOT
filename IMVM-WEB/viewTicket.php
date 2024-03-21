@@ -290,7 +290,6 @@ error_reporting(E_ALL);
     <div class="container col-sm-12">
         <div class="row">
             <div class="table-bordered table-hover table-responsive" style="width: 100%">
-
                     <?php
                     $type = "featureRequest";
                     viewTicket($conn, $type);
