@@ -284,70 +284,28 @@ session_start();
     </nav>
 
     <!-- Navbar End -->
-    <?php>
+    <?php
+    $conn = connectToDatabase();
+    ?>
+    <br><br>
+    <center><h1>Ticket Detail</h1>
+    <div class="container col-sm-12">
+        <div class="row">
+            <div class="table-bordered table-hover table-responsive" style="width: 100%">
+                <table class="table" id="ticketTable1" style="background-color:rgb(255, 255, 255)">
+                    <?php
+                    echo viewTicketDetailConfirm($conn);
+                    ?>
+                </table>
+            </div>
+        </div>
+    </div>
+</center>
+    <br><br>
 
-    <body>
-        <table
-            style="width: 800px; margin: 50px auto 50px auto; background: #fff; font-size: 11px; font-family: verdana, sans-serif;"
-            align="center">
-            <tbody>
-                <tr>
-                    <td colspan="2"
-                        style="word-wrap: break-word; border:0px;padding: 9px; color: #fff; background: #9900ff;">
-                        <h1 style="margin-bottom:0px;color: #fff">Ticket Details</h1>
-                    </td>
-                </tr>
+    <center><a href="./viewTicket.php" class="btn btn-primary py-3 px-5">Go back<i class="fa fa-arrow-right ms-3"></i></a></center>
+</body>
 
-                <tr style="padding: 10px;">
-                    <td style="width: 400px; padding: 15px 0px 25px 25px; vertical-align: top;">
-                        <p style="font-style: italic;margin-bottom:10px;"><strong>Ticket #{{ticket.id}} was
-                            opened.</strong></p>
-                        <p style="margin-bottom: 10px;">{{ticket.subject}},</p>
-                        <p style="margin-bottom: 10px;">{{ticket.description}},</p>
-                        <p style="margin-bottom: 10px;">{{ticket.file}},</p>
-                        
-                        <br />
-                        <br />
-                    </td>
-
-                    <td style="width: 240px; vertical-align: top; padding: 10px 18px 10px 6px">
-                        <div style="margin:15px 8px 0px 10px;padding: 9px; border: 1px #ccc solid; font-size: 10px;">
-                            <strong>TICKET #</strong>{{ticket.id}}
-                            <hr style="height: 1px; color: #ccc;" />
-                            <strong>Date:</strong> {{ticket.created_at | date_sw}}<br />
-                            <strong>Status:</strong> {{ticket.status}}<br />
-                            <br />
-
-                            
-                            <strong>Department:</strong> IMVM Helpdesk <br>
-                            <strong>Office Phone:</strong> 605737380<br>
-                            
-
-                            <br />
-                            <strong>Creator:</strong> <a style="color:#9900ff; text-decoration: none;"
-                                href="mailto:{{ticket.creator.email}}?subject={{ticket.ref}} {{ticket.summary}}">{{ticket.creator.full_name_or_email}}</a><br />
-                            <strong>Category:</strong> {{ticket.category}}<br>
-                            <strong>Subject:</strong> {{ticket.subject}}<br>
-                            <strong>Cell Phone:</strong> {{ticket.assignee.cell_phone}}<br><br />
-                            
-                            <strong>Priority:</strong> Low<br />
-                            <br />
-                            
-                            <p style="margin-top:5px;">If you have any additional information regarding
-                                this ticket respond to this email. Please remember to keep
-                                <strong>{{ticket.ref}}</strong> in the email subject. You can also log into
-                                the Help Desk system <a style="color:#9900ff; text-decoration: none;" href="./createTicket.php">
-                                    here</a> to post a comment and view other tickets.
-                            </p>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-        <center><a href="./viewTicket.php" class="btn btn-primary py-3 px-5">Go back<i class="fa fa-arrow-right ms-3"></i></a></center>
-     </body>
-     ?>
 
     <!-- Footer Start -->
 
