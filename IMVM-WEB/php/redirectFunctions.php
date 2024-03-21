@@ -4,6 +4,7 @@ define('SIGNUP_PAGE', '../signup.php');
 define('SIGNIN_PAGE', '../signin.php');
 define('INDEX_PAGE', '../index.php');
 define('TICKET_PAGE', '../createTicket.php');
+define('INDEX_PAGE_ADMIN', './index.php');
 #endregion
 
 #region functions --- Redirects to our pages
@@ -22,6 +23,12 @@ function redirectToSignin() {
 # Function to redirect to the main page
 function redirectToIndex() {
     header('Location: ' . INDEX_PAGE);
+    exit;
+}
+
+# Function to redirect to the main page if ure not admin
+function redirectToIndexAdmin() {
+    header('Location: ' . INDEX_PAGE_ADMIN);
     exit;
 }
 

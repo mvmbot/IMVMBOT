@@ -2,6 +2,7 @@
 session_start();
 require("./php/viewTicketAdminConfirm.php");
 require("./php/databaseFunctions.php");
+require("./php/redirectFunctions.php");
 error_reporting(E_ALL);
 
 ?>
@@ -438,7 +439,7 @@ error_reporting(E_ALL);
     <script src="js/main.js"></script>
     <?php
         } else {
-            echo "You're not admin, get out!";
+            echo redirectToIndexAdmin();
         }
         ?>
 </body>
