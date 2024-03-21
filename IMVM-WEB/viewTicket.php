@@ -269,7 +269,7 @@ error_reporting(E_ALL);
                 <table class="table" id="ticketTable1" style="background-color:rgb(255, 255, 255)">
                     <?php
                     $type = "helpSupport";
-                    echo viewTicket($conn, $type);
+                    viewTicket($conn, $type);
                     ?>
                 </table>
             </div>
@@ -283,7 +283,7 @@ error_reporting(E_ALL);
                 <table class="table" id="ticketTable2" style="background-color:rgb(255, 255, 255)">
                     <?php
                     $type = "bugReport";
-                    echo viewTicket($conn, $type);
+                    viewTicket($conn, $type);
                     ?>
                 </table>
             </div>
@@ -297,7 +297,7 @@ error_reporting(E_ALL);
                 <table class="table" id="ticketTable3" style="background-color:rgb(255, 255, 255)">
                     <?php
                     $type = "featureRequest";
-                    echo viewTicket($conn, $type);
+                    viewTicket($conn, $type);
                     ?>
                 </table>
             </div>
@@ -311,7 +311,7 @@ error_reporting(E_ALL);
                 <table class="table" id="ticketTable4" style="background-color:rgb(255, 255, 255)">
                     <?php
                     $type = "grammarIssues";
-                    echo viewTicket($conn, $type);
+                    viewTicket($conn, $type);
                     ?>
                 </table>
             </div>
@@ -325,7 +325,7 @@ error_reporting(E_ALL);
                 <table class="table" id="ticketTable5" style="background-color:rgb(255, 255, 255)">
                     <?php
                     $type = "informationUpdate";
-                    echo viewTicket($conn, $type);
+                    viewTicket($conn, $type);
                     ?>
                 </table>
             </div>
@@ -339,7 +339,7 @@ error_reporting(E_ALL);
                 <table class="table" id="ticketTable6" style="background-color:rgb(255, 255, 255)">
                     <?php
                     $type = "other";
-                    echo viewTicket($conn, $type);
+                    viewTicket($conn, $type);
                     ?>
                 </table>
             </div>

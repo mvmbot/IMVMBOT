@@ -124,7 +124,7 @@ function viewTicket($conn, $type) {
         case 'informationUpdate':
             $sql = "SELECT t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, iu.subject
             FROM ticket t
-            JOIN informationUpdate iu ON t.idTicket = iu.ticket
+            JOIN informationUpdate iu ON t.idTicket = iu.ticketID
             JOIN users u ON t.idUsers = u.idUsers
             WHERE t.typeTicket = 'Information Update' AND u.idUsers = ?";
 

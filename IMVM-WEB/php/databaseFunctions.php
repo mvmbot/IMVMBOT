@@ -88,7 +88,7 @@ function createTicketBase($conn, $ticketType) {
 function createTicketHelpSupport($conn, $subject, $description, $fileAttachment) {
 
     # Get both the ticket type and the ticket ID
-    $ticketType = "helpSupport";
+    $ticketType = "Help & Support";
     $ticketId = createTicketBase($conn, $ticketType);
 
     try {
@@ -120,7 +120,7 @@ function createTicketHelpSupport($conn, $subject, $description, $fileAttachment)
 function createTicketBugReport($conn, $subject, $operativeSystem, $bugDescription, $stepsToReproduce, $expectedResult, $receivedResult, $discordClient, $bugImage) {
 
     # Get both the ticket type and the ticket ID
-    $ticketType = "bugReport";
+    $ticketType = "Bug Reporting";
     $ticketId = createTicketBase($conn, $ticketType);
 
     try {
@@ -152,7 +152,7 @@ function createTicketBugReport($conn, $subject, $operativeSystem, $bugDescriptio
 function createTicketFeatureRequest($conn, $subject, $description, $requestType) {
 
     # Get both the ticket type and the ticket ID
-    $ticketType = "featureRequest";
+    $ticketType = "Feature Request";
     $ticketId = createTicketBase($conn, $ticketType);
 
     try {
@@ -184,7 +184,7 @@ function createTicketFeatureRequest($conn, $subject, $description, $requestType)
 function createTicketGrammarIssues($conn, $subject, $description, $fileAttachment) {
 
     # Get both the ticket type and the ticket ID
-    $ticketType = "grammarIssues";
+    $ticketType = "Grammar";
     $ticketId = createTicketBase($conn, $ticketType);
 
     try {
@@ -216,7 +216,7 @@ function createTicketGrammarIssues($conn, $subject, $description, $fileAttachmen
 function createTicketInformationUpdate($conn, $subject, $updateInfo) {
 
     # Get both the ticket type and the ticket ID
-    $ticketType = "informationUpdate";
+    $ticketType = "Information Update";
     $ticketId = createTicketBase($conn, $ticketType);
 
     try {
@@ -248,7 +248,7 @@ function createTicketInformationUpdate($conn, $subject, $updateInfo) {
 function createTicketOther($conn, $subject, $description, $extraText) {
 
     # Get both the ticket type and the ticket ID
-    $ticketType = "other";
+    $ticketType = "Other";
     $ticketId = createTicketBase($conn, $ticketType);
 
     try {
