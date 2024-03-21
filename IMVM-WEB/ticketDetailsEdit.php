@@ -307,7 +307,7 @@ error_reporting(E_ALL);
 </center>
     <br><br>
 
-    <center><a href="./viewTicket.php" class="btn btn-primary py-3 px-5">Go back<i class="fa fa-arrow-right ms-3"></i></a></center>
+    <center><a href="./viewTicketAdmin.php" class="btn btn-primary py-3 px-5">Go back<i class="fa fa-arrow-right ms-3"></i></a></center>
 </body>
 
 
