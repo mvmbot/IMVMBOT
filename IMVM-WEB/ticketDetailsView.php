@@ -1,5 +1,8 @@
 <?php
 session_start();
+require("./php/viewTicketDetailConfirm.php");
+require("./php/databaseFunctions.php");
+error_reporting(E_ALL);
 ?>
 
 <!DOCTYPE html>
@@ -286,6 +289,7 @@ session_start();
     <!-- Navbar End -->
     <?php
     $conn = connectToDatabase();
+    $type = "other";
     ?>
     <br><br>
     <center><h1>Ticket Detail</h1>
@@ -294,7 +298,7 @@ session_start();
             <div class="table-bordered table-hover table-responsive" style="width: 100%">
                 <table class="table" id="ticketTable1" style="background-color:rgb(255, 255, 255)">
                     <?php
-                    echo viewTicketDetailConfirm($conn);
+                    echo viewTicketDetail($conn, $type);
                     ?>
                 </table>
             </div>

@@ -1,6 +1,8 @@
 <?php
-function viewTicketDetail($conn, $id, $type) {
+function viewTicketDetail($conn, $type) {
     $id = intval($_GET['ID']);
+    echo $id;
+    echo $type;
     switch ($type) {
         case 'helpSupport':
             # Get every ticket from X type from the user
@@ -138,7 +140,7 @@ function viewTicketDetail($conn, $id, $type) {
             $result = $stmt->get_result();
 
             # Then just print the ticket
-            printTicketDetail($conn, $type);
+            printTicketDetail($type, $result);
             break;
         default:
             break;
