@@ -1,5 +1,6 @@
 <?php
-function viewTicket($conn, $type) {
+function viewTicket($conn, $type)
+{
 
     #region --- Get the user ID
     $user = $_SESSION['user'];
@@ -171,7 +172,8 @@ function viewTicket($conn, $type) {
     }
 }
 
-function printTicket($type, $result) {
+function printTicket($type, $result)
+{
     switch ($type) {
         case 'helpSupport':
             try {
@@ -256,6 +258,19 @@ function printTicket($type, $result) {
         case 'other':
             try {
                 if ($result->num_rows > 0) {
+                    echo `<table class="table" id="ticketTable6" style="background-color:rgb(255, 255, 255)">
+                    <thead>
+                        <tr>
+                            <th>Ticket No.</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Subject</th>
+                            <th>Description</th>
+                            <th>Extra Text</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    </table>`;
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
                         echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["extraText"] . "</th><th> [ <a href='ticketDetailsView.php?ID=" . $row['idTicket'] . "'>View Details</a> ]</th>";
