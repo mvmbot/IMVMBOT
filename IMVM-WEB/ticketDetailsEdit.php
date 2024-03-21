@@ -1,6 +1,6 @@
 <?php
 session_start();
-require("./php/viewTicketDetailConfirm.php");
+require("./php/editTicketAdminDetailConfirm.php");
 require("./php/databaseFunctions.php");
 error_reporting(E_ALL);
 ?>
@@ -289,7 +289,7 @@ error_reporting(E_ALL);
     <!-- Navbar End -->
     <?php
     $conn = connectToDatabase();
-    $type = "other";
+    $type = $_GET['type'];
     ?>
     <br><br>
     <center><h1>Ticket Detail</h1>
@@ -298,7 +298,7 @@ error_reporting(E_ALL);
             <div class="table-bordered table-hover table-responsive" style="width: 100%">
                 <table class="table" id="ticketTable1" style="background-color:rgb(255, 255, 255)">
                     <?php
-                    echo viewTicketDetail($conn, $type);
+                    echo editTicketDetail($conn, $type);
                     ?>
                 </table>
             </div>
