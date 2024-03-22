@@ -149,8 +149,8 @@ function printTicketDetail($type, $result, $id) {
         case 'helpSupport':
             try {
                 if ($result->num_rows > 0) {
-                    echo "<table class='table' id='ticketTable1' style='background-color:rgb(255, 255, 255)'>
-                    <thead>
+                    echo "<table class='table' id='ticketTable1' style='background-color: #9900ff; color: white;'>
+                        <thead>
                         <tr>
                             <th>Ticket No.</th>
                             <th>Type</th>
@@ -190,7 +190,7 @@ function printTicketDetail($type, $result, $id) {
         case 'bugReport':
             try {
                 if ($result->num_rows > 0) {
-                    echo "<table class='table' id='ticketTable2' style='background-color:rgb(255, 255, 255)'>
+                    echo "<table class='table' id='ticketTable2' style='background-color: #9900ff; color: white;'>
                         <thead>
                             <tr>
                                 <th>Ticket No.</th>
@@ -236,7 +236,7 @@ function printTicketDetail($type, $result, $id) {
         case 'Feature Request':
             try {
                 if ($result->num_rows > 0) {
-                    echo "<table class='table' id='ticketTable3' style='background-color:rgb(255, 255, 255)'>
+                    echo "<table class='table' id='ticketTable3' style='background-color: #9900ff; color: white;'>
                         <thead>
                             <tr>
                                 <th>Ticket No.</th>
@@ -276,8 +276,8 @@ function printTicketDetail($type, $result, $id) {
         case 'grammarIssues':
             try {
                 if ($result->num_rows > 0) {
-                    echo "<table class='table' id='ticketTable4' style='background-color:rgb(255, 255, 255)'>
-                    <thead>
+                    echo "<table class='table' id='ticketTable4' style='background-color: #9900ff; color: white;'>
+                        <thead>
                         <tr>
                             <th>Ticket No.</th>
                             <th>Type</th>
@@ -317,8 +317,8 @@ function printTicketDetail($type, $result, $id) {
         case 'Information Update':
             try {
                 if ($result->num_rows > 0) {
-                    echo "<table class='table' id='ticketTable5' style='background-color:rgb(255, 255, 255)'>
-                    <thead>
+                    echo "<table class='table' id='ticketTable5' style='background-color: #9900ff; color: white;'>
+                        <thead>
                         <tr>
                             <th>Ticket No.</th>
                             <th>Type</th>
@@ -357,8 +357,8 @@ function printTicketDetail($type, $result, $id) {
         case 'Other':
             try {
                 if ($result->num_rows > 0) {
-                    echo "<table class='table' id='ticketTable6' style='background-color:rgb(255, 255, 255)'>
-                    <thead>
+                    echo "<table class='table' id='ticketTable6' style='background-color: #9900ff; color: white;'>
+                        <thead>
                         <tr>
                             <th>Ticket No.</th>
                             <th>Type</th>
