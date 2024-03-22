@@ -5,7 +5,7 @@ module.exports = {
         .setName('ticket')
         .setDescription('Opens a support ticket.'),
     async execute(interaction) {
-        const ticketCategory = interaction.guild.channels.cache.get('CATEGORY_ID'); // Replace with the ID of the category where you want to create the ticket
+        const ticketCategory = interaction.guild.channels.cache.get('1164951931089854555');
 
         if (!ticketCategory) {
             return await interaction.reply({
