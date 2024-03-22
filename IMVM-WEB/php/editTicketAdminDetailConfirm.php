@@ -165,7 +165,7 @@ function printTicketDetail($type, $result, $id) {
                     </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . "<th colspan='2' style='text-align: center;'>
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th>" . "<th colspan='2' style='text-align: center;'>
                                 <form action='./php/editTicketData.php' method='post' style='margin: 0;'>
                                     <input type='hidden' name='idTicket' value='" . $row["idTicket"] . "'>
                                     <select name='newState' style='width: 35%;'>
@@ -175,7 +175,7 @@ function printTicketDetail($type, $result, $id) {
                                     </select>
                                     <br><input type='submit' value='Submit'>
                                 </form>
-                            </th>" . "</th><th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["file"] . "</th>";
+                            </th>" . "<th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["file"] . "</th>";
                         echo "</tr>";
                     }
                     echo "</table>";
@@ -211,7 +211,7 @@ function printTicketDetail($type, $result, $id) {
                         </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . "<th colspan='2' style='text-align: center;'>
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th>" . "<th colspan='2' style='text-align: center;'>
                                 <form action='./php/editTicketData.php' method='post' style='margin: 0;'>
                                     <input type='hidden' name='idTicket' value='" . $row["idTicket"] . "'>
                                     <select name='newState' style='width: 35%;'>
@@ -221,7 +221,7 @@ function printTicketDetail($type, $result, $id) {
                                     </select>
                                     <br><input type='submit' value='Submit'>
                                 </form>
-                            </th>" . "</th><th>" . $row["operativeSystem"] . "</th><th>" . $row["description"] . "</th><th>" . $row["stepsToReproduce"] . "</th><th>" . $row["expectedResult"] . "</th><th>" . $row["receivedResult"] . "</th><th>" . $row["discordClient"] . "</th><th>" . $row["image"] . "</th>";
+                            </th>" . "<th>" . $row["operativeSystem"] . "</th><th>" . $row["description"] . "</th><th>" . $row["stepsToReproduce"] . "</th><th>" . $row["expectedResult"] . "</th><th>" . $row["receivedResult"] . "</th><th>" . $row["discordClient"] . "</th><th>" . $row["image"] . "</th>";
                         echo "</tr>";
                     }
                     echo "</table>";
@@ -251,7 +251,7 @@ function printTicketDetail($type, $result, $id) {
                         </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . "<th colspan='2' style='text-align: center;'>
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th>" . "<th colspan='2' style='text-align: center;'>
                                 <form action='./php/editTicketData.php' method='post' style='margin: 0;'>
                                     <input type='hidden' name='idTicket' value='" . $row["idTicket"] . "'>
                                     <select name='newState' style='width: 35%;'>
@@ -261,7 +261,7 @@ function printTicketDetail($type, $result, $id) {
                                     </select>
                                     <br><input type='submit' value='Submit'>
                                 </form>
-                            </th>" . "</th><th>" . $row["subject"] . "</th><th>" . $row["requestType"] . "</th>";
+                            </th>" . "<th>" . $row["subject"] . "</th><th>" . $row["requestType"] . "</th>";
                         echo "</tr>";
                     }
                     echo "</table>";
@@ -292,7 +292,7 @@ function printTicketDetail($type, $result, $id) {
                     </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . "<th colspan='2' style='text-align: center;'>
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th>" . "<th colspan='2' style='text-align: center;'>
                                 <form action='./php/editTicketData.php' method='post' style='margin: 0;'>
                                     <input type='hidden' name='idTicket' value='" . $row["idTicket"] . "'>
                                     <select name='newState' style='width: 35%;'>
@@ -302,7 +302,7 @@ function printTicketDetail($type, $result, $id) {
                                     </select>
                                     <br><input type='submit' value='Submit'>
                                 </form>
-                            </th>" . "</th><th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["image"] . "</th>";
+                            </th>" . "<th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["image"] . "</th>";
                         echo "</tr>";
                     }
                     echo "</table>";
@@ -332,7 +332,7 @@ function printTicketDetail($type, $result, $id) {
                     </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . "<th colspan='2' style='text-align: center;'>
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th>" . "<th colspan='2' style='text-align: center;'>
                                 <form action='./php/editTicketData.php' method='post' style='margin: 0;'>
                                     <input type='hidden' name='idTicket' value='" . $row["idTicket"] . "'>
                                     <select name='newState' style='width: 35%;'>
@@ -342,7 +342,7 @@ function printTicketDetail($type, $result, $id) {
                                     </select>
                                     <br><input type='submit' value='Submit'>
                                 </form>
-                            </th>" . "</th><th>" . $row["subject"] . "</th><th>" . $row["updateInfo"] . "</th>";
+                            </th>" . "<th>" . $row["subject"] . "</th><th>" . $row["updateInfo"] . "</th>";
                         echo "</tr>";
                     }
                     echo "</table>";
@@ -373,7 +373,7 @@ function printTicketDetail($type, $result, $id) {
                     </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" .
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th>" .
                             "<th colspan='2' style='text-align: center;'>
                                 <form action='./php/editTicketData.php' method='post' style='margin: 0;'>
                                     <input type='hidden' name='idTicket' value='" . $row["idTicket"] . "'>
@@ -385,7 +385,7 @@ function printTicketDetail($type, $result, $id) {
                                     <br><input type='submit' value='Submit'>
                                 </form>
                             </th>"
-                        . "</th><th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["extraText"] . "</th>";
+                        . "<th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["extraText"] . "</th>";
                         echo "</tr>";
                     }
                     echo "</table>";
