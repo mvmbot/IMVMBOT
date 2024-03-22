@@ -157,16 +157,7 @@ function printTicketDetail($type, $result) {
                         <th>Ticket No.</th>
                         <th>Username</th>
                         <th>Type</th>
-                        <th colspan='2' style='text-align: center;'> 
-                            <form action='' method='post' style='margin: 0;'>
-                                <select name='status' style='width: 100%;'> 
-                                    <option value='Open'>Open</option>
-                                    <option value='In progress'>In progress</option>
-                                    <option value='Closed'>Closed</option>
-                                </select>
-                                <input type='submit' value='Submit'>
-                            </form>
-                        </th>
+                        <th>Status</th>
                         <th>Subject</th>
                         <th>Action</th>
                     </tr>
@@ -197,15 +188,7 @@ function printTicketDetail($type, $result) {
                                 <th>Creation Date</th>
                                 <th>Modification Date</th>
                                 <th>Resolved Date</th>
-                                <th colspan='2' style='text-align: center;'> 
-                            <form action='' method='post' style='margin: 0;'>
-                                <select name='status' style='width: 100%;'> 
-                                    <option value='Open'>Open</option>
-                                    <option value='In progress'>In progress</option>
-                                    <option value='Closed'>Closed</option>
-                                </select>
-                                <input type='submit' value='Submit'>
-                            </form>
+                                <th>Status<th>
                                 <th>Operative System</th>
                                 <th>Subject</th>
                                 <th>Description</th>
@@ -214,7 +197,7 @@ function printTicketDetail($type, $result) {
                                 <th>Received result</th>
                                 <th>Discord client</th>
                                 <th>Image</th>
-                                </tr>
+                            </tr>
                         </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr style='background-color: white; color: #9900ff;'>";
@@ -241,15 +224,7 @@ function printTicketDetail($type, $result) {
                                 <th>Creation Date</th>
                                 <th>Modification Date</th>
                                 <th>Resolved Date</th>
-                                <th colspan='2' style='text-align: center;'> 
-                            <form action='' method='post' style='margin: 0;'>
-                                <select name='status' style='width: 100%;'> 
-                                    <option value='Open'>Open</option>
-                                    <option value='In progress'>In progress</option>
-                                    <option value='Closed'>Closed</option>
-                                </select>
-                                <input type='submit' value='Submit'>
-                            </form>
+                                <th>Status</th>
                                 <th>Subject</th>
                                 <th>Requested Type</th>
                                 </tr>
@@ -279,15 +254,7 @@ function printTicketDetail($type, $result) {
                             <th>Creation Date</th>
                             <th>Modification Date</th>
                             <th>Resolved Date</th>
-                            <th colspan='2' style='text-align: center;'> 
-                            <form action='' method='post' style='margin: 0;'>
-                                <select name='status' style='width: 100%;'> 
-                                    <option value='Open'>Open</option>
-                                    <option value='In progress'>In progress</option>
-                                    <option value='Closed'>Closed</option>
-                                </select>
-                                <input type='submit' value='Submit'>
-                            </form>
+                            <th>Status</th>
                             <th>Subject</th>
                             <th>Description</th>
                             <th>Image</th>
@@ -318,15 +285,7 @@ function printTicketDetail($type, $result) {
                             <th>Creation Date</th>
                             <th>Modification Date</th>
                             <th>Resolved Date</th>
-                            <th colspan='2' style='text-align: center;'> 
-                            <form action='' method='post' style='margin: 0;'>
-                                <select name='status' style='width: 100%;'> 
-                                    <option value='Open'>Open</option>
-                                    <option value='In progress'>In progress</option>
-                                    <option value='Closed'>Closed</option>
-                                </select>
-                                <input type='submit' value='Submit'>
-                            </form>
+                            <th>Status</th>
                             <th>Subject</th>
                             <th>Update Info</th>
                         </tr>
@@ -356,16 +315,7 @@ function printTicketDetail($type, $result) {
                             <th>Creation Date</th>
                             <th>Modification Date</th>
                             <th>Resolved Date</th>
-                            <th colspan='2' style='text-align: center;'> 
-                            <form action='' method='post' style='margin: 0;'>
-                                <select name='status' style='width: 100%;'> 
-                                    <option value='Open'>Open</option>
-                                    <option value='In progress'>In progress</option>
-                                    <option value='Closed'>Closed</option>
-                                </select>
-                                <input type='submit' value='Submit'>
-                            </form>
-                        </th>
+                            <th>Status</th>
                             <th>Subject</th>
                             <th>Description</th>
                             <th>Extra Text</th>
