@@ -2,6 +2,7 @@
 session_start();
 require("./php/editTicketAdminDetailConfirm.php");
 require("./php/databaseFunctions.php");
+require("./php/redirectFunctions.php");
 error_reporting(E_ALL);
 ?>
 
@@ -94,6 +95,9 @@ error_reporting(E_ALL);
 </head>
 
 <body>
+    <?php
+        if ($_SESSION["admin"]) {
+    ?>
     <!-- Google Tag Manager Start (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWQDVHW8" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
@@ -308,6 +312,11 @@ error_reporting(E_ALL);
     <br><br>
 
     <center><a href="./viewTicketAdmin.php" class="btn btn-primary py-3 px-5">Go back<i class="fa fa-arrow-right ms-3"></i></a></center>
+    <?php
+        } else {
+            echo redirectToIndexAdmin();
+        }
+    ?>
 </body>
 
 
