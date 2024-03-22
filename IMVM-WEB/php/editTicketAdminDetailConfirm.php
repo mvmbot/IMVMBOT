@@ -165,7 +165,7 @@ function printTicketDetail($type, $result, $id) {
                     </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th>" . "<th colspan='2' style='text-align: center;'>
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th>" . "<th style='text-align: center;'>
                                 <form action='./php/editTicketData.php' method='post' style='margin: 0;'>
                                     <input type='hidden' name='idTicket' value='" . $row["idTicket"] . "'>
                                     <select name='newState' style='width: 35%;'>
