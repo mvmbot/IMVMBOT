@@ -22,7 +22,7 @@ function editTicketDetail($conn, $type) {
             $result = $stmt->get_result();
 
             # Then just print the ticket
-            printTicketDetail($type, $result);
+            printTicketDetail($type, $result, $id);
             break;
 
         case 'bugReport':
@@ -45,7 +45,7 @@ function editTicketDetail($conn, $type) {
             $result = $stmt->get_result();
 
             # Then just print the ticket
-            printTicketDetail($type, $result);
+            printTicketDetail($type, $result, $id);
             break;
 
         case 'Feature Request':
@@ -68,7 +68,7 @@ function editTicketDetail($conn, $type) {
             $result = $stmt->get_result();
 
             # Then just print the ticket
-            printTicketDetail($type, $result);
+            printTicketDetail($type, $result, $id);
             break;
 
         case 'grammarIssues':
@@ -91,7 +91,7 @@ function editTicketDetail($conn, $type) {
             $result = $stmt->get_result();
 
             # Then just print the ticket
-            printTicketDetail($type, $result);
+            printTicketDetail($type, $result, $id);
             break;
 
         case 'Information Update':
@@ -114,7 +114,7 @@ function editTicketDetail($conn, $type) {
             $result = $stmt->get_result();
 
             # Then just print the ticket
-            printTicketDetail($type, $result);
+            printTicketDetail($type, $result, $id);
             break;
 
         case 'Other':
@@ -137,14 +137,14 @@ function editTicketDetail($conn, $type) {
             $result = $stmt->get_result();
 
             # Then just print the ticket
-            printTicketDetail($type, $result);
+            printTicketDetail($type, $result, $id);
             break;
         default:
             break;
     }
 }
 
-function printTicketDetail($type, $result) {
+function printTicketDetail($type, $result, $id) {
     switch ($type) {
         case 'helpSupport':
             try {
@@ -165,7 +165,17 @@ function printTicketDetail($type, $result) {
                     </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["file"] . "</th>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . "<th colspan='2' style='text-align: center;'>
+                                <form action='./php/editTicketData.php' method='post' style='margin: 0;'>
+                                    <input type='hidden' name='idTicket' value='" . $row["idTicket"] . "'>
+                                    <select name='newState' style='width: 35%;'>
+                                        <option value='Open'" . ($row["stateTicket"] === 'Open' ? ' selected' : '') . ">Open</option>
+                                        <option value='In progress'" . ($row["stateTicket"] === 'In progress' ? ' selected' : '') . ">In progress</option>
+                                        <option value='Closed'" . ($row["stateTicket"] === 'Closed' ? ' selected' : '') . ">Closed</option>
+                                    </select>
+                                    <br><input type='submit' value='Submit'>
+                                </form>
+                            </th>" . "</th><th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["file"] . "</th>";
                         echo "</tr>";
                     }
                     echo "</table>";
@@ -201,7 +211,17 @@ function printTicketDetail($type, $result) {
                         </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["operativeSystem"] . "</th><th>" . $row["description"] . "</th><th>" . $row["stepsToReproduce"] . "</th><th>" . $row["expectedResult"] . "</th><th>" . $row["receivedResult"] . "</th><th>" . $row["discordClient"] . "</th><th>" . $row["image"] . "</th>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . "<th colspan='2' style='text-align: center;'>
+                                <form action='./php/editTicketData.php' method='post' style='margin: 0;'>
+                                    <input type='hidden' name='idTicket' value='" . $row["idTicket"] . "'>
+                                    <select name='newState' style='width: 35%;'>
+                                        <option value='Open'" . ($row["stateTicket"] === 'Open' ? ' selected' : '') . ">Open</option>
+                                        <option value='In progress'" . ($row["stateTicket"] === 'In progress' ? ' selected' : '') . ">In progress</option>
+                                        <option value='Closed'" . ($row["stateTicket"] === 'Closed' ? ' selected' : '') . ">Closed</option>
+                                    </select>
+                                    <br><input type='submit' value='Submit'>
+                                </form>
+                            </th>" . "</th><th>" . $row["operativeSystem"] . "</th><th>" . $row["description"] . "</th><th>" . $row["stepsToReproduce"] . "</th><th>" . $row["expectedResult"] . "</th><th>" . $row["receivedResult"] . "</th><th>" . $row["discordClient"] . "</th><th>" . $row["image"] . "</th>";
                         echo "</tr>";
                     }
                     echo "</table>";
@@ -231,7 +251,17 @@ function printTicketDetail($type, $result) {
                         </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["requestType"] . "</th>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . "<th colspan='2' style='text-align: center;'>
+                                <form action='./php/editTicketData.php' method='post' style='margin: 0;'>
+                                    <input type='hidden' name='idTicket' value='" . $row["idTicket"] . "'>
+                                    <select name='newState' style='width: 35%;'>
+                                        <option value='Open'" . ($row["stateTicket"] === 'Open' ? ' selected' : '') . ">Open</option>
+                                        <option value='In progress'" . ($row["stateTicket"] === 'In progress' ? ' selected' : '') . ">In progress</option>
+                                        <option value='Closed'" . ($row["stateTicket"] === 'Closed' ? ' selected' : '') . ">Closed</option>
+                                    </select>
+                                    <br><input type='submit' value='Submit'>
+                                </form>
+                            </th>" . "</th><th>" . $row["subject"] . "</th><th>" . $row["requestType"] . "</th>";
                         echo "</tr>";
                     }
                     echo "</table>";
@@ -262,7 +292,17 @@ function printTicketDetail($type, $result) {
                     </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["image"] . "</th>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . "<th colspan='2' style='text-align: center;'>
+                                <form action='./php/editTicketData.php' method='post' style='margin: 0;'>
+                                    <input type='hidden' name='idTicket' value='" . $row["idTicket"] . "'>
+                                    <select name='newState' style='width: 35%;'>
+                                        <option value='Open'" . ($row["stateTicket"] === 'Open' ? ' selected' : '') . ">Open</option>
+                                        <option value='In progress'" . ($row["stateTicket"] === 'In progress' ? ' selected' : '') . ">In progress</option>
+                                        <option value='Closed'" . ($row["stateTicket"] === 'Closed' ? ' selected' : '') . ">Closed</option>
+                                    </select>
+                                    <br><input type='submit' value='Submit'>
+                                </form>
+                            </th>" . "</th><th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["image"] . "</th>";
                         echo "</tr>";
                     }
                     echo "</table>";
@@ -292,7 +332,17 @@ function printTicketDetail($type, $result) {
                     </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["updateInfo"] . "</th>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . "<th colspan='2' style='text-align: center;'>
+                                <form action='./php/editTicketData.php' method='post' style='margin: 0;'>
+                                    <input type='hidden' name='idTicket' value='" . $row["idTicket"] . "'>
+                                    <select name='newState' style='width: 35%;'>
+                                        <option value='Open'" . ($row["stateTicket"] === 'Open' ? ' selected' : '') . ">Open</option>
+                                        <option value='In progress'" . ($row["stateTicket"] === 'In progress' ? ' selected' : '') . ">In progress</option>
+                                        <option value='Closed'" . ($row["stateTicket"] === 'Closed' ? ' selected' : '') . ">Closed</option>
+                                    </select>
+                                    <br><input type='submit' value='Submit'>
+                                </form>
+                            </th>" . "</th><th>" . $row["subject"] . "</th><th>" . $row["updateInfo"] . "</th>";
                         echo "</tr>";
                     }
                     echo "</table>";
@@ -323,7 +373,19 @@ function printTicketDetail($type, $result) {
                     </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["extraText"] . "</th>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" .
+                            "<th colspan='2' style='text-align: center;'>
+                                <form action='./php/editTicketData.php' method='post' style='margin: 0;'>
+                                    <input type='hidden' name='idTicket' value='" . $row["idTicket"] . "'>
+                                    <select name='newState' style='width: 35%;'>
+                                        <option value='Open'" . ($row["stateTicket"] === 'Open' ? ' selected' : '') . ">Open</option>
+                                        <option value='In progress'" . ($row["stateTicket"] === 'In progress' ? ' selected' : '') . ">In progress</option>
+                                        <option value='Closed'" . ($row["stateTicket"] === 'Closed' ? ' selected' : '') . ">Closed</option>
+                                    </select>
+                                    <br><input type='submit' value='Submit'>
+                                </form>
+                            </th>"
+                        . "</th><th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["extraText"] . "</th>";
                         echo "</tr>";
                     }
                     echo "</table>";
