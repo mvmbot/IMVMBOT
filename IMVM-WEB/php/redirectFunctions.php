@@ -6,6 +6,7 @@ define('INDEX_PAGE', '../index.php');
 define('TICKET_PAGE', '../createTicket.php');
 define('INDEX_PAGE_ADMIN', '../index.php');
 define('VIEW_TICKET_ADMIN_PAGE', '../viewTicketAdmin.php');
+define ('VIEW_TICKET_PAGE', '../viewTicket.php');
 #endregion
 
 #region functions --- Redirects to our pages
@@ -43,5 +44,10 @@ function redirectToTicket() {
 # Function to redirect to the view tickets as admin page
 function redirectToViewTicketAdmin() {
     header('Location: ' . VIEW_TICKET_ADMIN_PAGE);
+    exit;
+}
+
+function redirectToViewTicket() {
+    header('Location: ' . VIEW_TICKET_PAGE);
     exit;
 }

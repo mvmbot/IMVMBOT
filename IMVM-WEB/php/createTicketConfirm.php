@@ -31,7 +31,7 @@ switch ($type) {
         $subject = $_POST['subjectHelpSupportFields'] ?? '';
         $description = $_POST['descriptionHelpSupportFields'] ?? '';
         $fieldsToCheck = ['subjectHelpSupportFields', 'descriptionHelpSupportFields'];
-        
+
         $fileAttachment = $targetDirectory . basename($_FILES["fileAttachmentHelpSupportFields"]);
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
@@ -138,4 +138,4 @@ switch ($type) {
         break;
     #endregion
 }
-redirectToIndex();
+redirectToViewTicket();
