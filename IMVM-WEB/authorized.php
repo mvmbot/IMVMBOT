@@ -288,7 +288,7 @@ error_reporting(E_ALL);
     </nav>
 
     <!-- Navbar End -->
-            <h1>TEXTO</h1>
+    <h4 class="text-light mb-4">Te has logueado correctamente, ya puedes cerrar esta ventana.</h4>
 </body>
 
 
