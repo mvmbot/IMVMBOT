@@ -152,7 +152,7 @@ function printTicketAdmin($type, $result) {
                     }
                     echo "</table>";
                 } else {
-                    echo "<p>No tickets of this type!</p>";
+                    echo "<h2>No tickets of this type!</h2>";
                 }
             } catch (Exception $e) {
                 showError("Error: " . $e->getMessage());
@@ -180,7 +180,7 @@ function printTicketAdmin($type, $result) {
                     }
                     echo "</table>";
                 } else {
-                    echo "<p>No tickets of this type!</p>";
+                    echo "<h2>No tickets of this type!</h2>";
                 }
             } catch (Exception $e) {
                 showError("Error: " . $e->getMessage());
@@ -193,7 +193,9 @@ function printTicketAdmin($type, $result) {
                     echo "<table class='table' id='ticketTable3' style='background-color: #9900ff; color: white;'>
                         <thead>
                         <tr>
+                        <th>ID User</th>
                         <th>Ticket No.</th>
+                        <th>Username</th>
                         <th>Type</th>
                         <th>Status</th>
                         <th>Subject</th>
@@ -207,7 +209,7 @@ function printTicketAdmin($type, $result) {
                     }
                     echo "</table>";
                 } else {
-                    echo "<p>No tickets of this type!</p>";
+                    echo "<h2>No tickets of this type!</h2>";
                 }
             } catch (Exception $e) {
                 showError("Error: " . $e->getMessage());
@@ -234,7 +236,7 @@ function printTicketAdmin($type, $result) {
                     }
                     echo "</table>";
                 } else {
-                    echo "<p>No tickets of this type!</p>";
+                    echo "<h2>No tickets of this type!</h2>";
                 }
             } catch (Exception $e) {
                 showError("Error: " . $e->getMessage());
@@ -247,7 +249,9 @@ function printTicketAdmin($type, $result) {
                     echo "<table class='table' id='ticketTable5' style='background-color: #9900ff; color: white;'>
                     <thead>
                     <tr>
+                    <th>ID User</th>
                     <th>Ticket No.</th>
+                    <th>Username</th>
                     <th>Type</th>
                     <th>Status</th>
                     <th>Subject</th>
@@ -261,7 +265,7 @@ function printTicketAdmin($type, $result) {
                     }
                     echo "</table>";
                 } else {
-                    echo "<p>No tickets of this type!</p>";
+                    echo "<h2>No tickets of this type!</h2>";
                 }
             } catch (Exception $e) {
                 showError("Error: " . $e->getMessage());
@@ -290,7 +294,7 @@ function printTicketAdmin($type, $result) {
                     }
                     echo "</table>";
                 } else {
-                    echo "<p>No tickets of this type!</p>";
+                    echo "<h2>No tickets of this type!</h2>";
                 }
             } catch (Exception $e) {
                 showError("Error: " . $e->getMessage());
