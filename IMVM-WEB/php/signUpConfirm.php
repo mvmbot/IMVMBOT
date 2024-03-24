@@ -11,16 +11,16 @@ require("errorAlerts.php");
 #endregion
 
 #region errors
-# Turn on the lights to see any coding errors!
+# Turn on the lights to see any coding errors
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 #endregion
 
-# Now, let's connect to our incredible database!
+# Now, let's connect to our database
 $conn = connectToDatabase();
 
 #region Variable declaration
-# Hey, give me the data from the user's form, okay? Thanks!
+# Get all the data and validate it.
 $username = $_POST['username'] ?? '';
 $name = $_POST['name'] ?? '';
 $surname = $_POST['surname'] ?? '';
@@ -28,6 +28,10 @@ $mail = $_POST['mail'] ?? '';
 $password = $_POST['password'] ?? '';
 $confirmPassword = $_POST['confirmPassword'] ?? '';
 $newsletterCheckBox = isset($_POST['newsletterCheckBox']) ? 1 : 0;
+
+$username = htmlspecialchars($username);
+$name = htmlspecialchars($name);
+$surname = htmlspecialchars($surname);
 #endregion
 
 # Oops! Did they forget to check the privacy box?

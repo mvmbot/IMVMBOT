@@ -39,6 +39,9 @@ switch ($type) {
             redirectToTicket();
         }
 
+        $subject = htmlspecialchars($subject);
+        $description = htmlspecialchars($description);
+
         # Now we create the Ticket with the parameters we just took from the user's form
         createTicketHelpSupport($conn, $subject, $fileAttachment, $description);
         break;
@@ -61,6 +64,14 @@ switch ($type) {
             redirectToTicket();
         }
 
+        $subject = htmlspecialchars($subject);
+        $bugDescription = htmlspecialchars($bugDescription);
+        $stepsToReproduce = htmlspecialchars($stepsToReproduce);
+        $expectedResult = htmlspecialchars($expectedResult);
+        $receivedResult = htmlspecialchars($expectedResult);
+        $discordClient = htmlspecialchars($discordClient);
+        $bugImage = htmlspecialchars($bugImage);
+
         # Now we create the Ticket with the parameters we just took from the user's form
         createTicketBugReport($conn, $requestType, $subject, $bugDescription, $stepsToReproduce, $expectedResult, $receivedResult, $discordClient, $bugImage);
         break;
@@ -77,6 +88,10 @@ switch ($type) {
         if (areFieldsEmpty($fieldsToCheck)) {
             redirectToTicket();
         }
+
+        $subject = htmlspecialchars($subject);
+        $description = htmlspecialchars($description);
+
 
         # Now we create the Ticket with the parameters we just took from the user's form
         createTicketFeatureRequest($conn, $requestType, $subject, $description);
@@ -95,6 +110,9 @@ switch ($type) {
             redirectToTicket();
         }
 
+        $subject = htmlspecialchars($subject);
+        $description = htmlspecialchars($description);
+
         # Now we create the Ticket with the parameters we just took from the user's form
         createTicketGrammarIssues($conn, $subject, $description, $fileAttachment);
         break;
@@ -110,6 +128,9 @@ switch ($type) {
         if (areFieldsEmpty($fieldsToCheck)) {
             redirectToTicket();
         }
+
+        $subject = htmlspecialchars($subject);
+        $updateInfo = htmlspecialchars($updateInfo);
 
         # Now we create the Ticket with the parameters we just took from the user's form
         createTicketInformationUpdate($conn, $subject, $updateInfo);
@@ -127,6 +148,10 @@ switch ($type) {
         if (areFieldsEmpty($fieldsToCheck)) {
             redirectToTicket();
         }
+
+        $subject = htmlspecialchars($subject);
+        $description = htmlspecialchars($description);
+        $extraText = htmlspecialchars($extraText);
 
         # Now we create the Ticket with the parameters we just took from the user's form
         createTicketOther($conn, $subject, $description, $extraText);
