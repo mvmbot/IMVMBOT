@@ -149,8 +149,8 @@ function printTicketDetail($type, $result, $id) {
         case 'helpSupport':
             try {
                 if ($result->num_rows > 0) {
-                    echo "<table class='table' id='ticketTable1' style='background-color:rgb(255, 255, 255)'>
-                    <thead>
+                    echo "<table class='table' id='ticketTable1' style='background-color: #9900ff; color: white;'>
+                        <thead>
                         <tr>
                             <th>Ticket No.</th>
                             <th>Type</th>
@@ -164,8 +164,8 @@ function printTicketDetail($type, $result, $id) {
                         </tr>
                     </thead>";
                     while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th>" . "<th colspan='2' style='text-align: center;'>
+                        echo "<tr style='background-color: white; color: #9900ff;'>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th>" . "<th style='text-align: center;'>
                                 <form action='./php/editTicketData.php' method='post' style='margin: 0;'>
                                     <input type='hidden' name='idTicket' value='" . $row["idTicket"] . "'>
                                     <select name='newState' style='width: 35%;'>
@@ -190,7 +190,7 @@ function printTicketDetail($type, $result, $id) {
         case 'bugReport':
             try {
                 if ($result->num_rows > 0) {
-                    echo "<table class='table' id='ticketTable2' style='background-color:rgb(255, 255, 255)'>
+                    echo "<table class='table' id='ticketTable2' style='background-color: #9900ff; color: white;'>
                         <thead>
                             <tr>
                                 <th>Ticket No.</th>
@@ -210,8 +210,8 @@ function printTicketDetail($type, $result, $id) {
                                 </tr>
                         </thead>";
                     while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th>" . "<th colspan='2' style='text-align: center;'>
+                        echo "<tr style='background-color: white; color: #9900ff;'>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th>" . "<th style='text-align: center;'>
                                 <form action='./php/editTicketData.php' method='post' style='margin: 0;'>
                                     <input type='hidden' name='idTicket' value='" . $row["idTicket"] . "'>
                                     <select name='newState' style='width: 35%;'>
@@ -236,7 +236,7 @@ function printTicketDetail($type, $result, $id) {
         case 'Feature Request':
             try {
                 if ($result->num_rows > 0) {
-                    echo "<table class='table' id='ticketTable3' style='background-color:rgb(255, 255, 255)'>
+                    echo "<table class='table' id='ticketTable3' style='background-color: #9900ff; color: white;'>
                         <thead>
                             <tr>
                                 <th>Ticket No.</th>
@@ -250,8 +250,8 @@ function printTicketDetail($type, $result, $id) {
                                 </tr>
                         </thead>";
                     while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th>" . "<th colspan='2' style='text-align: center;'>
+                        echo "<tr style='background-color: white; color: #9900ff;'>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th>" . "<th style='text-align: center;'>
                                 <form action='./php/editTicketData.php' method='post' style='margin: 0;'>
                                     <input type='hidden' name='idTicket' value='" . $row["idTicket"] . "'>
                                     <select name='newState' style='width: 35%;'>
@@ -276,8 +276,8 @@ function printTicketDetail($type, $result, $id) {
         case 'grammarIssues':
             try {
                 if ($result->num_rows > 0) {
-                    echo "<table class='table' id='ticketTable4' style='background-color:rgb(255, 255, 255)'>
-                    <thead>
+                    echo "<table class='table' id='ticketTable4' style='background-color: #9900ff; color: white;'>
+                        <thead>
                         <tr>
                             <th>Ticket No.</th>
                             <th>Type</th>
@@ -291,8 +291,8 @@ function printTicketDetail($type, $result, $id) {
                         </tr>
                     </thead>";
                     while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th>" . "<th colspan='2' style='text-align: center;'>
+                        echo "<tr style='background-color: white; color: #9900ff;'>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th>" . "<th style='text-align: center;'>
                                 <form action='./php/editTicketData.php' method='post' style='margin: 0;'>
                                     <input type='hidden' name='idTicket' value='" . $row["idTicket"] . "'>
                                     <select name='newState' style='width: 35%;'>
@@ -317,8 +317,8 @@ function printTicketDetail($type, $result, $id) {
         case 'Information Update':
             try {
                 if ($result->num_rows > 0) {
-                    echo "<table class='table' id='ticketTable5' style='background-color:rgb(255, 255, 255)'>
-                    <thead>
+                    echo "<table class='table' id='ticketTable5' style='background-color: #9900ff; color: white;'>
+                        <thead>
                         <tr>
                             <th>Ticket No.</th>
                             <th>Type</th>
@@ -331,8 +331,8 @@ function printTicketDetail($type, $result, $id) {
                         </tr>
                     </thead>";
                     while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th>" . "<th colspan='2' style='text-align: center;'>
+                        echo "<tr style='background-color: white; color: #9900ff;'>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th>" . "<th style='text-align: center;'>
                                 <form action='./php/editTicketData.php' method='post' style='margin: 0;'>
                                     <input type='hidden' name='idTicket' value='" . $row["idTicket"] . "'>
                                     <select name='newState' style='width: 35%;'>
@@ -357,8 +357,8 @@ function printTicketDetail($type, $result, $id) {
         case 'Other':
             try {
                 if ($result->num_rows > 0) {
-                    echo "<table class='table' id='ticketTable6' style='background-color:rgb(255, 255, 255)'>
-                    <thead>
+                    echo "<table class='table' id='ticketTable6' style='background-color: #9900ff; color: white;'>
+                        <thead>
                         <tr>
                             <th>Ticket No.</th>
                             <th>Type</th>
@@ -372,9 +372,9 @@ function printTicketDetail($type, $result, $id) {
                         </tr>
                     </thead>";
                     while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
+                        echo "<tr style='background-color: white; color: #9900ff;'>";
                         echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th>" .
-                            "<th colspan='2' style='text-align: center;'>
+                            "<th style='text-align: center;'>
                                 <form action='./php/editTicketData.php' method='post' style='margin: 0;'>
                                     <input type='hidden' name='idTicket' value='" . $row["idTicket"] . "'>
                                     <select name='newState' style='width: 35%;'>

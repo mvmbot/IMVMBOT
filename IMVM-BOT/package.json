@@ -2,8 +2,9 @@
   "dependencies": {
     "@discordjs/builders": "^1.7.0",
     "@discordjs/rest": "^2.2.0",
+    "@googleapis/classroom": "^4.0.7",
     "@iamtraction/google-translate": "github:iamtraction/google-translate",
-    "axios": "^1.6.5",
+    "axios": "^1.6.8",
     "commandkit": "^0.1.6",
     "discord-api-types": "^0.37.66",
     "discord-html-transcripts": "^3.2.0",

@@ -1,3 +1,6 @@
+/// En consola ponemos npm i discord-html-transcripts
+/// Dentro de la carpeta interactions creamos un archivo llamado transcript y agregamos
+
 const { EmbedBuilder,AttachmentBuilder, ChannelType, PermissionsBitField, ActionRowBuilder, ButtonBuilder, ButtonStyle, ComponentType, ModalBuilder,TextInputBuilder, TextInputStyle, StringSelectMenuBuilder, Events, GatewayIntentBits, Partials  } = require('discord.js')
     const { createTranscript } = require('discord-html-transcripts')
 
@@ -14,7 +17,7 @@ const posChannel = guild.channels.cache.find(c =>
         returnBuffer: false,
         filename: `ticket-${posChannel}.html`,
       });
-      const e = interaction.guild.channels.cache.get("1164953382327439432")
+      const e = interaction.guild.channels.cache.get("ID DEL CANAL DE LOGS")
       const transcriptEmbed = new EmbedBuilder()
       .setAuthor({ name: `${interaction.guild.name}'s Transcript`, iconURL: guild.iconURL() })
       .addFields(
