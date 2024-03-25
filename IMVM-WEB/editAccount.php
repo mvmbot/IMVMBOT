@@ -12,6 +12,25 @@ session_start();
     <meta name="keywords" content="IESMVMBOT, classroom discord bot, mvmbot, insmvmbot, mvm, discord bot" />
     <meta name="description" content="The best Discord bot for School alumns. " />
 
+    <!-- Google Tag Manager Start -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PWQDVHW8');
+    </script>
+    <!-- Google Tag Manager End -->
+
     <!-- Favicon -->
     <link rel="icon" href="IMVM-WEB/img/faviimvm.ico" type="image/x-icon" />
 
@@ -34,10 +53,7 @@ session_start();
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet" />
-    <link rel="stylesheet" href="./css/cssRegister.css">
 
-    <!-- Javascript validation -->
-    <script src="./js/validation.js"></script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PXHDMQQ0XY"></script>
@@ -51,26 +67,6 @@ session_start();
 
         gtag('config', 'G-PXHDMQQ0XY');
     </script>
-
-
-    <!-- Google Tag Manager Start -->
-    <script>
-        (function(w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({
-                'gtm.start': new Date().getTime(),
-                event: 'gtm.js'
-            });
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s),
-                dl = l != 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-PWQDVHW8');
-    </script>
-    <!-- Google Tag Manager End -->
 
     <!-- Google Translator Start -->
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
@@ -178,12 +174,12 @@ session_start();
                         <!-- Enlace para LOG OUT -->
                         <a href="./php/logout.php" class="nav-item nav-link" style="color: white;">LOG OUT</a>
                         <?php
-                        if ($_SESSION["user"]) {
+                            if ($_SESSION["user"]) {
                         ?>
-                            <!-- Enlace para EDIT ACCOUNT -->
-                            <a href="./php/editAccount.php" class="nav-item nav-link" style="color: white;"> Edit account</a>
+                        <!-- Enlace para EDIT ACCOUNT -->
+                        <a href="./php/editAccount.php" class="nav-item nav-link" style="color: white;"> Edit account</a>
                         <?php
-                        }
+                            }
                         ?>
                     </div>
                 </div>
@@ -264,31 +260,10 @@ session_start();
     </nav>
 
     <!-- Navbar End -->
-    <br><br>
-    <div class="form-container">
-        <p class="title">
-            Sign in to IESMVMBOT as a Admin
-        </p>
-        <form class="form" action="./php/signInAdminConfirm.php" method="POST" onsubmit="validateFormSignIn()">
-            <div class="input-group">
-                <label for="usernameAdmin">Username</label>
-                <input type="text" name="usernameAdmin" id="usernameAdmin" placeholder="">
-            </div>
 
-            <div class="input-group">
-                <label for="passwordAdmin">Password</label>
-                <input type="password" name="passwordAdmin" id="passwordAdmin" placeholder="">
-                <div class="forgot">
-                    <a rel="noopener noreferrer" href="#">
-                        Forgot password?</a>
-                </div>
-            </div>
-            <button type="submit" class="sign" name="signup">Sign In</button>
-        </form>
-    </div>
 
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+     <!-- Footer Start -->
+     <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">

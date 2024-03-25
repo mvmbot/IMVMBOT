@@ -142,9 +142,6 @@ session_start();
     </div>
 
 
-    <!-- Topbar End -->
-
-
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
         <a href="index.php" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
@@ -177,6 +174,14 @@ session_start();
                         <a href="./signin.php" class="nav-item nav-link" style="color: white;">SIGN IN</a>
                         <!-- Enlace para LOG OUT -->
                         <a href="./php/logout.php" class="nav-item nav-link" style="color: white;">LOG OUT</a>
+                        <?php
+                        if ($_SESSION["user"]) {
+                        ?>
+                            <!-- Enlace para EDIT ACCOUNT -->
+                            <a href="./php/editAccount.php" class="nav-item nav-link" style="color: white;"> Edit account</a>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
                 <?php

@@ -174,6 +174,14 @@ session_start();
                         <a href="./signin.php" class="nav-item nav-link" style="color: white;">SIGN IN</a>
                         <!-- Enlace para LOG OUT -->
                         <a href="./php/logout.php" class="nav-item nav-link" style="color: white;">LOG OUT</a>
+                        <?php
+                        if ($_SESSION["user"]) {
+                        ?>
+                            <!-- Enlace para EDIT ACCOUNT -->
+                            <a href="./php/editAccount.php" class="nav-item nav-link" style="color: white;"> Edit account</a>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
                 <?php
@@ -235,7 +243,7 @@ session_start();
             <?php
             } else if ($_SESSION["admin"]) {
             ?>
-                <a href="" class="btn btn-primary py-4 pFx-lg-5 d-none d-lg-block">
+                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
                     <?php echo $_SESSION['admin'] ?><i><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" class="svg-icon">
                             <style>
                                 .svg-icon {

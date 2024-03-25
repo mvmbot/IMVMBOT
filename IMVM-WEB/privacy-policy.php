@@ -174,6 +174,14 @@ session_start();
                         <a href="./signin.php" class="nav-item nav-link" style="color: white;">SIGN IN</a>
                         <!-- Enlace para LOG OUT -->
                         <a href="./php/logout.php" class="nav-item nav-link" style="color: white;">LOG OUT</a>
+                        <?php
+                        if ($_SESSION["user"]) {
+                        ?>
+                            <!-- Enlace para EDIT ACCOUNT -->
+                            <a href="./php/editAccount.php" class="nav-item nav-link" style="color: white;"> Edit account</a>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
                 <?php
