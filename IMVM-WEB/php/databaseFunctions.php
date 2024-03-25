@@ -294,7 +294,7 @@ function printUserData($conn) {
 
 function getUserData($conn, $username) {
     # We prepare a SQL that gets all the data, simples as that 🦆
-    $sql = "SELECT nameUsers, surnameUsers, emailUsers WHERE usernameUsers=?";
+    $sql = "SELECT nameUsers, surnameUsers, emailUsers FROM users WHERE usernameUsers=?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param('s', $username);
     $stmt->execute();
