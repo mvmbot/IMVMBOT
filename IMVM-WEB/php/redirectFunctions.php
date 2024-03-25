@@ -7,6 +7,8 @@ define('TICKET_PAGE', '../createTicket.php');
 define('INDEX_PAGE_ADMIN', '../index.php');
 define('VIEW_TICKET_ADMIN_PAGE', '../viewTicketAdmin.php');
 define ('VIEW_TICKET_PAGE', '../viewTicket.php');
+define('VIEW_PROFILE_PAGE', '../viewProfile.php');
+define('EDIT_PROFILE_PAGE', '../editProfile.php');
 #endregion
 
 #region functions --- Redirects to our pages
@@ -49,5 +51,15 @@ function redirectToViewTicketAdmin() {
 
 function redirectToViewTicket() {
     header('Location: ' . VIEW_TICKET_PAGE);
+    exit;
+}
+
+function redirectToViewProfile() {
+    header('Location: ' . VIEW_PROFILE_PAGE);
+    exit;
+}
+
+function redirectToEditProfile() {
+    header('Location: ' . EDIT_PROFILE_PAGE);
     exit;
 }
