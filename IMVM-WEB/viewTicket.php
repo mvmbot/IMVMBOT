@@ -183,7 +183,7 @@ error_reporting(E_ALL);
                         if ($_SESSION["user"]) {
                         ?>
                             <!-- Enlace para EDIT ACCOUNT -->
-                            <a href="./php/editAccount.php" class="nav-item nav-link" style="color: white;"> Edit account</a>
+                            <a href="./editAccount.php" class="nav-item nav-link" style="color: white;"> Edit account</a>
                         <?php
                         }
                         ?>

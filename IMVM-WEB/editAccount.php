@@ -174,12 +174,12 @@ session_start();
                         <!-- Enlace para LOG OUT -->
                         <a href="./php/logout.php" class="nav-item nav-link" style="color: white;">LOG OUT</a>
                         <?php
-                            if ($_SESSION["user"]) {
+                        if ($_SESSION["user"]) {
                         ?>
-                        <!-- Enlace para EDIT ACCOUNT -->
-                        <a href="./php/editAccount.php" class="nav-item nav-link" style="color: white;"> Edit account</a>
+                            <!-- Enlace para EDIT ACCOUNT -->
+                            <a href="./editAccount.php" class="nav-item nav-link" style="color: white;"> Edit account</a>
                         <?php
-                            }
+                        }
                         ?>
                     </div>
                 </div>
@@ -261,9 +261,12 @@ session_start();
 
     <!-- Navbar End -->
 
+    <?php
 
-     <!-- Footer Start -->
-     <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+    ?>
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
