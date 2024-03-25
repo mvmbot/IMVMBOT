@@ -16,3 +16,11 @@ function areFieldsEmpty($fields) {
     return false;
 }
 #endregion
+
+#region Function --- Simple function to sanitize the variables to try to stop Albert for destroying completely our website 🦆
+function sanitizeInputs($inputs) {
+    foreach ($inputs as $input) {
+        return $input = htmlspecialchars($input);
+    }
+}
+#endregion
