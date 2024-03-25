@@ -43,10 +43,10 @@ switch ($type) {
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
         if ($varCheck === true) {
             redirectToTicket();
-        } else {
-            # Now we create the Ticket with the parameters we just took from the user's form
-            createTicketHelpSupport($conn, $subject, $fileAttachment, $description);
         }
+        # Now we create the Ticket with the parameters we just took from the user's form
+        createTicketHelpSupport($conn, $subject, $fileAttachment, $description);
+
         break;
         #endregion
 
@@ -77,10 +77,10 @@ switch ($type) {
 
         if ($varCheck === true) {
             redirectToTicket();
-        } else {
-            # Now we create the Ticket with the parameters we just took from the user's form
-            createTicketBugReport($conn, $requestType, $subject, $bugDescription, $stepsToReproduce, $expectedResult, $receivedResult, $discordClient, $bugImage);
         }
+        # Now we create the Ticket with the parameters we just took from the user's form
+        createTicketBugReport($conn, $requestType, $subject, $bugDescription, $stepsToReproduce, $expectedResult, $receivedResult, $discordClient, $bugImage);
+
         break;
         #endregion
 
@@ -122,10 +122,10 @@ switch ($type) {
 
         if ($varCheck === true) {
             redirectToTicket();
-        } else {
-            # Now we create the Ticket with the parameters we just took from the user's form
-            createTicketGrammarIssues($conn, $subject, $description, $fileAttachment);
         }
+        # Now we create the Ticket with the parameters we just took from the user's form
+        createTicketGrammarIssues($conn, $subject, $description, $fileAttachment);
+
         break;
         #endregion
 
@@ -143,10 +143,10 @@ switch ($type) {
 
         if ($varCheck === true) {
             redirectToTicket();
-        } else {
-            # Now we create the Ticket with the parameters we just took from the user's form
-            createTicketInformationUpdate($conn, $subject, $updateInfo);
         }
+        # Now we create the Ticket with the parameters we just took from the user's form
+        createTicketInformationUpdate($conn, $subject, $updateInfo);
+
         break;
         #endregion
 
@@ -166,10 +166,10 @@ switch ($type) {
 
         if ($varCheck === true) {
             redirectToTicket();
-        } else {
-            # Now we create the Ticket with the parameters we just took from the user's form
-            createTicketOther($conn, $subject, $description, $extraText);
         }
+        # Now we create the Ticket with the parameters we just took from the user's form
+        createTicketOther($conn, $subject, $description, $extraText);
+
         break;
         #endregion
 
