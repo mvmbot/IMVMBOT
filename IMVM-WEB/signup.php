@@ -180,8 +180,8 @@ session_start();
                         <?php
                         if ($_SESSION["user"]) {
                         ?>
-                            <!-- Enlace para EDIT ACCOUNT -->
-                            <a href="./editAccount.php" class="nav-item nav-link" style="color: white;"> Edit account</a>
+                            <!-- Enlace para VIEW PROFILE -->
+                            <a href="./viewProfile.php" class="nav-item nav-link" style="color: white;"> View profile</a>
                         <?php
                         }
                         ?>

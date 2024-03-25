@@ -163,19 +163,19 @@ function printTicketDetail($type, $result) {
                     </tr>
                 </thead>
                 <tbody>";
-            while ($row = $result->fetch_assoc()) {
-                echo "<tr style='background-color: white; color: #9900ff;'>";
-                echo "<td>" . $row["idTicket"] . "</td><td>" . $row["typeTicket"] . "</td><td>" . $row["creationDate"] . "</td><td>" . $row["modificationDate"] . "</td><td>" . $row["resolvedDate"] . "</td><td>" . $row["stateTicket"] . "</td><td>" . $row["subject"] . "</td><td>" . $row["description"] . "</td><td>" . $row["file"] . "</td>";
-                echo "</tr>";
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr style='background-color: white; color: #9900ff;'>";
+                        echo "<td>" . $row["idTicket"] . "</td><td>" . $row["typeTicket"] . "</td><td>" . $row["creationDate"] . "</td><td>" . $row["modificationDate"] . "</td><td>" . $row["resolvedDate"] . "</td><td>" . $row["stateTicket"] . "</td><td>" . $row["subject"] . "</td><td>" . $row["description"] . "</td><td>" . $row["file"] . "</td>";
+                        echo "</tr>";
+                    }
+                    echo "</tbody></table>";
+                } else {
+                    echo "<p>Error, no ticket selected!</p>";
+                }
+            } catch (Exception $e) {
+                showError("Error: " . $e->getMessage());
             }
-            echo "</tbody></table>";
-        } else {
-            echo "<p>Error, no ticket selected!</p>";
-        }
-    } catch (Exception $e) {
-        showError("Error: " . $e->getMessage());
-    }
-    break;
+            break;
 
         case 'bugReport':
             try {

@@ -1,5 +1,9 @@
 <?php
 session_start();
+require("./php/viewTicketDetailConfirm.php");
+require("./php/databaseFunctions.php");
+error_reporting(E_ALL);
+$conn = connectToDatabase();
 ?>
 
 <!DOCTYPE html>
@@ -176,8 +180,8 @@ session_start();
                         <?php
                         if ($_SESSION["user"]) {
                         ?>
-                            <!-- Enlace para EDIT ACCOUNT -->
-                            <a href="./editAccount.php" class="nav-item nav-link" style="color: white;"> Edit account</a>
+                            <!-- Enlace para VIEW PROFILE -->
+                            <a href="./viewProfile.php" class="nav-item nav-link" style="color: white;"> View profile</a>
                         <?php
                         }
                         ?>
@@ -261,9 +265,18 @@ session_start();
 
     <!-- Navbar End -->
 
-    <?php
-
-    ?>
+    <h1>Your profile</h1>
+    <table class='table' id='ticketTable6' style='background-color:rgb(255, 255, 255)'>
+        <thead>
+            <th>Username</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Email</th>
+        </thead>
+        <?php
+        echo printUserData($conn);
+        ?>
+    </table>
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">

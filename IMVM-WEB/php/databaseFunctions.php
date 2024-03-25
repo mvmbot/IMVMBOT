@@ -275,3 +275,31 @@ function createTicketOther($conn, $subject, $description, $extraText) {
     }
 }
 #endregion
+
+#region --- Show the user's profile
+function printUserData($conn) {
+    # First, we grab the username of the user that's currently logged in to get all it's data from the database
+    $username = $_SESSION["user"];
+
+    # Now, we call a function that will do the SQL for us and will return the result
+    $result = getUserData($conn, $username);
+
+    # We create a $row variable to print the data
+    while ($row = $result->fetch_assoc()) {
+        echo "<tr style='background-color: white; color: #9900ff;'>";
+        echo "<td>" . $_SESSION["user"] . "</td><td>" . $row["nameUsers"] . "</td><td>" . $row["surnameUsers"] . "</td><td>" . $row["emailUsers"] . "</td>";
+        echo "</tr>";
+    }
+}
+
+function getUserData($conn, $username) {
+    # We prepare a SQL that gets all the data, simples as that 🦆
+    $sql = "SELECT nameUsers, surnameUsers, emailUsers WHERE usernameUsers=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('s', $username);
+    $stmt->execute();
+
+    # Once executed, store the result in variable $result and return it
+    return $result = $stmt->get_result();
+}
+#endregion
