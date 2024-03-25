@@ -26,142 +26,156 @@ $targetDirectory =  './userUploads/'; # Directory where images should
 # Switch case to fill the values from every possible type
 switch ($type) {
 
-    #region Help & Support
+        #region Help & Support
     case 'helpSupport':
         $subject = $_POST['subjectHelpSupportFields'] ?? '';
         $description = $_POST['descriptionHelpSupportFields'] ?? '';
-        $fieldsToCheck = ['subjectHelpSupportFields', 'descriptionHelpSupportFields'];
 
-        $fileAttachment = $targetDirectory . basename($_FILES["fileAttachmentHelpSupportFields"]);
+        $inputs = array(
+            $subject,
+            $description
+        );
+
+        $varCheck = sanitizeInputsAndCheckEmpty($inputs);
+
+        #$fileAttachment = $targetDirectory . basename($_FILES["fileAttachmentHelpSupportFields"]);
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
-        if (areFieldsEmpty($fieldsToCheck)) {
+        if ($varCheck === true) {
             redirectToTicket();
+        } else {
+            # Now we create the Ticket with the parameters we just took from the user's form
+            createTicketHelpSupport($conn, $subject, $fileAttachment, $description);
         }
-
-        $subject = htmlspecialchars($subject);
-        $description = htmlspecialchars($description);
-
-
-        # Now we create the Ticket with the parameters we just took from the user's form
-        createTicketHelpSupport($conn, $subject, $fileAttachment, $description);
         break;
-    #endregion
+        #endregion
 
-    #region Bug Reporting
+        #region Bug Reporting
     case 'bugReport':
-        $requestType = $_POST['requestTypeBugReportFields']?? '';
-        $subject = $_POST['subjectBugReportFields']?? '';
+        $requestType = $_POST['requestTypeBugReportFields'] ?? '';
+        $subject = $_POST['subjectBugReportFields'] ?? '';
         $bugDescription = $_POST['bugDescriptionBugReportFields'] ?? '';
         $stepsToReproduce = $_POST['stepsToReproduceBugReportFields'] ?? '';
         $expectedResult = $_POST['expectedResultBugReportFields'] ?? '';
         $receivedResult = $_POST['receivedResultBugReportFields'] ?? '';
         $discordClient = $_POST['discordClientBugReportFields'] ?? '';
         $bugImage = $_POST['bugImageBugReportFields'] ?? '';
-        $fieldsToCheck = ['requestTypeBugReportFields', 'subjectBugReportFields', 'stepsToReproduceBugReportFields', 'expectedResultBugReportFields', 'receivedResultBugReportFields', 'discordClientBugReportFields', 'subjectBugReportFields', 'bugImageBugReportFields'];
 
-        # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
-        if (areFieldsEmpty($fieldsToCheck)) {
+        $inputs = array(
+            $requestType,
+            $subject,
+            $bugDescription,
+            $stepsToReproduce,
+            $expectedResult,
+            $receivedResult,
+            $discordClient,
+            $bugImage
+        );
+
+        # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes), and for the newer version, sanitize them aswell!
+        $varCheck = sanitizeInputsAndCheckEmpty($inputs);
+
+        if ($varCheck === true) {
             redirectToTicket();
+        } else {
+            # Now we create the Ticket with the parameters we just took from the user's form
+            createTicketBugReport($conn, $requestType, $subject, $bugDescription, $stepsToReproduce, $expectedResult, $receivedResult, $discordClient, $bugImage);
         }
-
-        $subject = htmlspecialchars($subject);
-        $bugDescription = htmlspecialchars($bugDescription);
-        $stepsToReproduce = htmlspecialchars($stepsToReproduce);
-        $expectedResult = htmlspecialchars($expectedResult);
-        $receivedResult = htmlspecialchars($expectedResult);
-        $discordClient = htmlspecialchars($discordClient);
-        $bugImage = htmlspecialchars($bugImage);
-
-        # Now we create the Ticket with the parameters we just took from the user's form
-        createTicketBugReport($conn, $requestType, $subject, $bugDescription, $stepsToReproduce, $expectedResult, $receivedResult, $discordClient, $bugImage);
         break;
-    #endregion
+        #endregion
 
-    #region  Feature Request
+        #region  Feature Request
     case 'featureRequest':
         $requestType = $_POST['requestTypeFeatureRequestFields'] ?? '';
         $subject = $_POST['subjectFeatureRequestFields'] ?? '';
         $description = $_POST['descriptionFeatureRequestFields'] ?? '';
-        $fieldsToCheck = ['requestTypeFeatureRequestFields', 'subjectFeatureRequestFields', 'descriptionFeatureRequestFields'];
 
-        # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
-        if (areFieldsEmpty($fieldsToCheck)) {
+        $inputs = array(
+            $requestType,
+            $subject,
+            $description
+        );
+
+        $varCheck = sanitizeInputsAndCheckEmpty($inputs);
+
+        if ($varCheck === true) {
             redirectToTicket();
+        } else {
+            # Now we create the Ticket with the parameters we just took from the user's form
+            createTicketFeatureRequest($conn, $requestType, $subject, $description);
         }
-
-        $subject = htmlspecialchars($subject);
-        $description = htmlspecialchars($description);
-
-
-        # Now we create the Ticket with the parameters we just took from the user's form
-        createTicketFeatureRequest($conn, $requestType, $subject, $description);
         break;
-    #endregion
+        #endregion
 
-    #region Grammar Issues
+        #region Grammar Issues
     case 'grammarIssues':
         $subject = $_POST['subjectGrammarIssuesFields'] ?? '';
         $description = $_POST['descriptionGrammarIssuesFields'] ?? '';
         $fileAttachment = $_POST['fileAttachmentGrammarIssuesFields'] ?? '';
-        $fieldsToCheck = ['subjectGrammarIssuesFields', 'descriptionGrammarIssuesFields', 'fileAttachmentGrammarIssuesFields'];
 
-        # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
-        if (areFieldsEmpty($fieldsToCheck)) {
+        $inputs = array(
+            $subject,
+            $description
+        );
+
+        $varCheck = sanitizeInputsAndCheckEmpty($inputs);
+
+        if ($varCheck === true) {
             redirectToTicket();
+        } else {
+            # Now we create the Ticket with the parameters we just took from the user's form
+            createTicketGrammarIssues($conn, $subject, $description, $fileAttachment);
         }
-
-        $subject = htmlspecialchars($subject);
-        $description = htmlspecialchars($description);
-
-        # Now we create the Ticket with the parameters we just took from the user's form
-        createTicketGrammarIssues($conn, $subject, $description, $fileAttachment);
         break;
-    #endregion
+        #endregion
 
-    #region Information Update
+        #region Information Update
     case 'informationUpdate':
         $subject = $_POST['subjectInformationUpdateFields'] ?? '';
         $updateInfo = $_POST['updateInfoInformationUpdateFields'] ?? '';
-        $fieldsToCheck = ['subjectInformationUpdateFields', 'updateInfoInformationUpdateFields'];
 
-        # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
-        if (areFieldsEmpty($fieldsToCheck)) {
+        $inputs = array(
+            $subject,
+            $updateInfo
+        );
+
+        $varCheck = sanitizeInputsAndCheckEmpty($inputs);
+
+        if ($varCheck === true) {
             redirectToTicket();
+        } else {
+            # Now we create the Ticket with the parameters we just took from the user's form
+            createTicketInformationUpdate($conn, $subject, $updateInfo);
         }
-
-        $subject = htmlspecialchars($subject);
-        $updateInfo = htmlspecialchars($updateInfo);
-
-        # Now we create the Ticket with the parameters we just took from the user's form
-        createTicketInformationUpdate($conn, $subject, $updateInfo);
         break;
-    #endregion
+        #endregion
 
-    #region Other Issues
+        #region Other Issues
     case 'other':
         $subject = $_POST['subjectOtherFields'] ?? '';
         $description = $_POST['descriptionOtherFields'] ?? '';
         $extraText = $_POST['extraTextOtherFields'] ?? '';
-        $fieldsToCheck = ['subjectOtherFields', 'descriptionOtherFields', 'extraTextOtherFields'];
 
-        # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
-        if (areFieldsEmpty($fieldsToCheck)) {
+        $inputs = array(
+            $subject,
+            $description,
+            $extraText
+        );
+
+        $varCheck = sanitizeInputsAndCheckEmpty($inputs);
+
+        if ($varCheck === true) {
             redirectToTicket();
+        } else {
+            # Now we create the Ticket with the parameters we just took from the user's form
+            createTicketOther($conn, $subject, $description, $extraText);
         }
-
-        $subject = htmlspecialchars($subject);
-        $description = htmlspecialchars($description);
-        $extraText = htmlspecialchars($extraText);
-
-        # Now we create the Ticket with the parameters we just took from the user's form
-        createTicketOther($conn, $subject, $description, $extraText);
         break;
-    #endregion
+        #endregion
 
-    #region Default
+        #region Default
     default:
         break;
-    #endregion
+        #endregion
 }
 redirectToViewTicket();
