@@ -30,11 +30,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'] ?? '';
 
     # We store the data from the user on a new var to check if they're empty or not
-    $fieldsToCheck = ['username', 'password'];
+    $inputs = array(
+        $username,
+        $password
+    );
     #endregion
 
     # If any of these is empty, we redirect them to the sign in so they can try again
-    if (areFieldsEmpty($fieldsToCheck)) {
+    $varCheck = sanitizeInputsAndCheckEmpty($inputs);
+
+    if  ($varCheck === true) {
         redirectToSignin();
     }
 
