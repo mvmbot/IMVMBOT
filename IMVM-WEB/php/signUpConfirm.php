@@ -29,23 +29,25 @@ $password = $_POST['password'] ?? '';
 $confirmPassword = $_POST['confirmPassword'] ?? '';
 $newsletterCheckBox = isset($_POST['newsletterCheckBox']) ? 1 : 0;
 
-$username = htmlspecialchars($username);
-$name = htmlspecialchars($name);
-$surname = htmlspecialchars($surname);
-#endregion
+$inputs = array(
+    $username,
+    $name,
+    $surname,
+    $mail,
+);
 
 # Oops! Did they forget to check the privacy box?
 if (!isset($_POST['privacyCheckbox'])) {
     redirectToSignup();
 }
 
-# We need to make sure they filled out all the important fields!
-$fieldsToCheck = ['username', 'name', 'surname', 'mail', 'password', 'confirmPassword'];
+$varCheck = sanitizeInputsAndCheckEmpty($inputs);
 
-# If any of these is empty, we kindly ask them to try again!
-if (areFieldsEmpty($fieldsToCheck)) {
+if ($varCheck === true) {
     redirectToSignup();
 }
+
+#endregion
 
 # Uh-oh! The passwords don't match. Let's guide them back!
 if ($password != $confirmPassword) {
@@ -56,6 +58,7 @@ if ($password != $confirmPassword) {
 if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
     redirectToSignup();
 }
+
 
 # Now, let's peek into the database and see if the chosen username or email is already taken
 try {
@@ -75,16 +78,16 @@ try {
     $stmtCheck->bind_param("ss", $username, $mail);
     $stmtCheck->execute();
     $stmtCheck->store_result();
-
 } catch (Exception $e) {
 
     # We missed there to be honest. Let's be honest about it.
     showError("Error: " . $e->getMessage());
 }
 
+
 # If we found any matches in the database, let them know the chosen username or email is taken
 if ($stmtCheck->num_rows > 0) {
-    redirectToSignin();
+    redirectToSignup();
 } else {
 
     # Looks like they're in the clear, let's add them to our cool users' database

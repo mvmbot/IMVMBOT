@@ -1,4 +1,6 @@
 <?php
+require('dataValidationFunctions.php');
+
 #region Function --- Simple function to connect to the database
 function connectToDatabase() {
     $conn = mysqli_connect("sql207.infinityfree.com", "if0_36018425", "bACONfRITO33", "if0_36018425_imvmbotdb");
@@ -293,13 +295,44 @@ function printUserData($conn) {
 }
 
 function getUserData($conn, $username) {
-    # We prepare a SQL that gets all the data, simples as that 🦆
-    $sql = "SELECT nameUsers, surnameUsers, emailUsers FROM users WHERE usernameUsers=?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param('s', $username);
-    $stmt->execute();
 
-    # Once executed, store the result in variable $result and return it
-    return $result = $stmt->get_result();
+    try {
+        # We prepare a SQL that gets all the data, simples as that 🦆
+        $sql = "SELECT nameUsers, surnameUsers, emailUsers FROM users WHERE usernameUsers=?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+
+        # Once executed, store the result in variable $result and return it
+        return $stmt->get_result();
+    } catch (Exception $e) {
+        # Display error message
+        showError("Error: " . $e->getMessage());
+    }
 }
 #endregion
+
+#region ---- Edits the user's profile
+function editUserData($conn, $data, $table) {
+
+    $inputs = array(
+        $data
+    );
+
+    $varCheck = sanitizeInputsAndCheckEmpty($inputs);
+    if ($varCheck === true) {
+        redirectToEditProfile();
+    } else {
+        try {
+            # In this case, even if the user can choose what to update, he's updating one value at once, so we can let him choose which table will he update on a single query instead of using a switch case, just grab the table he want's to update
+            $sql = "UPDATE users SET $table = ? WHERE usernameUsers = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('ss', $data, $_SESSION['user']);
+            $stmt->execute();
+            redirectToViewProfile();
+        } catch (Exception $e) {
+            # Display error message
+            showError("Error: " . $e->getMessage());
+        }
+    }
+}
