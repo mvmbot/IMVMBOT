@@ -64,7 +64,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             # Now, let's check if the passwords match
             if (password_verify($password, $hashedPassword)) {
 
-            # Passwords match, create a session for this user
+            # Passwords match, create a session for this user, but first, let's destroy all previous sessions
+            if ($_SESSION['user'] || $_SESSION['admin']) {
+                session_destroy();
+            }
+
             $_SESSION['user'] = $username;
                 redirectToIndex();
             } else {

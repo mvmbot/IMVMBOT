@@ -42,6 +42,7 @@ switch ($type) {
         $subject = htmlspecialchars($subject);
         $description = htmlspecialchars($description);
 
+
         # Now we create the Ticket with the parameters we just took from the user's form
         createTicketHelpSupport($conn, $subject, $fileAttachment, $description);
         break;
