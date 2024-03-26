@@ -277,6 +277,7 @@ $conn = connectToDatabase();
         echo printUserData($conn);
         ?>
     </table>
+    <a href="./editProfile.php" class="btn btn-primary py-3 px-5 animated slideInDown">Edit profile<i class="fa fa-arrow-right ms-3"></i></a>
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
