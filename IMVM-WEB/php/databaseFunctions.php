@@ -313,26 +313,16 @@ function getUserData($conn, $username) {
 #endregion
 
 #region ---- Edits the user's profile
-function editUserData($conn, $data, $table) {
-
-    $inputs = array(
-        $data
-    );
-
-    $varCheck = sanitizeInputsAndCheckEmpty($inputs);
-    if ($varCheck === true) {
-        redirectToEditProfile();
-    } else {
-        try {
-            # In this case, even if the user can choose what to update, he's updating one value at once, so we can let him choose which table will he update on a single query instead of using a switch case, just grab the table he want's to update
-            $sql = "UPDATE users SET $table = ? WHERE usernameUsers = ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param('ss', $data, $_SESSION['user']);
-            $stmt->execute();
-            redirectToViewProfile();
-        } catch (Exception $e) {
-            # Display error message
-            showError("Error: " . $e->getMessage());
-        }
+function editUserData($conn, $table, $data) {
+    try {
+        # In this case, even if the user can choose what to update, he's updating one value at once, so we can let him choose which table will he update on a single query instead of using a switch case, just grab the table he want's to update
+        $sql = "UPDATE users SET $table = ? WHERE usernameUsers = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('ss', $data, $_SESSION['user']);
+        $stmt->execute();
+        redirectToViewProfile();
+    } catch (Exception $e) {
+        # Display error message
+        showError("Error: " . $e->getMessage());
     }
 }
