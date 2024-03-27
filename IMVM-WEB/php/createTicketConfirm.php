@@ -218,7 +218,9 @@ function validateFile($fileAttachment, $fileName) {
 
         # We try to move the file to the directory
         if (move_uploaded_file($_FILES[$fileName]["tmp_name"], $fileAttachment)) {
+            # We get the file so we can return it
             echo "The file " . htmlspecialchars(basename($_FILES[$fileName]["name"])) . " has been uploaded";
+            return $finalFile = basename($_FILES[$fileName]["name"]);
         } else {
             echo "There was an error uploading your file";
         }
