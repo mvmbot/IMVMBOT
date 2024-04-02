@@ -48,7 +48,7 @@ switch ($type) {
         $varCheck = sanitizeInputsAndCheckEmpty($inputs);
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
-        if ($varCheck === true) {
+        if (!$varCheck) {
             redirectToTicket();
         }
 
@@ -57,7 +57,7 @@ switch ($type) {
 
         echo validateFile($fileAttachment, $file);
         # Now we create the Ticket with the parameters we just took from the user's form
-        createTicketHelpSupport($conn, $subject, $fileAttachment, $description);
+        createTicketHelpSupport($conn, $subject, $description, $fileAttachment);
 
         break;
         #endregion
@@ -86,7 +86,7 @@ switch ($type) {
 
         $varCheck = sanitizeInputsAndCheckEmpty($inputs);
 
-        if ($varCheck === true) {
+        if (!$varCheck) {
             redirectToTicket();
         }
 
@@ -113,7 +113,7 @@ switch ($type) {
 
         $varCheck = sanitizeInputsAndCheckEmpty($inputs);
 
-        if ($varCheck === true) {
+        if (!$varCheck) {
             redirectToTicket();
         } else {
             # Now we create the Ticket with the parameters we just took from the user's form
@@ -136,7 +136,7 @@ switch ($type) {
 
         $varCheck = sanitizeInputsAndCheckEmpty($inputs);
 
-        if ($varCheck === true) {
+        if (!$varCheck) {
             redirectToTicket();
         }
 
@@ -162,7 +162,7 @@ switch ($type) {
 
         $varCheck = sanitizeInputsAndCheckEmpty($inputs);
 
-        if ($varCheck === true) {
+        if (!$varCheck) {
             redirectToTicket();
         }
         # Now we create the Ticket with the parameters we just took from the user's form
@@ -185,7 +185,7 @@ switch ($type) {
 
         $varCheck = sanitizeInputsAndCheckEmpty($inputs);
 
-        if ($varCheck === true) {
+        if (!$varCheck) {
             redirectToTicket();
         }
         # Now we create the Ticket with the parameters we just took from the user's form
