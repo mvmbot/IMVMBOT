@@ -36,24 +36,28 @@ switch ($type) {
     case 'helpSupport':
         $subject = $_POST['subjectHelpSupportFields'] ?? '';
         $description = $_POST['descriptionHelpSupportFields'] ?? '';
+        $file = $_POST['fileAttachmentHelpSupportFields'] ?? '';
 
         $inputs = array(
             $subject,
-            $description
+            $description,
+            $file
         );
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes), and for the newer version, sanitize them aswell!\
         $varCheck = sanitizeInputsAndCheckEmpty($inputs);
 
+        # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
+        if (!$varCheck) {
+            redirectToTicket();
+        }
+
         # Declare the file attachment path
         $fileAttachment = $targetDirectory . basename($_FILES["fileAttachmentHelpSupportFields"]["name"]);
 
-        # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
-        if ($varCheck === true) {
-            redirectToTicket();
-        }
+        echo validateFile($fileAttachment, $file);
         # Now we create the Ticket with the parameters we just took from the user's form
-        createTicketHelpSupport($conn, $subject, $fileAttachment, $description);
+        createTicketHelpSupport($conn, $subject, $description, $fileAttachment);
 
         break;
         #endregion
@@ -67,7 +71,7 @@ switch ($type) {
         $expectedResult = $_POST['expectedResultBugReportFields'] ?? '';
         $receivedResult = $_POST['receivedResultBugReportFields'] ?? '';
         $discordClient = $_POST['discordClientBugReportFields'] ?? '';
-        $bugImage = $_POST['bugImageBugReportFields'] ?? '';
+        $file = $_POST['bugImageBugReportFields'] ?? '';
 
         $inputs = array(
             $requestType,
@@ -77,16 +81,20 @@ switch ($type) {
             $expectedResult,
             $receivedResult,
             $discordClient,
-            $bugImage
+            $file
         );
 
         $varCheck = sanitizeInputsAndCheckEmpty($inputs);
 
-        if ($varCheck === true) {
+        if (!$varCheck) {
             redirectToTicket();
         }
+
+        $fileAttachment = $targetDirectory . basename($_FILES["bugImageBugReportFields"]["name"]);
+
+        echo validateFile($fileAttachment, $file);
         # Now we create the Ticket with the parameters we just took from the user's form
-        createTicketBugReport($conn, $requestType, $subject, $bugDescription, $stepsToReproduce, $expectedResult, $receivedResult, $discordClient, $bugImage);
+        createTicketBugReport($conn, $requestType, $subject, $bugDescription, $stepsToReproduce, $expectedResult, $receivedResult, $discordClient, $fileAttachment);
 
         break;
         #endregion
@@ -105,7 +113,7 @@ switch ($type) {
 
         $varCheck = sanitizeInputsAndCheckEmpty($inputs);
 
-        if ($varCheck === true) {
+        if (!$varCheck) {
             redirectToTicket();
         } else {
             # Now we create the Ticket with the parameters we just took from the user's form
@@ -118,18 +126,24 @@ switch ($type) {
     case 'grammarIssues':
         $subject = $_POST['subjectGrammarIssuesFields'] ?? '';
         $description = $_POST['descriptionGrammarIssuesFields'] ?? '';
-        $fileAttachment = $_POST['fileAttachmentGrammarIssuesFields'] ?? '';
+        $file = $_POST['fileAttachmentGrammarIssuesFields'] ?? '';
 
         $inputs = array(
             $subject,
-            $description
+            $description,
+            $file
         );
 
         $varCheck = sanitizeInputsAndCheckEmpty($inputs);
 
-        if ($varCheck === true) {
+        if (!$varCheck) {
             redirectToTicket();
         }
+
+        $fileAttachment = $targetDirectory . basename($_FILES["fileAttachmentGrammarIssuesFields"]["name"]);
+
+        echo validateFile($fileAttachment, $file);
+
         # Now we create the Ticket with the parameters we just took from the user's form
         createTicketGrammarIssues($conn, $subject, $description, $fileAttachment);
 
@@ -148,7 +162,7 @@ switch ($type) {
 
         $varCheck = sanitizeInputsAndCheckEmpty($inputs);
 
-        if ($varCheck === true) {
+        if (!$varCheck) {
             redirectToTicket();
         }
         # Now we create the Ticket with the parameters we just took from the user's form
@@ -171,7 +185,7 @@ switch ($type) {
 
         $varCheck = sanitizeInputsAndCheckEmpty($inputs);
 
-        if ($varCheck === true) {
+        if (!$varCheck) {
             redirectToTicket();
         }
         # Now we create the Ticket with the parameters we just took from the user's form
@@ -189,40 +203,42 @@ redirectToViewTicket();
 
 function validateFile($fileAttachment, $fileName) {
 
-    # We check if exists
+    # We check again if its empty in case somethings missing
+    if (empty($fileAttachment)) {
+        return "No file provided";
+    }
+
+    # We check if it already exists too
     if (file_exists($fileAttachment)) {
-        echo "File already exists";
+        return "File already exists";
+    }
+
+    # We get the extension of the file
+    $imageFileType = strtolower(pathinfo($fileAttachment, PATHINFO_EXTENSION));
+
+    # We store valid extensions on an array so it's easier to change them if we need to in the future 
+    $allowedExtensions = array("jpg", "jpeg", "png");
+
+    # Then we check if the extension is inside the allowed extensions array
+    if (!in_array($imageFileType, $allowedExtensions)) {
+        return "Sorry, only JPG/JPEG and PNG files are allowed.";
+    }
+
+    # We vheck if it's a real image file
+    $check = getimagesize($_FILES[$fileName]["tmp_name"]);
+    if (!$check) {
+        return 'File is not an image - ' . $check['mime'] . '.';
+    }
+
+    # We check if the file is too big
+    if ($_FILES[$fileName]["size"] > 500000) {
+        return "Sorry, your file is too large.";
+    }
+
+    # We try to move the file into the upload directory
+    if (move_uploaded_file($_FILES[$fileName]["tmp_name"], $fileAttachment)) {
+        return "The file " . htmlspecialchars(basename($_FILES[$fileName]["name"])) . " has been uploaded";
     } else {
-
-        # We get the file type first (png, jpg, etc...)
-        $imageFileType = strtolower(pathinfo($fileAttachment, PATHINFO_EXTENSION));
-
-        # Here we check if the file's a real image or not
-        $check = getimagesize($_FILES[$fileName]["tmp_name"]);
-        if (!$check) {
-            echo 'File is not an image - ' . $check['mime'] . '.';
-        } else {
-            echo 'File is an image.';
-        }
-
-        # We also check the size of it
-        if ($_FILES[$fileName]["size"] > 500000) {
-            echo "Sorry, your file is too large.";
-        }
-
-        # In case we allow more extension on the future, I use an array to store all extensions and just check the array, so it's easier to change if necessary
-        $allowedExtensions = array("jpg", "jpeg", "png");
-        if (!in_array($imageFileType, $allowedExtensions)) {
-            echo "Sorry, only JPG/JPEG and PNG files are allowed.";
-        }
-
-        # We try to move the file to the directory
-        if (move_uploaded_file($_FILES[$fileName]["tmp_name"], $fileAttachment)) {
-            # We get the file so we can return it
-            echo "The file " . htmlspecialchars(basename($_FILES[$fileName]["name"])) . " has been uploaded";
-            return $finalFile = basename($_FILES[$fileName]["name"]);
-        } else {
-            echo "There was an error uploading your file";
-        }
+        return "There was an error uploading your file";
     }
 }
