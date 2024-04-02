@@ -5,7 +5,7 @@ function sanitizeInputsAndCheckEmpty($inputs) {
     if (!is_array($inputs)) {
         # If the input is not an array (it's just a single var), we sanitize it this way (so we don't neet to create arrays with one value);
         $sanitizedInput = isset($_POST[$inputs]) ? htmlspecialchars($_POST[$inputs]) : '';
-        if (empty($sanitizedInputs)) {
+        if (empty($sanitizedInput)) {
             return true;
         }
     } else {
