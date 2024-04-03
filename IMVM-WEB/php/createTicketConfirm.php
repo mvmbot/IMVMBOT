@@ -32,7 +32,7 @@ $fieldsToCheck;
 # Switch case to fill the values from every possible type
 switch ($type) {
 
-        #region Help & Support
+    #region Help & Support
     case 'helpSupport':
         $subject = $_POST['subjectHelpSupportFields'] ?? '';
         $description = $_POST['descriptionHelpSupportFields'] ?? '';
@@ -41,7 +41,6 @@ switch ($type) {
         $inputs = array(
             $subject,
             $description,
-            $file
         );
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes), and for the newer version, sanitize them aswell!\
@@ -49,20 +48,22 @@ switch ($type) {
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
         if (!$varCheck) {
-            redirectToTicket();
+            #redirectToTicket();
         }
 
         # Declare the file attachment path
         $fileAttachment = $targetDirectory . basename($_FILES["fileAttachmentHelpSupportFields"]["name"]);
+
+        var_dump($fileAttachment);
 
         echo validateFile($fileAttachment, $file);
         # Now we create the Ticket with the parameters we just took from the user's form
         createTicketHelpSupport($conn, $subject, $description, $fileAttachment);
 
         break;
-        #endregion
+    #endregion
 
-        #region Bug Reporting
+    #region Bug Reporting
     case 'bugReport':
         $requestType = $_POST['requestTypeBugReportFields'] ?? '';
         $subject = $_POST['subjectBugReportFields'] ?? '';
@@ -97,9 +98,9 @@ switch ($type) {
         createTicketBugReport($conn, $requestType, $subject, $bugDescription, $stepsToReproduce, $expectedResult, $receivedResult, $discordClient, $fileAttachment);
 
         break;
-        #endregion
+    #endregion
 
-        #region  Feature Request
+    #region  Feature Request
     case 'featureRequest':
         $requestType = $_POST['requestTypeFeatureRequestFields'] ?? '';
         $subject = $_POST['subjectFeatureRequestFields'] ?? '';
@@ -120,9 +121,9 @@ switch ($type) {
             createTicketFeatureRequest($conn, $requestType, $subject, $description);
         }
         break;
-        #endregion
+    #endregion
 
-        #region Grammar Issues
+    #region Grammar Issues
     case 'grammarIssues':
         $subject = $_POST['subjectGrammarIssuesFields'] ?? '';
         $description = $_POST['descriptionGrammarIssuesFields'] ?? '';
@@ -148,9 +149,9 @@ switch ($type) {
         createTicketGrammarIssues($conn, $subject, $description, $fileAttachment);
 
         break;
-        #endregion
+    #endregion
 
-        #region Information Update
+    #region Information Update
     case 'informationUpdate':
         $subject = $_POST['subjectInformationUpdateFields'] ?? '';
         $updateInfo = $_POST['updateInfoInformationUpdateFields'] ?? '';
@@ -169,9 +170,9 @@ switch ($type) {
         createTicketInformationUpdate($conn, $subject, $updateInfo);
 
         break;
-        #endregion
+    #endregion
 
-        #region Other Issues
+    #region Other Issues
     case 'other':
         $subject = $_POST['subjectOtherFields'] ?? '';
         $description = $_POST['descriptionOtherFields'] ?? '';
@@ -192,14 +193,14 @@ switch ($type) {
         createTicketOther($conn, $subject, $description, $extraText);
 
         break;
-        #endregion
+    #endregion
 
-        #region Default
+    #region Default
     default:
         break;
-        #endregion
+    #endregion
 }
-redirectToViewTicket();
+#redirectToViewTicket();
 
 function validateFile($fileAttachment, $fileName) {
 
@@ -216,7 +217,7 @@ function validateFile($fileAttachment, $fileName) {
     # We get the extension of the file
     $imageFileType = strtolower(pathinfo($fileAttachment, PATHINFO_EXTENSION));
 
-    # We store valid extensions on an array so it's easier to change them if we need to in the future 
+    # We store valid extensions on an array so it's easier to change them if we need to in the future
     $allowedExtensions = array("jpg", "jpeg", "png");
 
     # Then we check if the extension is inside the allowed extensions array
