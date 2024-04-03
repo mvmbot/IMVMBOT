@@ -1,37 +1,4 @@
-<?php
-session_start();
-require_once './php/databaseFunctions.php';
-require_once './php/redirectFunctions.php';
-require_once './vendor/autoload.php'; 
 
-// Configuración del cliente de Google
-$client = new Google_Client();
-$client->setClientId('93578644004-tcjqdh02854ef0afugdpb2lql0b892m2.apps.googleusercontent.com');
-$client->setClientSecret('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');
-$client->setRedirectUri('https://imvmbot.com/authorized');
-$client->addScope('https://www.googleapis.com/auth/classroom.courses.readonly');
-$client->addScope('https://www.googleapis.com/auth/classroom.rosters.readonly');
-
-// Inicializa la variable de mensaje
-$message = '';
-
-if (isset($_GET['code'])) {
-    // Intercambia el código por un token de acceso y actualización
-    try {
-        $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
-        $client->setAccessToken($token);
-
-        // Almacena el token en la base de datos o en la sesión según sea necesario
-        $_SESSION['access_token'] = $token; // Almacenamiento temporal en la sesión
-
-        $message = 'Te has logueado correctamente, ya puedes cerrar esta ventana.';
-    } catch (Exception $e) {
-        $message = 'Error durante el proceso de login: ' . $e->getMessage();
-    }
-} else {
-    $message = 'No se proporcionó ningún código de autorización.';
-}
-?>
 <!DOCTYPE html>
 <html lang="es">
 
