@@ -41,7 +41,6 @@ switch ($type) {
         $inputs = array(
             $subject,
             $description,
-            $file
         );
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes), and for the newer version, sanitize them aswell!\
@@ -49,11 +48,13 @@ switch ($type) {
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
         if (!$varCheck) {
-            redirectToTicket();
+            #redirectToTicket();
         }
 
         # Declare the file attachment path
         $fileAttachment = $targetDirectory . basename($_FILES["fileAttachmentHelpSupportFields"]["name"]);
+
+        var_dump($fileAttachment);
 
         echo validateFile($fileAttachment, $file);
         # Now we create the Ticket with the parameters we just took from the user's form
@@ -186,7 +187,7 @@ switch ($type) {
         $varCheck = sanitizeInputsAndCheckEmpty($inputs);
 
         if (!$varCheck) {
-            #redirectToTicket();
+            redirectToTicket();
         }
         # Now we create the Ticket with the parameters we just took from the user's form
         createTicketOther($conn, $subject, $description, $extraText);
@@ -199,7 +200,7 @@ switch ($type) {
         break;
     #endregion
 }
-redirectToViewTicket();
+#redirectToViewTicket();
 
 function validateFile($fileAttachment, $fileName) {
 
