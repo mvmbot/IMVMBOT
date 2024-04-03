@@ -1,9 +1,12 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { google } = require('googleapis');
-const fs = require('fs');
-const oauth2Client = new google.auth.OAuth2(process.env.GOOGLE_CLIENT_ID, process.env.GOOGLE_CLIENT_SECRET, process.env.GOOGLE_REDIRECT_URI);
-oauth2Client.setCredentials({ client_id: process.env.GOOGLE_CLIENT_ID });
 require('dotenv').config();
+
+const oauth2Client = new google.auth.OAuth2(
+  process.env.GOOGLE_CLIENT_ID,
+  process.env.GOOGLE_CLIENT_SECRET,
+  process.env.GOOGLE_REDIRECT_URI
+);
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -12,9 +15,10 @@ module.exports = {
   async execute(interaction) {
     const authorizationUrl = oauth2Client.generateAuthUrl({
       access_type: 'offline',
-      scope: ['https://www.googleapis.com/auth/classroom.courses.readonly', 'https://www.googleapis.com/auth/classroom.rosters.readonly'],
-      redirect_uri: process.env.GOOGLE_REDIRECT_URI,
-      client_id: process.env.GOOGLE_CLIENT_ID,
+      scope: [
+        'https://www.googleapis.com/auth/classroom.courses.readonly',
+        'https://www.googleapis.com/auth/classroom.rosters.readonly'
+      ],
     });
 
     await interaction.reply({
@@ -22,16 +26,16 @@ module.exports = {
       embeds: [
         {
           title: 'Google Classroom Login',
-          description: 'Please log in to Google Classroom by clicking the button below:',
+          description: 'Please log in to Google Classroom by clicking the button below. You will be redirected to a web page to complete the login process.',
           fields: [
             {
               name: 'Authorization URL',
-              value: `[Sign In](${authorizationUrl})`,
+              value: `[Click here to Sign In](${authorizationUrl})`
             }
           ],
           color: 0x008000,
           footer: {
-            text: 'Authorization URL',
+            text: 'You will be redirected to Google to authorize the IMVMBOT application.'
           },
           image: {
             url: 'https://cdn.discordapp.com/attachments/1054482794392338502/1219741630895100054/imvmbot-classroom.jpg',
@@ -39,17 +43,5 @@ module.exports = {
         },
       ],
     });
-
-    const code = interaction.options.getString('code');
-    if (code) {
-      try {
-        const { tokens } = await oauth2Client.getToken(code);
-        oauth2Client.setCredentials(tokens);
-        await interaction.reply({ content: 'You have successfully logged in to Google Classroom!', ephemeral: true });
-      } catch (error) {
-        console.error(error);
-        await interaction.reply({ content: 'There was an error logging in to Google Classroom. Pleasetry again.', ephemeral: true });
-      }
-    }
   },
 };
