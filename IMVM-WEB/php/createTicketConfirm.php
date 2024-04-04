@@ -19,7 +19,7 @@ ini_set('display_errors', 1);
 $conn = connectToDatabase();
 
 # We declare the directory that we're using to store all the user data
-$targetDirectory =  './userUploads/';
+$targetDirectory =  '../userUploads/';
 
 # We grab all the data from the form
 
@@ -199,13 +199,9 @@ switch ($type) {
         break;
     #endregion
 }
-#redirectToViewTicket();
+redirectToViewTicket();
 
 function validateFile($fileAttachment, $fileName, $type) {
-
-    var_dump($fileName);
-
-    var_dump($fileAttachment);
 
     # We check again if its empty in case somethings missing
     if (empty($fileAttachment)) {
@@ -226,13 +222,6 @@ function validateFile($fileAttachment, $fileName, $type) {
     # Then we check if the extension is inside the allowed extensions array
     if (!in_array($imageFileType, $allowedExtensions)) {
         return "Sorry, only JPG/JPEG and PNG files are allowed.";
-    }
-
-    # We vheck if it's a real image file
-    $check = getimagesize($fileAttachment);
-    
-    if ($check !== false) {
-        return 'File is not an image - ' . $check['mime'] . '.';
     }
 
     # We check if the file is too big
