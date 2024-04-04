@@ -19,7 +19,7 @@ ini_set('display_errors', 1);
 $conn = connectToDatabase();
 
 # We declare the directory that we're using to store all the user data
-$targetDirectory =  './userUploads/';
+$targetDirectory =  '../userUploads/';
 
 # We grab all the data from the form
 
@@ -55,10 +55,13 @@ switch ($type) {
         # Declare the file attachment path
         $fileAttachment = $targetDirectory . basename($_FILES["fileAttachmentHelpSupportFields"]["name"]);
 
-        echo validateFile($fileAttachment, $file, $type);
+        $check = validateFile($fileAttachment, $file, $type);
         # Now we create the Ticket with the parameters we just took from the user's form
-        createTicketHelpSupport($conn, $subject, $description, $fileAttachment);
-
+        if ($check) {
+            createTicketHelpSupport($conn, $subject, $description, $fileAttachment);
+        } else {
+            redirectToTicket();
+        }
         break;
     #endregion
 
@@ -199,22 +202,18 @@ switch ($type) {
         break;
     #endregion
 }
-#redirectToViewTicket();
+redirectToViewTicket();
 
 function validateFile($fileAttachment, $fileName, $type) {
 
-    var_dump($fileName);
-
-    var_dump($fileAttachment);
-
     # We check again if its empty in case somethings missing
     if (empty($fileAttachment)) {
-        return "No file provided";
+        return false;
     }
 
     # We check if it already exists too
     if (file_exists($fileAttachment)) {
-        return "File already exists";
+        return false;
     }
 
     # We get the extension of the file
@@ -225,25 +224,18 @@ function validateFile($fileAttachment, $fileName, $type) {
 
     # Then we check if the extension is inside the allowed extensions array
     if (!in_array($imageFileType, $allowedExtensions)) {
-        return "Sorry, only JPG/JPEG and PNG files are allowed.";
-    }
-
-    # We vheck if it's a real image file
-    $check = getimagesize($fileAttachment);
-    
-    if ($check !== false) {
-        return 'File is not an image - ' . $check['mime'] . '.';
+        return false;
     }
 
     # We check if the file is too big
     if ($fileAttachment > 500000) {
-        return "Sorry, your file is too large.";
+        return false;
     }
 
     # We try to move the file into the upload directory
     if (move_uploaded_file($_FILES[$type]["tmp_name"], $fileAttachment)) {
-        return "The file " . htmlspecialchars($fileName) . " has been uploaded";
+        return true;
     } else {
-        return "There was an error uploading your file";
+        return false;
     }
 }
