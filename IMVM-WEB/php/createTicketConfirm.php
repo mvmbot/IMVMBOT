@@ -208,12 +208,12 @@ function validateFile($fileAttachment, $fileName, $type) {
 
     # We check again if its empty in case somethings missing
     if (empty($fileAttachment)) {
-        return "No file provided";
+        return false;
     }
 
     # We check if it already exists too
     if (file_exists($fileAttachment)) {
-        return "File already exists";
+        return false;
     }
 
     # We get the extension of the file
@@ -224,12 +224,12 @@ function validateFile($fileAttachment, $fileName, $type) {
 
     # Then we check if the extension is inside the allowed extensions array
     if (!in_array($imageFileType, $allowedExtensions)) {
-        return "Sorry, only JPG/JPEG and PNG files are allowed.";
+        return false;
     }
 
     # We check if the file is too big
     if ($fileAttachment > 500000) {
-        return "Sorry, your file is too large.";
+        return false;
     }
 
     # We try to move the file into the upload directory
