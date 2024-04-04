@@ -155,7 +155,7 @@ session_start();
 
 
     <!-- Topbar Start -->
-
+    <button type="button" id="google-login" name="google-login" class="btn btn-danger btn-lg btn-block"><i class="fa fa-google "></i> Login with Google</button>
     <div class="container-fluid bg-light p-0">
         <div class="row gx-0 d-none d-lg-flex">
             <div class="col-lg-7 px-5 d-flex justify-content-start align-items-center">
