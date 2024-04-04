@@ -36,7 +36,8 @@ switch ($type) {
     case 'helpSupport':
         $subject = $_POST['subjectHelpSupportFields'] ?? '';
         $description = $_POST['descriptionHelpSupportFields'] ?? '';
-        $file = $_POST['fileAttachmentHelpSupportFields'] ?? '';
+        $file = pathinfo($_FILES['fileAttachmentHelpSupportFields']['name'], PATHINFO_FILENAME);
+        $type = "fileAttachmentHelpSupportFields";
 
         $inputs = array(
             $subject,
@@ -54,9 +55,7 @@ switch ($type) {
         # Declare the file attachment path
         $fileAttachment = $targetDirectory . basename($_FILES["fileAttachmentHelpSupportFields"]["name"]);
 
-        var_dump($fileAttachment);
-
-        echo validateFile($fileAttachment, $file);
+        echo validateFile($fileAttachment, $file, $type);
         # Now we create the Ticket with the parameters we just took from the user's form
         createTicketHelpSupport($conn, $subject, $description, $fileAttachment);
 
@@ -93,7 +92,7 @@ switch ($type) {
 
         $fileAttachment = $targetDirectory . basename($_FILES["bugImageBugReportFields"]["name"]);
 
-        echo validateFile($fileAttachment, $file);
+        echo validateFile($fileAttachment, $file, $type);
         # Now we create the Ticket with the parameters we just took from the user's form
         createTicketBugReport($conn, $requestType, $subject, $bugDescription, $stepsToReproduce, $expectedResult, $receivedResult, $discordClient, $fileAttachment);
 
@@ -143,7 +142,7 @@ switch ($type) {
 
         $fileAttachment = $targetDirectory . basename($_FILES["fileAttachmentGrammarIssuesFields"]["name"]);
 
-        echo validateFile($fileAttachment, $file);
+        echo validateFile($fileAttachment, $file, $type);
 
         # Now we create the Ticket with the parameters we just took from the user's form
         createTicketGrammarIssues($conn, $subject, $description, $fileAttachment);
@@ -202,7 +201,11 @@ switch ($type) {
 }
 #redirectToViewTicket();
 
-function validateFile($fileAttachment, $fileName) {
+function validateFile($fileAttachment, $fileName, $type) {
+
+    var_dump($fileName);
+
+    var_dump($fileAttachment);
 
     # We check again if its empty in case somethings missing
     if (empty($fileAttachment)) {
@@ -226,19 +229,20 @@ function validateFile($fileAttachment, $fileName) {
     }
 
     # We vheck if it's a real image file
-    $check = getimagesize($_FILES[$fileName]["tmp_name"]);
-    if (!$check) {
+    $check = getimagesize($fileAttachment);
+    
+    if ($check !== false) {
         return 'File is not an image - ' . $check['mime'] . '.';
     }
 
     # We check if the file is too big
-    if ($_FILES[$fileName]["size"] > 500000) {
+    if ($fileAttachment > 500000) {
         return "Sorry, your file is too large.";
     }
 
     # We try to move the file into the upload directory
-    if (move_uploaded_file($_FILES[$fileName]["tmp_name"], $fileAttachment)) {
-        return "The file " . htmlspecialchars(basename($_FILES[$fileName]["name"])) . " has been uploaded";
+    if (move_uploaded_file($_FILES[$type]["tmp_name"], $fileAttachment)) {
+        return "The file " . htmlspecialchars($fileName) . " has been uploaded";
     } else {
         return "There was an error uploading your file";
     }
