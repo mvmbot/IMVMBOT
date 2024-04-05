@@ -1,12 +1,33 @@
+// login.js
+
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { google } = require('googleapis');
+const mysql = require('mysql');
 require('dotenv').config();
+
+const connection = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME
+});
 
 const oauth2Client = new google.auth.OAuth2(
   process.env.GOOGLE_CLIENT_ID,
   process.env.GOOGLE_CLIENT_SECRET,
   process.env.GOOGLE_REDIRECT_URI
 );
+
+function saveAccessTokenToDatabase(userId, accessToken) {
+  const query = "INSERT INTO user_tokens (user_id, access_token) VALUES (?, ?)";
+  connection.query(query, [userId, accessToken], (error, results, fields) => {
+    if (error) {
+      console.error(error);
+    } else {
+      console.log("Token de acceso guardado en la base de datos.");
+    }
+  });
+}
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -42,6 +63,26 @@ module.exports = {
           },
         },
       ],
+    });
+
+    const filter = (m) => m.author.id === interaction.user.id;
+    const collector = interaction.channel.createMessageCollector({ filter, time: 60000 });
+
+    collector.on('collect', async (m) => {
+      const code = m.content;
+      const { tokens } = await oauth2Client.getToken(code);
+      const accessToken = tokens.access_token;
+
+      saveAccessTokenToDatabase(interaction.user.id, accessToken);
+
+      await interaction.followUp('Token de acceso guardado en la base de datos.');
+      collector.stop();
+    });
+
+    collector.on('end', (collected, reason) => {
+      if (reason === 'time') {
+        interaction.followUp('Tiempo de espera agotado. Por favor, intenta de nuevo.');
+      }
     });
   },
 };

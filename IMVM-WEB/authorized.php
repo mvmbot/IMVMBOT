@@ -2,6 +2,50 @@
 require('databaseFunctions.php');
 
 $conn = connectToDatabase();
+
+session_start();
+
+$message = '';
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+$client = new Google_Client();
+$client->setClientId($_ENV['GOOGLE_CLIENT_ID']);
+$client->setClientSecret($_ENV['GOOGLE_CLIENT_SECRET']);
+$client->setRedirectUri($_ENV['GOOGLE_REDIRECT_URI']);
+$client->addScope([
+    Google_Service_Classroom::CLASSROOM_COURSES_READONLY,
+    Google_Service_Classroom::CLASSROOM_ROSTERS_READONLY
+]);
+
+if (isset($_GET['code'])) {
+    $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
+    
+    if (!isset($token['error'])) {
+        $_SESSION['access_token'] = $token['access_token'];
+
+        // Guardar el token en la base de datos asociado al usuario de Discord
+        $accessToken = $token['access_token'];
+        $userId = $_SESSION['user_id']; // Suponiendo que tienes el ID del usuario en la sesión
+
+        $query = "INSERT INTO user_tokens (user_id, access_token) VALUES (:userId, :accessToken)";
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':userId', $userId);
+        $stmt->bindParam(':accessToken', $accessToken);
+        $stmt->execute();
+
+        $message = "Token de acceso guardado en la base de datos. Puedes cerrar esta ventana.";
+    } else {
+        $message = "Error durante la autenticación";
+    }
+} else {
+    $authUrl = $client->createAuthUrl();
+    header('Location: ' . $authUrl);
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
