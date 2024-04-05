@@ -49,7 +49,7 @@ switch ($type) {
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
         if (!$varCheck) {
-            #redirectToTicket();
+            redirectToTicket();
         }
 
         # Declare the file attachment path
@@ -196,15 +196,14 @@ switch ($type) {
 
         break;
     #endregion
-
-    #region Default
     default:
+        redirectToTicket();
         break;
-    #endregion
 }
 redirectToViewTicket();
 
-function validateFile($fileAttachment, $fileName, $type) {
+#region Function --- Validate File
+function validateFile($fileAttachment, $type) {
 
     # We check again if its empty in case somethings missing
     if (empty($fileAttachment)) {
@@ -239,3 +238,4 @@ function validateFile($fileAttachment, $fileName, $type) {
         return false;
     }
 }
+#endregion

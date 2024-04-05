@@ -13,7 +13,7 @@ require("dataValidationFunctions.php");
 require("errorAlerts.php");
 #endregion
 
-#region errors
+#region Errors
 # We gotta check if there are any errors
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
