@@ -1,4 +1,8 @@
+<?php
+require('databaseFunctions.php');
 
+$conn = connectToDatabase();
+?>
 <!DOCTYPE html>
 <html lang="es">
 
