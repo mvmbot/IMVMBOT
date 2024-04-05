@@ -39,6 +39,9 @@ session_start();
     <!-- Javascript validation -->
     <script src="./js/validation.js"></script>
 
+    <!-- Firebase Auth -->
+    <script src="./js/firebase.js"></script>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PXHDMQQ0XY"></script>
     <script>
@@ -89,58 +92,6 @@ session_start();
 </head>
 
 <body>
-<script type="module">
-	// Import the functions you need from the SDKs you need
-	import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
-	import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-analytics.js";
-	// TODO: Add SDKs for Firebase products that you want to use
-	// https://firebase.google.com/docs/web/setup#available-libraries
-  
-	// Your web app's Firebase configuration
-	// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-	const firebaseConfig = {
-	  apiKey: "AIzaSyC0LA4s-SF5pJFizn-V8LIJYGorEKGWGos",
-	  authDomain: "imvmbot-api.firebaseapp.com",
-	  projectId: "imvmbot-api",
-	  storageBucket: "imvmbot-api.appspot.com",
-	  messagingSenderId: "93578644004",
-	  appId: "1:93578644004:web:35056d9b3048ca4a6e26b1",
-	  measurementId: "G-76PKXHS15T"
-	};
-  
-	// Initialize Firebase
-	const app = initializeApp(firebaseConfig);
-	const analytics = getAnalytics(app);
-	const auth = getAuth();
-		//console.log(auth);
-  
-		const provider = new GoogleAuthProvider();
-		console.log(provider);
-	  //----- Google login code start	  
-	  document.getElementById("google-login").addEventListener("click", function() {
-		  signInWithPopup(auth, provider)
-		  .then((result) => {
-		    // This gives you a Google Access Token. You can use it to access the Google API.
-		    const credential = GoogleAuthProvider.credentialFromResult(result);
-		    const token = credential.accessToken;
-		    // The signed-in user info.
-		    const user = result.user;
-		    alert("Welcome "+user.displayName);
-		    console.log(user);
-		  }).catch((error) => {
-		    // Handle Errors here.
-		    const errorCode = error.code;
-		    const errorMessage = error.message;
-		    console.log(errorMessage);
-		    // The email of the user's account used.
-		    const email = error.customData.email;
-		    // The AuthCredential type that was used.
-		    const credential = GoogleAuthProvider.credentialFromError(error);
-		  });		  		  
-	  });
-	  //----- End
-	  
-	</script>
     <!-- Google Tag Manager Start (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWQDVHW8" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- Google Tag Manager End (noscript) -->
@@ -315,7 +266,6 @@ session_start();
     </nav>
 
     <!-- Navbar End -->
-    <button type="button" id="google-login" name="google-login" class="btn btn-danger btn-lg btn-block"><i class="fa fa-google "></i> Login with Google</button>
     <br><br>
     <div class="form-container">
         <p class="title">
