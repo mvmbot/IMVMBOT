@@ -119,3 +119,8 @@ CREATE TABLE collaborationDevelopment (
     coverLetter TEXT, 
     cvFile VARCHAR(255)
 );
+
+-- Table to store tokens
+CREATE TABLE token (
+    tokenId INT PRIMARY KEY
+);

@@ -36,7 +36,6 @@ switch ($type) {
     case 'helpSupport':
         $subject = $_POST['subjectHelpSupportFields'] ?? '';
         $description = $_POST['descriptionHelpSupportFields'] ?? '';
-        $file = pathinfo($_FILES['fileAttachmentHelpSupportFields']['name'], PATHINFO_FILENAME);
         $type = "fileAttachmentHelpSupportFields";
 
         $inputs = array(
@@ -55,13 +54,12 @@ switch ($type) {
         # Declare the file attachment path
         $fileAttachment = $targetDirectory . basename($_FILES["fileAttachmentHelpSupportFields"]["name"]);
 
-        $check = validateFile($fileAttachment, $file, $type);
+        $check = validateFile($fileAttachment, $type);
         # Now we create the Ticket with the parameters we just took from the user's form
-        if ($check) {
-            createTicketHelpSupport($conn, $subject, $description, $fileAttachment);
-        } else {
+        if (!$check) {
             redirectToTicket();
         }
+        createTicketHelpSupport($conn, $subject, $description, $fileAttachment);
         break;
     #endregion
 
@@ -74,7 +72,7 @@ switch ($type) {
         $expectedResult = $_POST['expectedResultBugReportFields'] ?? '';
         $receivedResult = $_POST['receivedResultBugReportFields'] ?? '';
         $discordClient = $_POST['discordClientBugReportFields'] ?? '';
-        $file = $_POST['bugImageBugReportFields'] ?? '';
+        $type = 'bugImageBugReportFields';
 
         $inputs = array(
             $requestType,
@@ -95,7 +93,11 @@ switch ($type) {
 
         $fileAttachment = $targetDirectory . basename($_FILES["bugImageBugReportFields"]["name"]);
 
-        echo validateFile($fileAttachment, $file, $type);
+        $check = validateFile($fileAttachment, $type);
+
+        if (!$check) {
+            redirectToTicket();
+        }
         # Now we create the Ticket with the parameters we just took from the user's form
         createTicketBugReport($conn, $requestType, $subject, $bugDescription, $stepsToReproduce, $expectedResult, $receivedResult, $discordClient, $fileAttachment);
 
@@ -129,7 +131,7 @@ switch ($type) {
     case 'grammarIssues':
         $subject = $_POST['subjectGrammarIssuesFields'] ?? '';
         $description = $_POST['descriptionGrammarIssuesFields'] ?? '';
-        $file = $_POST['fileAttachmentGrammarIssuesFields'] ?? '';
+        $type = 'fileAttachmentGrammarIssuesFields';
 
         $inputs = array(
             $subject,
@@ -145,7 +147,11 @@ switch ($type) {
 
         $fileAttachment = $targetDirectory . basename($_FILES["fileAttachmentGrammarIssuesFields"]["name"]);
 
-        echo validateFile($fileAttachment, $file, $type);
+        $check = validateFile($fileAttachment, $type);
+
+        if (!$check) {
+            redirectToTicket();
+        }
 
         # Now we create the Ticket with the parameters we just took from the user's form
         createTicketGrammarIssues($conn, $subject, $description, $fileAttachment);
