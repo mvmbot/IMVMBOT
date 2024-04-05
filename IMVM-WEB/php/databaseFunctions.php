@@ -87,7 +87,7 @@ function createTicketBase($conn, $ticketType) {
 #endregion
 
 #region Function --- Create ticket help support fields
-function createTicketHelpSupport($conn, $subject, $description, $fileAttachment) {
+function createTicketHelpSupport($conn, $inputs, $fileAttachment) {
 
     # Get both the ticket type and the ticket ID
     $ticketType = "Help & Support";
@@ -105,7 +105,7 @@ function createTicketHelpSupport($conn, $subject, $description, $fileAttachment)
         }
 
         # Bind parameters and execute query
-        $stmt->bind_param("sssi", $subject, $description, $fileAttachment, $ticketId);
+        $stmt->bind_param("sssi", $inputs[0], $inputs[1], $fileAttachment, $ticketId);
         $stmt->execute();
 
         # Close prepared statement
