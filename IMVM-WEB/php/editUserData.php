@@ -33,9 +33,9 @@ $inputs = array(
 );
 
 # And sanitize them while checking they're not empty
-$varCheck = sanitizeInputsAndCheckEmpty($inputs);
+$inputs = sanitizeInputsAndCheckEmpty($inputs);
 
-if ($varCheck === true) {
+if ($inputs === true) {
     redirectToEditProfile();
 }
 
