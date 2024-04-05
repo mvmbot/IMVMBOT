@@ -5,7 +5,6 @@ $conn = connectToDatabase();
 ?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="utf-8" />
     <title>IESMVMBOT - OFFICIAL PROJECT</title>
@@ -263,9 +262,54 @@ $conn = connectToDatabase();
             ?>
         </div>
     </nav>
+    <?php
+    require_once __DIR__ . '/vendor/autoload.php';
 
-    <!-- Navbar End -->
-    <h4 class="text-light mb-4">Te has logueado correctamente, ya puedes cerrar esta ventana.</h4>
+    // Carga las variables de entorno
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
+
+    // Configura el cliente de Google
+    $client = new Google_Client();
+    $client->setClientId($_ENV['GOOGLE_CLIENT_ID']);
+    $client->setClientSecret($_ENV['GOOGLE_CLIENT_SECRET']);
+    $client->setRedirectUri($_ENV['GOOGLE_REDIRECT_URI']);
+    $client->addScope([
+        Google_Service_Classroom::CLASSROOM_COURSES_READONLY,
+        Google_Service_Classroom::CLASSROOM_ROSTERS_READONLY
+    ]);
+
+    session_start();
+
+    $message = '';
+
+        // Maneja la respuesta de Google después de la autenticación del usuario
+        if (isset($_GET['code'])) {
+            // Intercambia el código por un token de acceso y opcionalmente un token de actualización
+            $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
+            
+            if (!isset($token['error'])) {
+                // Almacena el token en la sesión para uso futuro
+                $_SESSION['access_token'] = $token['access_token'];
+    
+                // Aquí deberías guardar el token en tu base de datos asociado al usuario de Discord
+    
+                $message = "Autenticación exitosa. Puedes cerrar esta ventana.";
+            } else {
+                // Maneja el error
+                $message = "Error durante la autenticación";
+            }
+        } else {
+            // Si no hay código en la URL, redirige al usuario a la URL de autenticación de Google
+            $authUrl = $client->createAuthUrl();
+            header('Location: ' . $authUrl);
+            exit();
+        }
+        ?>
+    
+        <div class="container">
+            <h4 class="text-center mt-5"><?php echo $message; ?></h4>
+        </div>    
 </body>
 
 
