@@ -1,27 +1,32 @@
 <?php
 
-#region function --- Simple function to check if there are empty values and sanitize them;
+#region function --- Simple function to check if there are empty values and sanitize them.
 function validateInputs($inputs) {
+    # We check if the input's an array or not.
+    # In case it's not an array then we sanitize a single input.
     if (!is_array($inputs)) {
-        # If the input is not an array (it's just a single var), we sanitize it this way (so we don't neet to create arrays with one value);
+
+        # We check if its empty, in case it is, we return false.
         if (empty($sanitizedInput)) {
             return false;
         }
 
-        return $inputs = htmlspecialchars($inputs);
-
+        # Otherwise, we sanitize the input and return it.
+        return $input = htmlspecialchars($inputs);
     } else {
-        # If it's an array, we make a new array that will grab every sanitized input
+        # If it's an array, we make a new array that will grab every sanitized input.
         $sanitizedInputs = array();
+        
+        # We loop through the array with a foreach and sanitize every input.
         foreach ($inputs as $inputValue) {
-            # This is how we sanitize it, first we check if they're empty, if it's not empty, we use the htmlspecialchars method to sanitize it
+            # We check if the input is empty, if any of them is empty, we return false.
             if (empty($inputValue)) {
                 return false;
             }
-
+            # Otherwise, we sanitize it as we store them on the new array.
             $sanitizedInputs[$inputValue] = htmlspecialchars($inputValue);
         }
-        # Then we just return the new array with every sanitized input
+        # Then we just return the new array with every sanitized input.
         return $sanitizedInputs;
     }
 }
