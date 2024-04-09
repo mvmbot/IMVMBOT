@@ -34,15 +34,15 @@ switch ($type) {
 
         #region Help & Support
     case 'helpSupport':
+
+        # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes), and for the newer version, sanitize them aswell!
+        # If the array got values inside, it will return the array sanitized, otherwise, it will return false
         $inputs = validateInputs([
             $subject = $_POST['subjectHelpSupportFields'] ?? '',
             $description = $_POST['descriptionHelpSupportFields'] ?? ''
         ]);
 
         $type = "fileAttachmentHelpSupportFields";
-
-        # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes), and for the newer version, sanitize them aswell!\
-        $inputs = validateInputs($inputs);
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
         if (!$inputs) {
