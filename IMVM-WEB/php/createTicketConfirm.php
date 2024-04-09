@@ -34,7 +34,7 @@ switch ($type) {
 
         #region Help & Support
     case 'helpSupport':
-        $inputs = sanitizeInputsAndCheckEmpty([
+        $inputs = validateInputs([
             $subject = $_POST['subjectHelpSupportFields'] ?? '',
             $description = $_POST['descriptionHelpSupportFields'] ?? ''
         ]);
@@ -42,7 +42,7 @@ switch ($type) {
         $type = "fileAttachmentHelpSupportFields";
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes), and for the newer version, sanitize them aswell!\
-        $inputs = sanitizeInputsAndCheckEmpty($inputs);
+        $inputs = validateInputs($inputs);
 
         # Check if the user has filled out everything necessary (just the necessary, there can be null values sometimes)
         if (!$inputs) {
@@ -63,7 +63,7 @@ switch ($type) {
 
         #region Bug Reporting
     case 'bugReport':
-        $inputs = sanitizeInputsAndCheckEmpty([
+        $inputs = validateInputs([
             $requestType = $_POST['requestTypeBugReportFields'] ?? '',
             $subject = $_POST['subjectBugReportFields'] ?? '',
             $bugDescription = $_POST['bugDescriptionBugReportFields'] ?? '',
@@ -94,7 +94,7 @@ switch ($type) {
 
         #region  Feature Request
     case 'featureRequest':
-        $inputs = sanitizeInputsAndCheckEmpty([
+        $inputs = validateInputs([
             $requestType = $_POST['requestTypeFeatureRequestFields'] ?? '',
             $subject  = $_POST['subjectFeatureRequestFields'] ?? '',
             $description = $_POST['descriptionFeatureRequestFields'] ?? ''
@@ -111,7 +111,7 @@ switch ($type) {
 
         #region Grammar Issues
     case 'grammarIssues':
-        $inputs = sanitizeInputsAndCheckEmpty([
+        $inputs = validateInputs([
             $subject = $_POST['subjectGrammarIssuesFields'] ?? '',
             $description = $_POST['descriptionGrammarIssuesFields'] ?? '',
         ]);
@@ -136,7 +136,7 @@ switch ($type) {
 
         #region Information Update
     case 'informationUpdate':
-        $inputs = sanitizeInputsAndCheckEmpty([
+        $inputs = validateInputs([
             $subject = $_POST['subjectInformationUpdateFields'] ?? '',
             $updateInfo = $_POST['updateInfoInformationUpdateFields'] ?? ''
         ]);
@@ -153,13 +153,13 @@ switch ($type) {
         #region Other Issues
     case 'other':
 
-        $inputs = sanitizeInputsAndCheckEmpty([
+        $inputs = validateInputs([
             $subject = $_POST['subjectOtherFields'] ?? '',
             $description = $_POST['descriptionOtherFields'] ?? '',
             $extraText = $_POST['extraTextOtherFields'] ?? '',
         ]);
 
-        $inputs = sanitizeInputsAndCheckEmpty($inputs);
+        $inputs = validateInputs($inputs);
 
         if (!$inputs) {
             redirectToTicket();

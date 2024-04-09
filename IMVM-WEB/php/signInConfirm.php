@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     #endregion
 
     # If any of these is empty, we redirect them to the sign in so they can try again
-    $inputs = sanitizeInputsAndCheckEmpty($inputs);
+    $inputs = validateInputs($inputs);
 
     if  ($inputs === true) {
         redirectToSignin();

@@ -33,7 +33,7 @@ $inputs = array(
 );
 
 # And sanitize them while checking they're not empty
-$inputs = sanitizeInputsAndCheckEmpty($inputs);
+$inputs = validateInputs($inputs);
 
 if ($inputs === true) {
     redirectToEditProfile();
