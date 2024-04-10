@@ -24,8 +24,8 @@ if (isset($_GET['code'])) {
 
         $query = "INSERT INTO user_tokens (user_id, access_token) VALUES (:userId, :accessToken)";
         $stmt = $conn->prepare($query);
-        $stmt->bindParam(':userId', $userId);
-        $stmt->bindParam(':accessToken', $accessToken);
+        $stmt->bind_param(':userId', $userId);
+        $stmt->bind_param(':accessToken', $accessToken);
         $stmt->execute();
 
         // Mostrar un mensaje de éxito
