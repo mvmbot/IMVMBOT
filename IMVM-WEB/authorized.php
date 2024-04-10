@@ -1,4 +1,3 @@
-
 <?php
 require('./php/databaseFunctions.php');
 
@@ -20,19 +19,17 @@ if (isset($_GET['code'])) {
     if (!isset($token['error'])) {
         $_SESSION['access_token'] = $token['access_token'];
 
-        // Guardar el token en la base de datos asociado al usuario de Discord
         $accessToken = $token['access_token'];
-        $userId = $_SESSION['user_id']; // Suponiendo que tienes el ID del usuario en la sesión
+        $userId = $_SESSION['user_id'];
 
         $query = "INSERT INTO user_tokens (user_id, access_token) VALUES (:userId, :accessToken)";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param(':userId', $userId);
-        $stmt->bind_param(':accessToken', $accessToken);
+        $stmt->bindParam(':userId', $userId);
+        $stmt->bindParam(':accessToken', $accessToken);
         $stmt->execute();
 
-        $message = "Token de acceso guardado en la base de datos. Puedes cerrar esta ventana.";
-    } else {
-        $message = "Error durante la autenticación";
+        // Mostrar un mensaje de éxito
+        echo "Te has logeado correctamente. Puedes cerrar esta ventana.";
     }
 } else {
     $authUrl = $client->createAuthUrl();
