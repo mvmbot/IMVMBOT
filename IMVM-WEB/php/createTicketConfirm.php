@@ -42,7 +42,6 @@ switch ($type) {
             # If the array got empty values (false) it will redirect. Otherwise, it will continue
         ]) ?: redirectToTicket();
 
-
         # We get the file type, we'll need it later
         $type = "fileAttachmentHelpSupportFields";
 
@@ -50,11 +49,7 @@ switch ($type) {
         $fileAttachment = $targetDirectory . basename($_FILES["fileAttachmentHelpSupportFields"]["name"]);
 
         # We check if the file is valid, if it's cool, it will move the file to the target directory, otherwise, it'll return false and will redirect
-        $check = validateFile($fileAttachment, $type);
-
-        if (!$check) {
-            redirectToTicket();
-        }
+        $check = validateFile($fileAttachment, $type) ?: redirectToTicket();
 
         # Now we create the Ticket with the parameters we just took from the user's form
         createTicketHelpSupport($conn, $inputs, $fileAttachment);
@@ -77,11 +72,8 @@ switch ($type) {
 
         $fileAttachment = $targetDirectory . basename($_FILES["bugImageBugReportFields"]["name"]);
 
-        $check = validateFile($fileAttachment, $type);
+        $check = validateFile($fileAttachment, $type) ?: redirectToTicket();
 
-        if (!$check) {
-            redirectToTicket();
-        }
         createTicketBugReport($conn, $inputs, $fileAttachment);
 
         break;
@@ -110,11 +102,7 @@ switch ($type) {
 
         $fileAttachment = $targetDirectory . basename($_FILES["fileAttachmentGrammarIssuesFields"]["name"]);
 
-        $check = validateFile($fileAttachment, $type);
-
-        if (!$check) {
-            redirectToTicket();
-        }
+        $check = validateFile($fileAttachment, $type) ?: redirectToTicket();
 
         # Now we create the Ticket with the parameters we just took from the user's form
         createTicketGrammarIssues($conn, $inputs, $fileAttachment);
