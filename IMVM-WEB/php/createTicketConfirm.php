@@ -1,12 +1,12 @@
 <?php
 #region Required files
 # Get the database stuff ready
-require('databaseFunctions.php');
+require_once('databaseFunctions.php');
 
 # Grab some tools for our code
-require('redirectFunctions.php');
-require('dataValidationFunctions.php');
-require('errorAlerts.php');
+require_once('redirectFunctions.php');
+require_once('dataValidationFunctions.php');
+require_once('errorAlerts.php');
 #endregion
 
 #region errors
@@ -42,17 +42,16 @@ switch ($type) {
             # If the array got empty values (false) it will redirect. Otherwise, it will continue
         ]) ?: redirectToTicket();
 
+
         # We get the file type, we'll need it later
         $type = "fileAttachmentHelpSupportFields";
-
-        # If the array got empty values (false) it will redirect. Otherwise, it will continue
-
 
         # Declare the file attachment path
         $fileAttachment = $targetDirectory . basename($_FILES["fileAttachmentHelpSupportFields"]["name"]);
 
         # We check if the file is valid, if it's cool, it will move the file to the target directory, otherwise, it'll return false and will redirect
         $check = validateFile($fileAttachment, $type);
+
         if (!$check) {
             redirectToTicket();
         }
@@ -154,7 +153,7 @@ switch ($type) {
         redirectToTicket();
         break;
 }
-redirectToViewTicket();
+#redirectToViewTicket();
 
 #region Function --- Validate File
 function validateFile($fileAttachment, $type) {
