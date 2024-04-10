@@ -16,7 +16,10 @@ function validateInputs($inputs) {
     } else {
         # If it's an array, we make a new array that will grab every sanitized input.
         $sanitizedInputs = array();
-        
+
+        # We use this var so later our array is numeric (so we can insert the data correctly)
+        $i=0;
+
         # We loop through the array with a foreach and sanitize every input.
         foreach ($inputs as $inputValue) {
             # We check if the input is empty, if any of them is empty, we return false.
@@ -24,7 +27,8 @@ function validateInputs($inputs) {
                 return false;
             }
             # Otherwise, we sanitize it as we store them on the new array.
-            $sanitizedInputs[$inputValue] = htmlspecialchars($inputValue);
+            $sanitizedInputs[$i] = htmlspecialchars($inputValue);
+            $i++;
         }
         # Then we just return the new array with every sanitized input.
         return $sanitizedInputs;
