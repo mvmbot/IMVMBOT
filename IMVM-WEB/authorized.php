@@ -23,7 +23,7 @@ $client->addScope([
 
 if (isset($_GET['code'])) {
     $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
-    
+
     if (!isset($token['error'])) {
         $_SESSION['access_token'] = $token['access_token'];
 
@@ -33,8 +33,8 @@ if (isset($_GET['code'])) {
 
         $query = "INSERT INTO user_tokens (user_id, access_token) VALUES (:userId, :accessToken)";
         $stmt = $conn->prepare($query);
-        $stmt->bindParam(':userId', $userId);
-        $stmt->bindParam(':accessToken', $accessToken);
+        $stmt->bind_param(':userId', $userId);
+        $stmt->bind_param(':accessToken', $accessToken);
         $stmt->execute();
 
         $message = "Token de acceso guardado en la base de datos. Puedes cerrar esta ventana.";
@@ -331,13 +331,13 @@ if (isset($_GET['code'])) {
         if (isset($_GET['code'])) {
             // Intercambia el código por un token de acceso y opcionalmente un token de actualización
             $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
-            
+
             if (!isset($token['error'])) {
                 // Almacena el token en la sesión para uso futuro
                 $_SESSION['access_token'] = $token['access_token'];
-    
+
                 // Aquí deberías guardar el token en tu base de datos asociado al usuario de Discord
-    
+
                 $message = "Autenticación exitosa. Puedes cerrar esta ventana.";
             } else {
                 // Maneja el error
@@ -350,10 +350,10 @@ if (isset($_GET['code'])) {
             exit();
         }
         ?>
-    
+
         <div class="container">
             <h4 class="text-center mt-5"><?php echo $message; ?></h4>
-        </div>    
+        </div>
 </body>
 
 
