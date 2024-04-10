@@ -267,7 +267,7 @@ function getUserData($conn, $username) {
     try {
         # We prepare a SQL that gets all the data, simples as that 🦆
         $sql = "SELECT nameUsers, surnameUsers, emailUsers FROM users WHERE usernameUsers=?";
-        $stmt = $conn->prepare($sql);
+        $stmt = $conn->prepare($sql)?:throw new Exception("Error preparing SELECT statement: " . $conn->error);
         $stmt->bind_param('s', $username);
         $stmt->execute();
 
@@ -285,7 +285,7 @@ function editUserData($conn, $table, $data) {
     try {
         # In this case, even if the user can choose what to update, he's updating one value at once, so we can let him choose which table will he update on a single query instead of using a switch case, just grab the table he want's to update
         $sql = "UPDATE users SET $table = ? WHERE usernameUsers = ?";
-        $stmt = $conn->prepare($sql);
+        $stmt = $conn->prepare($sql)?:throw new Exception("Error preparing UPDATE statement: " . $conn->error);
         $stmt->bind_param('ss', $data, $_SESSION['user']);
         $stmt->execute();
         redirectToViewProfile();
