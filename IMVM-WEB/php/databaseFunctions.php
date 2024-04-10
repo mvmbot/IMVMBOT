@@ -27,7 +27,7 @@ function getTicketID($conn) {
 }
 #endregion
 
-#region Function --- Insert ticket into database
+#region Function --- Insert base ticket into database
 function createTicketBase($conn, $ticketType) {
 
     # Get current user and date
@@ -87,7 +87,7 @@ function createTicketBase($conn, $ticketType) {
 #endregion
 
 #region Function --- Create ticket help support fields
-function createTicketHelpSupport($conn, $subject, $description, $fileAttachment) {
+function createTicketHelpSupport($conn, $inputs, $fileAttachment) {
 
     # Get both the ticket type and the ticket ID
     $ticketType = "Help & Support";
@@ -99,13 +99,13 @@ function createTicketHelpSupport($conn, $subject, $description, $fileAttachment)
         $insertTypeSQL = "INSERT INTO helpSupport (subject, description, file, ticketID) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($insertTypeSQL);
 
-        # Check if query preparation was successful
+        # Check if the query preparation was successful
         if ($stmt === false) {
             throw new Exception("Error preparing INSERT statement: " . $conn->error);
         }
 
-        # Bind parameters and execute query
-        $stmt->bind_param("sssi", $subject, $description, $fileAttachment, $ticketId);
+        # Bind parameters and execute query, we're using an array to get values so we just order them.
+        $stmt->bind_param("sssi", $inputs[0], $inputs[1], $fileAttachment, $ticketId);
         $stmt->execute();
 
         # Close prepared statement
@@ -119,7 +119,7 @@ function createTicketHelpSupport($conn, $subject, $description, $fileAttachment)
 #endregion
 
 #region Function --- Create ticket bug report fields
-function createTicketBugReport($conn, $subject, $operativeSystem, $bugDescription, $stepsToReproduce, $expectedResult, $receivedResult, $discordClient, $bugImage) {
+function createTicketBugReport($conn, $inputs, $bugImage) {
 
     # Get both the ticket type and the ticket ID
     $ticketType = "Bug Reporting";
@@ -137,7 +137,7 @@ function createTicketBugReport($conn, $subject, $operativeSystem, $bugDescriptio
         }
 
         # Bind parameters and execute query
-        $stmt->bind_param("ssssssssi", $subject, $operativeSystem, $bugDescription, $stepsToReproduce, $expectedResult, $receivedResult, $discordClient, $bugImage, $ticketId);
+        $stmt->bind_param("ssssssssi", $inputs[0], $inputs[1], $inputs[2], $inputs[3], $inputs[4], $inputs[5], $inputs[6], $bugImage, $ticketId);
         $stmt->execute();
 
         # Close prepared statement
@@ -151,7 +151,7 @@ function createTicketBugReport($conn, $subject, $operativeSystem, $bugDescriptio
 #endregion
 
 #region Function --- Create ticket feature request fields
-function createTicketFeatureRequest($conn, $requestType, $subject, $description) {
+function createTicketFeatureRequest($conn, $inputs) {
 
     # Get both the ticket type and the ticket ID
     $ticketType = "Feature Request";
@@ -169,7 +169,7 @@ function createTicketFeatureRequest($conn, $requestType, $subject, $description)
         }
 
         # Bind parameters and execute query
-        $stmt->bind_param("ssis", $subject, $description, $ticketId, $requestType);
+        $stmt->bind_param("ssis", $inputs[0], $inputs[1], $ticketId, $inputs[2]);
         $stmt->execute();
 
         # Close prepared statement
@@ -183,7 +183,7 @@ function createTicketFeatureRequest($conn, $requestType, $subject, $description)
 #endregion
 
 #region Function --- Create ticket grammar issues fields
-function createTicketGrammarIssues($conn, $subject, $description, $fileAttachment) {
+function createTicketGrammarIssues($conn, $inputs, $fileAttachment) {
 
     # Get both the ticket type and the ticket ID
     $ticketType = "Grammar";
@@ -201,7 +201,7 @@ function createTicketGrammarIssues($conn, $subject, $description, $fileAttachmen
         }
 
         # Bind parameters and execute query
-        $stmt->bind_param("sssi", $subject, $description, $fileAttachment, $ticketId);
+        $stmt->bind_param("sssi", $inputs[0], $inputs[1], $fileAttachment, $ticketId);
         $stmt->execute();
 
         # Close prepared statement
@@ -215,7 +215,7 @@ function createTicketGrammarIssues($conn, $subject, $description, $fileAttachmen
 #endregion
 
 #region Function --- Create ticket information update fields
-function createTicketInformationUpdate($conn, $subject, $updateInfo) {
+function createTicketInformationUpdate($conn, $inputs) {
 
     # Get both the ticket type and the ticket ID
     $ticketType = "Information Update";
@@ -233,7 +233,7 @@ function createTicketInformationUpdate($conn, $subject, $updateInfo) {
         }
 
         # Bind parameters and execute query
-        $stmt->bind_param("ssi", $subject, $updateInfo, $ticketId);
+        $stmt->bind_param("ssi", $inputs[0], $inputs[1], $ticketId);
         $stmt->execute();
 
         # Close prepared statement
@@ -247,7 +247,7 @@ function createTicketInformationUpdate($conn, $subject, $updateInfo) {
 #endregion
 
 #region Function --- Create ticket other fields
-function createTicketOther($conn, $subject, $description, $extraText) {
+function createTicketOther($conn, $inputs) {
 
     # Get both the ticket type and the ticket ID
     $ticketType = "Other";
@@ -265,7 +265,7 @@ function createTicketOther($conn, $subject, $description, $extraText) {
         }
 
         # Bind parameters and execute query
-        $stmt->bind_param("sssi", $subject, $description, $extraText, $ticketId);
+        $stmt->bind_param("sssi", $inputs[0], $inputs[1], $inputs[2], $ticketId);
         $stmt->execute();
 
         # Close prepared statement

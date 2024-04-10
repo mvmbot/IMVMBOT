@@ -41,9 +41,9 @@ if (!isset($_POST['privacyCheckbox'])) {
     redirectToSignup();
 }
 
-$varCheck = sanitizeInputsAndCheckEmpty($inputs);
+$inputs = validateInputs($inputs);
 
-if ($varCheck === true) {
+if ($inputs === true) {
     redirectToSignup();
 }
 

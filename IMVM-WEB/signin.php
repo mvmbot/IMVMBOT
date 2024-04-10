@@ -11,6 +11,7 @@ session_start();
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta name="keywords" content="IESMVMBOT, classroom discord bot, mvmbot, insmvmbot, mvm, discord bot" />
     <meta name="description" content="The best Discord bot for School alumns. " />
+    <meta name="google-signin-client_id" content="93578644004-jt8h18nvepg5r1kp932d1mj043des153.apps.googleusercontent.com">
 
     <!-- Favicon -->
     <link rel="icon" href="IMVM-WEB/img/faviimvm.ico" type="image/x-icon" />
@@ -38,6 +39,9 @@ session_start();
 
     <!-- Javascript validation -->
     <script src="./js/validation.js"></script>
+
+    <!-- Google Platform -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PXHDMQQ0XY"></script>
@@ -89,58 +93,6 @@ session_start();
 </head>
 
 <body>
-<script type="module">
-	// Import the functions you need from the SDKs you need
-	import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
-	import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-analytics.js";
-	// TODO: Add SDKs for Firebase products that you want to use
-	// https://firebase.google.com/docs/web/setup#available-libraries
-  
-	// Your web app's Firebase configuration
-	// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-	const firebaseConfig = {
-	  apiKey: "AIzaSyC0LA4s-SF5pJFizn-V8LIJYGorEKGWGos",
-	  authDomain: "imvmbot-api.firebaseapp.com",
-	  projectId: "imvmbot-api",
-	  storageBucket: "imvmbot-api.appspot.com",
-	  messagingSenderId: "93578644004",
-	  appId: "1:93578644004:web:35056d9b3048ca4a6e26b1",
-	  measurementId: "G-76PKXHS15T"
-	};
-  
-	// Initialize Firebase
-	const app = initializeApp(firebaseConfig);
-	const analytics = getAnalytics(app);
-	const auth = getAuth();
-		//console.log(auth);
-  
-		const provider = new GoogleAuthProvider();
-		console.log(provider);
-	  //----- Google login code start	  
-	  document.getElementById("google-login").addEventListener("click", function() {
-		  signInWithPopup(auth, provider)
-		  .then((result) => {
-		    // This gives you a Google Access Token. You can use it to access the Google API.
-		    const credential = GoogleAuthProvider.credentialFromResult(result);
-		    const token = credential.accessToken;
-		    // The signed-in user info.
-		    const user = result.user;
-		    alert("Welcome "+user.displayName);
-		    console.log(user);
-		  }).catch((error) => {
-		    // Handle Errors here.
-		    const errorCode = error.code;
-		    const errorMessage = error.message;
-		    console.log(errorMessage);
-		    // The email of the user's account used.
-		    const email = error.customData.email;
-		    // The AuthCredential type that was used.
-		    const credential = GoogleAuthProvider.credentialFromError(error);
-		  });		  		  
-	  });
-	  //----- End
-	  
-	</script>
     <!-- Google Tag Manager Start (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWQDVHW8" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- Google Tag Manager End (noscript) -->
@@ -315,7 +267,6 @@ session_start();
     </nav>
 
     <!-- Navbar End -->
-    <button type="button" id="google-login" name="google-login" class="btn btn-danger btn-lg btn-block"><i class="fa fa-google "></i> Login with Google</button>
     <br><br>
     <div class="form-container">
         <p class="title">
@@ -345,12 +296,14 @@ session_start();
             <div class="line"></div>
         </div>
         <div class="social-icons">
+        <div class="g-signin2" data-onsuccess="onSignIn">
             <button type="button" id="google-login" name="google-login" aria-label="Log in with Google" class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-5 h-5 fill-current">
                     <path d="M16.318 13.714v5.484h9.078c-0.37 2.354-2.745 6.901-9.078 6.901-5.458 0-9.917-4.521-9.917-10.099s4.458-10.099 9.917-10.099c3.109 0 5.193 1.318 6.38 2.464l4.339-4.182c-2.786-2.599-6.396-4.182-10.719-4.182-8.844 0-16 7.151-16 16s7.156 16 16 16c9.234 0 15.365-6.49 15.365-15.635 0-1.052-0.115-1.854-0.255-2.651z">
                     </path>
                 </svg>
             </button>
+            </div>
             <button aria-label="Log in with Discord" class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-discord" viewBox="0 0 16 16">
                     <path d="M13.545 2.907a13.227 13.227 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.19 12.19 0 0 0-3.658 0 8.258 8.258 0 0 0-.412-.833.051.051 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.041.041 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032c.001.014.01.028.021.037a13.276 13.276 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019c.308-.42.582-.863.818-1.329a.05.05 0 0 0-.01-.059.051.051 0 0 0-.018-.011 8.875 8.875 0 0 1-1.248-.595.05.05 0 0 1-.02-.066.051.051 0 0 1 .015-.019c.084-.063.168-.129.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.052.052 0 0 1 .053.007c.08.066.164.132.248.195a.051.051 0 0 1-.004.085 8.254 8.254 0 0 1-1.249.594.05.05 0 0 0-.03.03.052.052 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.235 13.235 0 0 0 4.001-2.02.049.049 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.034.034 0 0 0-.02-.019Zm-8.198 7.307c-.789 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612Zm5.316 0c-.788 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612Z" />
@@ -367,6 +320,15 @@ session_start();
             <a href="signup.php" class="">Create an account</a>
         </p>
     </div>
+<script>
+    function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+}
+</script>
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
