@@ -16,6 +16,7 @@
     "moment": "^2.29.4",
     "mongodb": "^6.5.0",
     "mongoose": "^8.2.2",
+    "mysql": "^2.18.1",
     "node-fetch": "^2.6.1",
     "node-schedule": "^2.1.1",
     "openai": "^4.28.4",

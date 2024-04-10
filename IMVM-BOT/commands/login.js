@@ -37,8 +37,10 @@ module.exports = {
     const authorizationUrl = oauth2Client.generateAuthUrl({
       access_type: 'offline',
       scope: [
-        'https://www.googleapis.com/auth/classroom.courses.readonly',
-        'https://www.googleapis.com/auth/classroom.rosters.readonly'
+        'https://www.googleapis.com/auth/classroom.announcements',
+        'https://www.googleapis.com/auth/classroom.courses',
+        'https://www.googleapis.com/auth/classroom.coursework.me',
+        'https://www.googleapis.com/auth/classroom.guardianlinks.me.readonly'
       ],
     });
 
