@@ -5,12 +5,12 @@ session_start();
 #region Required files
 # Now, time to set up the connection to our awesome database
 require("config.php");
-require("databaseFunctions.php");
+require_once("databaseFunctions.php");
 
 # Grab some handy tools for our code
-require("redirectFunctions.php");
-require("dataValidationFunctions.php");
-require("errorAlerts.php");
+require_once("redirectFunctions.php");
+require_once("dataValidationFunctions.php");
+require_once("errorAlerts.php");
 #endregion
 
 #region errors --- Turn on the lights to catch any potential coding errors
@@ -26,22 +26,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     #region Variable Declaration
     # Getting the username and password entered in the form
-    $username = $_POST['username'] ?? '';
-    $password = $_POST['password'] ?? '';
-
-    # We store the data from the user on a new var to check if they're empty or not
-    $inputs = array(
-        $username,
-        $password
-    );
-    #endregion
-
-    # If any of these is empty, we redirect them to the sign in so they can try again
-    $inputs = validateInputs($inputs);
-
-    if  ($inputs === true) {
-        redirectToSignin();
-    }
+    $inputs = validateInputs([
+        $username = $_POST['username'] ?? '',
+        $password = $_POST['password'] ?? ''
+    ]) ?: redirectToSignin();
 
     # We start with a quick query to find out if the user exists on the database
     $checkExisting = "SELECT idUsers, passwordUsers FROM users WHERE usernameUsers = ?";
@@ -69,17 +57,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             # Now, let's check if the passwords match
             if (password_verify($password, $hashedPassword)) {
 
-            # Passwords match, create a session for this user, but first, let's destroy all previous sessions
-            if ($_SESSION['user'] || $_SESSION['admin']) {
-                session_destroy();
-            }
+                # Passwords match, create a session for this user, but first, let's destroy all previous sessions
+                if ($_SESSION['user'] || $_SESSION['admin']) {
+                    session_destroy();
+                }
 
-            $_SESSION['user'] = $username;
+                $_SESSION['user'] = $username;
                 redirectToIndex();
             } else {
 
-            # Passwords doesn't match, show error
-            showErrorPasswordJS();
+                # Passwords doesn't match, show error
+                showErrorPasswordJS();
             }
         } else {
 
