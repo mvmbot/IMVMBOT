@@ -141,7 +141,7 @@ switch ($type) {
         redirectToTicket();
         break;
 }
-#redirectToViewTicket();
+redirectToViewTicket();
 
 #region Function --- Validate File
 function validateFile($fileAttachment, $type) {
