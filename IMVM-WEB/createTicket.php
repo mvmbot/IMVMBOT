@@ -314,7 +314,7 @@ session_start();
 
             <div>
                 <label for="subject" style="display: block;">Subject:</label>
-                <textarea id="subject" name="bugDescriptionBugReportFields"></textarea>
+                <textarea id="subject" name="subjectBugReportFields"></textarea>
             </div>
 
             <div>
