@@ -2,7 +2,7 @@
 function viewTicketDetail($conn, $type) {
     $id = intval($_GET['ID']);
     switch ($type) {
-        case 'helpSupport':
+        case 'Help & Support':
             # Get every ticket from X type from the user
             $sql = "SELECT t.idTicket, t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, hs.subject, hs.description, hs.file
             FROM ticket t
@@ -11,7 +11,7 @@ function viewTicketDetail($conn, $type) {
             WHERE t.typeTicket = 'Help & Support' AND t.idTicket = ?";
 
             # Prepare statement
-            $stmt = $conn->prepare($sql);
+            $stmt = $conn->prepare($sql) ?: throw new Exception("Error preparing SELECT statement (view ticket detail confirm): " . $conn->error);
 
             # Bind parameters
             $stmt->bind_param("i", $id);
@@ -26,7 +26,7 @@ function viewTicketDetail($conn, $type) {
             printTicketDetail($type, $result);
             break;
 
-        case 'bugReport':
+        case 'Bug Reporting':
             $sql = "SELECT t.idTicket, t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, br.operativeSystem, br.subject, br.description, stepsToReproduce, br.expectedResult, br.receivedResult, br.discordClient, br.discordClient
             FROM ticket t
             JOIN bugReport br ON t.idTicket = br.ticketID
@@ -34,7 +34,7 @@ function viewTicketDetail($conn, $type) {
             WHERE t.typeTicket = 'Bug Reporting' AND t.idTicket = ?";
 
             # Prepare statement
-            $stmt = $conn->prepare($sql);
+            $stmt = $conn->prepare($sql) ?: throw new Exception("Error preparing SELECT statement (view ticket detail confirm): " . $conn->error);
 
             # Bind parameters
             $stmt->bind_param("i", $id);
@@ -57,7 +57,7 @@ function viewTicketDetail($conn, $type) {
             WHERE t.typeTicket = 'Feature Request' AND t.idTicket = ?";
 
             # Prepare statement
-            $stmt = $conn->prepare($sql);
+            $stmt = $conn->prepare($sql) ?: throw new Exception("Error preparing SELECT statement (view ticket detail confirm): " . $conn->error);
 
             # Bind parameters
             $stmt->bind_param("i", $id);
@@ -72,7 +72,7 @@ function viewTicketDetail($conn, $type) {
             printTicketDetail($type, $result);
             break;
 
-        case 'grammarIssues':
+        case 'Grammar':
             $sql = "SELECT t.idTicket, t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, gi.subject, gi.description, gi.image
             FROM ticket t
             JOIN grammarIssues gi ON t.idTicket = gi.ticketID
@@ -80,7 +80,7 @@ function viewTicketDetail($conn, $type) {
             WHERE t.typeTicket = 'Grammar' AND t.idTicket =?";
 
             # Prepare statement
-            $stmt = $conn->prepare($sql);
+            $stmt = $conn->prepare($sql) ?: throw new Exception("Error preparing SELECT statement (view ticket detail confirm): " . $conn->error);
 
             # Bind parameters
             $stmt->bind_param("i", $id);
@@ -103,7 +103,7 @@ function viewTicketDetail($conn, $type) {
             WHERE t.typeTicket = 'Information Update' AND t.idTicket = ?";
 
             # Prepare statement
-            $stmt = $conn->prepare($sql);
+            $stmt = $conn->prepare($sql) ?: throw new Exception("Error preparing SELECT statement (view ticket detail confirm): " . $conn->error);
 
             # Bind parameters
             $stmt->bind_param("i", $id);
@@ -126,7 +126,7 @@ function viewTicketDetail($conn, $type) {
             WHERE t.typeTicket = 'Other' AND t.idTicket = ?";
 
             # Prepare statement
-            $stmt = $conn->prepare($sql);
+            $stmt = $conn->prepare($sql) ?: throw new Exception("Error preparing SELECT statement (view ticket detail confirm): " . $conn->error);
 
             # Bind parameters
             $stmt->bind_param("i", $id);
@@ -147,7 +147,7 @@ function viewTicketDetail($conn, $type) {
 
 function printTicketDetail($type, $result) {
     switch ($type) {
-        case 'helpSupport':
+        case 'Help & Support':
             try {
                 if ($result->num_rows > 0) {
                     echo "<table class='table' id='ticketTable1' style='background-color: #9900ff; color: white;'>
@@ -159,7 +159,7 @@ function printTicketDetail($type, $result) {
                         <th>Type</th>
                         <th>Status</th>
                         <th>Subject</th>
-                        <th>Action</th>
+                        <th>Description</th>
                     </tr>
                 </thead>
                 <tbody>";
@@ -177,7 +177,7 @@ function printTicketDetail($type, $result) {
             }
             break;
 
-        case 'bugReport':
+        case 'Bug Reporting':
             try {
                 if ($result->num_rows > 0) {
                     echo "<table class='table' id='ticketTable2' style='background-color:rgb(255, 255, 255)'>
@@ -243,7 +243,7 @@ function printTicketDetail($type, $result) {
             }
             break;
 
-        case 'grammarIssues':
+        case 'Grammar':
             try {
                 if ($result->num_rows > 0) {
                     echo "<table class='table' id='ticketTable4' style='background-color:rgb(255, 255, 255)'>
