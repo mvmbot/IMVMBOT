@@ -77,7 +77,7 @@ function createTicketBase($conn, $ticketType) {
 }
 #endregion
 
-#region Function --- Create ticket help support fields
+#region Function --- Help & support
 function createTicketHelpSupport($conn, $inputs, $fileAttachment) {
 
     # Get both the ticket type and the ticket ID
@@ -106,7 +106,7 @@ function createTicketHelpSupport($conn, $inputs, $fileAttachment) {
 }
 #endregion
 
-#region Function --- Create ticket bug report fields
+#region Function --- Bug report
 function createTicketBugReport($conn, $inputs, $bugImage) {
 
     # Get both the ticket type and the ticket ID
@@ -114,9 +114,8 @@ function createTicketBugReport($conn, $inputs, $bugImage) {
     $ticketId = createTicketBase($conn, $ticketType);
 
     try {
-
         # Prepare INSERT query
-        $insertTypeSQL = "INSERT INTO bugReport (subject, operativeSystem, description, stepsToReproduce, expectedResult, receivedResult, discordClient, image, ticketID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $insertTypeSQL = "INSERT INTO bugReport (subject, operativeSystem, description, stepsToReproduce, expectedResult, receivedResult, discordClient, image, ticketID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         # Check if query preparation was successful
         $stmt = $conn->prepare($insertTypeSQL)?:throw new Exception("Error preparing INSERT statement: " . $conn->error);
 
@@ -129,7 +128,7 @@ function createTicketBugReport($conn, $inputs, $bugImage) {
     } catch (Exception $e) {
 
         # Display error message
-        showError("Error: " . $e->getMessage());
+        showError("Error trycatch: " . $e->getMessage());
     }
 }
 #endregion
