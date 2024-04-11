@@ -165,10 +165,11 @@ function printTicketDetail($type, $result) {
                 <tbody>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr style='background-color: white; color: #9900ff;'>";
-                        echo "<td>" . $row["idTicket"] . "</td><td>" . $row["typeTicket"] . "</td><td>" . $row["creationDate"] . "</td><td>" . $row["modificationDate"] . "</td><td>" . $row["resolvedDate"] . "</td><td>" . $row["stateTicket"] . "</td><td>" . $row["subject"] . "</td><td>" . $row["description"] . "</td><td>" . $row["file"] . "</td>";
+                        echo "<td>" . $row["idTicket"] . "</td><td>" . $row["typeTicket"] . "</td><td>" . $row["creationDate"] . "</td><td>" . $row["modificationDate"] . "</td><td>" . $row["resolvedDate"] . "</td><td>" . $row["stateTicket"] . "</td><td>" . $row["subject"] . "</td><td>" . $row["description"] . "</td>";
                         echo "</tr>";
                     }
                     echo "</tbody></table>";
+                    echo "<image>".$row['file']."</image>";
                 } else {
                     echo "<p>Error, no ticket selected!</p>";
                 }
