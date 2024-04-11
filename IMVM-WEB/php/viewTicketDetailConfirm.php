@@ -2,7 +2,7 @@
 function viewTicketDetail($conn, $type) {
     $id = intval($_GET['ID']);
     switch ($type) {
-        case 'Help & Support':
+        case 'Help ':
             # Get every ticket from X type from the user
             $sql = "SELECT t.idTicket, t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, hs.subject, hs.description, hs.file
             FROM ticket t
@@ -147,7 +147,7 @@ function viewTicketDetail($conn, $type) {
 
 function printTicketDetail($type, $result) {
     switch ($type) {
-        case 'Help & Support':
+        case 'Help ':
             try {
                 if ($result->num_rows > 0) {
                     echo "<table class='table' id='ticketTable1' style='background-color: #9900ff; color: white;'>
@@ -169,7 +169,8 @@ function printTicketDetail($type, $result) {
                         echo "</tr>";
                     }
                     echo "</tbody></table>";
-                    echo "<image>".$row['file']."</image>";
+                    echo "<img src='" . $row["file"] . "'>";
+
                 } else {
                     echo "<p>Error, no ticket selected!</p>";
                 }
