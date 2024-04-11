@@ -98,11 +98,13 @@ switch ($type) {
         $inputs = validateInputs([
             $subject = $_POST['subjectGrammarIssuesFields'] ?? '',
             $description = $_POST['descriptionGrammarIssuesFields'] ?? '',
-        ]) ?: redirectToTicket();
+        ]);
+
+        $type = 'fileAttachmentGrammarIssuesFields';
 
         $fileAttachment = $targetDirectory . basename($_FILES["fileAttachmentGrammarIssuesFields"]["name"]);
 
-        $check = validateFile($fileAttachment, $type) ?: redirectToTicket();
+        $check = validateFile($fileAttachment, $type);
 
         # Now we create the Ticket with the parameters we just took from the user's form
         createTicketGrammarIssues($conn, $inputs, $fileAttachment);
