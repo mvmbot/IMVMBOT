@@ -1,5 +1,5 @@
 <?php
-require('dataValidationFunctions.php');
+require_once('dataValidationFunctions.php');
 
 #region Function --- Simple function to connect to the database
 function connectToDatabase() {

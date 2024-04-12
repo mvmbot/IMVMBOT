@@ -1,6 +1,6 @@
 <?php
 #region Required files
-require("redirectFunctions.php");
+require_once("redirectFunctions.php");
 #endregion
 
 #region Logout proccess
