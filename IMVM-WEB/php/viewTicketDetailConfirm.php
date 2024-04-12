@@ -153,10 +153,11 @@ function printTicketDetail($type, $result) {
                     echo "<table class='table' id='ticketTable1' style='background-color: #9900ff; color: white;'>
                 <thead>
                     <tr>
-                        <th>ID user</th>
                         <th>Ticket No.</th>
-                        <th>Username</th>
                         <th>Type</th>
+                        <th>Creation Date</th>
+                        <th>Modification Date</th>
+                        <th>Resolved Date</th>
                         <th>Status</th>
                         <th>Subject</th>
                         <th>Description</th>
@@ -167,10 +168,9 @@ function printTicketDetail($type, $result) {
                         echo "<tr style='background-color: white; color: #9900ff;'>";
                         echo "<td>" . $row["idTicket"] . "</td><td>" . $row["typeTicket"] . "</td><td>" . $row["creationDate"] . "</td><td>" . $row["modificationDate"] . "</td><td>" . $row["resolvedDate"] . "</td><td>" . $row["stateTicket"] . "</td><td>" . $row["subject"] . "</td><td>" . $row["description"] . "</td>";
                         echo "</tr>";
+                        echo "<img src='" . $row["file"] . "'>";
                     }
                     echo "</tbody></table>";
-                    echo "<img src='" . $row["file"] . "'>";
-
                 } else {
                     echo "<p>Error, no ticket selected!</p>";
                 }
