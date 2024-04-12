@@ -1,12 +1,9 @@
 <?php
-require('dataValidationFunctions.php');
+require_once('dataValidationFunctions.php');
 
 #region Function --- Simple function to connect to the database
 function connectToDatabase() {
-    $conn = mysqli_connect("sql207.infinityfree.com", "if0_36018425", "bACONfRITO33", "if0_36018425_imvmbotdb");
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
+    $conn = mysqli_connect("sql207.infinityfree.com", "if0_36018425", "bACONfRITO33", "if0_36018425_imvmbotdb") ?: die("Connection failed: " . mysqli_connect_error());
     return $conn;
 }
 #endregion
@@ -19,10 +16,7 @@ function closeDatabaseConnection($conn) {
 
 #region Function --- Get the ticket ID
 function getTicketID($conn) {
-    $ticketId = mysqli_insert_id($conn);
-    if ($ticketId === false) {
-        showError("Error getting last inserted ID: " . $conn->error);
-    }
+    $ticketId = mysqli_insert_id($conn) ?:showError("Error getting last inserted ID: " . $conn->error);
     return $ticketId;
 }
 #endregion
@@ -60,12 +54,9 @@ function createTicketBase($conn, $ticketType) {
     try {
         # Prepare INSERT query
         $insertTicketSQL = "INSERT INTO ticket (typeTicket, creationDate, idUsers) VALUES (?, ?, ?)";
-        $stmt = $conn->prepare($insertTicketSQL);
-
         # Check if query preparation was successful
-        if ($stmt === false) {
-            throw new Exception("Error preparing INSERT statement: " . $conn->error);
-        }
+        $stmt = $conn->prepare($insertTicketSQL)?:throw new Exception("Error preparing INSERT statement: " . $conn->error);
+
 
         # Bind parameters and execute query
         $stmt->bind_param("sss", $ticketType, $currentDate, $idUsers);
@@ -86,7 +77,7 @@ function createTicketBase($conn, $ticketType) {
 }
 #endregion
 
-#region Function --- Create ticket help support fields
+#region Function --- Help & support
 function createTicketHelpSupport($conn, $inputs, $fileAttachment) {
 
     # Get both the ticket type and the ticket ID
@@ -97,12 +88,9 @@ function createTicketHelpSupport($conn, $inputs, $fileAttachment) {
 
         # Prepare INSERT query
         $insertTypeSQL = "INSERT INTO helpSupport (subject, description, file, ticketID) VALUES (?, ?, ?, ?)";
-        $stmt = $conn->prepare($insertTypeSQL);
-
         # Check if the query preparation was successful
-        if ($stmt === false) {
-            throw new Exception("Error preparing INSERT statement: " . $conn->error);
-        }
+        $stmt = $conn->prepare($insertTypeSQL)?:throw new Exception("Error preparing INSERT statement: " . $conn->error);
+
 
         # Bind parameters and execute query, we're using an array to get values so we just order them.
         $stmt->bind_param("sssi", $inputs[0], $inputs[1], $fileAttachment, $ticketId);
@@ -118,7 +106,7 @@ function createTicketHelpSupport($conn, $inputs, $fileAttachment) {
 }
 #endregion
 
-#region Function --- Create ticket bug report fields
+#region Function --- Bug report
 function createTicketBugReport($conn, $inputs, $bugImage) {
 
     # Get both the ticket type and the ticket ID
@@ -126,15 +114,10 @@ function createTicketBugReport($conn, $inputs, $bugImage) {
     $ticketId = createTicketBase($conn, $ticketType);
 
     try {
-
         # Prepare INSERT query
-        $insertTypeSQL = "INSERT INTO bugReport (subject, operativeSystem, description, stepsToReproduce, expectedResult, receivedResult, discordClient, image, ticketID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        $stmt = $conn->prepare($insertTypeSQL);
-
+        $insertTypeSQL = "INSERT INTO bugReport (subject, operativeSystem, description, stepsToReproduce, expectedResult, receivedResult, discordClient, image, ticketID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         # Check if query preparation was successful
-        if ($stmt === false) {
-            throw new Exception("Error preparing INSERT statement: " . $conn->error);
-        }
+        $stmt = $conn->prepare($insertTypeSQL)?:throw new Exception("Error preparing INSERT statement: " . $conn->error);
 
         # Bind parameters and execute query
         $stmt->bind_param("ssssssssi", $inputs[0], $inputs[1], $inputs[2], $inputs[3], $inputs[4], $inputs[5], $inputs[6], $bugImage, $ticketId);
@@ -145,7 +128,7 @@ function createTicketBugReport($conn, $inputs, $bugImage) {
     } catch (Exception $e) {
 
         # Display error message
-        showError("Error: " . $e->getMessage());
+        showError("Error trycatch: " . $e->getMessage());
     }
 }
 #endregion
@@ -161,12 +144,8 @@ function createTicketFeatureRequest($conn, $inputs) {
 
         # Prepare INSERT query
         $insertTypeSQL = "INSERT INTO featureRequest (subject, description, ticketID, requestType) VALUES (?, ?, ?, ?)";
-        $stmt = $conn->prepare($insertTypeSQL);
-
         # Check if query preparation was successful
-        if ($stmt === false) {
-            throw new Exception("Error preparing INSERT statement: " . $conn->error);
-        }
+        $stmt = $conn->prepare($insertTypeSQL)?:throw new Exception("Error preparing INSERT statement: " . $conn->error);
 
         # Bind parameters and execute query
         $stmt->bind_param("ssis", $inputs[0], $inputs[1], $ticketId, $inputs[2]);
@@ -193,12 +172,8 @@ function createTicketGrammarIssues($conn, $inputs, $fileAttachment) {
 
         # Prepare INSERT query
         $insertTypeSQL = "INSERT INTO grammarIssues (subject, description, image, ticketID) VALUES (?, ?, ?, ?)";
-        $stmt = $conn->prepare($insertTypeSQL);
-
         # Check if query preparation was successful
-        if ($stmt === false) {
-            throw new Exception("Error preparing INSERT statement: " . $conn->error);
-        }
+        $stmt = $conn->prepare($insertTypeSQL)?:throw new Exception("Error preparing INSERT statement: " . $conn->error);
 
         # Bind parameters and execute query
         $stmt->bind_param("sssi", $inputs[0], $inputs[1], $fileAttachment, $ticketId);
@@ -225,12 +200,8 @@ function createTicketInformationUpdate($conn, $inputs) {
 
         # Prepare INSERT query
         $insertTypeSQL = "INSERT INTO informationUpdate (subject, updateInfo, ticketID) VALUES (?, ?, ?)";
-        $stmt = $conn->prepare($insertTypeSQL);
-
         # Check if query preparation was successful
-        if ($stmt === false) {
-            throw new Exception("Error preparing INSERT statement: " . $conn->error);
-        }
+        $stmt = $conn->prepare($insertTypeSQL)?:throw new Exception("Error preparing INSERT statement: " . $conn->error);
 
         # Bind parameters and execute query
         $stmt->bind_param("ssi", $inputs[0], $inputs[1], $ticketId);
@@ -257,12 +228,8 @@ function createTicketOther($conn, $inputs) {
 
         # Prepare INSERT query
         $insertTypeSQL = "INSERT INTO other (subject, description, extraText, ticketID) VALUES (?, ?, ?, ?)";
-        $stmt = $conn->prepare($insertTypeSQL);
-
         # Check if query preparation was successful
-        if ($stmt === false) {
-            throw new Exception("Error preparing INSERT statement: " . $conn->error);
-        }
+        $stmt = $conn->prepare($insertTypeSQL)?:throw new Exception("Error preparing INSERT statement: " . $conn->error);
 
         # Bind parameters and execute query
         $stmt->bind_param("sssi", $inputs[0], $inputs[1], $inputs[2], $ticketId);
@@ -299,7 +266,7 @@ function getUserData($conn, $username) {
     try {
         # We prepare a SQL that gets all the data, simples as that 🦆
         $sql = "SELECT nameUsers, surnameUsers, emailUsers FROM users WHERE usernameUsers=?";
-        $stmt = $conn->prepare($sql);
+        $stmt = $conn->prepare($sql)?:throw new Exception("Error preparing SELECT statement: " . $conn->error);
         $stmt->bind_param('s', $username);
         $stmt->execute();
 
@@ -317,7 +284,7 @@ function editUserData($conn, $table, $data) {
     try {
         # In this case, even if the user can choose what to update, he's updating one value at once, so we can let him choose which table will he update on a single query instead of using a switch case, just grab the table he want's to update
         $sql = "UPDATE users SET $table = ? WHERE usernameUsers = ?";
-        $stmt = $conn->prepare($sql);
+        $stmt = $conn->prepare($sql)?:throw new Exception("Error preparing UPDATE statement: " . $conn->error);
         $stmt->bind_param('ss', $data, $_SESSION['user']);
         $stmt->execute();
         redirectToViewProfile();

@@ -2,7 +2,7 @@
 function viewTicketDetail($conn, $type) {
     $id = intval($_GET['ID']);
     switch ($type) {
-        case 'helpSupport':
+        case 'Help ':
             # Get every ticket from X type from the user
             $sql = "SELECT t.idTicket, t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, hs.subject, hs.description, hs.file
             FROM ticket t
@@ -11,7 +11,7 @@ function viewTicketDetail($conn, $type) {
             WHERE t.typeTicket = 'Help & Support' AND t.idTicket = ?";
 
             # Prepare statement
-            $stmt = $conn->prepare($sql);
+            $stmt = $conn->prepare($sql) ?: throw new Exception("Error preparing SELECT statement (view ticket detail confirm): " . $conn->error);
 
             # Bind parameters
             $stmt->bind_param("i", $id);
@@ -26,15 +26,15 @@ function viewTicketDetail($conn, $type) {
             printTicketDetail($type, $result);
             break;
 
-        case 'bugReport':
-            $sql = "SELECT t.idTicket, t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, br.operativeSystem, br.subject, br.description, stepsToReproduce, br.expectedResult, br.receivedResult, br.discordClient, br.discordClient
+        case 'Bug Reporting':
+            $sql = "SELECT t.idTicket, t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, br.operativeSystem, br.subject, br.description, stepsToReproduce, br.expectedResult, br.receivedResult, br.discordClient, br.discordClient, br.image
             FROM ticket t
             JOIN bugReport br ON t.idTicket = br.ticketID
             JOIN users u ON t.idUsers = u.idUsers
             WHERE t.typeTicket = 'Bug Reporting' AND t.idTicket = ?";
 
             # Prepare statement
-            $stmt = $conn->prepare($sql);
+            $stmt = $conn->prepare($sql) ?: throw new Exception("Error preparing SELECT statement (view ticket detail confirm): " . $conn->error);
 
             # Bind parameters
             $stmt->bind_param("i", $id);
@@ -57,7 +57,7 @@ function viewTicketDetail($conn, $type) {
             WHERE t.typeTicket = 'Feature Request' AND t.idTicket = ?";
 
             # Prepare statement
-            $stmt = $conn->prepare($sql);
+            $stmt = $conn->prepare($sql) ?: throw new Exception("Error preparing SELECT statement (view ticket detail confirm): " . $conn->error);
 
             # Bind parameters
             $stmt->bind_param("i", $id);
@@ -72,7 +72,7 @@ function viewTicketDetail($conn, $type) {
             printTicketDetail($type, $result);
             break;
 
-        case 'grammarIssues':
+        case 'Grammar':
             $sql = "SELECT t.idTicket, t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, gi.subject, gi.description, gi.image
             FROM ticket t
             JOIN grammarIssues gi ON t.idTicket = gi.ticketID
@@ -80,7 +80,7 @@ function viewTicketDetail($conn, $type) {
             WHERE t.typeTicket = 'Grammar' AND t.idTicket =?";
 
             # Prepare statement
-            $stmt = $conn->prepare($sql);
+            $stmt = $conn->prepare($sql) ?: throw new Exception("Error preparing SELECT statement (view ticket detail confirm): " . $conn->error);
 
             # Bind parameters
             $stmt->bind_param("i", $id);
@@ -103,7 +103,7 @@ function viewTicketDetail($conn, $type) {
             WHERE t.typeTicket = 'Information Update' AND t.idTicket = ?";
 
             # Prepare statement
-            $stmt = $conn->prepare($sql);
+            $stmt = $conn->prepare($sql) ?: throw new Exception("Error preparing SELECT statement (view ticket detail confirm): " . $conn->error);
 
             # Bind parameters
             $stmt->bind_param("i", $id);
@@ -126,7 +126,7 @@ function viewTicketDetail($conn, $type) {
             WHERE t.typeTicket = 'Other' AND t.idTicket = ?";
 
             # Prepare statement
-            $stmt = $conn->prepare($sql);
+            $stmt = $conn->prepare($sql) ?: throw new Exception("Error preparing SELECT statement (view ticket detail confirm): " . $conn->error);
 
             # Bind parameters
             $stmt->bind_param("i", $id);
@@ -147,26 +147,28 @@ function viewTicketDetail($conn, $type) {
 
 function printTicketDetail($type, $result) {
     switch ($type) {
-        case 'helpSupport':
+        case 'Help ':
             try {
                 if ($result->num_rows > 0) {
                     echo "<table class='table' id='ticketTable1' style='background-color: #9900ff; color: white;'>
                 <thead>
                     <tr>
-                        <th>ID user</th>
                         <th>Ticket No.</th>
-                        <th>Username</th>
                         <th>Type</th>
+                        <th>Creation Date</th>
+                        <th>Modification Date</th>
+                        <th>Resolved Date</th>
                         <th>Status</th>
                         <th>Subject</th>
-                        <th>Action</th>
+                        <th>Description</th>
                     </tr>
                 </thead>
                 <tbody>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr style='background-color: white; color: #9900ff;'>";
-                        echo "<td>" . $row["idTicket"] . "</td><td>" . $row["typeTicket"] . "</td><td>" . $row["creationDate"] . "</td><td>" . $row["modificationDate"] . "</td><td>" . $row["resolvedDate"] . "</td><td>" . $row["stateTicket"] . "</td><td>" . $row["subject"] . "</td><td>" . $row["description"] . "</td><td>" . $row["file"] . "</td>";
+                        echo "<td>" . $row["idTicket"] . "</td><td>" . $row["typeTicket"] . "</td><td>" . $row["creationDate"] . "</td><td>" . $row["modificationDate"] . "</td><td>" . $row["resolvedDate"] . "</td><td>" . $row["stateTicket"] . "</td><td>" . $row["subject"] . "</td><td>" . $row["description"] . "</td>";
                         echo "</tr>";
+                        echo "<img src='" . $row["file"] . "'>";
                     }
                     echo "</tbody></table>";
                 } else {
@@ -177,7 +179,7 @@ function printTicketDetail($type, $result) {
             }
             break;
 
-        case 'bugReport':
+        case 'Bug Reporting':
             try {
                 if ($result->num_rows > 0) {
                     echo "<table class='table' id='ticketTable2' style='background-color:rgb(255, 255, 255)'>
@@ -188,7 +190,7 @@ function printTicketDetail($type, $result) {
                                 <th>Creation Date</th>
                                 <th>Modification Date</th>
                                 <th>Resolved Date</th>
-                                <th>Status<th>
+                                <th>Status</th>
                                 <th>Operative System</th>
                                 <th>Subject</th>
                                 <th>Description</th>
@@ -196,13 +198,13 @@ function printTicketDetail($type, $result) {
                                 <th>Expected result</th>
                                 <th>Received result</th>
                                 <th>Discord client</th>
-                                <th>Image</th>
                             </tr>
                         </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr style='background-color: white; color: #9900ff;'>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["operativeSystem"] . "</th><th>" . $row["description"] . "</th><th>" . $row["stepsToReproduce"] . "</th><th>" . $row["expectedResult"] . "</th><th>" . $row["receivedResult"] . "</th><th>" . $row["discordClient"] . "</th><th>" . $row["image"] . "</th>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["operativeSystem"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["stepsToReproduce"] . "</th><th>" . $row["expectedResult"] . "</th><th>" . $row["receivedResult"] . "</th><th>" . $row["discordClient"] . "</th>";
                         echo "</tr>";
+                        echo "<img src='" . $row["image"] . "'>";
                     }
                     echo "</table>";
                 } else {
@@ -243,7 +245,7 @@ function printTicketDetail($type, $result) {
             }
             break;
 
-        case 'grammarIssues':
+        case 'Grammar':
             try {
                 if ($result->num_rows > 0) {
                     echo "<table class='table' id='ticketTable4' style='background-color:rgb(255, 255, 255)'>
@@ -257,13 +259,13 @@ function printTicketDetail($type, $result) {
                             <th>Status</th>
                             <th>Subject</th>
                             <th>Description</th>
-                            <th>Image</th>
                         </tr>
                     </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr style='background-color: white; color: #9900ff;'>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["image"] . "</th>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th>";
                         echo "</tr>";
+                        echo "<img src='" . $row["image"] . "'>";
                     }
                     echo "</table>";
                 } else {
