@@ -277,11 +277,9 @@ error_reporting(E_ALL);
         <div class="container col-sm-12">
             <div class="row">
                 <div class="table-bordered table-hover table-responsive" style="width: 100%">
-                    <table class="table" id="ticketTable1" style="background-color:rgb(255, 255, 255)">
-                        <?php
-                        echo viewTicketDetail($conn, $type);
-                        ?>
-                    </table>
+                    <?php
+                    echo viewTicketDetail($conn, $type);
+                    ?>
                 </div>
             </div>
         </div>
