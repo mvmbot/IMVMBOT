@@ -2,7 +2,7 @@
 function editTicketDetail($conn, $type) {
     $id = intval($_GET['ID']);
     switch ($type) {
-        case 'helpSupport':
+        case 'Help ':
             $sql = "SELECT t.idTicket, t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, hs.subject, hs.description, hs.file
             FROM ticket t
             JOIN helpSupport hs ON t.idTicket = hs.ticketID
@@ -25,8 +25,8 @@ function editTicketDetail($conn, $type) {
             printTicketDetail($type, $result, $id);
             break;
 
-        case 'bugReport':
-            $sql = "SELECT t.idTicket, t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, br.operativeSystem, br.subject, br.description, stepsToReproduce, br.expectedResult, br.receivedResult, br.discordClient, br.discordClient
+        case 'Bug Reporting':
+            $sql = "SELECT t.idTicket, t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, br.operativeSystem, br.subject, br.description, br.stepsToReproduce, br.expectedResult, br.receivedResult, br.discordClient, br.discordClient, br.image
             FROM ticket t
             JOIN bugReport br ON t.idTicket = br.ticketID
             JOIN users u ON t.idUsers = u.idUsers
@@ -71,7 +71,7 @@ function editTicketDetail($conn, $type) {
             printTicketDetail($type, $result, $id);
             break;
 
-        case 'grammarIssues':
+        case 'Grammar':
             $sql = "SELECT t.idTicket, t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, gi.subject, gi.description, gi.image
             FROM ticket t
             JOIN grammarIssues gi ON t.idTicket = gi.ticketID
@@ -146,7 +146,7 @@ function editTicketDetail($conn, $type) {
 
 function printTicketDetail($type, $result, $id) {
     switch ($type) {
-        case 'helpSupport':
+        case 'Help ':
             try {
                 if ($result->num_rows > 0) {
                     echo "<table class='table' id='ticketTable1' style='background-color: #9900ff; color: white;'>
@@ -160,7 +160,6 @@ function printTicketDetail($type, $result, $id) {
                             <th>Status</th>
                             <th>Subject</th>
                             <th>Description</th>
-                            <th>File</th>
                         </tr>
                     </thead>";
                     while ($row = $result->fetch_assoc()) {
@@ -175,8 +174,9 @@ function printTicketDetail($type, $result, $id) {
                                     </select>
                                     <br><input type='submit' value='Submit'>
                                 </form>
-                            </th>" . "<th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["file"] . "</th>";
+                            </th>" . "<th>" . $row["subject"] . "</th><th>" . $row["description"] .  "</th>";
                         echo "</tr>";
+                        echo "<img src='" . $row["file"] . "'>";
                     }
                     echo "</table>";
                 } else {
@@ -187,7 +187,7 @@ function printTicketDetail($type, $result, $id) {
             }
             break;
 
-        case 'bugReport':
+        case 'Bug Reporting':
             try {
                 if ($result->num_rows > 0) {
                     echo "<table class='table' id='ticketTable2' style='background-color: #9900ff; color: white;'>
@@ -206,7 +206,6 @@ function printTicketDetail($type, $result, $id) {
                                 <th>Expected result</th>
                                 <th>Received result</th>
                                 <th>Discord client</th>
-                                <th>Image</th>
                                 </tr>
                         </thead>";
                     while ($row = $result->fetch_assoc()) {
@@ -221,8 +220,9 @@ function printTicketDetail($type, $result, $id) {
                                     </select>
                                     <br><input type='submit' value='Submit'>
                                 </form>
-                            </th>" . "<th>" . $row["operativeSystem"] . "</th><th>" . $row["description"] . "</th><th>" . $row["stepsToReproduce"] . "</th><th>" . $row["expectedResult"] . "</th><th>" . $row["receivedResult"] . "</th><th>" . $row["discordClient"] . "</th><th>" . $row["image"] . "</th>";
-                        echo "</tr>";
+                            </th>" . "<th>" . $row["operativeSystem"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["stepsToReproduce"] . "</th><th>" . $row["expectedResult"] . "</th><th>" . $row["receivedResult"] . "</th><th>" . $row["discordClient"] . "</th>";
+                            echo "</tr>";
+                            echo "<img src='" . $row["image"] . "'>";
                     }
                     echo "</table>";
                 } else {
@@ -273,7 +273,7 @@ function printTicketDetail($type, $result, $id) {
             }
             break;
 
-        case 'grammarIssues':
+        case 'Grammar':
             try {
                 if ($result->num_rows > 0) {
                     echo "<table class='table' id='ticketTable4' style='background-color: #9900ff; color: white;'>
@@ -287,7 +287,6 @@ function printTicketDetail($type, $result, $id) {
                             <th>Status</th>
                             <th>Subject</th>
                             <th>Description</th>
-                            <th>Image</th>
                         </tr>
                     </thead>";
                     while ($row = $result->fetch_assoc()) {
@@ -302,8 +301,9 @@ function printTicketDetail($type, $result, $id) {
                                     </select>
                                     <br><input type='submit' value='Submit'>
                                 </form>
-                            </th>" . "<th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["image"] . "</th>";
+                            </th>" . "<th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th>";
                         echo "</tr>";
+                        echo "<img src='" . $row["image"] . "'>";
                     }
                     echo "</table>";
                 } else {
