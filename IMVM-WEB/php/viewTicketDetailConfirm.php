@@ -27,7 +27,7 @@ function viewTicketDetail($conn, $type) {
             break;
 
         case 'Bug Reporting':
-            $sql = "SELECT t.idTicket, t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, br.operativeSystem, br.subject, br.description, stepsToReproduce, br.expectedResult, br.receivedResult, br.discordClient, br.discordClient
+            $sql = "SELECT t.idTicket, t.typeTicket, t.creationDate, t.modificationDate, t.resolvedDate, t.stateTicket, br.operativeSystem, br.subject, br.description, stepsToReproduce, br.expectedResult, br.receivedResult, br.discordClient, br.discordClient, br.image
             FROM ticket t
             JOIN bugReport br ON t.idTicket = br.ticketID
             JOIN users u ON t.idUsers = u.idUsers
@@ -190,7 +190,7 @@ function printTicketDetail($type, $result) {
                                 <th>Creation Date</th>
                                 <th>Modification Date</th>
                                 <th>Resolved Date</th>
-                                <th>Status<th>
+                                <th>Status</th>
                                 <th>Operative System</th>
                                 <th>Subject</th>
                                 <th>Description</th>
@@ -198,13 +198,13 @@ function printTicketDetail($type, $result) {
                                 <th>Expected result</th>
                                 <th>Received result</th>
                                 <th>Discord client</th>
-                                <th>Image</th>
                             </tr>
                         </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr style='background-color: white; color: #9900ff;'>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["operativeSystem"] . "</th><th>" . $row["description"] . "</th><th>" . $row["stepsToReproduce"] . "</th><th>" . $row["expectedResult"] . "</th><th>" . $row["receivedResult"] . "</th><th>" . $row["discordClient"] . "</th><th>" . $row["image"] . "</th>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["operativeSystem"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["stepsToReproduce"] . "</th><th>" . $row["expectedResult"] . "</th><th>" . $row["receivedResult"] . "</th><th>" . $row["discordClient"] . "</th>";
                         echo "</tr>";
+                        echo "<img src='" . $row["image"] . "'>";
                     }
                     echo "</table>";
                 } else {
