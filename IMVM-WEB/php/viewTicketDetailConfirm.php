@@ -259,13 +259,13 @@ function printTicketDetail($type, $result) {
                             <th>Status</th>
                             <th>Subject</th>
                             <th>Description</th>
-                            <th>Image</th>
                         </tr>
                     </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr style='background-color: white; color: #9900ff;'>";
-                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["image"] . "</th>";
+                        echo "<th>" . $row["idTicket"] . "</th><th>" . $row["typeTicket"] . "</th><th>" . $row["creationDate"] . "</th><th>" . $row["modificationDate"] . "</th><th>" . $row["resolvedDate"] . "</th><th>" . $row["stateTicket"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th>";
                         echo "</tr>";
+                        echo "<img src='" . $row["image"] . "'>";
                     }
                     echo "</table>";
                 } else {
