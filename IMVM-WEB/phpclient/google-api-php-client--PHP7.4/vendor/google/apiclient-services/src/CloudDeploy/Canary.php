@@ -1,0 +1,86 @@
+<?php
+/*
+ * Copyright 2014 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+namespace Google\Service\CloudDeploy;
+
+class Canary extends \Google\Model
+{
+  /**
+   * @var CanaryDeployment
+   */
+  public $canaryDeployment;
+  protected $canaryDeploymentType = CanaryDeployment::class;
+  protected $canaryDeploymentDataType = '';
+  /**
+   * @var CustomCanaryDeployment
+   */
+  public $customCanaryDeployment;
+  protected $customCanaryDeploymentType = CustomCanaryDeployment::class;
+  protected $customCanaryDeploymentDataType = '';
+  /**
+   * @var RuntimeConfig
+   */
+  public $runtimeConfig;
+  protected $runtimeConfigType = RuntimeConfig::class;
+  protected $runtimeConfigDataType = '';
+
+  /**
+   * @param CanaryDeployment
+   */
+  public function setCanaryDeployment(CanaryDeployment $canaryDeployment)
+  {
+    $this->canaryDeployment = $canaryDeployment;
+  }
+  /**
+   * @return CanaryDeployment
+   */
+  public function getCanaryDeployment()
+  {
+    return $this->canaryDeployment;
+  }
+  /**
+   * @param CustomCanaryDeployment
+   */
+  public function setCustomCanaryDeployment(CustomCanaryDeployment $customCanaryDeployment)
+  {
+    $this->customCanaryDeployment = $customCanaryDeployment;
+  }
+  /**
+   * @return CustomCanaryDeployment
+   */
+  public function getCustomCanaryDeployment()
+  {
+    return $this->customCanaryDeployment;
+  }
+  /**
+   * @param RuntimeConfig
+   */
+  public function setRuntimeConfig(RuntimeConfig $runtimeConfig)
+  {
+    $this->runtimeConfig = $runtimeConfig;
+  }
+  /**
+   * @return RuntimeConfig
+   */
+  public function getRuntimeConfig()
+  {
+    return $this->runtimeConfig;
+  }
+}
+
+// Adding a class alias for backwards compatibility with the previous class name.
+class_alias(Canary::class, 'Google_Service_CloudDeploy_Canary');
