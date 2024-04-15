@@ -1,5 +1,7 @@
 <?php
 require('./php/databaseFunctions.php');
+$env = parse_ini_file('.env');
+
 
 $conn = connectToDatabase();
 session_start();
