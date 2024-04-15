@@ -1,7 +1,9 @@
 <?php
-require('./php/databaseFunctions.php');
-$env = parse_ini_file('.env');
+require_once('./php/databaseFunctions.php');
+require_once('./phpclient/google-api-php-client--PHP7.4/vendor/autoload.php');
 
+use Google\Client as Google_Client;
+use Google\Service\Classroom as Google_Service_Classroom;
 
 $conn = connectToDatabase();
 session_start();
@@ -10,6 +12,7 @@ $client = new Google_Client();
 $client->setClientId($_ENV['GOOGLE_CLIENT_ID']);
 $client->setClientSecret($_ENV['GOOGLE_CLIENT_SECRET']);
 $client->setRedirectUri($_ENV['GOOGLE_REDIRECT_URI']);
+
 $client->addScope([
     Google_Service_Classroom::CLASSROOM_COURSES_READONLY,
     Google_Service_Classroom::CLASSROOM_ROSTERS_READONLY
