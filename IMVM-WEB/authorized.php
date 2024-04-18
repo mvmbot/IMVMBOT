@@ -1,6 +1,6 @@
 <?php
 require_once('./php/databaseFunctions.php');
-require_once('./phpclient/google-api-php-client--PHP7.4/vendor/autoload.php');
+require_once('phpclient/google-api-php-client--PHP7.4/vendor/autoload.php');
 
 use Google\Client as Google_Client;
 use Google\Service\Classroom as Google_Service_Classroom;
