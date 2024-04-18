@@ -1,7 +1,7 @@
 <?php
 require_once('./php/databaseFunctions.php');
 require_once('phpclient/google-api-php-client--PHP7.4/vendor/autoload.php');
-require_once('phpclient/phpdotenv-5.6.0/src/Dotenv.php');
+require_once('phpclient/phpdotenv-4.3.0/src/Dotenv.php');
 
 use Dotenv\Dotenv;
 use Google\Client as Google_Client;
