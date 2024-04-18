@@ -23,8 +23,7 @@ if (isset($_GET['code'])) {
     $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
 
     if (!isset($token['error'])) {
-        $_SESSION['access_token'] = $token['access_token'];
-
+        $_SESSION['access_token'] = $token;
         $accessToken = $token['access_token'];
         $userId = $_SESSION['user_id'];
 
