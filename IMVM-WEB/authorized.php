@@ -1,12 +1,17 @@
 <?php
 require_once('./php/databaseFunctions.php');
 require_once('phpclient/google-api-php-client--PHP7.4/vendor/autoload.php');
+require_once('phpclient/phpdotenv-5.6.0/src/Dotenv.php');
 
+use Dotenv\Dotenv;
 use Google\Client as Google_Client;
 use Google\Service\Classroom as Google_Service_Classroom;
 
 $conn = connectToDatabase();
 session_start();
+
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
 $client = new Google_Client();
 $client->setClientId($_ENV['GOOGLE_CLIENT_ID']);
