@@ -229,7 +229,7 @@ function printTicketDetail($type, $result) {
                                 <th>Status</th>
                                 <th>Subject</th>
                                 <th>Requested Type</th>
-                                </tr>
+                            </tr>
                         </thead>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr style='background-color: white; color: #9900ff;'>";

@@ -496,17 +496,17 @@ video {
 
 /* Styles for the news image */
 .news-image {
-  width: 100%; /* Adjust the image to the full width of the container */
-  max-width: 500px; /* Define a maximum width to prevent the image from being too large on large screens */
-  height: auto; /* Ensure the height adjusts proportionally to the width */
-  display: block; /* Ensure the image has no empty space around it */
-  margin: 0 auto; /* Center the image horizontally */
+  width: 100%; 
+  max-width: 500px;
+  height: auto;  
+  display: block; 
+  margin: 0 auto; 
 }
 
 /* Additional styles for mobile screens */
 @media screen and (max-width: 767px) {
   .news-image {
-    max-width: 100%; /* On smaller screens, adjust the image to the full width of the container */
+    max-width: 100%; 
   }
 }
 
@@ -619,4 +619,6 @@ video {
   width: 22px; 
   height: auto;
 }
+
+/*Styles for chat*/
 

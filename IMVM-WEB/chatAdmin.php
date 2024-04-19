@@ -272,32 +272,25 @@ error_reporting(E_ALL);
 
         <!-- Navbar End -->
         <?php
-        $conn = connectToDatabase();
-        $type = $_GET['type'];
-        ?>
-        <br><br>
-        <center>
-            <h1>Ticket Detail</h1>
-            <div class="container col-sm-12">
-                <div class="row">
-                    <div class="table-bordered table-hover table-responsive" style="width: 100%">
-                        <table class="table" id="ticketTable1" style="background-color:rgb(255, 255, 255)">
-                            <?php
-                            echo editTicketDetail($conn, $type);
-                            ?>
-                        </table>
-                    </div>
+    $conn = connectToDatabase();
+    $type = $_GET['type'];
+    ?>
+    <br><br>
+    <center>
+        <h1>Chat with the user</h1>
+        <div class="container col-sm-12">
+            <div class="row">
+                <div class="table-bordered table-hover table-responsive" style="width: 100%">
+                    <?php
+                    echo viewTicketDetail($conn, $type);
+                    ?>
                 </div>
             </div>
-        </center>
-        <br><br>
+        </div>
+    </center>
+    <br><br>
 
-        <center><a href="./viewTicketAdmin.php" class="btn btn-primary py-3 px-5">Go back<i class="fa fa-arrow-right ms-3"></i></a></center>
-    <?php
-    } else {
-        echo redirectToIndexAdmin();
-    }
-    ?>
+    <center><a href="./viewTicketAdmin.php" class="btn btn-primary py-3 px-5">Go back<i class="fa fa-arrow-right ms-3"></i></a></center>
 </body>
 
 
