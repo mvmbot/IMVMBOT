@@ -9,7 +9,7 @@ module.exports = {
       
     async execute(interaction, Client) {
 
-        let canal = Client.channels.cache.get('1215841697196413109')
+        let canal = Client.channels.cache.get('1163886058258305066')
 
     if (!interaction.member.permissions.has(Discord.PermissionFlagsBits.Administrator)) return interaction.reply({content: `❌ **¡Tienes que ser administrador para mandar anuncios!**`}).then(() => {
             setTimeout(() => {
