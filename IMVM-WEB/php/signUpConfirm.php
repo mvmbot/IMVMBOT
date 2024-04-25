@@ -29,6 +29,10 @@ $password = $_POST['password'] ?? '';
 $confirmPassword = $_POST['confirmPassword'] ?? '';
 $newsletterCheckBox = isset($_POST['newsletterCheckBox']) ? 1 : 0;
 
+$fileAttachment = $targetDirectory . basename($_FILES["profileImage"]["name"]);
+
+$check = validateFile($fileAttachment, $type) ?: redirectToSignup();
+
 $inputs = array(
     $username,
     $name,
@@ -84,7 +88,6 @@ try {
     showError("Error: " . $e->getMessage());
 }
 
-
 # If we found any matches in the database, let them know the chosen username or email is taken
 if ($stmtCheck->num_rows > 0) {
     redirectToSignup();
@@ -94,7 +97,7 @@ if ($stmtCheck->num_rows > 0) {
     try {
 
         # Preparing the query to insert the user into the database
-        $insertSQL = "INSERT INTO users (usernameUsers, nameUsers, surnameUsers, emailUsers, passwordUsers, acceptNewsletter) VALUES (?, ?, ?, ?, ?, ?)";
+        $insertSQL = "INSERT INTO users (usernameUsers, nameUsers, surnameUsers, emailUsers, passwordUsers, acceptNewsletter, profileImage, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($insertSQL);
 
         # In case we did mess up preparing the query.
@@ -106,7 +109,7 @@ if ($stmtCheck->num_rows > 0) {
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         # Bind parameters, cast the query, and add them to our user list
-        $stmt->bind_param("ssssss", $username, $name, $surname, $mail, $hashedPassword, $newsletterCheckBox);
+        $stmt->bind_param("ssssssss", $username, $name, $surname, $mail, $hashedPassword, $newsletterCheckBox, $profileImage, $status);
         $stmt->execute();
 
         # If everything worked like it should, send them to our main page

@@ -282,6 +282,10 @@ session_start();
                 <input type="text" name="surname" id="surname" placeholder="" />
             </div>
             <div class="input-group">
+                <label for="profileImage" style="display: block;">Profile image:</label>
+                <input type="file" id="profileImage" name="profileImage">
+            </div>
+            <div class="input-group">
                 <label for="username">Mail</label>
                 <input type="text" name="mail" id="mail" placeholder="" />
             </div>
