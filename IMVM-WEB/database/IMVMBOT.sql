@@ -7,7 +7,9 @@ CREATE TABLE admin (
     nameAdmin VARCHAR(50) NOT NULL,
     surnameAdmin VARCHAR(50) NOT NULL UNIQUE,
     emailAdmin VARCHAR(100) NOT NULL UNIQUE,
-    passwordAdmin VARCHAR(255) NOT NULL
+    passwordAdmin VARCHAR(255) NOT NULL,
+    profileImage varchar(255) NOT NULL,
+    status varchar(255) NOT NULL
 );
 
 -- Table to store user information.
@@ -18,7 +20,9 @@ CREATE TABLE users (
     surnameUsers VARCHAR(50) NOT NULL,
     emailUsers VARCHAR(100) NOT NULL UNIQUE,
     passwordUsers VARCHAR(255) NOT NULL,
-    acceptNewsletter BIT NOT NULL
+    acceptNewsletter BIT NOT NULL,
+    profileImage varchar(255) NOT NULL,
+    status varchar(255) NOT NULL
 );
 
 -- Table to store ticket information.
