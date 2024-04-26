@@ -22,7 +22,12 @@ $client->addScope([
 // Obtener el token de acceso
 if (isset($_GET['code'])) {
     $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
-    $client->setAccessToken($token);
+    if (!isset($token['access_token'])) {
+        throw new Exception('Failed to obtain access token');
+    }
+    $accessToken = $token['access_token'];
+    var_dump($token);
+    $client->setAccessToken($accessToken);
 
     // Verifica si hubo un error al obtener el token
     if (isset($token['error'])) {
