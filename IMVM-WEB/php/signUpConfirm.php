@@ -24,13 +24,12 @@ $conn = connectToDatabase();
 $username = $_POST['username'] ?? '';
 $name = $_POST['name'] ?? '';
 $surname = $_POST['surname'] ?? '';
-$profileImage = $_POST['profileImage'] ?? '';
 $mail = $_POST['mail'] ?? '';
 $password = $_POST['password'] ?? '';
 $confirmPassword = $_POST['confirmPassword'] ?? '';
 $newsletterCheckBox = isset($_POST['newsletterCheckBox']) ? 1 : 0;
 
-$fileAttachment = $targetDirectory . basename($_FILES["profileImage"+"username"]["name"]);
+$fileAttachment = $targetDirectory . basename($_FILES['profileImage']["name"]);
 
 $targetDirectory =  '../userProfileImgs/';
 
