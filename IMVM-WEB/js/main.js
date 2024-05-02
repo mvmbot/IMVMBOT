@@ -117,6 +117,4 @@ $(document).ready(function() {
     videos.eq(index).show();
   }
 
-
-
 });

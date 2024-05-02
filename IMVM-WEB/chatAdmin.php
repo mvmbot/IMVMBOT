@@ -334,7 +334,7 @@ error_reporting(E_ALL);
     </section>
   </div>
 
-  <script src="javascript/chat.js"></script>
+  <script src="./js/chat.js"></script>
 
     <br><br>
 
