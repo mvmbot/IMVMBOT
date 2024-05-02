@@ -31,6 +31,8 @@ $newsletterCheckBox = isset($_POST['newsletterCheckBox']) ? 1 : 0;
 
 $fileAttachment = $targetDirectory . basename($_FILES['profileImage']["name"]);
 
+$type = 'profileImage'; 
+
 $userDirectory = '../' . $username . '/';
 
 $targetDirectory =  $userDirectory . 'userProfileImgs/';
