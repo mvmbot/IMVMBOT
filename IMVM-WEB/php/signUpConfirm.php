@@ -29,13 +29,13 @@ $password = $_POST['password'] ?? '';
 $confirmPassword = $_POST['confirmPassword'] ?? '';
 $newsletterCheckBox = isset($_POST['newsletterCheckBox']) ? 1 : 0;
 
-$fileAttachment = $targetDirectory . basename($_FILES['profileImage']["name"]);
-
 $type = 'profileImage'; 
 
 $userDirectory = '../' . $username . '/';
 
 $targetDirectory =  $userDirectory . 'userProfileImgs/';
+
+$fileAttachment = $targetDirectory . basename($_FILES['profileImage']["name"]);
 
 if (!mkdir($userDirectory, 0777, true)) {
     die('Failed to create directories...');
