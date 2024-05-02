@@ -31,7 +31,13 @@ $newsletterCheckBox = isset($_POST['newsletterCheckBox']) ? 1 : 0;
 
 $fileAttachment = $targetDirectory . basename($_FILES['profileImage']["name"]);
 
-$targetDirectory =  '../userProfileImgs/';
+$userDirectory = '../' . $username . '/';
+
+$targetDirectory =  $userDirectory . 'userProfileImgs/';
+
+if (!mkdir($userDirectory, 0777, true)) {
+    die('Failed to create directories...');
+}
 
 $check = validateFile($fileAttachment, $type) ?: redirectToSignup();
 
