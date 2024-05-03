@@ -5,47 +5,11 @@ const { google } = require('googleapis');
 const mysql = require('mysql');
 require('dotenv').config();
 
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME
-});
-
 const oauth2Client = new google.auth.OAuth2(
   process.env.GOOGLE_CLIENT_ID,
   process.env.GOOGLE_CLIENT_SECRET,
   process.env.GOOGLE_REDIRECT_URI
 );
-
-function saveAccessTokenToDatabase(userId, accessToken) {
-  const query = "INSERT INTO user_tokens (user_id, access_token) VALUES (?, ?)";
-  connection.query(query, [userId, accessToken], (error, results, fields) => {
-    if (error) {
-      console.error(error);
-    } else {
-      console.log("Token de acceso guardado en la base de datos.");
-    }
-  });
-}
-
-// Añadir función para obtener token de acceso desde la base de datos
-function getAccessTokenFromDatabase(userId) {
-  return new Promise((resolve, reject) => {
-    const query = "SELECT access_token FROM user_tokens WHERE user_id = ?";
-    connection.query(query, [userId], (error, results, fields) => {
-      if (error) {
-        reject(error);
-      } else {
-        if (results.length > 0) {
-          resolve(results[0].access_token);
-        } else {
-          resolve(null);
-        }
-      }
-    });
-  });
-}
 
 module.exports = {
   data: new SlashCommandBuilder()

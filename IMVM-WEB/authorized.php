@@ -2,10 +2,21 @@
 require_once('./php/databaseFunctions.php');
 require_once('./phpclient/google-api-php-client--PHP7.4/vendor/autoload.php');
 require_once('./php/config.php');
+require_once('./php/database_config.php');
 
-$conn = connectToDatabase();
+//Conexión a la base de datos
+$servername = DB_SERVER;
+$username = DB_USERNAME;
+$password = DB_PASSWORD;
+$dbname = DB_NAME;
 
-session_start();
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: ". $conn->connect_error);
+}
+
+
 
 // Inicializar el cliente de Google
 $client = new Google_Client();
