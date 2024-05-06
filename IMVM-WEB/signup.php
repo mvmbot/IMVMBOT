@@ -268,7 +268,7 @@ session_start();
     <br><br>
     <div class="form-container">
         <p class="title">Sign up to IESMVMBOT</p>
-        <form class="form" method="POST" action="./php/signUpConfirm.php" id="signupform" name="signupform" onsubmit="validateFormSignUp()">
+        <form class="form" method="POST" action="./php/signUpConfirm.php" id="signupform" name="signupform" onsubmit="validateFormSignUp()" enctype="multipart/form-data">
             <div class="input-group">
                 <label for="username">Username</label>
                 <input type="text" name="username" id="username" placeholder="" />

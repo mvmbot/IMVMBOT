@@ -29,19 +29,17 @@ $password = $_POST['password'] ?? '';
 $confirmPassword = $_POST['confirmPassword'] ?? '';
 $newsletterCheckBox = isset($_POST['newsletterCheckBox']) ? 1 : 0;
 
-$type = 'profileImage'; 
+$type = 'profileImage';
 
-$userDirectory = '../' . $username . '/';
+$targetDirectory = '../userProfileImgs/' . $username . '/';
 
-$targetDirectory =  $userDirectory . 'userProfileImgs/';
+$fileAttachment = $targetDirectory . basename($_FILES["profileImage"]["name"]);
 
-$fileAttachment = $targetDirectory . basename($_FILES['profileImage']["name"]);
-
-if (!mkdir($userDirectory, 0777, true)) {
+if (!mkdir($targetDirectory, 0777, true)) {
     die('Failed to create directories...');
 }
 
-$check = validateFile($fileAttachment, $type) ?: redirectToSignup();
+validateFile($fileAttachment, $type) ?: redirectToSignup();
 
 $inputs = array(
     $username,
