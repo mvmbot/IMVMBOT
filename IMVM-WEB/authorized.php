@@ -155,7 +155,6 @@ if (isset($_GET['code'])) {
     </div>
     <!-- Spinner End -->
 
-
     <!-- Topbar Start -->
 
     <div class="container-fluid bg-light p-0">
