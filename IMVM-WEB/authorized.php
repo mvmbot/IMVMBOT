@@ -1,32 +1,19 @@
 <?php
 require_once('./php/databaseFunctions.php');
 require_once('./phpclient/google-api-php-client--PHP7.4/vendor/autoload.php');
-require_once('./php/config.php');
-
-$conn = connectToDatabase();
+include('./php/config.php');
 
 session_start();
 
-// Inicializar el cliente de Google
-$client = new Google_Client();
-$client->setClientId('GOOGLE_CLIENT_ID');
-$client->setClientSecret('GOOGLE_CLIENT_SECRET');
-$client->setRedirectUri('GOOGLE_REDIRECT_URI');
-$client->addScope([
-    'https://www.googleapis.com/auth/classroom.announcements',
-    'https://www.googleapis.com/auth/classroom.courses',
-    'https://www.googleapis.com/auth/classroom.coursework.me',
-    'https://www.googleapis.com/auth/classroom.guardianlinks.me.readonly'
-]);
+$conn = connectToDatabase();
 
 // Obtener el token de acceso
 if (isset($_GET['code'])) {
     $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
     if (!isset($token['access_token'])) {
-        throw new Exception('Failed to obtain access token');
+        throw new Exception('Failed to obtain access token. Token response: ' . json_encode($token));
     }
     $accessToken = $token['access_token'];
-    var_dump($token);
     $client->setAccessToken($accessToken);
 
     // Verifica si hubo un error al obtener el token
