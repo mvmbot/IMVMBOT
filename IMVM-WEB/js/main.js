@@ -52,7 +52,7 @@
             $dropdown.off("mouseenter mouseleave");
         }
     });
-    
+
     
     // Back to top button
     $(window).scroll(function () {
@@ -116,7 +116,5 @@ $(document).ready(function() {
     videos.hide();
     videos.eq(index).show();
   }
-
-
 
 });

@@ -268,7 +268,7 @@ session_start();
     <br><br>
     <div class="form-container">
         <p class="title">Sign up to IESMVMBOT</p>
-        <form class="form" method="POST" action="./php/signUpConfirm.php" id="signupform" name="signupform" onsubmit="validateFormSignUp()">
+        <form class="form" method="POST" action="./php/signUpConfirm.php" id="signupform" name="signupform" onsubmit="validateFormSignUp()" enctype="multipart/form-data">
             <div class="input-group">
                 <label for="username">Username</label>
                 <input type="text" name="username" id="username" placeholder="" />
@@ -421,11 +421,6 @@ session_start();
         </div>
     </div>
     <!-- Footer End -->
-
-
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

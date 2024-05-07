@@ -1,43 +1,19 @@
 <?php
 require_once('./php/databaseFunctions.php');
 require_once('./phpclient/google-api-php-client--PHP7.4/vendor/autoload.php');
-require_once('./php/config.php');
-require_once('./php/database_config.php');
+include('./php/config.php');
 
-//Conexión a la base de datos
-$servername = DB_SERVER;
-$username = DB_USERNAME;
-$password = DB_PASSWORD;
-$dbname = DB_NAME;
+session_start();
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: ". $conn->connect_error);
-}
-
-
-
-// Inicializar el cliente de Google
-$client = new Google_Client();
-$client->setClientId('GOOGLE_CLIENT_ID');
-$client->setClientSecret('GOOGLE_CLIENT_SECRET');
-$client->setRedirectUri('GOOGLE_REDIRECT_URI');
-$client->addScope([
-    'https://www.googleapis.com/auth/classroom.announcements',
-    'https://www.googleapis.com/auth/classroom.courses',
-    'https://www.googleapis.com/auth/classroom.coursework.me',
-    'https://www.googleapis.com/auth/classroom.guardianlinks.me.readonly'
-]);
+$conn = connectToDatabase();
 
 // Obtener el token de acceso
 if (isset($_GET['code'])) {
     $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
     if (!isset($token['access_token'])) {
-        throw new Exception('Failed to obtain access token');
+        throw new Exception('Failed to obtain access token. Token response: ' . json_encode($token));
     }
     $accessToken = $token['access_token'];
-    var_dump($token);
     $client->setAccessToken($accessToken);
 
     // Verifica si hubo un error al obtener el token
@@ -166,7 +142,6 @@ if (isset($_GET['code'])) {
     </div>
     <!-- Spinner End -->
 
-
     <!-- Topbar Start -->
 
     <div class="container-fluid bg-light p-0">
@@ -282,11 +257,6 @@ if (isset($_GET['code'])) {
         </div>
     </div>
     <!-- Footer End -->
-
-
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
