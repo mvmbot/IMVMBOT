@@ -1,5 +1,6 @@
 <?php
 session_start();
+if (!$_SESSION["user"] && !$_SESSION["admin"]) {
 ?>
 
 <!DOCTYPE html>
@@ -407,3 +408,8 @@ session_start();
 </body>
 
 </html>
+<?php
+}else{
+    header("location: ./signin.php");
+}
+?>
