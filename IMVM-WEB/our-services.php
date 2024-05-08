@@ -416,6 +416,9 @@ session_start();
     </div>
     <!-- Footer End -->
 
+    <!-- Chat button -->
+    <a href="./chat.php" class="btn btn-lg btn-primary btn-lg-square chat-icon "><i class="bi bi-chat-left-dots"></i></a>
+
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>

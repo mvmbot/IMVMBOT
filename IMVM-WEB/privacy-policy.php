@@ -398,8 +398,6 @@ session_start();
             </div>
         </div>
 
-
-
         <!-- Footer Start -->
         <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
             <div class="container py-5">
@@ -474,6 +472,9 @@ session_start();
             </div>
         </div>
         <!-- Footer End -->
+
+        <!-- Chat button -->
+    <a href="./chat.php" class="btn btn-lg btn-primary btn-lg-square chat-icon "><i class="bi bi-chat-left-dots"></i></a>
 
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
