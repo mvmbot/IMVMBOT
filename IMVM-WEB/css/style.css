@@ -42,14 +42,6 @@ body {
   right: 500px;
 }
 
-.chat-icon {
-  position: fixed;
-  display: none;
-  right: 45px;
-  bottom: 45px;
-  z-index: 99;
-}
-
 /*** Spinner ***/
 #spinner {
   opacity: 0;

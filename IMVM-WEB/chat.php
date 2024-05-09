@@ -304,8 +304,6 @@ if (!$_SESSION["user"] && !$_SESSION["admin"]) {
 
     <center><a href="./viewTicket.php" class="btn btn-primary py-3 px-5">Go back<i
                 class="fa fa-arrow-right ms-3"></i></a></center>
-</body>
-
 <!-- Footer Start -->
 
 <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
@@ -408,8 +406,3 @@ if (!$_SESSION["user"] && !$_SESSION["admin"]) {
 </body>
 
 </html>
-<?php
-}else{
-    header("location: ./signin.php");
-}
-?>
