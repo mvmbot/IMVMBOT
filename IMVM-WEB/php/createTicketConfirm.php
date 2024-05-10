@@ -49,7 +49,7 @@ switch ($type) {
         $fileAttachment = $targetDirectory . basename($_FILES["fileAttachmentHelpSupportFields"]["name"]);
 
         # We check if the file is valid, if it's cool, it will move the file to the target directory, otherwise, it'll return false and will redirect
-        $check = validateFile($fileAttachment, $type) ?: redirectToTicket();
+        validateFile($fileAttachment, $type) ?: redirectToTicket();
 
         # Now we create the Ticket with the parameters we just took from the user's form
         createTicketHelpSupport($conn, $inputs, $fileAttachment);
