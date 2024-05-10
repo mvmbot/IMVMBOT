@@ -66,10 +66,6 @@ function validateFile($fileAttachment, $type) {
     }
 
     # We try to move the file into the upload directory
-    if (move_uploaded_file($_FILES[$type]["tmp_name"], $fileAttachment)) {
-        return true;
-    } else {
-        return false;
-    }
+    move_uploaded_file($_FILES[$type]["tmp_name"], $fileAttachment ? true : false;
 }
 #endregion
