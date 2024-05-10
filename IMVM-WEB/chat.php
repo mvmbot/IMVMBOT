@@ -35,7 +35,7 @@ if (!$_SESSION["user"] || !$_SESSION["admin"]) {
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet" />
-
+    <link href="css/chatStyle.css" rel="chat stylesheet" />
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PXHDMQQ0XY"></script>
@@ -265,7 +265,6 @@ if (!$_SESSION["user"] || !$_SESSION["admin"]) {
 
     <?php
     $conn = connectToDatabase();
-    $type = $_GET['type'];
     ?>
     <br><br>
     <div class="wrapper">
