@@ -265,7 +265,6 @@ if (!$_SESSION["user"] && !$_SESSION["admin"]) {
 
     <?php
     $conn = connectToDatabase();
-    $type = $_GET['type'];
     ?>
     <br><br>
     <div class="wrapper">
