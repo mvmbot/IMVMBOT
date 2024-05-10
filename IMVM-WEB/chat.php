@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!$_SESSION["user"] && !$_SESSION["admin"]) {
+if (!$_SESSION["user"] || !$_SESSION["admin"]) {
 ?>
 
 <!DOCTYPE html>
