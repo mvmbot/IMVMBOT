@@ -301,7 +301,7 @@ if (!$_SESSION["user"] || !$_SESSION["admin"]) {
             <header>
                 <?php 
           $idUsers = mysqli_real_escape_string($conn, $_GET['idUsers']);
-          $sql = mysqli_query($conn, "SELECT * FROM users WHERE unique_id = {$idUsers}");
+          $sql = mysqli_query($conn, "SELECT * FROM users WHERE idUsers = {$idUsers}");
           if(mysqli_num_rows($sql) > 0){
             $row = mysqli_fetch_assoc($sql);
           }else{
