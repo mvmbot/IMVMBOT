@@ -404,5 +404,10 @@ if (!$_SESSION["user"] && !$_SESSION["admin"]) {
 <!-- Template Javascript -->
 <script src="js/main.js"></script>
 </body>
-
+<?php
+} else {
+    header('Location: /index.php');
+    exit;
+}
+?>
 </html>
