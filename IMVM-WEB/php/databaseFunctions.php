@@ -34,7 +34,7 @@ function createTicketBase($conn, $ticketType) {
     $sql = "SELECT idUsers FROM users WHERE usernameUsers = ?";
 
     # Prepare statement
-    $stmt = $conn->prepare($sql);
+    $stmt = $conn->prepare($sql)?:throw new Exception("Error preparing SELECT statement: " . $conn->error);
 
     # Bind parameters
     $stmt->bind_param("s", $user);
