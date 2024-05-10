@@ -1,12 +1,6 @@
 
 <!DOCTYPE html>
 <html lang="es">
-
-<?php
-session_start();
-if (!$_SESSION["user"] || !$_SESSION["admin"]) {
-?>
-
 <head>
     <meta charset="utf-8" />
     <title>IESMVMBOT - OFFICIAL PROJECT</title>
@@ -271,27 +265,16 @@ if (!$_SESSION["user"] || !$_SESSION["admin"]) {
     <div class="wrapper">
     <section class="chat-area">
       <header>
-        <?php 
-          $idUsers = mysqli_real_escape_string($conn, $_GET['idUsers']);
-          $sql = mysqli_query($conn, "SELECT * FROM users WHERE unique_id = {$idUsers}");
-          if(mysqli_num_rows($sql) > 0){
-            $row = mysqli_fetch_assoc($sql);
-          }else{
-            header("location: users.php");
-          }
-        ?>
+        
         <a href="users.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
-        <img src="./userProfileImgs/<?php echo $row['img']; ?>" alt="">
         <div class="details">
-          <span><?php echo $row['nameUsers']. " " . $row['surnameUsers'] ?></span>
-          <p><?php echo $row['status']; ?></p>
+          
         </div>
       </header>
       <div class="chat-box">
 
       </div>
       <form action="#" class="typing-area">
-        <input type="text" class="incoming_id" name="incoming_id" value="<?php echo $user_id; ?>" hidden>
         <input type="text" name="message" class="input-field" placeholder="Type a message here..." autocomplete="off">
         <button><i class="fab fa-telegram-plane"></i></button>
       </form>
@@ -404,10 +387,4 @@ if (!$_SESSION["user"] || !$_SESSION["admin"]) {
 <!-- Template Javascript -->
 <script src="js/main.js"></script>
 </body>
-<?php
-} else {
-    header('Location: /index.php');
-    exit;
-}
-?>
 </html>
