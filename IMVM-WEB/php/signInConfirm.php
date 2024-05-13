@@ -4,7 +4,6 @@ session_start();
 
 #region Required files
 # Now, time to set up the connection to our awesome database
-require ("config.php");
 require_once ("databaseFunctions.php");
 
 # Grab some handy tools for our code
