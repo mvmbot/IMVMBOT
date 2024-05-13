@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8" />
     <title>IESMVMBOT - OFFICIAL PROJECT</title>
@@ -188,97 +188,97 @@
                         <a href="./php/logout.php" class="nav-item nav-link" style="color: white;">LOG OUT</a>
                         <?php
                         if ($_SESSION["user"]) {
-                        ?>
-                        <!-- Enlace para VIEW PROFILE -->
-                        <a href="./viewProfile.php" class="nav-item nav-link" style="color: white;"> View profile</a>
-                        <?php
+                            ?>
+                            <!-- Enlace para VIEW PROFILE -->
+                            <a href="./viewProfile.php" class="nav-item nav-link" style="color: white;"> View profile</a>
+                            <?php
                         }
                         ?>
                     </div>
                 </div>
                 <?php
                 if ($_SESSION["user"]) {
-                ?>
-                <div class="dropdown">
-                    <button class="nav-item nav-link dropdown-toggle" type="button" id="dropdownMenuButton2"
-                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                        style="background-color: #0a0a0a; color: white; border: none;">
-                        TICKETS
-                    </button>
-                    <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton2"
-                        style="background-color: #000;">
-                        <!-- Enlace para CREATE TICKET -->
-                        <a href="./createTicket.php" class="nav-item nav-link" style="color: white;">CREATE TICKET</a>
-                        <!-- Enlace para VIEW TICKETS -->
-                        <a href="./viewTicket.php" class="nav-item nav-link" style="color: white;">VIEW TICKETS</a>
+                    ?>
+                    <div class="dropdown">
+                        <button class="nav-item nav-link dropdown-toggle" type="button" id="dropdownMenuButton2"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                            style="background-color: #0a0a0a; color: white; border: none;">
+                            TICKETS
+                        </button>
+                        <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton2"
+                            style="background-color: #000;">
+                            <!-- Enlace para CREATE TICKET -->
+                            <a href="./createTicket.php" class="nav-item nav-link" style="color: white;">CREATE TICKET</a>
+                            <!-- Enlace para VIEW TICKETS -->
+                            <a href="./viewTicket.php" class="nav-item nav-link" style="color: white;">VIEW TICKETS</a>
+                        </div>
                     </div>
-                </div>
-                <?php
+                    <?php
                 } else if ($_SESSION["admin"]) {
-                ?>
-                <div class="dropdown">
-                    <button class="nav-item nav-link dropdown-toggle" type="button" id="dropdownMenuButton2"
-                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                        style="background-color: #0a0a0a; color: white; border: none;">
-                        TICKETS
-                    </button>
-                    <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton2"
-                        style="background-color: #000;">
-                        <!-- Enlace para VIEW TICKETS -->
-                        <a href="./viewTicketAdmin.php" class="nav-item nav-link" style="color: white;">VIEW TICKETS</a>
-                    </div>
-                </div>
-                <?php
+                    ?>
+                        <div class="dropdown">
+                            <button class="nav-item nav-link dropdown-toggle" type="button" id="dropdownMenuButton2"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                style="background-color: #0a0a0a; color: white; border: none;">
+                                TICKETS
+                            </button>
+                            <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton2"
+                                style="background-color: #000;">
+                                <!-- Enlace para VIEW TICKETS -->
+                                <a href="./viewTicketAdmin.php" class="nav-item nav-link" style="color: white;">VIEW TICKETS</a>
+                            </div>
+                        </div>
+                    <?php
                 }
                 ?>
             </div>
             <?php
             if ($_SESSION["user"] == false && $_SESSION["admin"] == false) {
-            ?>
-            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">ACCOUNT<i><svg
-                        xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" class="svg-icon">
-                        <style>
-                            .svg-icon {
-                                fill: #ffffff;
-                                margin-left: 5px;
-                            }
-                        </style>
-                        <path
-                            d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
-                    </svg></i></a>
-            <?php
+                ?>
+                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">ACCOUNT<i><svg
+                            xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" class="svg-icon">
+                            <style>
+                                .svg-icon {
+                                    fill: #ffffff;
+                                    margin-left: 5px;
+                                }
+                            </style>
+                            <path
+                                d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+                        </svg></i></a>
+                <?php
             } else if ($_SESSION["user"]) {
-            ?>
-            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
-                <?php echo $_SESSION['user'] ?><i><svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                        viewBox="0 0 448 512" class="svg-icon">
-                        <style>
-                            .svg-icon {
-                                fill: #ffffff;
-                                margin-left: 5px;
-                            }
-                        </style>
-                        <path
-                            d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
-                    </svg></i>
-            </a>
-            <?php
+                ?>
+                    <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+                    <?php echo $_SESSION['user'] ?><i><svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                                viewBox="0 0 448 512" class="svg-icon">
+                                <style>
+                                    .svg-icon {
+                                        fill: #ffffff;
+                                        margin-left: 5px;
+                                    }
+                                </style>
+                                <path
+                                    d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+                            </svg></i>
+                    </a>
+                <?php
             } else if ($_SESSION["admin"]) {
-            ?>
-            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
-                <?php echo $_SESSION['admin'] ?><i><svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                        viewBox="0 0 448 512" class="svg-icon">
-                        <style>
-                            .svg-icon {
-                                fill: #ffffff;
-                                margin-left: 5px;
-                            }
-                        </style>
-                        <path
-                            d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
-                    </svg></i>
-            </a>
-            <?php
+                ?>
+                        <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+                    <?php echo $_SESSION['admin'] ?><i><svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                                    viewBox="0 0 448 512" class="svg-icon">
+                                    <style>
+                                        .svg-icon {
+                                            fill: #ffffff;
+                                            margin-left: 5px;
+                                        }
+                                    </style>
+                                    <path
+                                        d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+                                </svg></i>
+                        </a>
+                <?php
             }
             ?>
         </div>
@@ -293,20 +293,20 @@
     <div class="wrapper">
         <section class="chat-area">
             <header>
-                <?php 
-          $idUsers = mysqli_real_escape_string($conn, $_GET['idUsers']);
-          $sql = mysqli_query($conn, "SELECT * FROM users WHERE idUsers = {$idUsers}");
-          if(mysqli_num_rows($sql) > 0){
-            $row = mysqli_fetch_assoc($sql);
-          }else{
-            header("location: users.php");
-          }
-        ?>
+                <?php
+                $idUsers = mysqli_real_escape_string($conn, $_GET['idUsers']);
+                $sql = mysqli_query($conn, "SELECT * FROM users WHERE idUsers = {$idUsers}");
+                if (mysqli_num_rows($sql) > 0) {
+                    $row = mysqli_fetch_assoc($sql);
+                } else {
+                    header("location: users.php");
+                }
+                ?>
                 <a href="users.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
                 <img src="./userProfileImgs/<?php echo $row['img']; ?>" alt="">
                 <div class="details">
                     <span>
-                        <?php echo $row['nameUsers']. " " . $row['surnameUsers'] ?>
+                        <?php echo $row['nameUsers'] . " " . $row['surnameUsers'] ?>
                     </span>
                     <p>
                         <?php echo $row['status']; ?>
@@ -432,10 +432,5 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 </body>
-<?php
-} else {
-    header('Location: /index.php');
-    exit;
-}
-?>
+
 </html>

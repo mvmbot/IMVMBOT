@@ -6,60 +6,69 @@ define('INDEX_PAGE', '../index.php');
 define('TICKET_PAGE', '../createTicket.php');
 define('INDEX_PAGE_ADMIN', '../index.php');
 define('VIEW_TICKET_ADMIN_PAGE', '../viewTicketAdmin.php');
-define ('VIEW_TICKET_PAGE', '../viewTicket.php');
+define('VIEW_TICKET_PAGE', '../viewTicket.php');
 define('VIEW_PROFILE_PAGE', '../viewProfile.php');
 define('EDIT_PROFILE_PAGE', '../editProfile.php');
 #endregion
 
 #region functions --- Redirects to our pages
 # Function to redirect to the signup form
-function redirectToSignup() {
+function redirectToSignup()
+{
     header('Location: ' . SIGNUP_PAGE);
     exit;
 }
 
 # Function to redirect to the signin form
-function redirectToSignin() {
+function redirectToSignin()
+{
     header('Location: ' . SIGNIN_PAGE);
     exit;
 }
 
 # Function to redirect to the main page
-function redirectToIndex() {
+function redirectToIndex()
+{
     header('Location: ' . INDEX_PAGE);
     exit;
 }
 
 # Function to redirect to the main page if ure not admin
-function redirectToIndexAdmin() {
+function redirectToIndexAdmin()
+{
     header('Location: ' . INDEX_PAGE_ADMIN);
     exit;
 }
 
 # Function to redirect to the create ticket page
-function redirectToTicket() {
+function redirectToTicket()
+{
     header('Location: ' . TICKET_PAGE);
     exit;
 }
 #endregion
 
 # Function to redirect to the view tickets as admin page
-function redirectToViewTicketAdmin() {
+function redirectToViewTicketAdmin()
+{
     header('Location: ' . VIEW_TICKET_ADMIN_PAGE);
     exit;
 }
 
-function redirectToViewTicket() {
+function redirectToViewTicket()
+{
     header('Location: ' . VIEW_TICKET_PAGE);
     exit;
 }
 
-function redirectToViewProfile() {
+function redirectToViewProfile()
+{
     header('Location: ' . VIEW_PROFILE_PAGE);
     exit;
 }
 
-function redirectToEditProfile() {
+function redirectToEditProfile()
+{
     header('Location: ' . EDIT_PROFILE_PAGE);
     exit;
 }

@@ -1,7 +1,8 @@
 <?php
 
 #region function --- Simple function to check if there are empty values and sanitize them.
-function validateInputs($inputs) {
+function validateInputs($inputs)
+{
     # We check if the input's an array or not.
     # In case it's not an array then we sanitize a single input.
     if (!is_array($inputs)) {
@@ -18,7 +19,7 @@ function validateInputs($inputs) {
         $sanitizedInputs = array();
 
         # We use this var so later our array is numeric (so we can insert the data correctly)
-        $i=0;
+        $i = 0;
 
         # We loop through the array with a foreach and sanitize every input.
         foreach ($inputs as $inputValue) {
@@ -37,7 +38,8 @@ function validateInputs($inputs) {
 #endregion
 
 #region Function --- Validate File
-function validateFile($fileAttachment, $type) {
+function validateFile($fileAttachment, $type)
+{
 
     # We check again if its empty in case somethings missing
     if (empty($fileAttachment)) {

@@ -1,12 +1,12 @@
 <?php
 #region Required files
 # Get the database stuff ready
-require_once('databaseFunctions.php');
+require_once ('databaseFunctions.php');
 
 # Grab some tools for our code
-require_once('redirectFunctions.php');
-require_once('dataValidationFunctions.php');
-require_once('errorAlerts.php');
+require_once ('redirectFunctions.php');
+require_once ('dataValidationFunctions.php');
+require_once ('errorAlerts.php');
 #endregion
 
 #region errors
@@ -19,7 +19,7 @@ ini_set('display_errors', 1);
 $conn = connectToDatabase();
 
 # We declare the directory that we're using to store all the user data
-$targetDirectory =  '../userUploads/';
+$targetDirectory = '../userUploads/';
 
 # We grab all the data from the form
 
@@ -32,7 +32,7 @@ $fieldsToCheck;
 # Switch case to fill the values from every possible type
 switch ($type) {
 
-        #region Help & Support
+    #region Help & Support
     case 'helpSupport':
 
         # We get the form data aswell as we sanitize them directly. If the array got values inside, it will return the array sanitized, otherwise, it will return false
@@ -54,9 +54,9 @@ switch ($type) {
         # Now we create the Ticket with the parameters we just took from the user's form
         createTicketHelpSupport($conn, $inputs, $fileAttachment);
         break;
-        #endregion
+    #endregion
 
-        #region Bug Reporting
+    #region Bug Reporting
     case 'bugReport':
         $inputs = validateInputs([
             $subject = $_POST['subjectBugReportFields'] ?? '',
@@ -77,12 +77,12 @@ switch ($type) {
         createTicketBugReport($conn, $inputs, $fileAttachment);
 
         break;
-        #endregion
+    #endregion
 
-        #region  Feature Request
+    #region  Feature Request
     case 'featureRequest':
         $inputs = validateInputs([
-            $subject  = $_POST['subjectFeatureRequestFields'] ?? '',
+            $subject = $_POST['subjectFeatureRequestFields'] ?? '',
             $description = $_POST['descriptionFeatureRequestFields'] ?? '',
             $requestType = $_POST['requestTypeFeatureRequestFields'] ?? ''
         ]) ?: redirectToTicket();
@@ -91,9 +91,9 @@ switch ($type) {
         createTicketFeatureRequest($conn, $inputs);
 
         break;
-        #endregion
+    #endregion
 
-        #region Grammar Issues
+    #region Grammar Issues
     case 'grammarIssues':
         $inputs = validateInputs([
             $subject = $_POST['subjectGrammarIssuesFields'] ?? '',
@@ -110,9 +110,9 @@ switch ($type) {
         createTicketGrammarIssues($conn, $inputs, $fileAttachment);
 
         break;
-        #endregion
+    #endregion
 
-        #region Information Update
+    #region Information Update
     case 'informationUpdate':
         $inputs = validateInputs([
             $subject = $_POST['subjectInformationUpdateFields'] ?? '',
@@ -123,9 +123,9 @@ switch ($type) {
         createTicketInformationUpdate($conn, $inputs);
 
         break;
-        #endregion
+    #endregion
 
-        #region Other Issues
+    #region Other Issues
     case 'other':
 
         $inputs = validateInputs([
@@ -138,7 +138,7 @@ switch ($type) {
         createTicketOther($conn, $inputs);
 
         break;
-        #endregion
+    #endregion
     default:
         redirectToTicket();
         break;

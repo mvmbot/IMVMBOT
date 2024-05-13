@@ -1,5 +1,6 @@
 <?php
-function viewTicketDetail($conn, $type) {
+function viewTicketDetail($conn, $type)
+{
     $id = intval($_GET['ID']);
     switch ($type) {
         case 'Help ':
@@ -145,7 +146,8 @@ function viewTicketDetail($conn, $type) {
     }
 }
 
-function printTicketDetail($type, $result) {
+function printTicketDetail($type, $result)
+{
     switch ($type) {
         case 'Help ':
             try {

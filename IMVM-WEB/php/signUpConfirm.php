@@ -2,12 +2,12 @@
 #region Required files
 # Let's get the database stuff ready!
 #require("config.php");
-require_once("databaseFunctions.php");
+require_once ("databaseFunctions.php");
 
 # Grab some tools for our code!
-require_once("redirectFunctions.php");
-require_once("dataValidationFunctions.php");
-require_once("errorAlerts.php");
+require_once ("redirectFunctions.php");
+require_once ("dataValidationFunctions.php");
+require_once ("errorAlerts.php");
 #endregion
 
 #region errors

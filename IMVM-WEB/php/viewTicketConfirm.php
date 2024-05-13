@@ -1,5 +1,6 @@
 <?php
-function viewTicket($conn, $type) {
+function viewTicket($conn, $type)
+{
 
     #region --- Get the user ID
     $user = $_SESSION['user'];
@@ -37,7 +38,7 @@ function viewTicket($conn, $type) {
             WHERE t.typeTicket = 'Help & Support' AND u.idUsers = ?";
 
             # Prepare statement
-            $stmt = $conn->prepare($sql)?:throw new Exception("Error preparing SELECT statement (view ticket confirm): " . $conn->error);
+            $stmt = $conn->prepare($sql) ?: throw new Exception("Error preparing SELECT statement (view ticket confirm): " . $conn->error);
 
             # Bind parameters
             $stmt->bind_param("i", $idUsers);
@@ -60,7 +61,7 @@ function viewTicket($conn, $type) {
             WHERE t.typeTicket = 'Bug Reporting' AND u.idUsers = ?";
 
             # Prepare statement
-            $stmt = $conn->prepare($sql)?:throw new Exception("Error preparing SELECT statement (view ticket confirm): " . $conn->error);
+            $stmt = $conn->prepare($sql) ?: throw new Exception("Error preparing SELECT statement (view ticket confirm): " . $conn->error);
 
             # Bind parameters
             $stmt->bind_param("i", $idUsers);
@@ -83,7 +84,7 @@ function viewTicket($conn, $type) {
             WHERE t.typeTicket = 'Feature Request' AND u.idUsers = ?";
 
             # Prepare statement
-            $stmt = $conn->prepare($sql)?:throw new Exception("Error preparing SELECT statement (view ticket confirm): " . $conn->error);
+            $stmt = $conn->prepare($sql) ?: throw new Exception("Error preparing SELECT statement (view ticket confirm): " . $conn->error);
 
             # Bind parameters
             $stmt->bind_param("i", $idUsers);
@@ -171,7 +172,8 @@ function viewTicket($conn, $type) {
     }
 }
 
-function printTicket($type, $result) {
+function printTicket($type, $result)
+{
     switch ($type) {
         case 'helpSupport':
             try {

@@ -1,5 +1,6 @@
 <?php
-function viewTicketAdmin($conn, $type) {
+function viewTicketAdmin($conn, $type)
+{
 
     switch ($type) {
         case 'helpSupport':
@@ -127,7 +128,8 @@ function viewTicketAdmin($conn, $type) {
     }
 }
 
-function printTicketAdmin($type, $result) {
+function printTicketAdmin($type, $result)
+{
     switch ($type) {
         case 'helpSupport':
             try {

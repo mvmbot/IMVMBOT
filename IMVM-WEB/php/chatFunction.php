@@ -3,9 +3,9 @@
 #region Aqui se importan los archivos que puedas llegar a necesitar,
 # Son los basicos, no se si vas a necesitar algo mas
 # Ahora solo tienes k llamar a los metodos que t hagan falta
-require_once("redirectFunctions.php");
-require_once("databaseFunctions.php");
-require_once("config.php");
+require_once ("redirectFunctions.php");
+require_once ("databaseFunctions.php");
+require_once ("config.php");
 #endregion
 
 #region Conexion a la base de datos

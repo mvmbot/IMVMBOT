@@ -1,7 +1,7 @@
 <?php
-require_once('./php/databaseFunctions.php');
-require_once('./phpclient/google-api-php-client--PHP7.4/vendor/autoload.php');
-include('./php/config.php');
+require_once ('./php/databaseFunctions.php');
+require_once ('./phpclient/google-api-php-client--PHP7.4/vendor/autoload.php');
+include ('./php/config.php');
 
 session_start();
 

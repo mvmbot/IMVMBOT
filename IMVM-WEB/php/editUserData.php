@@ -4,13 +4,13 @@ session_start();
 
 #region Required files
 # Database files
-require("config.php");
-require_once("databaseFunctions.php");
+require ("config.php");
+require_once ("databaseFunctions.php");
 
 # Other usefull functions
-require_once("redirectFunctions.php");
-require_once("dataValidationFunctions.php");
-require_once("errorAlerts.php");
+require_once ("redirectFunctions.php");
+require_once ("dataValidationFunctions.php");
+require_once ("errorAlerts.php");
 #endregion
 
 #region Errors
