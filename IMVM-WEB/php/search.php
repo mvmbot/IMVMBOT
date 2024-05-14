@@ -7,7 +7,7 @@ include_once "config.php";
 $outgoing_id = $_SESSION['idUsers'];
 $searchTerm = mysqli_real_escape_string($conn, $_POST['searchTerm']);
 
-$sql = "SELECT * FROM users WHERE NOT idUsers = {$outgoing_id} AND (nameAdmin LIKE '%{$searchTerm}%' OR surnameAdmin LIKE '%{$searchTerm}%') ";
+$sql = "SELECT * FROM users WHERE NOT idUsers = {$outgoing_id} AND (nameUsers LIKE '%{$searchTerm}%' OR surnameUsers LIKE '%{$searchTerm}%') ";
 $output = "";
 $query = mysqli_query($conn, $sql);
 if (mysqli_num_rows($query) > 0) {

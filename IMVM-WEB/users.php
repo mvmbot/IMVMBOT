@@ -332,7 +332,7 @@ if (!$_SESSION["user"] || !$_SESSION["admin"]) {
                 </section>
             </div>
 
-            <script src="javascript/users.js"></script>
+            <script src="javascript/user.js"></script>
 
             <!-- Footer Start -->
 
