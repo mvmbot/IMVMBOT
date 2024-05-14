@@ -15,4 +15,3 @@ if (isset($_SESSION['idUsers'])) {
     header("location: ../signin.php");
 }
 
-?>
