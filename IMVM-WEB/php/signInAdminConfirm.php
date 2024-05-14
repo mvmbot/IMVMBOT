@@ -4,13 +4,13 @@ session_start();
 
 #region Required files --- Everything we need on this code
 # Now, we get all the database stuff
-require ("config.php");
-require_once ("databaseFunctions.php");
+require("config.php");
+require_once("databaseFunctions.php");
 
 # Grab some handy tools for our code
-require_once ("redirectFunctions.php");
-require_once ("dataValidationFunctions.php");
-require_once ("errorAlerts.php");
+require_once("redirectFunctions.php");
+require_once("dataValidationFunctions.php");
+require_once("errorAlerts.php");
 #endregion
 
 #region errors --- Turn on the error reporting to catch any potential coding errors

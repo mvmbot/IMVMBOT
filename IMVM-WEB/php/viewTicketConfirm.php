@@ -1,6 +1,5 @@
 <?php
-function viewTicket($conn, $type)
-{
+function viewTicket($conn, $type) {
 
     #region --- Get the user ID
     $user = $_SESSION['user'];
@@ -172,8 +171,7 @@ function viewTicket($conn, $type)
     }
 }
 
-function printTicket($type, $result)
-{
+function printTicket($type, $result) {
     switch ($type) {
         case 'helpSupport':
             try {

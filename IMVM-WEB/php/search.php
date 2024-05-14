@@ -16,4 +16,3 @@ if (mysqli_num_rows($query) > 0) {
     $output .= 'No user found related to your search term';
 }
 echo $output;
-?>

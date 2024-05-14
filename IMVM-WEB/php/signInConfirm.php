@@ -4,12 +4,12 @@ session_start();
 
 #region Required files
 # Now, time to set up the connection to our awesome database
-require_once ("databaseFunctions.php");
+require_once("databaseFunctions.php");
 
 # Grab some handy tools for our code
-require_once ("redirectFunctions.php");
-require_once ("dataValidationFunctions.php");
-require_once ("errorAlerts.php");
+require_once("redirectFunctions.php");
+require_once("dataValidationFunctions.php");
+require_once("errorAlerts.php");
 #endregion
 
 #region errors --- Turn on the lights to catch any potential coding errors
