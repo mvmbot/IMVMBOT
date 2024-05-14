@@ -15,7 +15,7 @@ while ($row = mysqli_fetch_assoc($query)) {
     ($row['status'] == "Offline now") ? $offline = "offline" : $offline = "";
     ($outgoing_id == $row['idUsers']) ? $hid_me = "hide" : $hid_me = "";
 
-    $output .= '<a href="chat.php?idUsers=' . $row['idUsers'] . '">
+    $output .= '<a href="./chat.php?idUsers=' . $row['idUsers'] . '">
                     <div class="content">
                     <img src="./userProfileImgs' . $row['img'] . '" alt="">
                     <div class="details">
