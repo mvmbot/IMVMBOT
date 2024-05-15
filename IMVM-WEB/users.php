@@ -306,7 +306,7 @@ if (!$_SESSION["user"] || !$_SESSION["admin"]) {
                                 $row = mysqli_fetch_assoc($sql);
                             }
                             ?>
-                            <img src="./userProfileImgs<?php echo $row['img']; ?>" alt="">
+                            <img src="./userProfileImgs/<?php echo $row['usernameUsers'];?>/<?php echo $row['profileImage']; ?>" alt="">
                             <div class="details">
                                 <span>
                                     <?php echo $row['nameUsers'] . " " . $row['surnameUsers'] ?>
