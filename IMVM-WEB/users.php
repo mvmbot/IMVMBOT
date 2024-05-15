@@ -1,6 +1,7 @@
 <?php
 session_start();
 require ('./php/databaseFunctions.php');
+require ('./php/config.php');
 if (!$_SESSION["user"] || !$_SESSION["admin"]) {
     ?>
 
@@ -292,10 +293,6 @@ if (!$_SESSION["user"] || !$_SESSION["admin"]) {
 
         <!-- Navbar End -->
 
-        <?php
-        session_start();
-        include_once "php/config.php";
-        ?>
         <br><br>
 
         <body>
