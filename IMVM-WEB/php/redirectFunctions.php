@@ -6,7 +6,7 @@ define('INDEX_PAGE', '../index.php');
 define('TICKET_PAGE', '../createTicket.php');
 define('INDEX_PAGE_ADMIN', '../index.php');
 define('VIEW_TICKET_ADMIN_PAGE', '../viewTicketAdmin.php');
-define ('VIEW_TICKET_PAGE', '../viewTicket.php');
+define('VIEW_TICKET_PAGE', '../viewTicket.php');
 define('VIEW_PROFILE_PAGE', '../viewProfile.php');
 define('EDIT_PROFILE_PAGE', '../editProfile.php');
 #endregion

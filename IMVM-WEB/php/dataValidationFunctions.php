@@ -18,7 +18,7 @@ function validateInputs($inputs) {
         $sanitizedInputs = array();
 
         # We use this var so later our array is numeric (so we can insert the data correctly)
-        $i=0;
+        $i = 0;
 
         # We loop through the array with a foreach and sanitize every input.
         foreach ($inputs as $inputValue) {
@@ -66,10 +66,6 @@ function validateFile($fileAttachment, $type) {
     }
 
     # We try to move the file into the upload directory
-    if (move_uploaded_file($_FILES[$type]["tmp_name"], $fileAttachment)) {
-        return true;
-    } else {
-        return false;
-    }
+    move_uploaded_file($_FILES[$type]["tmp_name"], $fileAttachment) ? true : false;
 }
 #endregion

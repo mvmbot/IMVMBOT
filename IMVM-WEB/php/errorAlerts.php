@@ -11,7 +11,7 @@ function showError($errorMessage) {
 
 # This one uses the JS redirect method, only for when the password doesnt match the database
 function showErrorPasswordJS() {
-    echo'<script type="text/javascript">
+    echo '<script type="text/javascript">
     alert("Error: incorrect Password");
     window.location.href="../signin.php";
     </script>';
@@ -19,7 +19,7 @@ function showErrorPasswordJS() {
 
 # This is for when an user is not found
 function showErrorUserJS() {
-    echo'<script type="text/javascript">
+    echo '<script type="text/javascript">
     alert("Error: User does not exists");
     window.location.href="../signin.php";
     </script>';

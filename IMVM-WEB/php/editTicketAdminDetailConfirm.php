@@ -174,7 +174,7 @@ function printTicketDetail($type, $result, $id) {
                                     </select>
                                     <br><input type='submit' value='Submit'>
                                 </form>
-                            </th>" . "<th>" . $row["subject"] . "</th><th>" . $row["description"] .  "</th>";
+                            </th>" . "<th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th>";
                         echo "</tr>";
                         echo "<img src='" . $row["file"] . "'>";
                     }
@@ -221,8 +221,8 @@ function printTicketDetail($type, $result, $id) {
                                     <br><input type='submit' value='Submit'>
                                 </form>
                             </th>" . "<th>" . $row["operativeSystem"] . "</th><th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["stepsToReproduce"] . "</th><th>" . $row["expectedResult"] . "</th><th>" . $row["receivedResult"] . "</th><th>" . $row["discordClient"] . "</th>";
-                            echo "</tr>";
-                            echo "<img src='" . $row["image"] . "'>";
+                        echo "</tr>";
+                        echo "<img src='" . $row["image"] . "'>";
                     }
                     echo "</table>";
                 } else {
@@ -385,7 +385,7 @@ function printTicketDetail($type, $result, $id) {
                                     <br><input type='submit' value='Submit'>
                                 </form>
                             </th>"
-                        . "<th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["extraText"] . "</th>";
+                            . "<th>" . $row["subject"] . "</th><th>" . $row["description"] . "</th><th>" . $row["extraText"] . "</th>";
                         echo "</tr>";
                     }
                     echo "</table>";

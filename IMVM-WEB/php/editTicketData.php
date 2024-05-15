@@ -1,6 +1,6 @@
 <?php
-require_once("redirectFunctions.php");
-require_once("databaseFunctions.php");
+require_once ("redirectFunctions.php");
+require_once ("databaseFunctions.php");
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn = connectToDatabase();
     $newState = $_POST['newState'];
