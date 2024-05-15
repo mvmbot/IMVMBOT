@@ -17,12 +17,13 @@ const Embed = require('./Embed');
 const InteractionCollector = require('./InteractionCollector');
 const Mentions = require('./MessageMentions');
 const MessagePayload = require('./MessagePayload');
+const { Poll } = require('./Poll.js');
 const ReactionCollector = require('./ReactionCollector');
 const { Sticker } = require('./Sticker');
 const { DiscordjsError, ErrorCodes } = require('../errors');
 const ReactionManager = require('../managers/ReactionManager');
 const { createComponent } = require('../util/Components');
-const { NonSystemMessageTypes, MaxBulkDeletableMessageAge, DeletableMessageTypes } = require('../util/Constants');
+const { NonSystemMessageTypes, MaxBulkDeletableMessageAge, UndeletableMessageTypes } = require('../util/Constants');
 const MessageFlagsBitField = require('../util/MessageFlagsBitField');
 const PermissionsBitField = require('../util/PermissionsBitField');
 const { cleanContent, resolvePartialEmoji, transformResolved } = require('../util/Util');
@@ -406,6 +407,16 @@ class Message extends Base {
     } else {
       this.interaction ??= null;
     }
+
+    if (data.poll) {
+      /**
+       * The poll that was sent with the message
+       * @type {?Poll}
+       */
+      this.poll = new Poll(this.client, data.poll, this);
+    } else {
+      this.poll ??= null;
+    }
   }
 
   /**
@@ -635,7 +646,7 @@ class Message extends Base {
    * @readonly
    */
   get deletable() {
-    if (!DeletableMessageTypes.includes(this.type)) return false;
+    if (UndeletableMessageTypes.includes(this.type)) return false;
 
     if (!this.guild) {
       return this.author.id === this.client.user.id;
@@ -717,6 +728,7 @@ class Message extends Base {
       channel?.type === ChannelType.GuildAnnouncement &&
         !this.flags.has(MessageFlags.Crossposted) &&
         this.type === MessageType.Default &&
+        !this.poll &&
         channel.viewable &&
         channel.permissionsFor(this.client.user)?.has(bitfield, false),
     );

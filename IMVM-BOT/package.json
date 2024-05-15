@@ -1,10 +1,9 @@
 {
   "dependencies": {
-    "@discordjs/builders": "^1.7.0",
+    "@discordjs/builders": "^1.8.1",
     "@discordjs/rest": "^2.2.0",
     "@googleapis/classroom": "^4.0.7",
     "@iamtraction/google-translate": "github:iamtraction/google-translate",
-    "axios": "^1.6.8",
     "commandkit": "^0.1.6",
     "discord-api-types": "^0.37.66",
     "discord-html-transcripts": "^3.2.0",
@@ -17,6 +16,7 @@
     "mongodb": "^6.5.0",
     "mongoose": "^8.2.2",
     "mysql": "^2.18.1",
+    "mysql2": "^3.9.7",
     "node-fetch": "^2.6.1",
     "node-schedule": "^2.1.1",
     "openai": "^4.28.4",
