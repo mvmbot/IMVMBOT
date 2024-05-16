@@ -11,7 +11,6 @@ const db = mysql.createConnection({
   database: process.env.DB_NAME,
 });
 
-<<<<<<< HEAD
 function checkIfUserHasToken(userId) {
   const query = `SELECT * FROM user_tokens WHERE user_id =? LIMIT 1`;
   return new Promise((resolve, reject) => {
@@ -22,13 +21,6 @@ function checkIfUserHasToken(userId) {
       }
       resolve(result.length > 0);
     });
-=======
-function deleteAccessTokenFromDatabase(userId) {
-  const query = `DELETE FROM user_tokens WHERE user_id =?`;
-  db.query(query, [userId], (err, result) => {
-    if (err) throw err;
-    console.log("Token de acceso eliminado de la base de datos.");
->>>>>>> aaedcd58324d3caf837adf33d31d9b05a4fa2db1
   });
 }
 
