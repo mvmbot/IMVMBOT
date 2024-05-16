@@ -19,15 +19,15 @@ ini_set('display_errors', 1);
 $conn = connectToDatabase();
 
 # We declare the directory that we're using to store all the user data
-$targetDirectory = '../userUploads/';
+$targetDirectory = '../userUploads/' . $_SESSION['user'] . '/';
 
-# We grab all the data from the form
+# Since every user is going to have a different directory, we gotta make sure it creates properly (in case it's not already created!)
+# Since this could be kinda hard to read, imma break it down for you, first we check if `$targetDirectory` is a directory, then we use the ternary operator
+# So if its false, it does the parenthesis, which has another ternary operator, if its not a directory nor can create it, it will die
+is_dir($targetDirectory)?:(mkdir($targetDirectory, 0777, true) ?:die('Failed to create directories...'));
 
 # First of all, we get the type so we know what table to look in
 $type = $_POST['type'] ?? '';
-
-# This will hold an array with fields that need validation
-$fieldsToCheck;
 
 # Switch case to fill the values from every possible type
 switch ($type) {
