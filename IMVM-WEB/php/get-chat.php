@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['idUsers'])) {
+if (isset($_SESSION['user'])) {
     include_once "databaseFunctions.php";
     $conn = connectToDatabase();
     $outgoing_id = $_SESSION['idUsers'];

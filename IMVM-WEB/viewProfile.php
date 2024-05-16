@@ -300,6 +300,7 @@ $conn = connectToDatabase();
             <th>Name</th>
             <th>Surname</th>
             <th>Email</th>
+            <th>Profile image</th>
         </thead>
         <?php
         echo printUserData($conn);

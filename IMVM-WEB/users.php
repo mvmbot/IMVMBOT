@@ -1,6 +1,7 @@
 <?php
 session_start();
 require ('./php/databaseFunctions.php');
+require ('./php/config.php');
 if (!$_SESSION["user"] || !$_SESSION["admin"]) {
     ?>
 
@@ -292,10 +293,6 @@ if (!$_SESSION["user"] || !$_SESSION["admin"]) {
 
         <!-- Navbar End -->
 
-        <?php
-        session_start();
-        include_once "php/config.php";
-        ?>
         <br><br>
 
         <body>
@@ -309,7 +306,7 @@ if (!$_SESSION["user"] || !$_SESSION["admin"]) {
                                 $row = mysqli_fetch_assoc($sql);
                             }
                             ?>
-                            <img src="./userProfileImgs<?php echo $row['img']; ?>" alt="">
+                            <img src="./userProfileImgs/<?php echo $row['usernameUsers'];?>/<?php echo $row['profileImage']; ?>" alt="">
                             <div class="details">
                                 <span>
                                     <?php echo $row['nameUsers'] . " " . $row['surnameUsers'] ?>
