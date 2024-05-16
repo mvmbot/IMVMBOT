@@ -31,26 +31,26 @@ async function deleteAccessTokenFromDatabase(userId) {
     console.log("Token de acceso eliminado de la base de datos.");
   } catch (err) {
     console.error(`Error deleting access token: ${err}`);
-    throw err; 
+    throw err;
   }
 }
 
 module.exports = {
   data: new SlashCommandBuilder()
-  .setName('logout')
-  .setDescription('Log out from Google Classroom'),
+    .setName('logout')
+    .setDescription('Log out from Google Classroom'),
   async execute(interaction) {
     const discordUserId = interaction.user.id;
 
     try {
       const hasToken = await checkIfUserHasToken(discordUserId);
-      if (!hasToken) {
+      if (hasToken > 0) {
+        await deleteAccessTokenFromDatabase(discordUserId);
+        await interaction.reply({ content: 'You have been logged out from Google Classroom.', ephemeral: true });
+      } else {
         await interaction.reply({ content: 'No token found for this user.', ephemeral: true });
         return;
       }
-
-      await deleteAccessTokenFromDatabase(discordUserId);
-      await interaction.reply({ content: 'You have been logged out from Google Classroom.', ephemeral: true });
     } catch (error) {
       console.error(`An unexpected error occurred: ${error}`);
       await interaction.reply({ content: 'An error occurred. Please try again later.', ephemeral: true });
