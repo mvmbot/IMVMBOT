@@ -24,7 +24,7 @@ $targetDirectory = '../userUploads/' . $_SESSION['user'] . '/';
 # Since every user is going to have a different directory, we gotta make sure it creates properly (in case it's not already created!)
 # Since this could be kinda hard to read, imma break it down for you, first we check if `$targetDirectory` is a directory, then we use the ternary operator
 # So if its false, it does the parenthesis, which has another ternary operator, if its not a directory nor can create it, it will die
-is_dir($targetDirectory)?:(mkdir($targetDirectory, 0777, true) ?:die('Failed to create directories...'));
+is_dir($targetDirectory)?:(mkdir($targetDirectory, 0777, true) ?:die('Failed to create directories... #27'));
 
 # First of all, we get the type so we know what table to look in
 $type = $_POST['type'] ?? '';
