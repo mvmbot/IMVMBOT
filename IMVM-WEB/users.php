@@ -301,7 +301,7 @@ if (!$_SESSION["user"] || !$_SESSION["admin"]) {
                     <header>
                         <div class="content">
                             <?php
-                            $sql = mysqli_query($conn, "SELECT * FROM users WHERE idUsers = {$_SESSION['idUsers']}");
+                            $sql = mysqli_query($conn = connectToDatabase(), "SELECT * FROM users WHERE idUsers = {$_SESSION['idUsers']}");
                             if (mysqli_num_rows($sql) > 0) {
                                 $row = mysqli_fetch_assoc($sql);
                                 ?>
