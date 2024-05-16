@@ -29,24 +29,6 @@ function saveAccessTokenToDatabase(userId, accessToken) {
   });
 }
 
-// Añadir función para obtener token de acceso desde la base de datos
-function getAccessTokenFromDatabase(userId) {
-  return new Promise((resolve, reject) => {
-    const query = "SELECT access_token FROM user_tokens WHERE user_id = ?";
-    connection.query(query, [userId], (error, results, fields) => {
-      if (error) {
-        reject(error);
-      } else {
-        if (results.length > 0) {
-          resolve(results[0].access_token);
-        } else {
-          resolve(null);
-        }
-      }
-    });
-  });
-}
-
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('login')
