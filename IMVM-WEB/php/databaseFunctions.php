@@ -256,7 +256,7 @@ function printUserData($conn) {
     # We create a $row variable to print the data
     while ($row = $result->fetch_assoc()) {
         echo "<tr style='background-color: white; color: #9900ff;'>";
-        echo "<td>" . $_SESSION["user"] . "</td><td>" . $row["nameUsers"] . "</td><td>" . $row["surnameUsers"] . "</td><td>" . $row["emailUsers"] . "</td>";
+        echo "<td>" . $_SESSION["user"] . "</td><td>" . $row["nameUsers"] . "</td><td>" . $row["surnameUsers"] . "</td><td>" . $row["emailUsers"] . "</td><td><img src='" . $row["profileImage"] . "'></td>";
         echo "</tr>";
     }
 }

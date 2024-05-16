@@ -2,7 +2,6 @@
 
   const { SlashCommandBuilder } = require('@discordjs/builders');
   const { google } = require('googleapis');
-  const mysql = require('mysql');
   require('dotenv').config();
 
   const oauth2Client = new google.auth.OAuth2(
