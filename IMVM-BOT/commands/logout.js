@@ -12,7 +12,7 @@ const db = mysql.createConnection({
 });
 
 function deleteAccessTokenFromDatabase(userId) {
-  const query = `DELETE FROM users_tokens WHERE user_id =?`;
+  const query = `DELETE FROM user_tokens WHERE user_id =?`;
   db.query(query, [userId], (err, result) => {
     if (err) throw err;
     console.log("Token de acceso eliminado de la base de datos.");
@@ -21,8 +21,8 @@ function deleteAccessTokenFromDatabase(userId) {
 
 module.exports = {
   data: new SlashCommandBuilder()
-   .setName('logout')
-   .setDescription('Log out from Google Classroom'),
+  .setName('logout')
+  .setDescription('Log out from Google Classroom'),
   async execute(interaction) {
     const discordUserId = interaction.user.id;
     deleteAccessTokenFromDatabase(discordUserId);
