@@ -17,16 +17,14 @@ if (isset($_SESSION['user'])) {
                                 <div class="details">
                                     <p>' . $row['msg'] . '</p>
                                 </div>
-                                </div>';
+                            </div>';
             } else {
-                ?>
                 $output .= '<div class="chat incoming">
-                <img src="./userProfileImgs/<?php echo $row['usernameUsers'];?>/<?php echo $row['profileImage']; ?>" alt="">
+                                <img src="./userProfileImgs/' . $row['usernameUsers'] . '/' . $row['profileImage'] . '" alt="">
                                 <div class="details">
                                     <p>' . $row['msg'] . '</p>
                                 </div>
-                                </div>';<?php
-
+                            </div>';
             }
         }
     } else {
