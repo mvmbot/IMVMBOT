@@ -14,6 +14,7 @@ if (isset($_GET['code'])) {
         throw new Exception('Failed to obtain access token. Token response: ' . json_encode($token));
     }
     $accessToken = $token['access_token'];
+
     $client->setAccessToken($accessToken);
 
     // Verifica si hubo un error al obtener el token
@@ -24,7 +25,6 @@ if (isset($_GET['code'])) {
     }
 
     $_SESSION['access_token'] = $token;
-    $accessToken = $token['access_token'];
 
     // Obtener el ID de usuario de Discord del parámetro state
     if (isset($_GET['state'])) {
