@@ -11,7 +11,7 @@ $conn = connectToDatabase();
 if (isset($_GET['code'])) {
     $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
     if (!isset($token['access_token'])) {
-        throw new Exception('Failed to obtain access token. Token response: ' . json_encode($token));
+        throw new Exception('ERROR #14: ' . json_encode($token));
     }
     $accessToken = $token['access_token'];
 
@@ -20,7 +20,7 @@ if (isset($_GET['code'])) {
     # Verifica si hubo un error al obtener el token
     if (isset($token['error'])) {
         # Manejar el error aquí (por ejemplo, mostrar un mensaje al usuario)
-        echo "Error al obtener el token de acceso #23: " . $token['error'];
+        echo "ERROR #23: " . $token['error'];
         exit;
     }
 
@@ -34,13 +34,13 @@ if (isset($_GET['code'])) {
         # Revisar primero si el usuario ya está logueado
         try {
             $sql = "SELECT user_id FROM user_tokens WHERE user_id = ?";
-            $stmt = $conn->prepare($sql) ?: throw new Exception("Error preparing SELECT statement: " . $conn->error);
+            $stmt = $conn->prepare($sql) ?: throw new Exception("ERROR #37: " . $conn->error);
             $stmt->bind_param('s', $discordUserId);
             $stmt->execute();
             $result = $stmt->get_result();
             $stmt->close();
         } catch (Exception $e) {
-            showError("Error trycatch #43: " . $e->getMessage());
+            showError("ERROR #43: " . $e->getMessage());
         }
         if ($result->num_rows == 1 || $result != NULL) {
             die("U're already logged in #46");
@@ -48,17 +48,17 @@ if (isset($_GET['code'])) {
             # Guardar el token de acceso y el ID de usuario de Discord en la base de datos
             try {
                 $query = "REPLACE INTO user_tokens (user_id, access_token) VALUES (?, ?)";
-                $stmt = $conn->prepare($query) ?: throw new Exception("Error preparing INSERT statement: " . $conn->error);
+                $stmt = $conn->prepare($query) ?: throw new Exception("ERROR #51: " . $conn->error);
                 $stmt->bind_param('ss', $discordUserId, $accessToken);
                 $stmt->execute();
                 $stmt->close();
-                echo "Te has logeado correctamente. Puedes cerrar esta ventana.";
+                echo "You logged in correctly! You can close this window now.";
             } catch (Exception $e) {
-                showError("Error trycatch #58: " . $e->getMessage());
+                showError("ERROR #57: " . $e->getMessage());
             }
         }
     } else {
-        die ("No se pudo obtener el ID del usuario de discord #61");
+        die("ERROR #61: Couldn't get the User ID");
     }
     exit;
 }
