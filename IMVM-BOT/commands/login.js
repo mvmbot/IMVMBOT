@@ -65,11 +65,5 @@
         await interaction.followUp('Token de acceso guardado en la base de datos.');
         collector.stop();
       });
-
-      collector.on('end', (collected, reason) => {
-        if (reason === 'time') {
-          interaction.followUp('Tiempo de espera agotado. Por favor, intenta de nuevo.');
-        }
-      });
     },
   };
