@@ -10,7 +10,7 @@ $conn = connectToDatabase();
 if (isset($_GET['code'])) {
     $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
     if (!isset($token['access_token'])) {
-        throw new Exception('ERROR #14: ' . json_encode($token));
+        throw new Exception('ERROR #13: ' . json_encode($token));
     }
     $accessToken = $token['access_token'];
 
@@ -49,7 +49,7 @@ if (isset($_GET['code'])) {
             # Close the statement
             $stmt->close();
         } catch (Exception $e) {
-            showError("ERROR #43: " . $e->getMessage());
+            showError("ERROR #52: " . $e->getMessage());
         }
         if ($result->num_rows == 1 || $result != NULL) {
 
@@ -66,18 +66,18 @@ if (isset($_GET['code'])) {
                 $stmt->close();
 
                 if ($result->num_rows == 1 || $result != NULL ) {
-                    #In case everythings allright, we tell the user
+                    # In case everythings allright, we tell the user
                     echo "You logged in correctly! You can close this window now.";
                 }
-                
+
             } catch (Exception $e) {
-                showError("ERROR #57: " . $e->getMessage());
+                showError("ERROR #74: " . $e->getMessage());
             }
         }
     } else {
-        die("ERROR #61: COULDN'T GET THE USER ID");
+        die("ERROR #78: COULDN'T GET THE USER ID");
     }
     exit;
 } else {
-    die("ERROR #65: NO ACCES TOKEN DETECTED");
+    die("ERROR #82: NO ACCES TOKEN DETECTED");
 }
