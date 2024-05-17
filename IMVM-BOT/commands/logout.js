@@ -1,59 +1,85 @@
-//logout.js
+// logout.js
 
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const mysql = require('mysql');
 require('dotenv').config();
-
-const db = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-});
-
-function checkIfUserHasToken(userId) {
-  const query = `SELECT * FROM user_tokens WHERE user_id =? LIMIT 1`;
-  return new Promise((resolve, reject) => {
-    db.query(query, [userId], (err, result) => {
-      if (err) {
-        console.error(`Error checking if user has a token: ${err}`);
-        reject(err);
-      }
-      resolve(result.length > 0);
-    });
-  });
-}
-
-async function deleteAccessTokenFromDatabase(userId) {
-  const query = `DELETE FROM user_tokens WHERE user_id =?`;
-  try {
-    db.query(query, [userId]);
-    console.log("Token de acceso eliminado de la base de datos.");
-  } catch (err) {
-    console.error(`Error deleting access token: ${err}`);
-    throw err;
-  }
-}
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('logout')
     .setDescription('Log out from Google Classroom'),
   async execute(interaction) {
-    const discordUserId = interaction.user.id;
+    const userId = interaction.user.id;
 
-    try {
-      const hasToken = await checkIfUserHasToken(discordUserId);
-      if (hasToken > 0) {
-        await deleteAccessTokenFromDatabase(discordUserId);
-        await interaction.reply({ content: 'You have been logged out from Google Classroom.', ephemeral: true });
-      } else {
-        await interaction.reply({ content: 'No token found for this user.', ephemeral: true });
-        return;
+    await interaction.reply({
+      ephemeral: true,
+      embeds: [
+        {
+          title: 'Google Classroom Logout',
+          description: 'You are about to log out from Google Classroom. Please confirm by clicking the button below.',
+          color: 0xFF0000,
+          footer: {
+            text: 'Your access token will be removed from our database.',
+          },
+        },
+      ],
+      components: [
+        {
+          type: 1, // Action Row
+          components: [
+            {
+              type: 2, // Button
+              style: 4, // Red color
+              label: 'Confirm Logout',
+              customId: 'confirm_logout',
+            },
+          ],
+        },
+      ],
+    });
+
+    const filter = (i) => i.customId === 'confirm_logout' && i.user.id === userId;
+    const collector = interaction.channel.createMessageComponentCollector({ filter, time: 60000 });
+
+    collector.on('collect', async (i) => {
+      if (i.customId === 'confirm_logout') {
+        removeAccessTokenFromDatabase(userId);
+        await i.update({
+          content: 'You have been logged out from Google Classroom and your token has been removed from the database.',
+          embeds: [],
+          components: [],
+        });
+        collector.stop();
       }
-    } catch (error) {
-      console.error(`An unexpected error occurred: ${error}`);
-      await interaction.reply({ content: 'An error occurred. Please try again later.', ephemeral: true });
-    }
+    });
   },
 };
+
+function removeAccessTokenFromDatabase(userId) {
+  const connection = mysql.createConnection({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+  });
+
+  connection.connect((err) => {
+    if (err) {
+      console.error('Error connecting to the database:', err);
+      return;
+    }
+    console.log('Connected to the database.');
+  });
+
+  const query = 'DELETE FROM user_tokens WHERE user_id = ?';
+
+  connection.query(query, [userId], (err, results) => {
+    if (err) {
+      console.error('Error removing access token:', err);
+      return;
+    }
+    console.log('Access token removed for user ID:', userId);
+  });
+
+  connection.end();
+}
