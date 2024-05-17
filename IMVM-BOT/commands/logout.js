@@ -64,6 +64,7 @@ function removeAccessTokenFromDatabase(userId) {
   });
 
   console.log("Conexión: " + connection);
+  console.log("USER ID: " + userId);
 
   connection.connect((err) => {
     if (err) {
