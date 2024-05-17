@@ -1,3 +1,11 @@
+<?php
+session_start();
+include_once "php/config.php";
+  if(!isset($_SESSION['userId'])){
+    header("location: signin.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
