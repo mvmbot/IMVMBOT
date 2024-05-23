@@ -1,4 +1,10 @@
-// study.js
+/*
+ * File: study
+ * Author: Iván Sáez
+ * Github: https://github.com/ivanmvm
+ * Desc:
+ */
+
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const schedule = require('node-schedule');
 
@@ -6,7 +12,7 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('study')
         .setDescription('Establece un tiempo de estudio')
-        .addStringOption(option => 
+        .addStringOption(option =>
             option.setName('time')
                 .setDescription('Establece un temporizador de estudio (formato: HH:MM:SS)')
                 .setRequired(true)),

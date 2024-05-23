@@ -1,3 +1,10 @@
+/*
+ * File: eval
+ * Author: Iván Sáez
+ * Github: https://github.com/ivanmvm
+ * Desc:
+ */
+
 const { SlashCommandBuilder, EmbedBuilder } = require ('discord.js');
 
 module.exports = {
@@ -27,7 +34,7 @@ module.exports = {
         } catch (error) {
             output = error.toString();
         }
-        
+
         var replyString =`**Input:**\n\`\`\`js\n${code}\n\`\`\`\n\n**Output:**\n\`\`\`js\n${output}\n\`\`\``;
 
         if (interaction.replied) {

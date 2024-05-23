@@ -1,3 +1,10 @@
+/*
+ * File: youtube
+ * Author: Iván Sáez
+ * Github: https://github.com/ivanmvm
+ * Desc:
+ */
+
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const axios = require('axios');
 
@@ -25,7 +32,7 @@ module.exports = {
             const video = response.data.items[0];
             const videoTitle = video.snippet.title;
             const videoURL = `https://www.youtube.com/watch?v=${video.id.videoId}`;
-            
+
             interaction.reply({ content: `Este es el primer resultado a tu busqueda: \n"${searchTerm}":\n${videoURL}`});
         } catch (error) {
             console.error('Error al buscar en YouTube:', error);

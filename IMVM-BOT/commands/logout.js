@@ -1,4 +1,9 @@
-// logout.js
+/*
+ * File: logout
+ * Author: Iván Sáez
+ * Github: https://github.com/ivanmvm
+ * Desc:
+ */
 
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const mysql = require('mysql');

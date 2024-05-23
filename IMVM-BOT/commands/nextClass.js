@@ -1,3 +1,10 @@
+/*
+ * File: nextClass
+ * Author: Iván Sáez
+ * Github: https://github.com/ivanmvm
+ * Desc:
+ */
+
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { EmbedBuilder } = require('discord.js');
 const nextClass = require('node-schedule');
@@ -43,11 +50,11 @@ do {
     } while (!true || hour < 15 || hour > 20);
 }
 function horario(dia, horas[i]) {
-    
+
     let dia;
 
     let dias = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
-    
+
     let matriz = [dias][];
 
     for (let index = 0; index < dias.length; index++) {

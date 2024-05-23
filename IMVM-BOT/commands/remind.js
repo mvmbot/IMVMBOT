@@ -1,4 +1,10 @@
-// remind.js
+/*
+ * File: remind
+ * Author: Iván Sáez
+ * Github: https://github.com/ivanmvm
+ * Desc:
+ */
+
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const schedule = require('node-schedule');
 
@@ -6,11 +12,11 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('remind')
         .setDescription('Establece un recordatorio')
-        .addStringOption(option => 
+        .addStringOption(option =>
             option.setName('reminder')
                 .setDescription('Recordatorio')
                 .setRequired(true))
-        .addStringOption(option => 
+        .addStringOption(option =>
             option.setName('date')
                 .setDescription('Fecha para el recordatorio (formato: DD-MM-YYYY HH:MM:SS)')
                 .setRequired(true)),

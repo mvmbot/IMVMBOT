@@ -1,3 +1,10 @@
+/*
+ * File: wiki
+ * Author: Iván Sáez
+ * Github: https://github.com/ivanmvm
+ * Desc:
+ */
+
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const axios = require('axios');
 

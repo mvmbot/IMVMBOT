@@ -1,4 +1,11 @@
-//faq.js
+/*
+ * File: faq
+ * Author: Álvaro Fernández
+ * Github 1.1: https://github.com/afernandezmvm (School acc)
+ * Github 1.2: https://github.com/JisuKlk (Personal acc)
+ * Desc: This command prints an embed with the FAQ
+ */
+
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { EmbedBuilder } = require('discord.js');
 

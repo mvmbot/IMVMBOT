@@ -1,3 +1,10 @@
+/*
+ * File: lock
+ * Author: Iván Sáez
+ * Github: https://github.com/ivanmvm
+ * Desc:
+ */
+
 const Discord = require("discord.js")
 
 module.exports = {
@@ -25,7 +32,7 @@ module.exports = {
         content: `:_: No tienes permisos de \`\`ManageChannels\`\` para usar el comando.`,
         ephemeral: true,
       });
-    
+
     try {
       let channel = interaction.options.getChannel("canal");
       channel.permissionOverwrites.create(interaction.guild.id, {

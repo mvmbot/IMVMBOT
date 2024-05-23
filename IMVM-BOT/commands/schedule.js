@@ -1,3 +1,11 @@
+/*
+ * File: shedule
+ * Author: Álvaro Fernández
+ * Github 1.1: https://github.com/afernandezmvm (School acc)
+ * Github 1.2: https://github.com/JisuKlk (Personal acc)
+ * Desc: This command prints an embed with the schedule
+ */
+
 const { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits } = require("discord.js");
 
 module.exports = {

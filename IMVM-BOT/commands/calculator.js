@@ -1,5 +1,12 @@
+/*
+ * File: calculator
+ * Author: Iván Sáez
+ * Github: https://github.com/ivanmvm
+ * Desc:
+ */
+
 const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
-const math = require('mathjs'); 
+const math = require('mathjs');
 
 module.exports = {
     data: new SlashCommandBuilder()

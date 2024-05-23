@@ -1,3 +1,10 @@
+/*
+ * File: ping
+ * Author: Iván Sáez
+ * Github: https://github.com/ivanmvm
+ * Desc:
+ */
+
 const { EmbedBuilder } = require('discord.js');
 
 ping = {
@@ -14,7 +21,7 @@ ping = {
         .addFields({ name: 'Ping del Bot', value: `${ping} ms` })
         embed.setColor('#F8D64E');
 
-    await interaction.reply({ embeds: [embed] }); 
+    await interaction.reply({ embeds: [embed] });
     },
 };
 module.exports = ping

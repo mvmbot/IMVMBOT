@@ -1,3 +1,10 @@
+/*
+ * File: welcome
+ * Author: Iván Sáez
+ * Github: https://github.com/ivanmvm
+ * Desc:
+ */
+
 const { Client } = require("discord.js");
 const client = new Client();
 

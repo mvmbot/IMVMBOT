@@ -1,3 +1,10 @@
+/*
+ * File: gtranslate
+ * Author: Iván Sáez
+ * Github: https://github.com/ivanmvm
+ * Desc:
+ */
+
 const {SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const translate = require('@iamtraction/google-translate');
 

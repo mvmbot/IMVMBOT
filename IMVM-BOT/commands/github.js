@@ -1,3 +1,13 @@
+/*
+ * File: github
+ * Author 1: Álvaro Fernández
+ * Github 1.1: https://github.com/afernandezmvm (School acc)
+ * Github 1.2: https://github.com/JisuKlk (Personal acc)
+ * Author 2: Iván Sáez
+ * Github 2: https://github.com/ivanmvm
+ * Desc: Command with the ability to search repositorys at github (it shows ours one!)
+ */
+
 //#region Requires
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const axios = require('axios');
@@ -46,9 +56,9 @@ module.exports = {
 
       // We use a forEach to iterate the results and print some info
       response.data.items.forEach((item, index) => {
-        embed.addFields({ 
-          name: `Resultado ${index + 1}`, 
-          value: `[${item.full_name}](${item.html_url}) - ${item.description || 'No description provided'}` 
+        embed.addFields({
+          name: `Resultado ${index + 1}`,
+          value: `[${item.full_name}](${item.html_url}) - ${item.description || 'No description provided'}`
         });
       });
 

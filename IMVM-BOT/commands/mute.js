@@ -1,11 +1,17 @@
-// mute.js
+/*
+ * File: mute
+ * Author: Iván Sáez
+ * Github: https://github.com/ivanmvm
+ * Desc:
+ */
+
 const {
     ChatInputCommandInteraction,
     SlashCommandBuilder,
     EmbedBuilder,
     PermissionFlagsBits,
   } = require("discord.js");
-  
+
   module.exports = {
     data: new SlashCommandBuilder()
       .setName("mute")
@@ -35,12 +41,12 @@ const {
       const user = interaction.options.getUser(`target`);
       const tiempo = interaction.options.getInteger(`tiempo`);
       const { guild } = interaction;
-  
+
       let razon = interaction.options.getString(`razon`);
       const member = await interaction.guild.members
         .fetch(user.id)
         .catch(console.error);
-  
+
       if (
         member.roles.highest.position >= interaction.member.roles.highest.postion
       )
@@ -54,7 +60,7 @@ const {
           content: `max is 10.000 minutes`,
           ephemeral: true,
         });
-  
+
       const embed = new EmbedBuilder()
         .setAuthor({
           name: `${guild.name}`,
@@ -71,9 +77,9 @@ const {
           { name: `Razon`, value: `${razon}`, inline: true },
           { name: `Tiempo`, value: `${tiempo}`, inline: true }
         );
-  
+
       await member.timeout(tiempo * 60 * 1000, razon).catch(console.error);
-  
+
       interaction.reply({ embeds: [embed] });
     },
-  }; 
+  };

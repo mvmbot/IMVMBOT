@@ -1,3 +1,10 @@
+/*
+ * File: emojify
+ * Author: Iván Sáez
+ * Github: https://github.com/ivanmvm
+ * Desc:
+ */
+
 const { SlashCommandBuilder } = require('@discordjs/builders');
 
 module.exports = {
@@ -7,7 +14,7 @@ module.exports = {
     .addStringOption(option =>
       option.setName('mensaje')
         .setDescription('Mensaje para convertir en emojis')
-        .setRequired(true)), 
+        .setRequired(true)),
 
   async execute(interaction) {
     await interaction.deferReply();
