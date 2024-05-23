@@ -155,7 +155,7 @@ session_start();
 
 
     <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+<nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
         <a href="index.php" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <img src="img/logo.png" alt="IESMVMBOT" height="100">
         </a>
@@ -287,8 +287,7 @@ session_start();
             ?>
         </div>
     </nav>
-
-    <!-- Navbar End -->
+<!-- Navbar End -->
 
     <!-- News Start -->
 

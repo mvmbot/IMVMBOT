@@ -158,7 +158,7 @@ $conn = connectToDatabase();
 
 
     <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+<nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
         <a href="index.php" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <img src="img/logo.png" alt="IESMVMBOT" height="100">
         </a>
@@ -290,8 +290,7 @@ $conn = connectToDatabase();
             ?>
         </div>
     </nav>
-
-    <!-- Navbar End -->
+<!-- Navbar End -->
 
     <h1>Your profile</h1>
     <table class='table' id='ticketTable6' style='background-color:rgb(255, 255, 255)'>

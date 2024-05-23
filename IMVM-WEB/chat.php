@@ -159,7 +159,7 @@ include_once "php/config.php";
 
 
     <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+<nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
         <a href="index.php" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <img src="img/logo.png" alt="IESMVMBOT" height="100">
         </a>
@@ -291,8 +291,7 @@ include_once "php/config.php";
             ?>
         </div>
     </nav>
-
-    <!-- Navbar End -->
+<!-- Navbar End -->
 
     <?php
     $conn = connectToDatabase();
