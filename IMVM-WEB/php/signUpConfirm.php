@@ -29,17 +29,22 @@ $password = $_POST['password'] ?? '';
 $confirmPassword = $_POST['confirmPassword'] ?? '';
 $newsletterCheckBox = isset($_POST['newsletterCheckBox']) ? 1 : 0;
 
-$type = 'profileImage';
-
+$defaultProfileImage = './img/defaultavatar.jpg'; // Ruta de la imagen predeterminada
 $targetDirectory = '../userProfileImgs/' . $username . '/';
+$profileImage = $defaultProfileImage;
 
-$fileAttachment = $targetDirectory . basename($_FILES["profileImage"]["name"]);
-
-if (!mkdir($targetDirectory, 0777, true)) {
-    die('Failed to create directories...');
+if (!file_exists($targetDirectory)) {
+    if (!mkdir($targetDirectory, 0777, true)) {
+        die('Failed to create directories...');
+    }
 }
 
-validateFile($fileAttachment, $type) ?: redirectToSignup();
+if (isset($_FILES['profileImage']) && $_FILES['profileImage']['error'] == 0) {
+    $fileAttachment = $targetDirectory . basename($_FILES["profileImage"]["name"]);
+    if (validateFile($fileAttachment, 'profileImage') && move_uploaded_file($_FILES["profileImage"]["tmp_name"], $fileAttachment)) {
+        $profileImage = $fileAttachment;
+    }
+}
 
 $inputs = array(
     $username,
@@ -71,10 +76,8 @@ if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
     redirectToSignup();
 }
 
-
 # Now, let's peek into the database and see if the chosen username or email is already taken
 try {
-
     # Preparing a tiny query to check that
     $checkExisting = "SELECT idUsers FROM users WHERE usernameUsers = ? OR emailUsers = ?";
     $stmtCheck = $conn->prepare($checkExisting);
@@ -84,14 +87,11 @@ try {
         throw new Exception("Oh no! Something went wrong: " . $conn->error);
     }
 
-    # No mistakes so far Let's move on and check the results.
-
-    # Thumbs up for binding parameters and executing the query
+    # No mistakes so far. Let's move on and check the results.
     $stmtCheck->bind_param("ss", $username, $mail);
     $stmtCheck->execute();
     $stmtCheck->store_result();
 } catch (Exception $e) {
-
     # We missed there to be honest. Let's be honest about it.
     showError("Error: " . $e->getMessage());
 }
@@ -100,10 +100,8 @@ try {
 if ($stmtCheck->num_rows > 0) {
     redirectToSignup();
 } else {
-
     # Looks like they're in the clear, let's add them to our cool users' database
     try {
-
         # Preparing the query to insert the user into the database
         $insertSQL = "INSERT INTO users (usernameUsers, nameUsers, surnameUsers, emailUsers, passwordUsers, acceptNewsletter, profileImage, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($insertSQL);
@@ -115,6 +113,7 @@ if ($stmtCheck->num_rows > 0) {
 
         # Now, let's make their password secure with a hash
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $status = 'active'; // o el estado que desees asignar
 
         # Bind parameters, cast the query, and add them to our user list
         $stmt->bind_param("ssssssss", $username, $name, $surname, $mail, $hashedPassword, $newsletterCheckBox, $profileImage, $status);
@@ -124,12 +123,10 @@ if ($stmtCheck->num_rows > 0) {
         if ($stmt->affected_rows > 0) {
             redirectToIndex();
         } else {
-
-            # Something went wrong, but we ain't liying bout it
+            # Something went wrong, but we ain't lying about it
             redirectToSignup();
         }
     } catch (Exception $e) {
-
         # Another bump in the road. Let's tell them.
         showError("Error: " . $e->getMessage());
     }
@@ -139,3 +136,4 @@ if ($stmtCheck->num_rows > 0) {
 $stmtCheck->close();
 $stmt->close();
 closeDatabaseConnection($conn);
+?>
