@@ -29,7 +29,7 @@ $password = $_POST['password'] ?? '';
 $confirmPassword = $_POST['confirmPassword'] ?? '';
 $newsletterCheckBox = isset($_POST['newsletterCheckBox']) ? 1 : 0;
 
-$defaultProfileImage = './img/defaultavatar.jpg'; // Ruta de la imagen predeterminada
+$defaultProfileImage = './img/defaultavatar.jpg'; // Default logo user
 $targetDirectory = '../userProfileImgs/' . $username . '/';
 $profileImage = $defaultProfileImage;
 
@@ -121,6 +121,8 @@ if ($stmtCheck->num_rows > 0) {
 
         # If everything worked like it should, send them to our main page
         if ($stmt->affected_rows > 0) {
+            $_SESSION['user'] = $username;
+            $_SESSION['profileImage'] = $profileImage;
             redirectToIndex();
         } else {
             # Something went wrong, but we ain't lying about it

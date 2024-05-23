@@ -154,140 +154,78 @@ session_start();
 
 
     <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-        <a href="index.php" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <img src="img/logo.png" alt="IESMVMBOT" height="100">
-        </a>
-        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
-                <style>
-                    svg {
-                        fill: #9900ff
-                    }
-                </style>
-                <path
-                    d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
-            </svg>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.php" class="nav-item nav-link active">HOME</a>
-                <a href="./about-us.php" class="nav-item nav-link">ABOUT</a>
-                <a href="./FAQ.php" class="nav-item nav-link">FAQ</a>
-                <a href="./Changelog.php" class="nav-item nav-link">CHANGELOG</a>
-                <div class="dropdown">
-                    <button class="nav-item nav-link dropdown-toggle" type="button" id="dropdownMenuButton1"
-                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                        style="background-color: #0a0a0a; color: white; border: none;">
-                        USER
-                    </button>
-                    <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton1"
-                        style="background-color: #000;">
-                        <!-- Enlace para SIGN UP -->
-                        <a href="./signup.php" class="nav-item nav-link" style="color: white;">SIGN UP</a>
-                        <!-- Enlace para SIGN IN -->
-                        <a href="./signin.php" class="nav-item nav-link" style="color: white;">SIGN IN</a>
-                        <!-- Enlace para LOG OUT -->
-                        <a href="./php/logout.php" class="nav-item nav-link" style="color: white;">LOG OUT</a>
-                        <?php
-                        if ($_SESSION["user"]) {
-                            ?>
-                            <!-- Enlace para VIEW PROFILE -->
-                            <a href="./viewProfile.php" class="nav-item nav-link" style="color: white;"> View profile</a>
-                            <?php
-                        }
-                        ?>
-                    </div>
-                </div>
-                <?php
-                if ($_SESSION["user"]) {
-                    ?>
-                    <div class="dropdown">
-                        <button class="nav-item nav-link dropdown-toggle" type="button" id="dropdownMenuButton2"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                            style="background-color: #0a0a0a; color: white; border: none;">
-                            TICKETS
-                        </button>
-                        <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton2"
-                            style="background-color: #000;">
-                            <!-- Enlace para CREATE TICKET -->
-                            <a href="./createTicket.php" class="nav-item nav-link" style="color: white;">CREATE TICKET</a>
-                            <!-- Enlace para VIEW TICKETS -->
-                            <a href="./viewTicket.php" class="nav-item nav-link" style="color: white;">VIEW TICKETS</a>
-                        </div>
-                    </div>
-                    <?php
-                } else if ($_SESSION["admin"]) {
-                    ?>
-                        <div class="dropdown">
-                            <button class="nav-item nav-link dropdown-toggle" type="button" id="dropdownMenuButton2"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                style="background-color: #0a0a0a; color: white; border: none;">
-                                TICKETS
-                            </button>
-                            <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton2"
-                                style="background-color: #000;">
-                                <!-- Enlace para VIEW TICKETS -->
-                                <a href="./viewTicketAdmin.php" class="nav-item nav-link" style="color: white;">VIEW TICKETS</a>
-                            </div>
-                        </div>
-                    <?php
+<nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+    <a href="index.php" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <img src="img/logo.png" alt="IESMVMBOT" height="100">
+    </a>
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+            <style>
+                svg {
+                    fill: #9900ff;
                 }
-                ?>
+            </style>
+            <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32-14.3 32 32z"/>
+        </svg>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <a href="index.php" class="nav-item nav-link active">HOME</a>
+            <a href="./about-us.php" class="nav-item nav-link">ABOUT</a>
+            <a href="./FAQ.php" class="nav-item nav-link">FAQ</a>
+            <a href="./Changelog.php" class="nav-item nav-link">CHANGELOG</a>
+            <div class="dropdown">
+                <button class="nav-item nav-link dropdown-toggle" type="button" id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                    style="background-color: #0a0a0a; color: white; border: none;">
+                    USER
+                </button>
+                <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton1"
+                    style="background-color: #000;">
+                    <!-- Enlace para SIGN UP -->
+                    <a href="./signup.php" class="nav-item nav-link" style="color: white;">SIGN UP</a>
+                    <!-- Enlace para SIGN IN -->
+                    <a href="./signin.php" class="nav-item nav-link" style="color: white;">SIGN IN</a>
+                    <!-- Enlace para LOG OUT -->
+                    <a href="./php/logout.php" class="nav-item nav-link" style="color: white;">LOG OUT</a>
+                    <?php
+                    if ($_SESSION["user"]) {
+                        ?>
+                        <!-- Enlace para VIEW PROFILE -->
+                        <a href="./viewProfile.php" class="nav-item nav-link" style="color: white;">View profile</a>
+                        <?php
+                    }
+                    ?>
+                </div>
             </div>
             <?php
-            if ($_SESSION["user"] == false && $_SESSION["admin"] == false) {
+            if (isset($_SESSION["user"])) {
+                $profileImage = $_SESSION['profileImage'] ?? './img/defaultavatar.jpg'; // Img of profile user or default
                 ?>
-                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">ACCOUNT<i><svg
-                            xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" class="svg-icon">
-                            <style>
-                                .svg-icon {
-                                    fill: #ffffff;
-                                    margin-left: 5px;
-                                }
-                            </style>
-                            <path
-                                d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
-                        </svg></i></a>
+                <a href="viewProfile.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+                    <img src="<?php echo $profileImage; ?>" alt="User Avatar" height="30" class="rounded-circle">
+                    <?php echo $_SESSION['user']; ?>
+                </a>
                 <?php
-            } else if ($_SESSION["user"]) {
+            } else if (isset($_SESSION["admin"])) {
+                $profileImage = $_SESSION['profileImage'] ?? './img/defaultavatar.jpg'; // Img of profile admin or default
                 ?>
-                    <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
-                    <?php echo $_SESSION['user'] ?><i><svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                                viewBox="0 0 448 512" class="svg-icon">
-                                <style>
-                                    .svg-icon {
-                                        fill: #ffffff;
-                                        margin-left: 5px;
-                                    }
-                                </style>
-                                <path
-                                    d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
-                            </svg></i>
-                    </a>
+                <a href="viewProfile.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+                    <img src="<?php echo $profileImage; ?>" alt="Admin Avatar" height="30" class="rounded-circle">
+                    <?php echo $_SESSION['admin']; ?>
+                </a>
                 <?php
-            } else if ($_SESSION["admin"]) {
+            } else {
                 ?>
-                        <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
-                    <?php echo $_SESSION['admin'] ?><i><svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                                    viewBox="0 0 448 512" class="svg-icon">
-                                    <style>
-                                        .svg-icon {
-                                            fill: #ffffff;
-                                            margin-left: 5px;
-                                        }
-                                    </style>
-                                    <path
-                                        d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
-                                </svg></i>
-                        </a>
+                <a href="signin.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">ACCOUNT</a>
                 <?php
             }
             ?>
         </div>
-    </nav>
+    </div>
+</nav>
+<!-- Navbar End -->
 
-    <!-- Navbar End -->
 
     <!-- Cookies Start -->
 
