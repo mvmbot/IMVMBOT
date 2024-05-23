@@ -1,4 +1,14 @@
 <?php
+
+/*
+ * File: createTicketConfirm
+ * Author: Álvaro Fernández
+ * Github 1: https://github.com/afernandezmvm (School acc)
+ * Github 2: https://github.com/JisuKlk (Personal acc)
+ * Desc: File targeted by the 'action' parameter on the form to create tickets
+ *       This collects the data from the form, check's everything's allright and creates the ticket
+ */
+
 #region Required files
 # Get the database stuff ready
 require_once ('databaseFunctions.php');

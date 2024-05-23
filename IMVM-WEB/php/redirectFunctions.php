@@ -1,4 +1,13 @@
 <?php
+
+/*
+ * File: redirectFunctions
+ * Author: Álvaro Fernández
+ * Github 1: https://github.com/afernandezmvm (School acc)
+ * Github 2: https://github.com/JisuKlk (Personal acc)
+ * Desc: File responsible for managing the ability to redirect to another page when needed
+ */
+
 #region Define --- Locations for our redirects
 define('SIGNUP_PAGE', '../signup.php');
 define('SIGNIN_PAGE', '../signin.php');

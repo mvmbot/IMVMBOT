@@ -1,4 +1,13 @@
 <?php
+
+/*
+ * File: errorAlerts
+ * Author: Álvaro Fernández
+ * Github 1: https://github.com/afernandezmvm (School acc)
+ * Github 2: https://github.com/JisuKlk (Personal acc)
+ * Desc: File that contains some functions to print errors to the user if necessary
+ */
+
 # We just throw an alert
 function showAlert($errorMessage) {
     echo '<script>alert("' . $errorMessage . '")</script>';

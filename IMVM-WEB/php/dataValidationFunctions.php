@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * File: dataValidationFunctions
+ * Author: Álvaro Fernández
+ * Github 1: https://github.com/afernandezmvm (School acc)
+ * Github 2: https://github.com/JisuKlk (Personal acc)
+ * Desc: File containing all the functions to validate the data inputs, whether it's string or file
+ */
+
 #region function --- Simple function to check if there are empty values and sanitize them.
 function validateInputs($inputs) {
     # We check if the input's an array or not.

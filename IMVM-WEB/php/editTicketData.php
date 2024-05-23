@@ -1,4 +1,13 @@
 <?php
+
+/*
+ * File: editTicketData
+ * Author: Álvaro Fernández
+ * Github 1: https://github.com/afernandezmvm (School acc)
+ * Github 2: https://github.com/JisuKlk (Personal acc)
+ * Desc: File responsible for managing the ability to edit ticket state as an admin
+ */
+
 require_once ("redirectFunctions.php");
 require_once ("databaseFunctions.php");
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

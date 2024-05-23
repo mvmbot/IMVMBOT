@@ -1,4 +1,13 @@
 <?php
+
+/*
+ * File: databaseFunctions
+ * Author: Álvaro Fernández
+ * Github 1: https://github.com/afernandezmvm (School acc)
+ * Github 2: https://github.com/JisuKlk (Personal acc)
+ * Desc: File that contains all the functions related to the database connections
+ */
+
 require_once('dataValidationFunctions.php');
 
 #region Function --- Simple function to connect to the database

@@ -1,4 +1,13 @@
 <?php
+
+/*
+ * File: viewTicketDetailConfirm
+ * Author: Álvaro Fernández
+ * Github 1: https://github.com/afernandezmvm (School acc)
+ * Github 2: https://github.com/JisuKlk (Personal acc)
+ * Desc: File responsible for managing the functions to get the details of one ticket as user
+ */
+
 function viewTicketDetail($conn, $type) {
     $id = intval($_GET['ID']);
     switch ($type) {

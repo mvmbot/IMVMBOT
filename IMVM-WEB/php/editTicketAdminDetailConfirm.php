@@ -1,4 +1,13 @@
 <?php
+
+/*
+ * File: editTicketAdminConfirm
+ * Author: Álvaro Fernández
+ * Github 1: https://github.com/afernandezmvm (School acc)
+ * Github 2: https://github.com/JisuKlk (Personal acc)
+ * Desc: File responsible for managing the ability to edit ticket data as an admin
+ */
+
 function editTicketDetail($conn, $type) {
     $id = intval($_GET['ID']);
     switch ($type) {
