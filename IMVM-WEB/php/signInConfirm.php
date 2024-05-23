@@ -1,4 +1,13 @@
 <?php
+
+/*
+ * File: signInConfirm
+ * Author: Álvaro Fernández
+ * Github 1: https://github.com/afernandezmvm (School acc)
+ * Github 2: https://github.com/JisuKlk (Personal acc)
+ * Desc: File responsible for logging in as an user
+ */
+
 # Let's make sure we're keeping track of the user's info
 session_start();
 
@@ -37,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmtCheck = $conn->prepare($checkExisting);
 
     # Now, we're getting ready to bind the parameters
-    $stmtCheck->bind_param("s", $username);
+    $stmtCheck->bind_param("s", $inputs[0]);
 
     # Alright, time to execute the query and see what the database tells us
     if ($stmtCheck->execute()) {

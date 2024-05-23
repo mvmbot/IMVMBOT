@@ -1,10 +1,18 @@
 <?php
+
+/*
+ * File: signInAdminConfirm
+ * Author: Álvaro Fernández
+ * Github 1: https://github.com/afernandezmvm (School acc)
+ * Github 2: https://github.com/JisuKlk (Personal acc)
+ * Desc: File responsible for logging in as an admin
+ */
+
 # Let's make sure we're keeping track of the user's info
 session_start();
 
 #region Required files --- Everything we need on this code
 # Now, we get all the database stuff
-require("config.php");
 require_once("databaseFunctions.php");
 
 # Grab some handy tools for our code
@@ -25,23 +33,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn = connectToDatabase();
 
     #region Variable Declaration
-    # Getting the username and password entered in the form
-    $username = $_POST['usernameAdmin'] ?? '';
-    $password = $_POST['passwordAdmin'] ?? '';
-
-    # We store the data from the user on a new var to check if they're empty or not
-    $inputs = array(
-        $username,
-        $password
-    );
+    # Getting the username and password entered in the form and check it
+    $inputs = validateInputs([
+        $username = $_POST['usernameAdmin'] ?? '',
+        $password = $_POST['passwordAdmin'] ?? '',
+    ]);
     #endregion
-
-    # If any of these is empty, we redirect them to the sign in so they can try again
-    $inputs = validateInputs($inputs);
-
-    if ($inputs === true) {
-        redirectToSignin();
-    }
 
     # We start with a quick query to find out if the user exists on the database
     $checkExisting = "SELECT idAdmin, passwordAdmin FROM admin WHERE usernameAdmin = ?";
@@ -50,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmtCheck = $conn->prepare($checkExisting);
 
     # Now, we're getting ready to bind the parameters
-    $stmtCheck->bind_param("s", $username);
+    $stmtCheck->bind_param("s", $inputs[0]);
 
     # Alright, time to execute the query and see what the database tells us
     if ($stmtCheck->execute()) {
