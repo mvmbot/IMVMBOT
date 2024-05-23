@@ -1,13 +1,13 @@
 <?php
 
 /*
- * File: viewTicketConfirm
+ * File: authorized
  * Author 1: Álvaro Fernández
  * Github 1.1: https://github.com/afernandezmvm (School acc)
  * Github 1.2: https://github.com/JisuKlk (Personal acc)
  * Author 2: Iván Sáez
  * Github 2: https://github.com/ivanmvm
- * Desc: File responsible for managing the functions to get the tickets as user
+ * Desc: File responsible for managing the Auth to connect with the Google Classroom
  */
 
 require_once('./php/databaseFunctions.php');
