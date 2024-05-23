@@ -1,6 +1,5 @@
 <?php
 session_start();
-require ("./php/viewTicketDetailConfirm.php");
 require ("./php/databaseFunctions.php");
 error_reporting(E_ALL);
 $conn = connectToDatabase();
