@@ -1,4 +1,15 @@
 <?php
+
+/*
+ * File: viewTicketConfirm
+ * Author 1: Álvaro Fernández
+ * Github 1.1: https://github.com/afernandezmvm (School acc)
+ * Github 1.2: https://github.com/JisuKlk (Personal acc)
+ * Author 2: Iván Sáez
+ * Github 2: https://github.com/ivanmvm
+ * Desc: File responsible for managing the functions to get the tickets as user
+ */
+
 require_once('./php/databaseFunctions.php');
 require_once('./phpclient/google-api-php-client--PHP7.4/vendor/autoload.php');
 include_once('./php/config.php');
