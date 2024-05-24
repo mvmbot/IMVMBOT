@@ -14,81 +14,45 @@ require_once('./php/databaseFunctions.php');
 require_once('./phpclient/google-api-php-client--PHP7.4/vendor/autoload.php');
 include_once('./php/config.php');
 
-# We declare the database connection
+session_start();
+
 $conn = connectToDatabase();
 
-# We get the acces token
+// Obtener el token de acceso
 if (isset($_GET['code'])) {
     $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
     if (!isset($token['access_token'])) {
-        throw new Exception('ERROR #13: ' . json_encode($token));
+        throw new Exception('Failed to obtain access token. Token response: ' . json_encode($token));
     }
     $accessToken = $token['access_token'];
 
-    # We assign to $client the $accessToken
     $client->setAccessToken($accessToken);
 
-    # In case we get an error we handle it
+    // Verifica si hubo un error al obtener el token
     if (isset($token['error'])) {
-        # Print the error
-        die ("ERROR #23: " . $token['error']);
+        // Manejar el error aquí (por ejemplo, mostrar un mensaje al usuario)
+        echo "Error al obtener el token de acceso: " . $token['error'];
+        exit;
     }
 
     $_SESSION['access_token'] = $token;
 
-    # We get via URL GET the state (discord user ID)
+    // Obtener el ID de usuario de Discord del parámetro state
     if (isset($_GET['state'])) {
-
-        # Declare the user ID
         $state = json_decode(urldecode($_GET['state']), true);
         $discordUserId = $state['discordUserId'];
 
-        # First we gotta check if the user's already logged
+        // Guardar el token de acceso y el ID de usuario de Discord en la base de datos
         try {
-
-            # Quick query to check it...
-            $sql = "SELECT user_id FROM user_tokens WHERE user_id = ?";
-            $stmt = $conn->prepare($sql) ?: throw new Exception("ERROR #37: " . $conn->error);
-            $stmt->bind_param('s', $discordUserId);
-
-            # Execute it
+            $query = "REPLACE INTO user_tokens (user_id, access_token) VALUES (?, ?)";
+            $stmt = $conn->prepare($query) ?: throw new Exception("Error preparing INSERT statement: " . $conn->error);
+            $stmt->bind_param('ss', $discordUserId, $accessToken);
             $stmt->execute();
-
-            # Store the result so we know if the user's logged in already
-            $result = $stmt->get_result();
-
-            # Close the statement
             $stmt->close();
         } catch (Exception $e) {
-            showError("ERROR #52: " . $e->getMessage());
+            showError("Error trycatch: " . $e->getMessage());
         }
-        if ($result->num_rows == 1 || $result != NULL) {
-
-            # If either the result isn't null or is 1, means that the users logged
-            die("U're already logged!");
-        } else {
-            # Insert the data to the database
-            try {
-                $query = "REPLACE INTO user_tokens (user_id, access_token) VALUES (?, ?)";
-                $stmt = $conn->prepare($query) ?: throw new Exception("ERROR #51: " . $conn->error);
-                $stmt->bind_param('ss', $discordUserId, $accessToken);
-                $stmt->execute();
-                $result = $stmt->get_result();
-                $stmt->close();
-
-                if ($result->num_rows == 1 || $result != NULL ) {
-                    # In case everythings allright, we tell the user
-                    echo "You logged in correctly! You can close this window now.";
-                }
-
-            } catch (Exception $e) {
-                showError("ERROR #74: " . $e->getMessage());
-            }
-        }
-    } else {
-        die("ERROR #78: COULDN'T GET THE USER ID");
     }
+    echo "Te has logeado correctamente. Puedes cerrar esta ventana.";
     exit;
-} else {
-    die("ERROR #82: NO ACCES TOKEN DETECTED");
 }
