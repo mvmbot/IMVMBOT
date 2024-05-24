@@ -41,7 +41,6 @@ $inputs = validateInputs([
 
 $newsletterCheckBox = isset($_POST['newsletterCheckBox']) ? 1 : 0;
 
-#Author of the profile image part: Joel Jara (https://github.com/jarasw)
 $defaultProfileImage = './img/defaultavatar.jpg'; // Default logo user
 
 $targetDirectory = '../userProfileImgs/' . $inputs[0] . '/';
@@ -53,14 +52,12 @@ if (!file_exists($targetDirectory)) {
     }
 }
 
-#region Author of the profile image part: Joel Jara (https://github.com/jarasw)
 if (isset($_FILES['profileImage']) && $_FILES['profileImage']['error'] == 0) {
     $fileAttachment = $targetDirectory . basename($_FILES["profileImage"]["name"]);
     if (validateFile($fileAttachment, 'profileImage') && move_uploaded_file($_FILES["profileImage"]["tmp_name"], $fileAttachment)) {
         $profileImage = $fileAttachment;
     }
 }
-#endregion
 
 # Make sure they accept the privacy box
 if (!isset($_POST['privacyCheckbox'])) {

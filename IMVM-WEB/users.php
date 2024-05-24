@@ -241,7 +241,7 @@ if (!$_SESSION["user"] || !$_SESSION["admin"]) {
             </div>
             <?php
             if ($_SESSION["user"]) {
-                $profileImage = $_SESSION['profile_image'] ?? 'img/defaultavatar.jpg'; // Image profile of user or default picture
+                $profileImage = $_SESSION['profileImage'] ?? 'img/defaultavatar.jpg'; // Image profile of user or default picture
                 ?>
                 <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
                     <img src="<?php echo $profileImage; ?>" alt="User Avatar" height="30" class="rounded-circle">
@@ -249,7 +249,7 @@ if (!$_SESSION["user"] || !$_SESSION["admin"]) {
                 </a>
                 <?php
             } else if ($_SESSION["admin"]) {
-                $profileImage = $_SESSION['profile_image'] ?? 'img/defaultavatar.jpg'; // Image profile of admin or default picture
+                $profileImage = $_SESSION['profileImage'] ?? 'img/defaultadmin.jpg'; // Image profile of admin or default picture
                 ?>
                 <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
                     <img src="<?php echo $profileImage; ?>" alt="Admin Avatar" height="30" class="rounded-circle">
