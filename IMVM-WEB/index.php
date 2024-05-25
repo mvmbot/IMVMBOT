@@ -14,20 +14,20 @@ session_start();
 
     <!-- Google Tag Manager Start -->
     <script>
-        (function (w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({
-                'gtm.start': new Date().getTime(),
-                event: 'gtm.js'
-            });
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s),
-                dl = l != 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-PWQDVHW8');
+    (function(w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start': new Date().getTime(),
+            event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-PWQDVHW8');
     </script>
     <!-- Google Tag Manager End -->
 
@@ -59,29 +59,29 @@ session_start();
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PXHDMQQ0XY"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-        gtag('config', 'G-PXHDMQQ0XY');
+    gtag('config', 'G-PXHDMQQ0XY');
     </script>
 
     <!-- Google Translator Start -->
     <script type="text/javascript"
         src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
                 pageLanguage: "en",
                 layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
                 showLogo: false,
             },
-                "google_translate_element"
-            );
-        }
+            "google_translate_element"
+        );
+    }
     </script>
     <!-- Google Translator End -->
 </head>
@@ -154,78 +154,114 @@ session_start();
 
 
     <!-- Navbar Start -->
-<nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-    <a href="index.php" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-        <img src="img/logo.png" alt="IESMVMBOT" height="100">
-    </a>
-    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
-            <style>
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+        <a href="index.php" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <img src="img/logo.png" alt="IESMVMBOT" height="100">
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+                <style>
                 svg {
-                    fill: #9900ff;
+                    fill: #9900ff
                 }
-            </style>
-            <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32-14.3 32 32z"/>
-        </svg>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-        <div class="navbar-nav ms-auto p-4 p-lg-0">
-            <a href="index.php" class="nav-item nav-link active">HOME</a>
-            <a href="./about-us.php" class="nav-item nav-link">ABOUT</a>
-            <a href="./FAQ.php" class="nav-item nav-link">FAQ</a>
-            <a href="./Changelog.php" class="nav-item nav-link">CHANGELOG</a>
-            <div class="dropdown">
-                <button class="nav-item nav-link dropdown-toggle" type="button" id="dropdownMenuButton1"
-                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                    style="background-color: #0a0a0a; color: white; border: none;">
-                    USER
-                </button>
-                <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton1"
-                    style="background-color: #000;">
-                    <!-- Enlace para SIGN UP -->
-                    <a href="./signup.php" class="nav-item nav-link" style="color: white;">SIGN UP</a>
-                    <!-- Enlace para SIGN IN -->
-                    <a href="./signin.php" class="nav-item nav-link" style="color: white;">SIGN IN</a>
-                    <!-- Enlace para LOG OUT -->
-                    <a href="./php/logout.php" class="nav-item nav-link" style="color: white;">LOG OUT</a>
-                    <?php
-                    if ($_SESSION["user"]) {
-                        ?>
-                        <!-- Enlace para VIEW PROFILE -->
-                        <a href="./viewProfile.php" class="nav-item nav-link" style="color: white;">View profile</a>
+                </style>
+                <path
+                    d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
+            </svg>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="index.php" class="nav-item nav-link active">HOME</a>
+                <a href="./about-us.php" class="nav-item nav-link">ABOUT</a>
+                <a href="./FAQ.php" class="nav-item nav-link">FAQ</a>
+                <a href="./Changelog.php" class="nav-item nav-link">CHANGELOG</a>
+                <div class="dropdown">
+                    <button class="nav-item nav-link dropdown-toggle" type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        style="background-color: #0a0a0a; color: white; border: none;">
+                        USER
+                    </button>
+                    <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton1"
+                        style="background-color: #000;">
+                        <!-- Link to SIGN UP -->
+                        <a href="./signup.php" class="nav-item nav-link" style="color: white;">SIGN UP</a>
+                        <!-- Link to SIGN IN -->
+                        <a href="./signin.php" class="nav-item nav-link" style="color: white;">SIGN IN</a>
+                        <!-- Link to LOG OUT -->
+                        <a href="./php/logout.php" class="nav-item nav-link" style="color: white;">LOG OUT</a>
                         <?php
-                    }
-                    ?>
+                        if ($_SESSION["user"]) {
+                            ?>
+                        <!-- Link to VIEW PROFILE -->
+                        <a href="./viewProfile.php" class="nav-item nav-link" style="color: white;"> View profile</a>
+                        <?php
+                        }
+                        ?>
+                    </div>
                 </div>
+                <?php
+                if ($_SESSION["user"]) {
+                    ?>
+                <div class="dropdown">
+                    <button class="nav-item nav-link dropdown-toggle" type="button" id="dropdownMenuButton2"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        style="background-color: #0a0a0a; color: white; border: none;">
+                        TICKETS
+                    </button>
+                    <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton2"
+                        style="background-color: #000;">
+                        <!-- Link to CREATE TICKET -->
+                        <a href="./createTicket.php" class="nav-item nav-link" style="color: white;">CREATE TICKET</a>
+                        <!-- Link to VIEW TICKETS -->
+                        <a href="./viewTicket.php" class="nav-item nav-link" style="color: white;">VIEW TICKETS</a>
+                    </div>
+                </div>
+                <?php
+                } else if ($_SESSION["admin"]) {
+                    ?>
+                <div class="dropdown">
+                    <button class="nav-item nav-link dropdown-toggle" type="button" id="dropdownMenuButton2"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        style="background-color: #0a0a0a; color: white; border: none;">
+                        TICKETS
+                    </button>
+                    <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton2"
+                        style="background-color: #000;">
+                        <!-- Link to VIEW TICKETS -->
+                        <a href="./viewTicketAdmin.php" class="nav-item nav-link" style="color: white;">VIEW TICKETS</a>
+                    </div>
+                </div>
+                <?php
+                }
+                ?>
             </div>
             <?php
-            if (isset($_SESSION["user"])) {
-                $profileImage = $_SESSION['profileImage'] ?? './img/defaultavatar.jpg'; // Img of profile user or default
+            if ($_SESSION["user"]) {
+                $profileImage = $_SESSION['profileImage'] ?? 'img/defaultavatar.jpg'; // Image profile of user or default picture
                 ?>
-                <a href="viewProfile.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
                     <img src="<?php echo $profileImage; ?>" alt="User Avatar" height="30" class="rounded-circle">
                     <?php echo $_SESSION['user']; ?>
                 </a>
                 <?php
-            } else if (isset($_SESSION["admin"])) {
-                $profileImage = $_SESSION['profileImage'] ?? './img/defaultavatar.jpg'; // Img of profile admin or default
+            } else if ($_SESSION["admin"]) {
+                $profileImage = $_SESSION['profileImage'] ?? 'img/defaultadmin.jpg'; // Image profile of admin or default picture
                 ?>
-                <a href="viewProfile.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
                     <img src="<?php echo $profileImage; ?>" alt="Admin Avatar" height="30" class="rounded-circle">
                     <?php echo $_SESSION['admin']; ?>
                 </a>
                 <?php
             } else {
                 ?>
-                <a href="signin.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">ACCOUNT</a>
+                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">ACCOUNT</a>
                 <?php
             }
             ?>
         </div>
     </div>
 </nav>
-<!-- Navbar End -->
-
+    <!-- Navbar End -->
 
     <!-- Cookies Start -->
 
@@ -267,9 +303,10 @@ session_start();
             </button>
 
             <script>
-                function redirectToInvite() {
-                    window.location.href = "https://discord.com/api/oauth2/authorize?client_id=1145302835911741501&permissions=8&scope=bot";
-                }
+            function redirectToInvite() {
+                window.location.href =
+                    "https://discord.com/api/oauth2/authorize?client_id=1145302835911741501&permissions=8&scope=bot";
+            }
             </script>
         </div>
     </section>
