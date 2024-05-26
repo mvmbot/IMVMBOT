@@ -2,9 +2,8 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js');
 const mysql = require('mysql2/promise');
 const { google } = require('googleapis');
-require('dotenv').config();
+require('dotenv');
 
-// Crear pool de conexiones a la base de datos
 const db = mysql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -16,10 +15,9 @@ const db = mysql.createPool({
   queueLimit: 0
 });
 
-// Función para obtener el token de acceso de un usuario
 async function getUserToken(userId) {
   try {
-    const [rows] = await db.query('SELECT access_token FROM user_tokens WHERE user_id = ? LIMIT 1', [userId]);
+    const [rows] = await db.query('SELECT access_token FROM user_tokens WHERE user_id =? LIMIT 1', [userId]);
     if (rows.length === 0) {
       console.log(`No se encontró un token de acceso para el usuario ${userId}`);
       return null;
@@ -32,12 +30,10 @@ async function getUserToken(userId) {
   }
 }
 
-// Definición del comando slash
 const coursesCommand = new SlashCommandBuilder()
-  .setName('courses')
-  .setDescription('Muestra los cursos de tu Google Classroom');
+.setName('courses')
+.setDescription('Muestra los cursos de tu Google Classroom');
 
-// Función para ejecutar el comando
 async function execute(interaction) {
   const discordUserId = interaction.user.id;
   let discordAccessToken;
@@ -50,7 +46,7 @@ async function execute(interaction) {
   }
 
   if (!discordAccessToken) {
-    return interaction.reply({ content: 'Necesitas iniciar sesión primero usando el comando `/login`.', ephemeral: true });
+    return interaction.reply({ content: 'Necesitas iniciar sesión primero usando el comando /login.', ephemeral: true });
   }
 
   console.log(`Token de acceso de Discord: ${discordAccessToken}`);
@@ -74,8 +70,8 @@ async function execute(interaction) {
     }
 
     const embed = new MessageEmbed()
-      .setTitle('CURSOS GCLASSROOM')
-      .setDescription(courses.map(course => `${course.name} (${course.id})`).join('\n'));
+    .setTitle('CURSOS GCLASSROOM')
+    .setDescription(courses.map(course => `${course.name} (${course.id})`).join('\n'));
 
     interaction.reply({ embeds: [embed] });
   } catch (error) {
