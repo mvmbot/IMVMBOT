@@ -1,34 +1,26 @@
 /*
- * File: shedule
- * Author: Álvaro Fernández
- * Github 1.1: https://github.com/afernandezmvm (School acc)
- * Github 1.2: https://github.com/JisuKlk (Personal acc)
- * Desc: This command prints an embed with the schedule
+ * File: schedule
+ * Author: Iván Sáez
+ * Github: https://github.com/ivanmvm
+ * Desc:
  */
-
-const { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits } = require("discord.js");
+const { SlashCommandBuilder } = require('@discordjs/builders');
+const { EmbedBuilder } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('schedule')
-        .setDescription('Show the MVMs class schedule for 2nd DAW'),
+        .setDescription('Muestra el horario de clases'),
     async execute(interaction) {
-        // Create EmbedBuilder
-        const rulesEmbed = new EmbedBuilder()
-            .setColor([176, 92, 255])
-            .setTitle('Schedule')
-            .setDescription('2nd DAW schedule')
-            .setAuthor({
-                iconURL: interaction.user.displayAvatarURL(),
-                name: interaction.user.tag
-            })
-            .setImage(`https://cdn.discordapp.com/attachments/953234501897703434/1202647952099909733/photo.jpg?ex=65ce382f&is=65bbc32f&hm=8a142a9fb2e78a9e768a0d4863839c4d2609322c41b267f1d1f28f47d38a8fe8&`)
-            .setTimestamp()
-            .setURL('https://imvmbot.com/')
-            .setFooter({
-                text: 'By IMVM students', iconURL: 'https://cdn.discordapp.com/attachments/1152263348461781002/1161360242848829520/imvmbot-logo.png?ex=65789d82&is=65662882&hm=f656dbb05cf38c5b2c505d8eafa1408d18c6530cc88528b0870fc35a02441880&'
-            });
-        // Interaction with embed
-        await interaction.reply({ embeds: [rulesEmbed] });
-    },
+        const calendarEmbed = new EmbedBuilder()
+            .setColor('#0099ff')
+            .setTitle('Horario de Clases')
+            .setDescription('Aquí tienes el horario de clases para 1DAW y 2DAW (23-24).')
+            .addFields(
+                { name: '1DAW - AA', value: 'Lunes\n08:00-09:00: SI [P1 o P2]\n09:00-10:00: SI [P1 o P2]\n10:00-11:00: BD [AA]\n11:30-12:30: LMSGI [MA]\n12:30-13:30: LMSGI [MA]\n13:30-14:30: TUT [AA]\n\nMartes\n08:00-09:00: \n09:00-10:00: FOL [FJ]\n10:00-11:00: LMSGI [MA]\n11:30-12:30: PRO [AA]\n12:30-13:30: PRO [AA]\n13:30-14:30: PRO [AA]\n\nMiércoles\n08:00-09:00: \n09:00-10:00: AIP [P1]\n10:00-11:00: FOL [FJ]\n11:30-12:30: BD [AA]\n12:30-13:30: BD [AA]\n13:30-14:30: \n\nJueves\n08:00-09:00: AIP [P1]\n09:00-10:00: \n10:00-11:00: PRO [AA]\n11:30-12:30: PRO [AA]\n12:30-13:30: SI [P1 o P2]\n13:30-14:30: SI [P1 o P2]\n\nViernes\n08:00-09:00: \n09:00-10:00: AIP [P1]\n10:00-11:00: PRO [AA]\n11:30-12:30: PRO [AA]\n12:30-13:30: BD [AA]\n13:30-14:30: BD [AA]', inline: true },
+                { name: '2DAW - MM', value: 'Lunes\n15:00-16:00: DWEC [P2]\n16:00-17:00: DWES [MM]\n17:00-18:00: DWES [MM]\n18:30-19:30: DIW [P2]\n19:30-20:30: PROJ/DUAL [MM]\n\nMartes\n15:00-16:00: DWEC [P2]\n16:00-17:00: DWES [MM]\n17:00-18:00: DWES [MM]\n18:30-19:30: PROJ/DUAL [MM]\n19:30-20:30: PROJ/DUAL [MM]\n\nMiércoles\n15:00-16:00: ED [MM]\n16:00-17:00: ED [MM]\n17:00-18:00: DIW [P2]\n18:30-19:30: DIW [P2]\n19:30-20:30: PROJ/DUAL [MM]\n\nJueves\n15:00-16:00: DAW [MM]\n16:00-17:00: DAW [MM]\n17:00-18:00: TUT [MM]\n18:30-19:30: PROJ/DUAL [MM]\n19:30-20:30: PROJ/DUAL [MM]\n\nViernes\n15:00-16:00: DWEC [P2]\n16:00-17:00: DWEC [P2]\n17:00-18:00: PROJ/DUAL [MM]\n18:30-19:30: PROJ/DUAL [MM]\n19:30-20:30: PROJ/DUAL [MM]', inline: true }
+            );
+
+        await interaction.reply({ embeds: [calendarEmbed] });
+    }
 };

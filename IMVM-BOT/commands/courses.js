@@ -29,6 +29,10 @@ async function getUserToken(userId) {
       return null;
     }
     console.log(`Token de acceso recuperado para el usuario ${userId}`);
+    if (!rows[0].hasOwnProperty('access_token')) {
+      console.error('El resultado de la consulta no contiene un campo access_token válido.');
+      return null;
+    }
     return rows[0].access_token;
   } catch (err) {
     console.error('Error al recuperar el token de acceso del usuario:', err);
