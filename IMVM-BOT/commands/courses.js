@@ -23,7 +23,7 @@ const db = mysql.createPool({
 
 async function getUserToken(userId) {
   try {
-    const [rows] = db.query('SELECT access_token FROM user_tokens WHERE user_id =? LIMIT 1', [userId]);
+    const [rows] = await db.query('SELECT access_token FROM user_tokens WHERE user_id =? LIMIT 1', [userId]);
     if (rows.length === 0) {
       console.log(`No se encontró un token de acceso para el usuario ${userId}`);
       return null;
@@ -37,15 +37,15 @@ async function getUserToken(userId) {
 }
 
 const coursesCommand = new SlashCommandBuilder()
- .setName('courses')
- .setDescription('Muestra los cursos de tu Google Classroom');
+  .setName('courses')
+  .setDescription('Muestra los cursos de tu Google Classroom');
 
 async function execute(interaction) {
   const discordUserId = interaction.user.id;
   let discordAccessToken;
 
   try {
-    discordAccessToken = getUserToken(discordUserId);
+    discordAccessToken = await getUserToken(discordUserId);
   } catch (error) {
     console.error('Error al obtener el token de acceso del usuario:', error);
     return interaction.reply({ content: 'Error al obtener tu token de acceso.', ephemeral: true });
@@ -68,7 +68,7 @@ async function execute(interaction) {
   const classroom = google.classroom({ version: 'v1', auth: oauth2Client });
 
   try {
-    const response = classroom.courses.list({ pageSize: 10 });
+    const response = await classroom.courses.list({ pageSize: 10 });
     const courses = response.data.courses;
 
     if (!courses || courses.length === 0) {
@@ -76,12 +76,20 @@ async function execute(interaction) {
     }
 
     const embed = new MessageEmbed()
-     .setTitle('CURSOS GCLASSROOM')
-     .setDescription(courses.map(course => `${course.name} (${course.id})`).join('\n'));
+      .setTitle('CURSOS GCLASSROOM')
+      .setDescription(courses.map(course => `${course.name} (${course.id})`).join('\n'));
 
     interaction.reply({ embeds: [embed] });
   } catch (error) {
     console.error('Error al recuperar los cursos:', error);
+
+    // Log detalle del error de la API de Google
+    if (error.response) {
+      console.error('Response data:', error.response.data);
+      console.error('Response status:', error.response.status);
+      console.error('Response headers:', error.response.headers);
+    }
+
     interaction.reply({ content: 'Error recuperando los cursos.', ephemeral: true });
   }
 }
