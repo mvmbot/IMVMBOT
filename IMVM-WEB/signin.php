@@ -93,6 +93,11 @@ session_start();
         }
     </script>
     <!-- Google Translator End -->
+
+    <!-- Google SignIn Start -->
+    <script src="https://accounts.google.com/gsi/client" async></script>
+    <!-- Google SignIn End -->
+
 </head>
 
 <body>
@@ -169,9 +174,9 @@ session_start();
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
                 <style>
-                svg {
-                    fill: #9900ff
-                }
+                    svg {
+                        fill: #9900ff
+                    }
                 </style>
                 <path
                     d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
@@ -247,28 +252,28 @@ session_start();
             if ($_SESSION["user"]) {
                 $profileImage = $_SESSION['profileImage'] ?? 'img/defaultavatar.jpg'; // Image profile of user or default picture
                 ?>
-                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
-                    <img src="<?php echo $profileImage; ?>" alt="User Avatar" height="30" class="rounded-circle">
-                    <?php echo $_SESSION['user']; ?>
-                </a>
-                <?php
+            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+                <img src="<?php echo $profileImage; ?>" alt="User Avatar" height="30" class="rounded-circle">
+                <?php echo $_SESSION['user']; ?>
+            </a>
+            <?php
             } else if ($_SESSION["admin"]) {
                 $profileImage = $_SESSION['profileImage'] ?? 'img/defaultadmin.jpg'; // Image profile of admin or default picture
                 ?>
-                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
-                    <img src="<?php echo $profileImage; ?>" alt="Admin Avatar" height="30" class="rounded-circle">
-                    <?php echo $_SESSION['admin']; ?>
-                </a>
-                <?php
+            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+                <img src="<?php echo $profileImage; ?>" alt="Admin Avatar" height="30" class="rounded-circle">
+                <?php echo $_SESSION['admin']; ?>
+            </a>
+            <?php
             } else {
                 ?>
-                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">ACCOUNT</a>
-                <?php
+            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">ACCOUNT</a>
+            <?php
             }
             ?>
         </div>
-    </div>
-</nav>
+        </div>
+    </nav>
     <!-- Navbar End -->
 
     <br><br>
@@ -295,20 +300,56 @@ session_start();
             <button type="submit" class="sign" name="signup">Sign In</button>
         </form>
         <br>
-        <p class="signup">New to IESMVMBOT?
-            <a href="signup.php" class="">Create an account</a>
-        </p>
+        <div id="g_id_onload" data-client_id="CLIENT_ID.apps.googleusercontent.com" data-context="signin"
+            data-ux_mode="popup" data-callback="handleCredentialResponse" data-auto_prompt="false">
+        </div>
+
+        <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="outline"
+            data-text="signin_with" data-size="large" data-logo_alignment="left">
+        </div>
+
+        <!-- Display the user's profile info -->
+        <div class="pro-data hidden"></div>
+
+    </div>
+    <br>
+    <p class="signup">New to IESMVMBOT?
+        <a href="signup.php" class="">Create an account</a>
+    </p>
     </div>
     <script>
-        function onSignIn(googleUser) {
-            var profile = googleUser.getBasicProfile();
-            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-            console.log('Name: ' + profile.getName());
-            console.log('Image URL: ' + profile.getImageUrl());
-            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+        // Credential response handler function
+        function handleCredentialResponse(response){
+            // Post JWT token to server-side
+            fetch("auth_init.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ request_type:'user_auth', credential: response.credential }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.status == 1){
+                    let responsePayload = data.pdata;
+        
+                    // Display the user account data
+                    let profileHTML = '<h3>Welcome '+responsePayload.given_name+'! <a href="javascript:void(0);" onclick="signOut('+responsePayload.sub+');">Sign out</a></h3>';
+                    profileHTML += '<img src="'+responsePayload.picture+'"/><p><b>Auth ID: </b>'+responsePayload.sub+'</p><p><b>Name: </b>'+responsePayload.name+'</p><p><b>Email: </b>'+responsePayload.email+'</p>';
+                    document.getElementsByClassName("pro-data")[0].innerHTML = profileHTML;
+                    
+                    document.querySelector("#btnWrap").classList.add("hidden");
+                    document.querySelector(".pro-data").classList.remove("hidden");
+                }
+            })
+            .catch(console.error);
         }
-    </script>
-
+        
+        // Sign out the user
+        function signOut(authID) {
+            document.getElementsByClassName("pro-data")[0].innerHTML = '';
+            document.querySelector("#btnWrap").classList.remove("hidden");
+            document.querySelector(".pro-data").classList.add("hidden");
+        }    
+        </script>
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">
