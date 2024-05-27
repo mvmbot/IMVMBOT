@@ -298,7 +298,9 @@ session_start();
             </div>
             <button type="submit" class="sign" name="signin">Sign In</button>
         </form>
+        
         <br>
+
         <div id="g_id_onload" data-client_id="93578644004-jt8h18nvepg5r1kp932d1mj043des153.apps.googleusercontent.com" data-context="signin"
             data-ux_mode="popup" data-callback="handleCredentialResponse" data-auto_prompt="false">
         </div>
@@ -309,12 +311,13 @@ session_start();
 
         <!-- Display the user's profile info -->
         <div class="pro-data hidden"></div>
-
-    </div>
-    <br>
-    <p class="signup">New to IESMVMBOT?
+        <br>
+        <p class="signup">New to IESMVMBOT?
         <a href="signup.php" class="">Create an account</a>
     </p>
+    </div>
+    <br>
+    
     </div>
     <script>
         // Credential response handler function
