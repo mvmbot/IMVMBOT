@@ -12,7 +12,7 @@ require_once('dataValidationFunctions.php');
 
 #region Function --- Simple function to connect to the database
 function connectToDatabase() {
-    $conn = mysqli_connect("localhost", "imvmbotc_admin", "bACONfRITO33", "imvmbotc_imvmbot") ?: die("Connection failed: " . mysqli_connect_error());
+    $conn = mysqli_connect("localhost", "imvmbotc_admin", "BaconFrito33", "imvmbotc_imvmbot") ?: die("Connection failed: " . mysqli_connect_error());
     return $conn;
 }
 #endregion
