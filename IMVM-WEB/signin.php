@@ -296,8 +296,7 @@ session_start();
                 </div>
 
             </div>
-
-            <button type="submit" class="sign" name="signup">Sign In</button>
+            <button type="submit" class="sign" name="signin">Sign In</button>
         </form>
         <br>
         <div id="g_id_onload" data-client_id="CLIENT_ID.apps.googleusercontent.com" data-context="signin"
