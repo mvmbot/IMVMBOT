@@ -15,6 +15,8 @@ CREATE TABLE admin (
 -- Table to store user information.
 CREATE TABLE users (
     idUsers INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    oauth_provider enum('google','instagram','discord','linkedin') NOT NULL DEFAULT 'google',
+    oauth_uid varchar(50) NOT NULL,
     usernameUsers VARCHAR(50) NOT NULL UNIQUE,
     nameUsers VARCHAR(50) NOT NULL,
     surnameUsers VARCHAR(50) NOT NULL,
@@ -22,6 +24,8 @@ CREATE TABLE users (
     passwordUsers VARCHAR(255) NOT NULL,
     acceptNewsletter BIT NOT NULL,
     profileImage varchar(255) NOT NULL,
+    created datetime NOT NULL,
+    modified datetime NOT NULL,
     status varchar(255) NOT NULL
 );
 
