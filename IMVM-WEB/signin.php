@@ -299,7 +299,7 @@ session_start();
             <button type="submit" class="sign" name="signin">Sign In</button>
         </form>
         <br>
-        <div id="g_id_onload" data-client_id="CLIENT_ID.apps.googleusercontent.com" data-context="signin"
+        <div id="g_id_onload" data-client_id="93578644004-jt8h18nvepg5r1kp932d1mj043des153.apps.googleusercontent.com" data-context="signin"
             data-ux_mode="popup" data-callback="handleCredentialResponse" data-auto_prompt="false">
         </div>
 
