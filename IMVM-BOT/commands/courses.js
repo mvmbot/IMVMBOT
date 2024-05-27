@@ -23,7 +23,7 @@ const db = mysql.createPool({
 
 async function getUserToken(userId) {
   try {
-    const [rows] = await db.query('SELECT access_token FROM user_tokens WHERE user_id =? LIMIT 1', [userId]);
+    const [rows] = db.query('SELECT access_token FROM user_tokens WHERE user_id =? LIMIT 1', [userId]);
     if (rows.length === 0) {
       console.log(`No se encontró un token de acceso para el usuario ${userId}`);
       return null;
@@ -45,7 +45,7 @@ async function execute(interaction) {
   let discordAccessToken;
 
   try {
-    discordAccessToken = await getUserToken(discordUserId);
+    discordAccessToken = getUserToken(discordUserId);
   } catch (error) {
     console.error('Error al obtener el token de acceso del usuario:', error);
     return interaction.reply({ content: 'Error al obtener tu token de acceso.', ephemeral: true });
@@ -68,7 +68,7 @@ async function execute(interaction) {
   const classroom = google.classroom({ version: 'v1', auth: oauth2Client });
 
   try {
-    const response = await classroom.courses.list({ pageSize: 10 });
+    const response = classroom.courses.list({ pageSize: 10 });
     const courses = response.data.courses;
 
     if (!courses || courses.length === 0) {
