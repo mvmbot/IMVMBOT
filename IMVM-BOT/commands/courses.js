@@ -37,8 +37,8 @@ async function getUserToken(userId) {
 }
 
 const coursesCommand = new SlashCommandBuilder()
- .setName('courses')
- .setDescription('Muestra los cursos de tu Google Classroom');
+  .setName('courses')
+  .setDescription('Muestra los cursos de tu Google Classroom');
 
 async function execute(interaction) {
   const discordUserId = interaction.user.id;
@@ -76,12 +76,20 @@ async function execute(interaction) {
     }
 
     const embed = new MessageEmbed()
-     .setTitle('CURSOS GCLASSROOM')
-     .setDescription(courses.map(course => `${course.name} (${course.id})`).join('\n'));
+      .setTitle('CURSOS GCLASSROOM')
+      .setDescription(courses.map(course => `${course.name} (${course.id})`).join('\n'));
 
     interaction.reply({ embeds: [embed] });
   } catch (error) {
     console.error('Error al recuperar los cursos:', error);
+
+    // Log detalle del error de la API de Google
+    if (error.response) {
+      console.error('Response data:', error.response.data);
+      console.error('Response status:', error.response.status);
+      console.error('Response headers:', error.response.headers);
+    }
+
     interaction.reply({ content: 'Error recuperando los cursos.', ephemeral: true });
   }
 }
