@@ -612,3 +612,12 @@ video {
   height: auto;
 }
 
+/* Center signin w google */
+
+
+.google-signin-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+

@@ -88,6 +88,11 @@ session_start();
         }
     </script>
     <!-- Google Translator End -->
+
+    <!-- Google SignIn Start -->
+    <script src="https://accounts.google.com/gsi/client" async></script>
+    <!-- Google SignIn End -->
+
 </head>
 
 <body>
@@ -270,66 +275,116 @@ session_start();
     <br><br>
     <div class="form-container">
         <p class="title">Sign up to IESMVMBOT</p>
-        <form class="form" method="POST" action="./php/signUpConfirm.php" id="signupform" name="signupform"
-            onsubmit="validateFormSignUp()" enctype="multipart/form-data">
-            <div class="input-group">
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username" placeholder="" />
-            </div>
-            <div class="input-group">
-                <label for="username">Name</label>
-                <input type="text" name="name" id="name" placeholder="" />
-            </div>
-            <div class="input-group">
-                <label for="username">Surname</label>
-                <input type="text" name="surname" id="surname" placeholder="" />
-            </div>
-            <div class="input-group">
-                <label for="profileImage" style="display: block;">Profile image:</label>
-                <input type="file" id="profileImage" name="profileImage">
-            </div>
-            <div class="input-group">
-                <label for="username">Mail</label>
-                <input type="text" name="mail" id="mail" placeholder="" />
-            </div>
-
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" placeholder="" />
-            </div>
-            <div class="input-group">
-                <label for="password">Confirm Password</label>
-                <input type="password" name="confirmPassword" id="confirmPassword" placeholder="" />
-                <div class="forgot">
-                    <a rel="noopener noreferrer" href="privacy-policy.php" target="_blank">
-                        Show privacy policy
-                    </a>
+        <form class="form" method="POST" action="./php/signUpConfirm.php" id="signupform" name="signupform" onsubmit="validateFormSignUp()" enctype="multipart/form-data">
+            <div class="form-row">
+                <div class="form-column">
+                    <div class="input-group">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username" placeholder="" />
+                    </div>
+                    <div class="input-group">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" placeholder="" />
+                    </div>
                 </div>
-
+                <div class="form-column">
+                    <div class="input-group">
+                        <label for="surname">Surname</label>
+                        <input type="text" name="surname" id="surname" placeholder="" />
+                    </div>
+                    <div class="input-group">
+                        <label for="mail">Mail</label>
+                        <input type="text" name="mail" id="mail" placeholder="" />
+                    </div>
+                </div>
             </div>
-
-            <div>
-                <input type="checkbox" name="privacyCheckbox" id="privacyCheckbox" value="on"
-                    style="vertical-align: middle; margin: 0; padding: 0;" />
-                <p style="display: inline-block; padding: 0;">Confirm that you agree with our privacy policy
-                </p>
+            <div class="form-row">
+                <div class="form-column">
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" placeholder="" />
+                    </div>
+                </div>
+                <div class="form-column">
+                    <div class="input-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" name="confirmPassword" id="confirmPassword" placeholder="" />
+                    </div>
+                </div>
             </div>
-            <div>
-                <input type="checkbox" name="newsletterCheckBox" id="newsletterCheckBox" value="on"
-                    style="vertical-align: middle; margin: 0; padding: 0;" />
-                <p style="display: inline-block; padding: 0;">Confirm that you agree to receive commercial information
-                </p>
+            <div class="form-row">
+                <div class="form-column">
+                    <div class="input-group">
+                        <label for="profileImage" style="display: block;">Profile image:</label>
+                        <input type="file" id="profileImage" name="profileImage">
+                    </div>
+                </div>
+                <div class="form-column" style="display: flex; align-items: center; justify-content: center;">
+                    <div id="g_id_onload" data-client_id="93578644004-jt8h18nvepg5r1kp932d1mj043des153.apps.googleusercontent.com" data-context="signin" data-ux_mode="popup" data-callback="handleCredentialResponse" data-auto_prompt="false"></div>
+                    <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="outline" data-text="signin_with" data-size="large" data-logo_alignment="left"></div>
+                </div>
             </div>
-            <button type="submit" class="sign" name="signup">Sign Up</button>
+            <div class="form-row">
+                <div class="form-column" style="width: 100%;">
+                    <div>
+                        <input type="checkbox" name="privacyCheckbox" id="privacyCheckbox" value="on" style="vertical-align: middle; margin: 0; padding: 0;" />
+                        <p style="display: inline-block; padding: 0;">Confirm that you agree with our privacy policy</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-column" style="width: 100%;">
+                    <div>
+                        <input type="checkbox" name="newsletterCheckBox" id="newsletterCheckBox" value="on" style="vertical-align: middle; margin: 0; padding: 0;" />
+                        <p style="display: inline-block; padding: 0;">Confirm that you agree to receive commercial information</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row" style="justify-content: center;">
+                <div class="form-column" style="width: 50%; text-align: center;">
+                    <button type="submit" class="sign" name="signup">Sign Up</button>
+                </div>
+            </div>
         </form>
-        <br>
 
-        <p class="signup">
-            Already have an account?
-            <a href="signin.php" class="">Sign In</a>
-        </p>
+        <div class="pro-data hidden"></div>
+     
+        <p class="signup">Already have an account? <a href="signin.php" class="">Sign In</a></p>
     </div>
-
+    
+    <script>
+        // Credential response handler function
+        function handleCredentialResponse(response){
+            // Post JWT token to server-side
+            fetch("auth_init.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ request_type:'user_auth', credential: response.credential }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.status == 1){
+                    let responsePayload = data.pdata;
+        
+                    // Display the user account data
+                    let profileHTML = '<h3>Welcome '+responsePayload.given_name+'! <a href="javascript:void(0);" onclick="signOut('+responsePayload.sub+');">Sign out</a></h3>';
+                    profileHTML += '<img src="'+responsePayload.picture+'"/><p><b>Auth ID: </b>'+responsePayload.sub+'</p><p><b>Name: </b>'+responsePayload.name+'</p><p><b>Email: </b>'+responsePayload.email+'</p>';
+                    document.getElementsByClassName("pro-data")[0].innerHTML = profileHTML;
+                    
+                    document.querySelector("#btnWrap").classList.add("hidden");
+                    document.querySelector(".pro-data").classList.remove("hidden");
+                }
+            })
+            .catch(console.error);
+        }
+        
+        // Sign out the user
+        function signOut(authID) {
+            document.getElementsByClassName("pro-data")[0].innerHTML = '';
+            document.querySelector("#btnWrap").classList.remove("hidden");
+            document.querySelector(".pro-data").classList.add("hidden");
+        }    
+        </script>
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">
