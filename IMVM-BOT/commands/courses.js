@@ -1,8 +1,14 @@
+/*
+ * File: courses  
+ * Author: Iván Sáez
+ * Github: https://github.com/ivanmvm
+ * Desc:
+ */
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js');
 const mysql = require('mysql2/promise');
 const { google } = require('googleapis');
-require('dotenv');
+require('dotenv').config();
 
 const db = mysql.createPool({
   host: process.env.DB_HOST,
@@ -31,8 +37,8 @@ async function getUserToken(userId) {
 }
 
 const coursesCommand = new SlashCommandBuilder()
-.setName('courses')
-.setDescription('Muestra los cursos de tu Google Classroom');
+ .setName('courses')
+ .setDescription('Muestra los cursos de tu Google Classroom');
 
 async function execute(interaction) {
   const discordUserId = interaction.user.id;
@@ -70,8 +76,8 @@ async function execute(interaction) {
     }
 
     const embed = new MessageEmbed()
-    .setTitle('CURSOS GCLASSROOM')
-    .setDescription(courses.map(course => `${course.name} (${course.id})`).join('\n'));
+     .setTitle('CURSOS GCLASSROOM')
+     .setDescription(courses.map(course => `${course.name} (${course.id})`).join('\n'));
 
     interaction.reply({ embeds: [embed] });
   } catch (error) {
