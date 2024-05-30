@@ -344,9 +344,7 @@ $conn = connectToDatabase();
     <!-- Footer End -->
 
     <!-- Chat button -->
-    <!-- Chat button -->
-    <div class="arena-chat" data-publisher="imvmbot" data-chatroom="95YVgkA" data-position="overlay"></div><script async src="https://go.eu.arena.im/public/js/arenachatlib.js?p=imvmbot&e=95YVgkA"></script>
-
+    <div class="arena-chat" data-publisher="imvmbot" data-chatroom="95YVgkA" data-position="bottom"></div><script async src="https://go.eu.arena.im/public/js/arenachatlib.js?p=imvmbot&e=95YVgkA"></script>
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
