@@ -513,8 +513,8 @@ session_start();
     <!-- Footer End -->
 
     <!-- Chat button -->
-    <a href="./chat.php" class="btn btn-lg btn-primary btn-lg-square chat-icon "><i
-            class="bi bi-chat-left-dots"></i></a>
+    <!-- Chat button -->
+    <div class="arena-chat" data-publisher="imvmbot" data-chatroom="95YVgkA" data-position="overlay"></div><script async src="https://go.eu.arena.im/public/js/arenachatlib.js?p=imvmbot&e=95YVgkA"></script>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
