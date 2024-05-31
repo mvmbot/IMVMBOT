@@ -1,9 +1,5 @@
 <?php
 session_start();
-include_once "php/config.php";
-  if(!isset($_SESSION['userId'])){
-    header("location: signin.php");
-}
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +35,7 @@ include_once "php/config.php";
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet" />
-    <link href="css/chatStyle.css" rel="chat stylesheet" />
+
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PXHDMQQ0XY"></script>
@@ -267,16 +263,27 @@ include_once "php/config.php";
         </div>
     </nav>
     <!-- Navbar End -->
-    <br><br>
 
-    <center>
-    <div class="arena-chat" data-publisher="imvmbot" data-chatroom="imvmbot-global" data-position="in-page"></div>
-    <script async src="https://go.eu.arena.im/public/js/arenachatlib.js?p=imvmbot&e=imvmbot-global"></script>
-</center>
-    <br><br>
+    <!-- Team Start -->
+
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h1 class="mb-5">IESMVMBOT CHAT SERVICE</h1>
+            </div>
+
+            <center>
+                <div class="arena-chat" data-publisher="imvmbot" data-chatroom="imvmbot-global" data-position="in-page">
+                </div>
+                <script async
+                    src="https://go.eu.arena.im/public/js/arenachatlib.js?p=imvmbot&e=imvmbot-global"></script>
+            </center>
+        </div>
+    </div>
+
+    <!-- Team End -->
 
     <!-- Footer Start -->
-
     <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="row g-5">
