@@ -166,9 +166,9 @@ include_once "php/config.php";
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
                 <style>
-                svg {
-                    fill: #9900ff
-                }
+                    svg {
+                        fill: #9900ff
+                    }
                 </style>
                 <path
                     d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
@@ -244,75 +244,37 @@ include_once "php/config.php";
             if ($_SESSION["user"]) {
                 $profileImage = $_SESSION['profileImage'] ?? 'img/defaultavatar.jpg'; // Image profile of user or default picture
                 ?>
-                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
-                    <img src="<?php echo $profileImage; ?>" alt="User Avatar" height="30" class="rounded-circle">
-                    <?php echo $_SESSION['user']; ?>
-                </a>
-                <?php
+            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+                <img src="<?php echo $profileImage; ?>" alt="User Avatar" height="30" class="rounded-circle">
+                <?php echo $_SESSION['user']; ?>
+            </a>
+            <?php
             } else if ($_SESSION["admin"]) {
                 $profileImage = $_SESSION['profileImage'] ?? 'img/defaultadmin.jpg'; // Image profile of admin or default picture
                 ?>
-                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
-                    <img src="<?php echo $profileImage; ?>" alt="Admin Avatar" height="30" class="rounded-circle">
-                    <?php echo $_SESSION['admin']; ?>
-                </a>
-                <?php
+            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+                <img src="<?php echo $profileImage; ?>" alt="Admin Avatar" height="30" class="rounded-circle">
+                <?php echo $_SESSION['admin']; ?>
+            </a>
+            <?php
             } else {
                 ?>
-                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">ACCOUNT</a>
-                <?php
+            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">ACCOUNT</a>
+            <?php
             }
             ?>
         </div>
-    </div>
-</nav>
+        </div>
+    </nav>
     <!-- Navbar End -->
-
-    <?php
-    $conn = connectToDatabase();
-    ?>
-    <br><br>
-    <div class="wrapper">
-        <section class="chat-area">
-            <header>
-                <?php
-                $idUsers = mysqli_real_escape_string($conn, $_GET['idUsers']);
-                $sql = mysqli_query($conn, "SELECT * FROM users WHERE idUsers = {$idUsers}");
-                if (mysqli_num_rows($sql) > 0) {
-                    $row = mysqli_fetch_assoc($sql);
-                } else {
-                    header("location: users.php");
-                }
-                ?>
-                <a href="users.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
-                <img src="./userProfileImgs/<?php echo $row['img']; ?>" alt="">
-                <div class="details">
-                    <span>
-                        <?php echo $row['nameUsers'] . " " . $row['surnameUsers'] ?>
-                    </span>
-                    <p>
-                        <?php echo $row['status']; ?>
-                    </p>
-                </div>
-            </header>
-            <div class="chat-box">
-
-            </div>
-            <form action="#" class="typing-area">
-                <input type="text" class="incoming_id" name="incoming_id" value="<?php echo $idUsers; ?>" hidden>
-                <input type="text" name="message" class="input-field" placeholder="Type a message here..."
-                    autocomplete="off">
-                <button><i class="fab fa-telegram-plane"></i></button>
-            </form>
-        </section>
-    </div>
-
-    <script src="./js/chat.js"></script>
-
     <br><br>
 
-    <center><a href="./viewTicket.php" class="btn btn-primary py-3 px-5">Go back<i
-                class="fa fa-arrow-right ms-3"></i></a></center>
+    <center>
+    <div class="arena-chat" data-publisher="imvmbot" data-chatroom="imvmbot-global" data-position="in-page"></div>
+    <script async src="https://go.eu.arena.im/public/js/arenachatlib.js?p=imvmbot&e=imvmbot-global"></script>
+</center>
+    <br><br>
+
     <!-- Footer Start -->
 
     <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">

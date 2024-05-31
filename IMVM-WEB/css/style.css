@@ -488,17 +488,17 @@ video {
 
 /* Styles for the news image */
 .news-image {
-  width: 100%; 
+  width: 100%;
   max-width: 500px;
-  height: auto;  
-  display: block; 
-  margin: 0 auto; 
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 /* Additional styles for mobile screens */
 @media screen and (max-width: 767px) {
   .news-image {
-    max-width: 100%; 
+    max-width: 100%;
   }
 }
 
@@ -594,8 +594,8 @@ video {
   height: auto;
   box-sizing: border-box;
   margin-bottom: 15px;
-  border-radius: 8px; 
-  padding: 5px;  
+  border-radius: 8px;
+  padding: 5px;
 }
 
 /* Icons for table tickets */
@@ -608,12 +608,11 @@ video {
 }
 
 .icon-button svg {
-  width: 22px; 
+  width: 22px;
   height: auto;
 }
 
 /* Center signin w google */
-
 
 .google-signin-container {
   display: flex;
@@ -621,3 +620,9 @@ video {
   align-items: center;
 }
 
+.arena-chat {
+  width: 650px; /* Ancho del contenedor */
+  height: 350px; /* Alto del contenedor */
+  border: 1px solid #ccc; /* Borde opcional para visualizar el contenedor */
+  box-sizing: border-box; /* Incluye el padding y el border en el tamaño total del elemento */
+}
