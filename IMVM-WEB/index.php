@@ -239,28 +239,28 @@ session_start();
             if ($_SESSION["user"]) {
                 $profileImage = $_SESSION['profileImage'] ?? 'img/defaultavatar.jpg'; // Image profile of user or default picture
                 ?>
-                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
-                    <img src="<?php echo $profileImage; ?>" alt="User Avatar" height="30" class="rounded-circle">
-                    <?php echo $_SESSION['user']; ?>
-                </a>
-                <?php
+            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+                <img src="<?php echo $profileImage; ?>" alt="User Avatar" height="30" class="rounded-circle">
+                <?php echo $_SESSION['user']; ?>
+            </a>
+            <?php
             } else if ($_SESSION["admin"]) {
                 $profileImage = $_SESSION['profileImage'] ?? 'img/defaultadmin.jpg'; // Image profile of admin or default picture
                 ?>
-                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
-                    <img src="<?php echo $profileImage; ?>" alt="Admin Avatar" height="30" class="rounded-circle">
-                    <?php echo $_SESSION['admin']; ?>
-                </a>
-                <?php
+            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+                <img src="<?php echo $profileImage; ?>" alt="Admin Avatar" height="30" class="rounded-circle">
+                <?php echo $_SESSION['admin']; ?>
+            </a>
+            <?php
             } else {
                 ?>
-                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">ACCOUNT</a>
-                <?php
+            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">ACCOUNT</a>
+            <?php
             }
             ?>
         </div>
-    </div>
-</nav>
+        </div>
+    </nav>
     <!-- Navbar End -->
 
     <!-- Cookies Start -->
@@ -324,20 +324,17 @@ session_start();
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="team-item">
                         <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="./img/remind.png" alt="">
-
+                            <img class="img-fluid" src="./img/remind.png" alt="Remind command">
                         </div>
                         <div class="bg-light text-center p-4">
                             <h5 class="fw-bold mb-0">/remind</h5>
-
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
                     <div class="team-item">
                         <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="./img/study.png" alt="">
-
+                            <img class="img-fluid" src="./img/study.png" alt="Study command">
                         </div>
                         <div class="bg-light text-center p-4">
                             <h5 class="fw-bold mb-0">/study</h5>
@@ -347,19 +344,17 @@ session_start();
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
                     <div class="team-item">
                         <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="./img/ban.png" alt="">
-
+                            <img class="img-fluid" src="./img/ban.png" alt="Ban command">
                         </div>
                         <div class="bg-light text-center p-4">
-                            <h5 class="fw-bold mb-0">/ban</h5> </small>
+                            <h5 class="fw-bold mb-0">/ban</h5>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.10s">
                     <div class="team-item">
                         <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="./img/rules.png" alt="">
-
+                            <img class="img-fluid" src="./img/rules.png" alt="Rules command">
                         </div>
                         <div class="bg-light text-center p-4">
                             <h5 class="fw-bold mb-0">/rules</h5>
@@ -369,8 +364,7 @@ session_start();
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.13s">
                     <div class="team-item">
                         <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="./img/faq.png" alt="">
-
+                            <img class="img-fluid" src="./img/faq.png" alt="FAQ command">
                         </div>
                         <div class="bg-light text-center p-4">
                             <h5 class="fw-bold mb-0">/faq</h5>
@@ -380,7 +374,7 @@ session_start();
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.16s">
                     <div class="team-item">
                         <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="./img/help.png" alt="">
+                            <img class="img-fluid" src="./img/help.png" alt="Help command">
 
                         </div>
                         <div class="bg-light text-center p-4">
@@ -391,7 +385,7 @@ session_start();
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.19s">
                     <div class="team-item">
                         <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="./img/wiki.png" alt="">
+                            <img class="img-fluid" src="./img/wiki.png" alt="Wiki command">
 
                         </div>
                         <div class="bg-light text-center p-4">
@@ -402,7 +396,7 @@ session_start();
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.21s">
                     <div class="team-item">
                         <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="./img/clear.png" alt="">
+                            <img class="img-fluid" src="./img/clear.png" alt="Clear command">
 
                         </div>
                         <div class="bg-light text-center p-4">
@@ -413,7 +407,7 @@ session_start();
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.24s">
                     <div class="team-item">
                         <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="./img/mute.png" alt="">
+                            <img class="img-fluid" src="./img/mute.png" alt="Mute command">
 
                         </div>
                         <div class="bg-light text-center p-4">
@@ -424,7 +418,7 @@ session_start();
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.27s">
                     <div class="team-item">
                         <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="./img/ping.png" alt="">
+                            <img class="img-fluid" src="./img/ping.png" alt="Ping command">
 
                         </div>
                         <div class="bg-light text-center p-4">
@@ -435,7 +429,7 @@ session_start();
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.30s">
                     <div class="team-item">
                         <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="./img/gtranslate.png" alt="">
+                            <img class="img-fluid" src="./img/gtranslate.png" alt="Gtranslate command">
 
                         </div>
                         <div class="bg-light text-center p-4">
@@ -446,7 +440,7 @@ session_start();
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.33s">
                     <div class="team-item">
                         <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="./img/calculator.png" alt="">
+                            <img class="img-fluid" src="./img/calculator.png" alt="Calculator command">
 
                         </div>
                         <div class="bg-light text-center p-4">
@@ -457,7 +451,7 @@ session_start();
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.33s">
                     <div class="team-item">
                         <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="./img/emojify.png" alt="">
+                            <img class="img-fluid" src="./img/emojify.png" alt="Emojify command">
 
                         </div>
                         <div class="bg-light text-center p-4">
@@ -468,7 +462,7 @@ session_start();
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.36s">
                     <div class="team-item">
                         <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="./img/eval.png" alt="">
+                            <img class="img-fluid" src="./img/eval.png" alt="Eval command">
 
                         </div>
                         <div class="bg-light text-center p-4">
@@ -479,7 +473,7 @@ session_start();
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.39s">
                     <div class="team-item">
                         <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="./img/youtube.png" alt="">
+                            <img class="img-fluid" src="./img/youtube.png" alt="Youtube command">
 
                         </div>
                         <div class="bg-light text-center p-4">
@@ -490,11 +484,55 @@ session_start();
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.42s">
                     <div class="team-item">
                         <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="./img/password-generator.png" alt="">
+                            <img class="img-fluid" src="./img/password-generator.png" alt="Password Generator command">
 
                         </div>
                         <div class="bg-light text-center p-4">
                             <h5 class="fw-bold mb-0">/password-generator</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.45s">
+                    <div class="team-item">
+                        <div class="position-relative overflow-hidden">
+                            <img class="img-fluid" src="./img/schedule.png" alt="Schedule command">
+
+                        </div>
+                        <div class="bg-light text-center p-4">
+                            <h5 class="fw-bold mb-0">/schedule</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.48s">
+                    <div class="team-item">
+                        <div class="position-relative overflow-hidden">
+                            <img class="img-fluid" src="./img/login.png" alt="Login command">
+
+                        </div>
+                        <div class="bg-light text-center p-4">
+                            <h5 class="fw-bold mb-0">/login</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.51s">
+                    <div class="team-item">
+                        <div class="position-relative overflow-hidden">
+                            <img class="img-fluid" src="./img/poll.png" alt="Poll command">
+
+                        </div>
+                        <div class="bg-light text-center p-4">
+                            <h5 class="fw-bold mb-0">/poll</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.54s">
+                    <div class="team-item">
+                        <div class="position-relative overflow-hidden">
+                            <img class="img-fluid" src="./img/lock.png" alt="Lock command">
+
+                        </div>
+                        <div class="bg-light text-center p-4">
+                            <h5 class="fw-bold mb-0">/lock</h5>
                         </div>
                     </div>
                 </div>
@@ -592,7 +630,7 @@ session_start();
     <!-- Chat button -->
     <a href="./chat.php" class="btn btn-lg btn-primary btn-lg-square chat-icon "><i
             class="bi bi-chat-left-dots"></i></a>
-        
+
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
