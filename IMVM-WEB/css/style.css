@@ -635,6 +635,15 @@ video {
   box-sizing: border-box; /* Incluye el padding y el border en el tamaño total del elemento */
 }
 
+/* Chat button fix on screen */
+
+.chat-icon {
+  position: fixed;
+  bottom: 20px; /* Ajusta la distancia desde el borde inferior */
+  right: 20px; /* Ajusta la distancia desde el borde derecho */
+  z-index: 9999; /* Asegura que el botón esté por encima de otros elementos */
+}
+
 /* FAQ accordion */
 
 .faqcontainer {
