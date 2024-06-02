@@ -629,20 +629,21 @@ video {
 }
 
 .arena-chat {
-  width: 650px; /* Ancho del contenedor */
-  height: 350px; /* Alto del contenedor */
-  border: 1px solid #ccc; /* Borde opcional para visualizar el contenedor */
-  box-sizing: border-box; /* Incluye el padding y el border en el tamaño total del elemento */
+  width: 650px; 
+  height: 350px; 
+  border: 1px solid #ccc; /* Optional border for visualizing the container */
+  box-sizing: border-box; /* Includes padding and border in the total element size */
 }
 
 /* Chat button fix on screen */
 
 .chat-icon {
   position: fixed;
-  bottom: 20px; /* Ajusta la distancia desde el borde inferior */
-  right: 20px; /* Ajusta la distancia desde el borde derecho */
-  z-index: 9999; /* Asegura que el botón esté por encima de otros elementos */
+  bottom: 20px; /* Adjust distance from bottom edge */
+  right: 20px; /* Adjust distance from right edge */
+  z-index: 9999; /* Ensure button is above other elements */
 }
+
 
 /* FAQ accordion */
 
