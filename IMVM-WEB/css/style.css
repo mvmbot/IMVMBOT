@@ -589,6 +589,7 @@ video {
   max-width: 800px;
   padding: 80px;
   box-sizing: border-box;
+  margin-left: 700px; 
 }
 
 .formticket label {
@@ -604,6 +605,12 @@ video {
   margin-bottom: 15px;
   border-radius: 8px;
   padding: 5px;
+}
+
+@media (max-width: 576px) {
+  .formticket {
+    margin-left: 0; /* Responsive margin */
+  }
 }
 
 /* Icons for table tickets */
