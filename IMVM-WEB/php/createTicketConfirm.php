@@ -29,7 +29,8 @@ ini_set('display_errors', 1);
 $conn = connectToDatabase();
 
 # We declare the directory that we're using to store all the user data
-$targetDirectory = '../userUploads/' . $_SESSION['user'] . '/';
+$username = $_POST['sessionValue'];
+$targetDirectory = '../userUploads/' . $username . '/';
 
 # Since every user is going to have a different directory, we gotta make sure it creates properly (in case it's not already created!)
 # Since this could be kinda hard to read, imma break it down for you, first we check if `$targetDirectory` is a directory, then we use the ternary operator
