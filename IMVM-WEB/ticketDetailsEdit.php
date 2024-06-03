@@ -20,7 +20,7 @@ error_reporting(E_ALL);
 
 
     <!-- Favicon -->
-    <link rel="icon" href="IMVM-WEB/img/faviimvm.ico" type="image/x-icon" />
+    <link rel="icon" href="./img/faviimvm.ico" type="image/x-icon" />
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

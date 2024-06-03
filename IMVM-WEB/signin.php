@@ -15,7 +15,7 @@ session_start();
         content="93578644004-jt8h18nvepg5r1kp932d1mj043des153.apps.googleusercontent.com">
 
     <!-- Favicon -->
-    <link rel="icon" href="IMVM-WEB/img/faviimvm.ico" type="image/x-icon" />
+    <link rel="icon" href="./img/faviimvm.ico" type="image/x-icon" />
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

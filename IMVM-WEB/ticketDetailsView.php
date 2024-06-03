@@ -17,9 +17,8 @@ error_reporting(E_ALL);
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-
     <!-- Favicon -->
-    <link rel="icon" href="IMVM-WEB/img/faviimvm.ico" type="image/x-icon" />
+    <link rel="icon" href="./img/faviimvm.ico" type="image/x-icon" />
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
