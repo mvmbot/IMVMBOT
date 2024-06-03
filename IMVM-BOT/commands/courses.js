@@ -1,3 +1,10 @@
+/*
+ * File: courses
+ * Author: Iván Sáez
+ * Github: https://github.com/ivanmvm
+ * Desc: Command to show the users' classroom's courses, it works with the classroom API and GoogleAuth
+ */
+
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { google } = require('googleapis');
 const mysql = require('mysql');
@@ -46,20 +53,20 @@ const coursesCommand = new SlashCommandBuilder()
 
 async function execute(interaction) {
   const userId = interaction.user.id;
-  
+
   try {
     const tokens = await getTokens(userId);
-    
+
     if (!tokens || !tokens.access_token) {
       return interaction.reply({ content: 'You need to log in first using the /login command.', ephemeral: true });
     }
-    
+
     const oauth2Client = new google.auth.OAuth2(
       process.env.GOOGLE_CLIENT_ID,
       process.env.GOOGLE_CLIENT_SECRET,
       process.env.GOOGLE_REDIRECT_URI
     );
-    
+
     oauth2Client.setCredentials({
       access_token: tokens.access_token,
       refresh_token: tokens.refresh_token
@@ -77,20 +84,20 @@ async function execute(interaction) {
       oauth2Client.setCredentials(credentials);
       await saveAccessToken(userId, credentials.access_token);
     }
-    
+
     const classroom = google.classroom({ version: 'v1', auth: oauth2Client });
     const response = await classroom.courses.list({ pageSize: 25 }); // Fetch more courses for pagination
     const courses = response.data.courses;
-    
+
     if (!courses || courses.length === 0) {
       return interaction.reply({ content: 'No courses found.', ephemeral: true });
     }
-    
+
     const totalCourses = courses.length;
     const coursesPerPage = 12;
     const totalPages = Math.ceil(totalCourses / coursesPerPage);
     let currentPage = 1;
-    
+
     const generateEmbed = (page) => {
       const start = (page - 1) * coursesPerPage;
       const end = start + coursesPerPage;
@@ -151,7 +158,7 @@ async function execute(interaction) {
     collector.on('end', async () => {
       await interaction.editReply({ components: [] });
     });
-    
+
   } catch (error) {
     console.error('Error retrieving courses:', error);
     if (error.code === 401) {
