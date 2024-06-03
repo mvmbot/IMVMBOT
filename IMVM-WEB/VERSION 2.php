@@ -40,33 +40,33 @@ session_start();
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PXHDMQQ0XY"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-        gtag('config', 'G-PXHDMQQ0XY');
+    gtag('config', 'G-PXHDMQQ0XY');
     </script>
 
 
     <!-- Google Tag Manager Start -->
     <script>
-        (function (w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({
-                'gtm.start': new Date().getTime(),
-                event: 'gtm.js'
-            });
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s),
-                dl = l != 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-PWQDVHW8');
+    (function(w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start': new Date().getTime(),
+            event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-PWQDVHW8');
     </script>
     <!-- Google Tag Manager End -->
 
@@ -74,15 +74,15 @@ session_start();
     <script type="text/javascript"
         src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
                 pageLanguage: "en",
                 layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
                 showLogo: false,
             },
-                "google_translate_element"
-            );
-        }
+            "google_translate_element"
+        );
+    }
     </script>
     <!-- Google Translator End -->
 </head>
@@ -240,102 +240,129 @@ session_start();
             if ($_SESSION["user"]) {
                 $profileImage = $_SESSION['profileImage'] ?? 'img/defaultavatar.jpg'; // Image profile of user or default picture
                 ?>
-                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
-                    <img src="<?php echo $profileImage; ?>" alt="User Avatar" height="30" class="rounded-circle">
-                    <?php echo $_SESSION['user']; ?>
-                </a>
-                <?php
+            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+                <img src="<?php echo $profileImage; ?>" alt="User Avatar" height="30" class="rounded-circle">
+                <?php echo $_SESSION['user']; ?>
+            </a>
+            <?php
             } else if ($_SESSION["admin"]) {
                 $profileImage = $_SESSION['profileImage'] ?? 'img/defaultadmin.jpg'; // Image profile of admin or default picture
                 ?>
-                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
-                    <img src="<?php echo $profileImage; ?>" alt="Admin Avatar" height="30" class="rounded-circle">
-                    <?php echo $_SESSION['admin']; ?>
-                </a>
-                <?php
+            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+                <img src="<?php echo $profileImage; ?>" alt="Admin Avatar" height="30" class="rounded-circle">
+                <?php echo $_SESSION['admin']; ?>
+            </a>
+            <?php
             } else {
                 ?>
-                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">ACCOUNT</a>
-                <?php
+            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">ACCOUNT</a>
+            <?php
             }
             ?>
         </div>
-    </div>
-</nav>
+        </div>
+    </nav>
     <!-- Navbar End -->
 
     <!-- News Start -->
 
     <div class="container-xxl py-5">
-    <div class="container">
-        <div class="row g-5 justify-content-center">
-            <div class="col-lg-7 text-start">
-                <h1>Version 2 Changelog: New Commands and Ticketing system</h1>
-                <br>
-                <img src="./img/v2mvmbot.png" alt="Version 2 Image" class="img-fluid w-100">
-                <br><br>
-                <p>In this changelog, we are thrilled to share the latest updates and bug fixes introduced in
-                    Version 2 (v2). Our
-                    commitment to improving the user experience and ensuring software stability remains a top
-                    priority. Below, you'll
-                    find a detailed account of the changes and improvements we have implemented:</p>
-
-                <h2>New Commands:</h2>
-
-                <p>
-                    <strong>/youtube Command:</strong>
+        <div class="container">
+            <div class="row g-5 justify-content-center">
+                <div class="col-lg-7 text-start">
+                    <h1>Version 2 Changelog: New Commands and Ticketing system</h1>
                     <br>
-                    Introducing the /youtube command, allowing users to search for and share YouTube videos directly within the chat.
-                </p>
-                
-                <p>
-                    <strong>/password-generator Command:</strong>
-                    <br>
-                    The password-generator command enables users to generate secure passwords with specified length and options for numbers and special characters.
-                </p>
+                    <img src="./img/v2mvmbot.png" alt="Version 2 Image" class="img-fluid w-100">
+                    <br><br>
+                    <p>In this changelog, we are thrilled to share the latest updates and bug fixes introduced in
+                        Version 2 (v2). Our
+                        commitment to improving the user experience and ensuring software stability remains a top
+                        priority. Below, you'll
+                        find a detailed account of the changes and improvements we have implemented:</p>
 
-                <h2>Ticketing System:</h2>
+                    <h2>New Commands:</h2>
 
-                <p>
-                    We have implemented a new ticketing system to help manage your inquiries and feedback efficiently. The system includes the following categories:
-                </p>
+                    <p>
+                        <strong>/youtube Command:</strong>
+                        <br>
+                        Introducing the /youtube command, allowing users to search for and share YouTube videos directly
+                        within the chat.
+                    </p>
 
-                <ul>
-                    <li>Help and Support</li>
-                    <li>Bug Reports</li>
-                    <li>Feature Requests</li>
-                    <li>Grammar Issues</li>
-                    <li>Information Updates</li>
-                    <li>Other</li>
-                </ul>
+                    <p>
+                        <strong>/password-generator Command:</strong>
+                        <br>
+                        The password-generator command enables users to generate secure passwords with specified length
+                        and options for numbers and special characters.
+                    </p>
+                    <p>
+                        <strong>/login Command:</strong>
+                        <br>
+                        The login command allows users to authenticate and connect their Discord account to Google
+                        Classroom using the Google API.
+                    </p>
+                    <p>
+                        <strong>/logout Command:</strong>
+                        <br>
+                        The logout command disconnects the user's Discord account from Google Classroom, revoking any
+                        permissions granted.
+                    </p>
+                    <p>
+                        <strong>/courses Command:</strong>
+                        <br>
+                        The courses command lists all the courses the user is enrolled in within Google Classroom.
+                    </p>
+                    <p>
+                        <strong>/schedule Command:</strong>
+                        <br>
+                        The schedule command provides the user with a timetable or schedule of upcoming classes and
+                        assignments from Google Classroom.
+                    </p>
 
-                <p>
-                    Additionally, we have added a chat feature where you can directly communicate with administrators for real-time assistance.
-                </p>
+                    <h2>Ticketing System:</h2>
 
-                <h2>Conclusion:</h2>
+                    <p>
+                        We have implemented a new ticketing system to help manage your inquiries and feedback
+                        efficiently. The system includes the following categories:
+                    </p>
 
-                <p>
-                    Version 2 brings a host of new commands and critical bug fixes, offering an improved and more
-                    functional
-                    software experience. We appreciate the valuable feedback from our user community, driving our
-                    commitment to
-                    excellence. As we continue to evolve, stay tuned for more updates aimed at meeting the evolving
-                    needs of our
-                    users.
-                </p>
+                    <ul>
+                        <li>Help and Support</li>
+                        <li>Bug Reports</li>
+                        <li>Feature Requests</li>
+                        <li>Grammar Issues</li>
+                        <li>Information Updates</li>
+                        <li>Other</li>
+                    </ul>
 
-                <p>
-                    Thank you for your continued support as we work towards creating a more robust and user-friendly
-                    software
-                    environment.
-                </p>
-                <a href="./Changelog.php" class="btn btn-primary py-3 px-5">Go back<i
-                        class="fa fa-arrow-right ms-3"></i></a>
+                    <p>
+                        Additionally, we have added a chat feature where you can directly communicate with
+                        administrators for real-time assistance.
+                    </p>
+
+                    <h2>Conclusion:</h2>
+
+                    <p>
+                        Version 2 brings a host of new commands and critical bug fixes, offering an improved and more
+                        functional
+                        software experience. We appreciate the valuable feedback from our user community, driving our
+                        commitment to
+                        excellence. As we continue to evolve, stay tuned for more updates aimed at meeting the evolving
+                        needs of our
+                        users.
+                    </p>
+
+                    <p>
+                        Thank you for your continued support as we work towards creating a more robust and user-friendly
+                        software
+                        environment.
+                    </p>
+                    <a href="./Changelog.php" class="btn btn-primary py-3 px-5">Go back<i
+                            class="fa fa-arrow-right ms-3"></i></a>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     <!-- News End -->
 
@@ -428,7 +455,7 @@ session_start();
     <!-- Chat button -->
     <a href="./chat.php" class="btn btn-lg btn-primary btn-lg-square chat-icon "><i
             class="bi bi-chat-left-dots"></i></a>
-                
+
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>

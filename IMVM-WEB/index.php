@@ -517,6 +517,28 @@ session_start();
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.51s">
                     <div class="team-item">
                         <div class="position-relative overflow-hidden">
+                            <img class="img-fluid" src="./img/logout.png" alt="Logout command">
+
+                        </div>
+                        <div class="bg-light text-center p-4">
+                            <h5 class="fw-bold mb-0">/logout</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.54s">
+                    <div class="team-item">
+                        <div class="position-relative overflow-hidden">
+                            <img class="img-fluid" src="./img/courses.png" alt="Courses command">
+
+                        </div>
+                        <div class="bg-light text-center p-4">
+                            <h5 class="fw-bold mb-0">/courses</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.58s">
+                    <div class="team-item">
+                        <div class="position-relative overflow-hidden">
                             <img class="img-fluid" src="./img/poll.png" alt="Poll command">
 
                         </div>
@@ -525,7 +547,18 @@ session_start();
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.54s">
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="1.01s">
+                    <div class="team-item">
+                        <div class="position-relative overflow-hidden">
+                            <img class="img-fluid" src="./img/ticketdisc.png" alt="Create ticket">
+
+                        </div>
+                        <div class="bg-light text-center p-4">
+                            <h5 class="fw-bold mb-0">#ticket</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="1.04s">
                     <div class="team-item">
                         <div class="position-relative overflow-hidden">
                             <img class="img-fluid" src="./img/lock.png" alt="Lock command">
