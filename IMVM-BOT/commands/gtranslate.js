@@ -2,7 +2,7 @@
  * File: gtranslate
  * Author: Iván Sáez
  * Github: https://github.com/ivanmvm
- * Desc:
+ * Desc: Translate any text using Google Translate API
  */
 
 const {SlashCommandBuilder, EmbedBuilder } = require('discord.js');

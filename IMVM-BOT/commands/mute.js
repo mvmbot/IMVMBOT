@@ -2,7 +2,7 @@
  * File: mute
  * Author: Iván Sáez
  * Github: https://github.com/ivanmvm
- * Desc:
+ * Desc: Mute a discord user
  */
 
 const {
@@ -57,7 +57,7 @@ const {
 
       if (tiempo > 10000)
         return interaction.reply({
-          content: `max is 10.000 minutes`,
+          content: `Max is 10.000 minutes`,
           ephemeral: true,
         });
 
@@ -74,8 +74,8 @@ const {
         .setTimestamp()
         .setThumbnail(`${user.displayAvatarURL({ dynamic: true })}`)
         .addFields(
-          { name: `Razon`, value: `${razon}`, inline: true },
-          { name: `Tiempo`, value: `${tiempo}`, inline: true }
+          { name: `Reason`, value: `${razon}`, inline: true },
+          { name: `Time`, value: `${tiempo}`, inline: true }
         );
 
       await member.timeout(tiempo * 60 * 1000, razon).catch(console.error);

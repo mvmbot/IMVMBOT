@@ -2,7 +2,7 @@
  * File: password
  * Author: Iván Sáez
  * Github: https://github.com/ivanmvm
- * Desc:
+ * Desc: Create a secure password
  */
 
 const { SlashCommandBuilder, IntegerOptionType, EmbedBuilder } = require('discord.js');

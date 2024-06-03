@@ -2,7 +2,7 @@
  * File: schedule
  * Author: Iván Sáez
  * Github: https://github.com/ivanmvm
- * Desc:
+ * Desc: Command to show the DAW schedule 23/24
  */
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { EmbedBuilder } = require('discord.js');

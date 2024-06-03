@@ -2,7 +2,7 @@
  * File: study
  * Author: Iván Sáez
  * Github: https://github.com/ivanmvm
- * Desc:
+ * Desc: Create a study timer and send you a private message when it ends.
  */
 
 const { SlashCommandBuilder } = require('@discordjs/builders');

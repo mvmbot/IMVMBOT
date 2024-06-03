@@ -2,7 +2,7 @@
  * File: youtube
  * Author: Iván Sáez
  * Github: https://github.com/ivanmvm
- * Desc:
+ * Desc: Shows the first video using the YouTube API
  */
 
 const { SlashCommandBuilder } = require('@discordjs/builders');
@@ -33,10 +33,10 @@ module.exports = {
             const videoTitle = video.snippet.title;
             const videoURL = `https://www.youtube.com/watch?v=${video.id.videoId}`;
 
-            interaction.reply({ content: `Este es el primer resultado a tu busqueda: \n"${searchTerm}":\n${videoURL}`});
+            interaction.reply({ content: `This is the first result for your search: \n"${searchTerm}":\n${videoURL}`});
         } catch (error) {
-            console.error('Error al buscar en YouTube:', error);
-            interaction.reply({ content: 'Hubo un error al buscar en YouTube.', ephemeral: true });
+            console.error('Error searching on YouTube:', error);
+            interaction.reply({ content: 'There was an error searching on YouTube.', ephemeral: true });
         }
     },
 };

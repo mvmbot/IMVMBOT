@@ -2,7 +2,7 @@
  * File: help
  * Author: Iván Sáez
  * Github: https://github.com/ivanmvm
- * Desc:
+ * Desc: Show all the commands available for IMVMBOT
  */
 
 const { SlashCommandBuilder } = require('@discordjs/builders');

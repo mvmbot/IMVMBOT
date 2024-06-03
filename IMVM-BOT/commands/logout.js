@@ -12,10 +12,11 @@ require('dotenv').config();
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('logout')
-    .setDescription('Log out from Google Classroom'),
+    .setDescription('Cerrar sesión para Google Classroom'),
   async execute(interaction) {
     const userId = interaction.user.id;
 
+    // Sends an ephemeral reply (only visible to the user) with a confirmation message
     await interaction.reply({
       ephemeral: true,
       embeds: [
@@ -43,12 +44,15 @@ module.exports = {
       ],
     });
 
+    // Sets up a filter to ensure the correct user clicks the confirmation button
     const filter = (i) => i.customId === 'confirm_logout' && i.user.id === userId;
+    // Creates a collector to handle button click interactions
     const collector = interaction.channel.createMessageComponentCollector({ filter, time: 60000 });
 
     collector.on('collect', async (i) => {
       if (i.customId === 'confirm_logout') {
         try {
+          // Attempts to remove the access token from the database
           await removeAccessTokenFromDatabase(userId);
           await i.update({
             content: 'You have been logged out from Google Classroom and your token has been removed from the database. ✅',
@@ -56,6 +60,7 @@ module.exports = {
             components: [],
           });
         } catch (error) {
+          // Handles any errors that occur during the logout process
           await i.update({
             content: 'There was an error while logging out. Please try again later.',
             embeds: [],
@@ -69,6 +74,7 @@ module.exports = {
   },
 };
 
+// Function to remove the user's access token from the database
 async function removeAccessTokenFromDatabase(userId) {
   return new Promise((resolve, reject) => {
     const connection = mysql.createConnection({

@@ -2,7 +2,7 @@
  * File: wiki
  * Author: Iván Sáez
  * Github: https://github.com/ivanmvm
- * Desc:
+ * Desc: Shows you a summary of the term searched using the Wikipedia API
  */
 
 const { SlashCommandBuilder } = require('@discordjs/builders');
@@ -33,7 +33,7 @@ module.exports = {
       interaction.reply({ embeds: [embed] });
     } catch (error) {
       console.error(error);
-      interaction.reply('Ocurrió un error al obtener la información de Wikipedia.');
+      interaction.reply('An error occurred while retrieving information from Wikipedia.');
     }
   },
 };

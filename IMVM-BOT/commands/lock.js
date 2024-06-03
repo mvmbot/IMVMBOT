@@ -2,7 +2,7 @@
  * File: lock
  * Author: Iván Sáez
  * Github: https://github.com/ivanmvm
- * Desc:
+ * Desc: Lock any channel from your Discord Server.
  */
 
 const Discord = require("discord.js")
@@ -14,7 +14,7 @@ module.exports = {
     .addChannelOption((option) =>
       option
         .setName("canal")
-        .setDescription(`El canal que quieres bloquear`)
+        .setDescription(`Selecciona canal que quieras bloquear`)
         .addChannelTypes(Discord.ChannelType.GuildText)
         .setRequired(true)
     ),
@@ -29,7 +29,7 @@ module.exports = {
       )
     )
       return await interaction.reply({
-        content: `:_: No tienes permisos de \`\`ManageChannels\`\` para usar el comando.`,
+        content: `:_: You do not have permissions \`\`ManageChannels\`\` to use the command.`,
         ephemeral: true,
       });
 
@@ -40,12 +40,12 @@ module.exports = {
       });
 
        interaction.reply({
-        content: `:_: Canal bloqueado correctamente.`,
+        content: `:_: Channel blocked successfully.`,
         ephemeral: true,
       });
     } catch (error) {
       return interaction.reply({
-        content: `:_: Hubo un error al bloquear el canal.`,
+        content: `:_: There was an error blocking the channel.`,
         ephemeral: true,
       });
     }

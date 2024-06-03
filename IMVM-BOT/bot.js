@@ -2,7 +2,7 @@
  * File: Bot
  * Author: Iván Sáez
  * Github: https://github.com/ivanmvm
- * Desc:
+ * Desc: The main file to load IMVMBOT
  */
 
 const Discord = require('discord.js');
@@ -15,7 +15,8 @@ const oauth2Client = new google.auth.OAuth2(process.env.GOOGLE_CLIENT_ID, proces
 require('dotenv').config();
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 client.commands = new Collection();
-// Carga los comandos
+
+// Load commands
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 for (const file of commandFiles) {
   const command = require(`./commands/${file}`);
@@ -23,7 +24,7 @@ for (const file of commandFiles) {
 }
 client.once('ready', async () => {
   console.log(`✅ ${client.user.tag} is online.`);
-  // Registra los comandos slash
+  // Register slash commands
   const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
   const commands = client.commands.map(({ data }) => data);
   try {
@@ -36,13 +37,14 @@ client.once('ready', async () => {
   } catch (error) {
     console.error(error);
   }
-
+// Set ActivityType
   client.user.setPresence({
     activities: [{ name: `/help • IMVMBOT`, type: Discord.ActivityType.Custom }],
     status: 'online',
   });
 });
-// Evento InteractionCreate
+
+// Event InteractionCreate
 client.on("interactionCreate", async (interaction) => {
   if (!interaction.isCommand()) return;
   try {
@@ -58,5 +60,5 @@ client.on("interactionCreate", async (interaction) => {
   }
 });
 
-// Registro
+// Register (TOKEN)
 client.login(process.env.TOKEN);

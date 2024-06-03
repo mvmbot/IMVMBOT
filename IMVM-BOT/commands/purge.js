@@ -2,7 +2,7 @@
  * File: purge
  * Author: Iván Sáez
  * Github: https://github.com/ivanmvm
- * Desc:
+ * Desc: Delete a number of message that you choose.
  */
 
 const { SlashCommandBuilder } = require('@discordjs/builders');

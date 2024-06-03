@@ -1,3 +1,10 @@
+/*
+ * File: poll
+ * Author: Iván Sáez
+ * Github: https://github.com/ivanmvm
+ * Desc: Create a poll to vote some topic
+ */
+
 const { SlashCommandBuilder, ChannelType, EmbedBuilder } = require('discord.js');
 
 module.exports = {
@@ -26,14 +33,14 @@ module.exports = {
         const opciones = interaction.options.getString('options').split(',');
 
         if (opciones.length < 2 || opciones.length > 10) {
-            return interaction.reply('La encuesta debe tener entre 2 y 10 opciones.');
+            return interaction.reply('The poll must have between 2 and 10 options.');
         }
 
         const emojis = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'];
 
         const embed = new EmbedBuilder()
             .setColor('#00FF00')
-            .setTitle(`📊 Encuesta - Creada por ${interaction.user.tag}`)
+            .setTitle(`📊 Poll - Created by ${interaction.user.tag}`)
             .setDescription(pregunta)
             .setTimestamp();
 
@@ -64,6 +71,6 @@ module.exports = {
             reacciones.delete(user.id);
         });
 
-        await interaction.reply(`Encuesta creada en ${canal}.`);
+        await interaction.reply(`Poll created in ${canal}.`);
     },
 };

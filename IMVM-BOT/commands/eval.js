@@ -2,7 +2,7 @@
  * File: eval
  * Author: Iván Sáez
  * Github: https://github.com/ivanmvm
- * Desc:
+ * Desc: Evaluate JavaScript Code (Only for Developers)
  */
 
 const { SlashCommandBuilder, EmbedBuilder } = require ('discord.js');

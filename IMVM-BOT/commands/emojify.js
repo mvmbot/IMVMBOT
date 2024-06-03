@@ -2,7 +2,7 @@
  * File: emojify
  * Author: Iván Sáez
  * Github: https://github.com/ivanmvm
- * Desc:
+ * Desc: Translate your text to emojis
  */
 
 const { SlashCommandBuilder } = require('@discordjs/builders');

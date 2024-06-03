@@ -2,7 +2,7 @@
  * File: ban
  * Author: Iván Sáez
  * Github: https://github.com/ivanmvm
- * Desc:
+ * Desc: Ban a user from your server
  */
 
 const { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits } = require("discord.js");
@@ -26,12 +26,12 @@ module.exports = {
         const { channel, options } = interaction;
 
         const user = options.getUser("user");
-        const reason = options.getString("razon") || "sin razon";
+        const reason = options.getString("razon") || "NO REASON";
 
         const member = await interaction.guild.members.fetch(user.id);
 
         const errEmbed = new EmbedBuilder()
-            .setDescription(`No puedes banear a ${user.username} el tiene un rol superior.`)
+            .setDescription(`You can't ban ${user.username} he has superior role`)
             .setColor(0xc72c3b);
 
         if (member.roles.highest.position >= interaction.member.roles.highest.position)
@@ -40,8 +40,8 @@ module.exports = {
         await member.ban({ reason });
 
         const embed = new EmbedBuilder()
-            .setTitle(":hammer: Usuario baneado")
-            .setDescription(`${user} ha sido baneado por: ${reason}`)
+            .setTitle(":hammer: User banned")
+            .setDescription(`${user} has been banned by: ${reason}`)
             .setColor(0x5fb041)
             .setTimestamp()
 
