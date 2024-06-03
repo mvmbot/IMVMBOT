@@ -40,33 +40,33 @@ session_start();
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PXHDMQQ0XY"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-        gtag('config', 'G-PXHDMQQ0XY');
+    gtag('config', 'G-PXHDMQQ0XY');
     </script>
 
 
     <!-- Google Tag Manager Start -->
     <script>
-        (function (w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({
-                'gtm.start': new Date().getTime(),
-                event: 'gtm.js'
-            });
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s),
-                dl = l != 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-PWQDVHW8');
+    (function(w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start': new Date().getTime(),
+            event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-PWQDVHW8');
     </script>
     <!-- Google Tag Manager End -->
 
@@ -74,15 +74,15 @@ session_start();
     <script type="text/javascript"
         src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
                 pageLanguage: "en",
                 layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
                 showLogo: false,
             },
-                "google_translate_element"
-            );
-        }
+            "google_translate_element"
+        );
+    }
     </script>
     <!-- Google Translator End -->
 </head>
@@ -240,98 +240,162 @@ session_start();
             if ($_SESSION["user"]) {
                 $profileImage = $_SESSION['profileImage'] ?? 'img/defaultavatar.jpg'; // Image profile of user or default picture
                 ?>
-                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
-                    <img src="<?php echo $profileImage; ?>" alt="User Avatar" height="30" class="rounded-circle">
-                    <?php echo $_SESSION['user']; ?>
-                </a>
-                <?php
+            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+                <img src="<?php echo $profileImage; ?>" alt="User Avatar" height="30" class="rounded-circle">
+                <?php echo $_SESSION['user']; ?>
+            </a>
+            <?php
             } else if ($_SESSION["admin"]) {
                 $profileImage = $_SESSION['profileImage'] ?? 'img/defaultadmin.jpg'; // Image profile of admin or default picture
                 ?>
-                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
-                    <img src="<?php echo $profileImage; ?>" alt="Admin Avatar" height="30" class="rounded-circle">
-                    <?php echo $_SESSION['admin']; ?>
-                </a>
-                <?php
+            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+                <img src="<?php echo $profileImage; ?>" alt="Admin Avatar" height="30" class="rounded-circle">
+                <?php echo $_SESSION['admin']; ?>
+            </a>
+            <?php
             } else {
                 ?>
-                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">ACCOUNT</a>
-                <?php
+            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">ACCOUNT</a>
+            <?php
             }
             ?>
         </div>
-    </div>
-</nav>
+        </div>
+    </nav>
     <!-- Navbar End -->
 
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="row g-5 justify-content-center">
-                <div class="col-lg-7 text-start">
+    <br>
+    <h1 class="bs-primary text-center">FAQ</h1><br>
 
-                    <h1 class="bs-primary text-center">FAQ</h1><br>
-
-                    <div class="mb-4 text-white">
-                        <p>Welcome to the Iesmvmbot FAQ. This document has been created to provide answers to the most
-                            common questions our users typically ask.
-                            Our mission is to ensure that you have a satisfying and trouble-free experience when using
-                            our services.</p><br><br>
-
-                        <p>We have organized the frequently asked questions into thematic categories so that you can
-                            quickly find the information you need.
-                            We are committed to keeping this document up to date and adding new questions and answers as
-                            they arise.</p><br><br>
-
-                        <p>If you can't find the answer you're looking for or have specific needs that are not addressed
-                            in this FAQ, please don't hesitate to contact our support team.</p><br><br>
-
-                        <h3>Question 1: What is a Discord bot?</h3>
-                        <p>Answer: A Discord bot is a third-party application used to automate tasks, manage servers,
-                            and provide additional features on Discord servers.
-                            These bots can be programmed to perform a variety of actions, such as moderating chat,
-                            playing music, providing information, among other things.</p>
-                        <h3>Question 2: Why would I want to create a Discord bot?</h3>
-                        <p>Answer: Discord bots are useful for simplifying server management, enhancing user
-                            experiences, and adding custom features to your community.
-                            They can assist with moderation, provide helpful information, and entertain server members.
-                        </p>
-                        <h3>Question 3: What is needed to create a Discord bot?</h3>
-                        <p>Answer: To create a Discord bot, you need basic programming knowledge in languages like
-                            JavaScript or Python, a Discord account, and an application in the Discord Developer Portal
-                            to obtain an authentication token.</p>
-                        <h3>Question 4: What programming language should I use to develop a Discord bot?</h3>
-                        <p>Answer: The most common programming languages for developing Discord bots are JavaScript and
-                            Python.
-                            Discord offers official libraries and APIs for both options, so you can choose the one you
-                            are more comfortable with.</p>
-                        <h3>Question 5: Is it necessary to have your own server to host the bot?</h3>
-                        <p>Answer: No, it's not necessary to have your own server. You can host your bot on a local
-                            machine, on a cloud service like Heroku, or on a Discord bot hosting service like DisBot or
-                            BotGhost.</p>
-                        <h3>Question 6: Is it legal to create and use Discord bots?</h3>
-                        <p>Answer: Yes, it is legal to create and use Discord bots as long as you adhere to Discord's
-                            Terms of Service.
-                            You should not use a bot for malicious activities or activities that violate Discord's
-                            policies.</p>
-                        <h3>Question 7: How can I add my bot to a Discord server?</h3>
-                        <p>Answer: To add your bot to a server, you need to generate an invitation link through the
-                            Discord Developer Portal and then authorize the bot on your server with the appropriate
-                            permissions.</p>
-                        <h3>Question 8: What kind of permissions does my bot need on a server?</h3>
-                        <p>Answer: The permissions your bot needs depend on the tasks it needs to perform.
-                            For example, a music bot needs permissions to play music, and a moderation bot needs
-                            permissions to manage messages and users.</p>
-                        <h3>Question 9: How can I update and maintain my bot?</h3>
-                        <p>Answer: You should stay informed about updates to the library or API you are using and make
-                            necessary changes to your bot.
-                            Additionally, it's essential to ensure that the bot is online and functioning correctly at
-                            all times.</p>
-                        <h3>Question 10: Where can I get help if I have issues or questions about creating a Discord
-                            bot?</h3>
-                        <p>Answer: You can seek help in the Discord developer community on servers like "Discord API" or
-                            "Discord Bots."
-                            You can also refer to Discord's official documentation and search for online tutorials.</p>
-                    </div>
+    <div class="faqcontainer">
+        <div class="accordion">
+            <div class="accordion-item">
+                <button id="accordion-button-1" aria-expanded="false">
+                    <span class="accordion-title">What is a Discord bot?</span>
+                    <span class="icon" aria-hidden="true"></span>
+                </button>
+                <div class="accordion-content">
+                    <p>
+                        A Discord bot is a third-party application used to automate tasks, manage servers, and provide
+                        additional features on Discord servers. These bots can be programmed to perform a variety of
+                        actions, such as moderating chat, playing music, providing information, among other things.
+                    </p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button id="accordion-button-2" aria-expanded="false">
+                    <span class="accordion-title">Why would I want to create a Discord bot?</span>
+                    <span class="icon" aria-hidden="true"></span>
+                </button>
+                <div class="accordion-content">
+                    <p>
+                        Discord bots are useful for simplifying server management, enhancing user experiences, and
+                        adding custom features to your community. They can assist with moderation, provide helpful
+                        information, and entertain server members.
+                    </p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button id="accordion-button-3" aria-expanded="false">
+                    <span class="accordion-title">What is needed to create a Discord bot?</span>
+                    <span class="icon" aria-hidden="true"></span>
+                </button>
+                <div class="accordion-content">
+                    <p>
+                        To create a Discord bot, you need basic programming knowledge in languages like JavaScript or
+                        Python, a Discord account, and an application in the Discord Developer Portal to obtain an
+                        authentication token.
+                    </p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button id="accordion-button-4" aria-expanded="false">
+                    <span class="accordion-title">What programming language should I use to develop a Discord
+                        bot?</span>
+                    <span class="icon" aria-hidden="true"></span>
+                </button>
+                <div class="accordion-content">
+                    <p>
+                        The most common programming languages for developing Discord bots are JavaScript and Python.
+                        Discord offers official libraries and APIs for both options, so you can choose the one you are
+                        more comfortable with.
+                    </p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button id="accordion-button-5" aria-expanded="false">
+                    <span class="accordion-title">Is it necessary to have your own server to host the bot?</span>
+                    <span class="icon" aria-hidden="true"></span>
+                </button>
+                <div class="accordion-content">
+                    <p>
+                        No, it's not necessary to have your own server. You can host your bot on a local machine, on a
+                        cloud service like Heroku, or on a Discord bot hosting service like DisBot or BotGhost.
+                    </p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button id="accordion-button-6" aria-expanded="false">
+                    <span class="accordion-title">Is it legal to create and use Discord bots?</span>
+                    <span class="icon" aria-hidden="true"></span>
+                </button>
+                <div class="accordion-content">
+                    <p>
+                        Yes, it is legal to create and use Discord bots as long as you adhere to Discord's Terms of
+                        Service. You should not use a bot for malicious activities or activities that violate Discord's
+                        policies.
+                    </p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button id="accordion-button-7" aria-expanded="false">
+                    <span class="accordion-title">How can I add my bot to a Discord server?</span>
+                    <span class="icon" aria-hidden="true"></span>
+                </button>
+                <div class="accordion-content">
+                    <p>
+                        To add your bot to a server, you need to generate an invitation link through the Discord
+                        Developer Portal and then authorize the bot on your server with the appropriate permissions.
+                    </p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button id="accordion-button-8" aria-expanded="false">
+                    <span class="accordion-title">What kind of permissions does my bot need on a server?</span>
+                    <span class="icon" aria-hidden="true"></span>
+                </button>
+                <div class="accordion-content">
+                    <p>
+                        The permissions your bot needs depend on the tasks it needs to perform. For example, a music bot
+                        needs permissions to play music, and a moderation bot needs permissions to manage messages and
+                        users.
+                    </p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button id="accordion-button-9" aria-expanded="false">
+                    <span class="accordion-title">How can I update and maintain my bot?</span>
+                    <span class="icon" aria-hidden="true"></span>
+                </button>
+                <div class="accordion-content">
+                    <p>
+                        You should stay informed about updates to the library or API you are using and make necessary
+                        changes to your bot. Additionally, it's essential to ensure that the bot is online and
+                        functioning correctly at all times.
+                    </p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button id="accordion-button-10" aria-expanded="false">
+                    <span class="accordion-title">Where can I get help if I have issues or questions about creating a
+                        Discord bot?</span>
+                    <span class="icon" aria-hidden="true"></span>
+                </button>
+                <div class="accordion-content">
+                    <p>
+                        You can seek help in the Discord developer community on servers like "Discord API" or "Discord
+                        Bots." You can also refer to Discord's official documentation and search for online tutorials.
+                    </p>
                 </div>
             </div>
         </div>

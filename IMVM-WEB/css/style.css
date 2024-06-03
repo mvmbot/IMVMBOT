@@ -225,6 +225,14 @@ video {
   height: 3rem;
 }
 
+.carousel-img {
+  max-width: 1920px;
+  max-height: 1080px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
 @media (max-width: 768px) {
   #header-carousel .carousel-item {
     position: relative;
@@ -488,17 +496,17 @@ video {
 
 /* Styles for the news image */
 .news-image {
-  width: 100%; 
+  width: 100%;
   max-width: 500px;
-  height: auto;  
-  display: block; 
-  margin: 0 auto; 
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 /* Additional styles for mobile screens */
 @media screen and (max-width: 767px) {
   .news-image {
-    max-width: 100%; 
+    max-width: 100%;
   }
 }
 
@@ -581,6 +589,7 @@ video {
   max-width: 800px;
   padding: 80px;
   box-sizing: border-box;
+  margin-left: 700px; 
 }
 
 .formticket label {
@@ -594,8 +603,14 @@ video {
   height: auto;
   box-sizing: border-box;
   margin-bottom: 15px;
-  border-radius: 8px; 
-  padding: 5px;  
+  border-radius: 8px;
+  padding: 5px;
+}
+
+@media (max-width: 576px) {
+  .formticket {
+    margin-left: 0; /* Responsive margin */
+  }
 }
 
 /* Icons for table tickets */
@@ -608,12 +623,11 @@ video {
 }
 
 .icon-button svg {
-  width: 22px; 
+  width: 22px;
   height: auto;
 }
 
 /* Center signin w google */
-
 
 .google-signin-container {
   display: flex;
@@ -621,3 +635,128 @@ video {
   align-items: center;
 }
 
+.arena-chat {
+  width: 650px;
+  height: 350px;
+  border: 1px solid #ccc; /* Optional border for visualizing the container */
+  box-sizing: border-box; /* Includes padding and border in the total element size */
+}
+
+/* Chat button fix on screen */
+
+.chat-icon {
+  position: fixed;
+  bottom: 20px; /* Adjust distance from bottom edge */
+  right: 20px; /* Adjust distance from right edge */
+  z-index: 9999; /* Ensure button is above other elements */
+}
+
+/* FAQ accordion */
+
+.faqcontainer {
+  margin: 0 auto;
+  width: 60rem;
+}
+
+.accordion .accordion-item {
+  border-bottom: 1px solid #e5e5e5;
+  background-color: #101311;
+}
+
+.accordion .accordion-item button[aria-expanded="true"] {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.accordion button {
+  position: relative;
+  display: block;
+  text-align: left;
+  width: 100%;
+  padding: 1em 0;
+  color: #9900ff;
+  font-size: 1.15rem;
+  font-weight: bold;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.accordion button:hover,
+.accordion button:focus {
+  cursor: pointer;
+  color: #e5e5e5;
+}
+
+.accordion button:hover::after,
+.accordion button:focus::after {
+  cursor: pointer;
+  color: #e5e5e5;
+  border: 1px solid #e5e5e5;
+}
+
+.accordion button .accordion-title {
+  padding: 1em 1.5em 1em 0;
+}
+
+.accordion button .icon {
+  display: inline-block;
+  position: absolute;
+  top: 18px;
+  right: 0;
+  width: 22px;
+  height: 22px;
+  border: 1px solid;
+  border-radius: 22px;
+}
+
+.accordion button .icon::before {
+  display: block;
+  position: absolute;
+  content: "";
+  top: 9px;
+  left: 5px;
+  width: 10px;
+  height: 2px;
+  background: currentColor;
+}
+
+.accordion button .icon::after {
+  display: block;
+  position: absolute;
+  content: "";
+  top: 5px;
+  left: 9px;
+  width: 2px;
+  height: 10px;
+  background: currentColor;
+}
+
+.accordion button[aria-expanded="true"] {
+  color: #e5e5e5;
+}
+
+.accordion button[aria-expanded="true"] .icon::after {
+  width: 0;
+}
+
+.accordion button[aria-expanded="true"] + .accordion-content {
+  opacity: 1;
+  max-height: 9em;
+  transition: all 200ms linear;
+  will-change: opacity, max-height;
+}
+
+.accordion .accordion-content {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 200ms linear, max-height 200ms linear;
+  will-change: opacity, max-height;
+}
+
+.accordion .accordion-content p {
+  font-size: 1rem;
+  font-weight: 300;
+  margin: 2em 0;
+  color: white;
+}

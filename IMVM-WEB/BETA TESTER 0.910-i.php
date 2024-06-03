@@ -40,33 +40,33 @@ session_start();
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PXHDMQQ0XY"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-        gtag('config', 'G-PXHDMQQ0XY');
+    gtag('config', 'G-PXHDMQQ0XY');
     </script>
 
 
     <!-- Google Tag Manager Start -->
     <script>
-        (function (w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({
-                'gtm.start': new Date().getTime(),
-                event: 'gtm.js'
-            });
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s),
-                dl = l != 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-PWQDVHW8');
+    (function(w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start': new Date().getTime(),
+            event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-PWQDVHW8');
     </script>
     <!-- Google Tag Manager End -->
 
@@ -74,15 +74,15 @@ session_start();
     <script type="text/javascript"
         src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
                 pageLanguage: "en",
                 layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
                 showLogo: false,
             },
-                "google_translate_element"
-            );
-        }
+            "google_translate_element"
+        );
+    }
     </script>
     <!-- Google Translator End -->
 </head>
@@ -240,28 +240,28 @@ session_start();
             if ($_SESSION["user"]) {
                 $profileImage = $_SESSION['profileImage'] ?? 'img/defaultavatar.jpg'; // Image profile of user or default picture
                 ?>
-                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
-                    <img src="<?php echo $profileImage; ?>" alt="User Avatar" height="30" class="rounded-circle">
-                    <?php echo $_SESSION['user']; ?>
-                </a>
-                <?php
+            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+                <img src="<?php echo $profileImage; ?>" alt="User Avatar" height="30" class="rounded-circle">
+                <?php echo $_SESSION['user']; ?>
+            </a>
+            <?php
             } else if ($_SESSION["admin"]) {
                 $profileImage = $_SESSION['profileImage'] ?? 'img/defaultadmin.jpg'; // Image profile of admin or default picture
                 ?>
-                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
-                    <img src="<?php echo $profileImage; ?>" alt="Admin Avatar" height="30" class="rounded-circle">
-                    <?php echo $_SESSION['admin']; ?>
-                </a>
-                <?php
+            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+                <img src="<?php echo $profileImage; ?>" alt="Admin Avatar" height="30" class="rounded-circle">
+                <?php echo $_SESSION['admin']; ?>
+            </a>
+            <?php
             } else {
                 ?>
-                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">ACCOUNT</a>
-                <?php
+            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">ACCOUNT</a>
+            <?php
             }
             ?>
         </div>
-    </div>
-</nav>
+        </div>
+    </nav>
     <!-- Navbar End -->
 
 
@@ -273,7 +273,9 @@ session_start();
                 <div class="col-lg-7 text-start">
 
                     <h1>BETA TESTER 0.911-0 Changelog: Command Additions and Bug Fixes</h1>
-
+                    <br>
+                    <img src="./img/3.png" alt="Version 0.911-0 Image" class="img-fluid w-100">
+                    <br><br>
                     <p>In our relentless pursuit of providing a seamless user experience, we are thrilled to announce
                         the latest updates
                         and bug fixes in the BETA TESTER version 0.911-0. Our commitment to improving functionality and
