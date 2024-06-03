@@ -2,7 +2,7 @@
  * File: courses
  * Author: Iván Sáez
  * Github: https://github.com/ivanmvm
- * Desc: Command to show the users' classroom's courses, it works with the classroom API and GoogleAuth
+ * Desc: Command to show the user's classroom courses, it works with the Classroom API and GoogleAuth
  */
 
 const { SlashCommandBuilder } = require('@discordjs/builders');
